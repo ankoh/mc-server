@@ -1,6 +1,6 @@
 jshint:
   script:
-    - cd app
+    - cd api
     - npm install
     - grunt jshint
   tags:
@@ -9,7 +9,7 @@ jshint:
 
 mocha:
   script:
-    - cd app
+    - cd api
     - npm install
     - grunt mochaTest
   tags:
