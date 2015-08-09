@@ -6,9 +6,13 @@ jshint:
     - grunt jshint
   tags:
     - node
+    - grunt
+    - gyp
 
 jasmine_nodejs:
   script:
     - grunt jasmine_nodejs
   tags:
     - node
+    - grunt
+    - gyp
