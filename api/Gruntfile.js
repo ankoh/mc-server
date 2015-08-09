@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg     : grunt.file.readJSON('package.json'),
     jshint  : {
-      all     : ['package.json', 'Gruntfile.js', 'index.js', 'routes/**/*.js', 'common/**/*.js', 'tests/**/*.js']
+      all     : ['package.json', 'Gruntfile.js', 'index.js', 'routes/**/*.js', 'lib/**/*.js', 'specs/**/*.js']
     },
     mochaTest: {
       specs: {
