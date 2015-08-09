@@ -1,8 +1,7 @@
-before_script:
-  - npm install
-
 jshint:
   script:
+    - cd app
+    - npm install
     - grunt jshint
   tags:
     - node
@@ -10,6 +9,8 @@ jshint:
 
 mocha:
   script:
+    - cd app
+    - npm install
     - grunt mochaTest
   tags:
     - node
