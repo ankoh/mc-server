@@ -4,6 +4,7 @@ jshint:
     - npm install
     - grunt jshint
   tags:
+    - plain
     - node
     - grunt
 
@@ -13,6 +14,6 @@ mocha:
     - npm install
     - grunt mochaTest
   tags:
+    - plain
     - node
     - grunt
-    - mysql
