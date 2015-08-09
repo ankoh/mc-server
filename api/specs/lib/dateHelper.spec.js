@@ -1,6 +1,6 @@
 var dateHelper = require('../../lib/dateHelper');
 
-describe('getMySQLDateString', function () {
+describe('dateHelper.getMySQLDateString', function () {
     it(' shall produce a valid MySQL date string given "30 July 2010 15:05 UTC"', function () {
         var now = '30 July 2010 15:05 UTC';
         expect(now).to.not.match(/^\d+-\d+-\d+ \d+:\d+:\d+$/);

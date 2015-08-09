@@ -1,6 +1,6 @@
 var netHelper = require('../../lib/netHelper');
 
-describe('isReachableAsync', function () {
+describe('netHelper.isReachableAsync', function () {
     it(' shall reach www.google.de on TCP port 80', function (done) {
         netHelper.isReachableAsync('www.google.de', '80')
 			.then(function() { done(); })
