@@ -8,27 +8,26 @@ module.exports = function (grunt) {
     jshint  : {
       all     : ['package.json', 'Gruntfile.js', 'index.js', 'routes/**/*.js', 'common/**/*.js', 'tests/**/*.js']
     },
-    jasmine_nodejs : {
-      options : {
-        specNameSuffix: 'spec.js'
-      },
-      all     : {
-        specs : [
-          "test/*.spec.js"
-        ]
+    mochaTest: {
+      specs: {
+          options: {
+            ui: 'bdd',
+            reporter: 'spec',
+            require: './specs/helpers/chai'
+          },
+          src: ['specs/**/*.spec.js']
+        }
       }
-    }
-
-  });
+    });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-jasmine-nodejs');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-serve');
 
   // Default task(s).
   grunt.registerTask('default', [
     'jshint',
-    'jasmine_nodejs'
+    'mochaTest'
   ]);
 
 };

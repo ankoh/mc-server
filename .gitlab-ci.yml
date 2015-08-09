@@ -7,12 +7,14 @@ jshint:
   tags:
     - node
     - grunt
-    - gyp
+    - jshint
 
-jasmine_nodejs:
+mocha:
   script:
-    - grunt jasmine_nodejs
+    - grunt mochaTest
   tags:
     - node
     - grunt
-    - gyp
+    - chai
+    - sinon
+    - mocha
