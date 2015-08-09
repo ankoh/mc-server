@@ -1,0 +1,23 @@
+{
+  "name": "mendeley-cache",
+  "version": "0.0.0",
+  "main": "index.js",
+  "description": "Cache for Mendeley publications",
+  "license": "GPL-3.0",
+  "private": true,
+  "repository": "https://gitlab.kohn.io/ankoh/mendeley-cache",
+  "dependencies": {
+    "bunyan": "^0.22.1",
+    "material-design-lite": "^1.0.2",
+    "restify": "~3.0.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-jasmine-nodejs": "^1.3.0",
+    "grunt-serve": "^0.1.6"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}

@@ -1,0 +1,14 @@
+before_script:
+  - npm install
+
+jshint:
+  script:
+    - grunt jshint
+  tags:
+    - node
+
+jasmine_nodejs:
+  script:
+    - grunt jasmine_nodejs
+  tags:
+    - node
