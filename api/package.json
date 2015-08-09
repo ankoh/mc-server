@@ -7,7 +7,6 @@
   "private": true,
   "repository": "https://gitlab.kohn.io/ankoh/mendeley-cache",
   "dependencies": {
-    "bunyan": "^0.22.1",
     "material-design-lite": "^1.0.2",
     "restify": "~3.0.2"
   },
