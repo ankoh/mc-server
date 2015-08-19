@@ -3,11 +3,11 @@ from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 # Controller imports
-from mendelycache.controllers.fields import FieldsController
-from mendelycache.controllers.profiles import ProfilesController
-from mendelycache.controllers.publications import PublicationsController
-from mendelycache.controllers.statistics import StatisticsController
-from mendelycache.controllers.system import SystemController
+from mendeleycache.controllers.fields import FieldsController
+from mendeleycache.controllers.profiles import ProfilesController
+from mendeleycache.controllers.publications import PublicationsController
+from mendeleycache.controllers.statistics import StatisticsController
+from mendeleycache.controllers.system import SystemController
 
 
 # Initialize the main application

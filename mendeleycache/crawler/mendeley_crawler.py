@@ -1,6 +1,6 @@
 __author__ = 'kohn'
 
-from mendelycache.models import *
+from mendeleycache.models import *
 from abc import ABCMeta
 from abc import abstractmethod
 
