@@ -1,0 +1,425 @@
+[
+  {
+    "title": "ADAPTIVITY IN STORY-DRIVEN SERIOUS GAMES",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2011,
+    "source": "IADIS International Conference Game and Entertainment",
+    "editors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "id": "52b3ec08-78d8-3380-a46e-6cd8c27bd6a7",
+    "created": "2011-12-05T10:08:16.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2012-02-15T18:14:00.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kohler2011"
+  },
+  {
+    "title": "A quick prototyping framework for adaptive serious games with 2D physics on mobile touch devices",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "IADIS Mobile Learning 2012 (ML 2012)",
+    "keywords": [
+      "Adaptivity",
+      "Physics",
+      "Prototyping",
+      "Serious Games"
+    ],
+    "city": "Berlin",
+    "id": "99a337d2-1b57-3021-9211-ba083bc79e53",
+    "created": "2011-12-05T10:09:34.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2012-02-15T18:14:00.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Haladjian2012",
+    "abstract": "In recent years mobile devices like the iPhone (and Android devices) became even more powerful than netbooks. This computational power can be used for complex simulations and games that were until now just possible on desktop computers. We propose adaptive games with 2D physics on mobile devices that can be used for learning purposes. We argue that even young children can understand and apply physical laws in such games. Because of the touch displays, abstract physical concepts can be made more tangible as one can directly touch the objects on the screen. Furthermore, digital games can provide an individualized learning and playing experience for each child with the integrated Adaptivity. In this work we show the problems that arise when developing serious games featuring adaptivity and physics and we propose a solution to them: a quick prototyping framework called TangoPhysics. TangoPhysics suggests a new way of prototyping mobile games: The prototypes are constructed directly on the mobile device, and can be tested at any moment. We show that the development time of a serious game can be dramatically reduced with our framework. At the same time the development is simplified dramatically allowing not only programmers, but also teachers and in the long run maybe even students to develop their own serious games,"
+  },
+  {
+    "title": "A FRAMEWORK FOR GAME TUNING",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Ziegler"
+      },
+      {
+        "first_name": "Blagina",
+        "last_name": "Simeonova"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Muntean"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "GET 2012 - IADIS Game and Entertainment Techonologies",
+    "month": 7,
+    "city": "Lisbon, Portugal",
+    "id": "66254ddb-f7b5-3a88-a214-e514639bb41c",
+    "created": "2014-02-26T20:14:11.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Haladjian2012b"
+  },
+  {
+    "title": "Teaching Basic Software Engineering to Senior High School Students",
+    "type": "book_section",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Michaela",
+        "last_name": "Gluchow"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2013,
+    "source": "Information Systems and Technology for Organizations in a Networked Society",
+    "identifiers": {
+      "isbn": "9781466640627",
+      "doi": "10.4018/978-1-4666-4062-7"
+    },
+    "pages": "149-165",
+    "websites": [
+      "http://www.igi-global.com/chapter/teaching-basic-software-engineering-senior/76536"
+    ],
+    "month": 5,
+    "publisher": "IGI Global",
+    "day": 31,
+    "editors": [
+      {
+        "first_name": "Tomayess",
+        "last_name": "Issa"
+      },
+      {
+        "first_name": "Pedro",
+        "last_name": "Isaías"
+      },
+      {
+        "first_name": "Piet",
+        "last_name": "Kommers"
+      }
+    ],
+    "id": "5debb1e1-4e8e-3134-b473-f089960f729d",
+    "created": "2014-02-26T20:15:33.000Z",
+    "accessed": "2014-02-26",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-06-19T22:40:08.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kohler2013",
+    "language": "English",
+    "abstract": "Software Engineering (SE) is an increasingly important topic as software projects increase in size, budget, and duration. The authors suggest starting teaching SE already to high school students instead of waiting until their freshman year at university. This chapter shows the principles the authors used for creating such courses. First, the authors explain which software lifecycle model the authors use, why, and how it needs to be tailored for students with very little development experience. Second, the authors discuss the educational models the authors apply to increase motivation and counter the inert knowledge problem often observed in lectures. The authors mainly focus on goal-based scenarios and scaffolding, two constructivist design methods. Finally, the authors present a case study of one course they conducted in fall 2011 with eleven high school students between ages 16 and 18."
+  },
+  {
+    "title": "Adaptive serious game development",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailovic"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Kohler"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      }
+    ],
+    "year": 2012,
+    "source": "2nd International Workshop on Games and Software Engineering (GAS 2012)",
+    "identifiers": {
+      "isbn": "9781467317689",
+      "doi": "10.1109/GAS.2012.6225922"
+    },
+    "keywords": [
+      "-serious games",
+      "adaptivity",
+      "definition for adaptivity for",
+      "first we provide",
+      "game development",
+      "games",
+      "of human tutors in",
+      "paper is twofold",
+      "secondly we provide a",
+      "serious",
+      "that explore the role",
+      "the contribution of this",
+      "two studies"
+    ],
+    "pages": "23-26",
+    "websites": [
+      "http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6225922"
+    ],
+    "id": "cb07d077-5fc8-3a87-962f-c6959efddf12",
+    "created": "2014-02-26T20:16:39.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2012b",
+    "abstract": "Learning is a process that is associated with a lot of effort and perseverance. In learning theories, motivation can be observed as a key factor. In some cases learning can become playing if the learning experience is so intrinsically satisfying and rewarding that external pressures or rewards for learning are of secondary importance. Serious games are able to increase motivation for learning by realizing diverse approaches which can address cognitive as well as affective learning. By using a variety of elements such as visual environments, story-lines, challenges, and interactions with non-player characters, serious games can be optimal learning environments. Even though, they have such motivational power, several studies have shown that there are no known forms of education as effective as a professional human tutor. This paper explores the interaction of human tutors with learners in a serious games with the focus on `Social Development Theory'. It will present results that show how human tutors observe players in executing learning tasks, and interacting with the game environment in serious games. Based on the results of this studies we provide a definition of adaptivity for serious games."
+  },
+  {
+    "title": "Feedback in low vs. high fidelity visuals for game prototypes",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Blagina",
+        "last_name": "Simeonova"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "2012 Second International Workshop on Games and Software Engineering: Realizing User Engagement with Game Engineering Techniques (GAS)",
+    "keywords": [
+      "-game engineering",
+      "game engineering",
+      "serious games",
+      "style",
+      "styling"
+    ],
+    "pages": "42-47",
+    "websites": [
+      "http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6225926"
+    ],
+    "publisher": "IEEE",
+    "day": 9,
+    "id": "c3b7937f-d55b-3425-9be3-1f018bbd829d",
+    "created": "2014-02-26T20:19:53.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kohler2012a",
+    "abstract": "Prototypes have proven to be a good practice in different areas. In the gaming industry, they help identify usability and gameplay issues, among others. The earlier these issues are identified, the less effort is required fixing them. But game assets like graphics are often expensive and are available later on, or even after game functionality has been implemented. Game prototypes are in this case created using lower fidelity visuals. While this technique makes it possible to perform usability tests, it may bias the feedback provided by usability testers. In this paper we investigate how the fidelity of the prototypes used for usability testing influence the feedback provided by testers."
+  },
+  {
+    "title": "Teaching Basic Software Engineering to Senior Highschool Students",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "last_name": "Köhler Barbara"
+      },
+      {
+        "last_name": "Gluchow Michaela"
+      },
+      {
+        "last_name": "Brügge Bernd"
+      }
+    ],
+    "year": 2012,
+    "source": "IADIS International Conference e-Society",
+    "pages": "11-18",
+    "websites": [
+      "http://bib.irb.hr/datoteka/575244.ES2012.pdf"
+    ],
+    "publisher": "IADIS",
+    "id": "6fefd185-0314-3400-a048-15e905fffe5d",
+    "created": "2014-02-26T21:23:40.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "KohlerBarbara2012"
+  },
+  {
+    "title": "Chemimon - Serious Game for Learning the Basic Chemical Reaction Principles",
+    "type": "generic",
+    "authors": [
+      {
+        "last_name": "Niedermaier Hubert"
+      },
+      {
+        "last_name": "Eisgruber Ludwig"
+      },
+      {
+        "last_name": "Reichart Barbara"
+      }
+    ],
+    "year": 2013,
+    "publisher": "IADIS GET",
+    "id": "1b1af8cf-ea61-3906-8d4d-430926f2cc24",
+    "created": "2014-02-26T21:48:02.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "NiedermaierHubert2013",
+    "source_type": "Poster"
+  },
+  {
+    "title": "Chemimon - Serious Game for Learning the Basic Chemical Reaction Principles",
+    "type": "working_paper",
+    "authors": [
+      {
+        "last_name": "Hubert Niedermaier"
+      },
+      {
+        "last_name": "Eisgruber Ludwig"
+      },
+      {
+        "last_name": "Reichart Barbara"
+      }
+    ],
+    "year": 2013,
+    "city": "München",
+    "institution": "Technische Universität München",
+    "id": "5c9394d6-99c9-3dac-86f2-dd2ea6a8a981",
+    "created": "2014-02-26T21:50:06.000Z",
+    "file_attached": false,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2014-02-27T23:10:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "HubertNiedermaier2013"
+  },
+  {
+    "title": "Social Interaction Patterns for Learning in Serious Games",
+    "type": "journal",
+    "authors": [
+      {
+        "last_name": "Barbara Reichart"
+      },
+      {
+        "last_name": "Bernd Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "EuroPLoP '14 Proceedings of the 19th European Conference on Pattern Languages of Programs ",
+    "identifiers": {
+      "doi": "10.1145/2721956.2721985"
+    },
+    "id": "24474dd2-468a-3f99-8031-9350a68c6a71",
+    "created": "2015-05-12T12:31:33.000Z",
+    "file_attached": true,
+    "profile_id": "f27c682d-30e4-3f9a-a280-010f74808936",
+    "last_modified": "2015-08-04T09:26:10.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "Serious games usually refer to games used for purpose other than entertainment. Designing serious games for learning proves to be a very difficult task, as it requires knowledge not only about the content, but also about game design and pedagogy. Therefore there have been efforts to create collections of design patterns that help to create initial designs or improve existing ones. However those collections neglect the role of social interactions within games. But integrating social interaction as a core mechanic of a serious game can massively improve the game along several dimensions. In this paper we want to show how social interactions can enrich serious games. Furthermore we describe several patterns with concrete examples on how to achieve this exactly."
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Is there a need for SE methods for the development of HPC applications",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Miriam",
+        "last_name": "Schmidberger"
+      },
+      {
+        "first_name": "Brügge",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "ISPDC",
+    "keywords": [
+      "Software Engineering",
+      "Survey"
+    ],
+    "pages": "40 - 46",
+    "websites": [
+      "http://doi.ieeecomputersociety.org/10.1109/ISPDC.2012.14"
+    ],
+    "id": "fd4606cb-c093-3187-a24d-f2b0940b1f87",
+    "created": "2011-01-20T08:38:29.000Z",
+    "file_attached": false,
+    "profile_id": "49732bcf-b75a-386e-83b6-6a720bb0e882",
+    "last_modified": "2014-02-14T09:47:23.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Software Engineering as a Service for HPC",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "last_name": "Miriam Schmidberger"
+      },
+      {
+        "last_name": "Markus Schmidberger"
+      }
+    ],
+    "year": 2012,
+    "source": "ISPDC",
+    "keywords": [
+      "Software Engineering"
+    ],
+    "pages": "34 - 39",
+    "websites": [
+      "http://doi.ieeecomputersociety.org/10.1109/ISPDC.2012.13"
+    ],
+    "id": "cd6446ef-94ea-3fc2-965c-6e5afa971b2b",
+    "created": "2014-02-14T09:44:56.000Z",
+    "file_attached": false,
+    "profile_id": "49732bcf-b75a-386e-83b6-6a720bb0e882",
+    "last_modified": "2014-02-14T09:44:56.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "An Analysis of Tool-Based Research in Software Engineering",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Hoda",
+        "last_name": "Naguib"
+      },
+      {
+        "first_name": "Miriam",
+        "last_name": "Schmidberger"
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Schneider"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2010,
+    "source": "International Computer Software and Applications Conference",
+    "pages": "53 - 61",
+    "id": "0d574de1-aefc-3dec-a782-126e7d7f91ee",
+    "created": "2014-02-14T09:51:25.000Z",
+    "file_attached": false,
+    "profile_id": "49732bcf-b75a-386e-83b6-6a720bb0e882",
+    "last_modified": "2014-02-14T09:51:24.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  }
+]

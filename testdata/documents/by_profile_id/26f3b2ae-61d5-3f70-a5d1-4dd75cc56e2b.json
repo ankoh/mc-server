@@ -1,0 +1,486 @@
+[
+  {
+    "title": "Towards semantic robot description languages",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Lars",
+        "last_name": "Kunze"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Beetz"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of the IEEE Conference On Robotics and Automation (ICRA), 2011",
+    "identifiers": {
+      "issn": "1050-4729",
+      "doi": "10.1109/ICRA.2011.5980170"
+    },
+    "pages": "5589-5595",
+    "id": "46af568d-e291-3d48-8be5-2432a1b6e81b",
+    "created": "2011-11-30T21:39:21.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2014-09-10T09:16:21.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kunze2011SemanticRobotDescription",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "How do professional developers comprehend software?",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Rebecca",
+        "last_name": "Tiarks"
+      },
+      {
+        "first_name": "Rainer",
+        "last_name": "Koschke"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 34th International Conference on Software Engineering",
+    "keywords": [
+      "-program comprehension",
+      "context awareness",
+      "empirical studies",
+      "maintenance",
+      "soft-",
+      "ware documentation"
+    ],
+    "pages": "255-265",
+    "publisher": "IEEE",
+    "id": "c0e8d45f-b234-39c4-82b8-a34566773027",
+    "created": "2012-03-23T13:52:04.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2014-09-10T09:16:22.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2012DevelopersComprehendSoftware"
+  },
+  {
+    "title": "Automatically Detecting Developer Activities and Problems in Software Development Work",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 34th International Conference on Software Engineering",
+    "keywords": [
+      "-activity detection",
+      "context-aware software engineering",
+      "learning",
+      "machine",
+      "ontologies",
+      "task management"
+    ],
+    "pages": "1261-1264",
+    "publisher": "IEEE",
+    "id": "5612b0ee-cce3-3d9f-b640-b7b8f96a1845",
+    "created": "2012-04-16T12:02:39.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-04-22T16:32:59.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2012DetectingDeveloperActivities"
+  },
+  {
+    "title": "FastFix: Monitoring control for remote software maintenance",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Dennis",
+        "last_name": "Pagano"
+      },
+      {
+        "first_name": "Miguel",
+        "last_name": "Juan"
+      },
+      {
+        "first_name": "Alessandra",
+        "last_name": "Bagnato"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 34th International Conference on Software Engineering",
+    "identifiers": {
+      "isbn": "978-1-4673-1067-3",
+      "doi": "10.1109/ICSE.2012.6227076"
+    },
+    "keywords": [
+      "-software maintenance",
+      "context-aware software en-",
+      "event correlation",
+      "fault replication",
+      "gineering",
+      "self-healing"
+    ],
+    "pages": "1437-1438",
+    "websites": [
+      "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6227076&isnumber=6227015"
+    ],
+    "publisher": "IEEE",
+    "id": "6e47071d-017b-3860-a2bc-17bb5503b381",
+    "created": "2012-10-11T19:47:48.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-01-16T08:05:49.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Pagano2012FastFixPoster"
+  },
+  {
+    "title": "Monitoring User Interactions for Supporting Failure Reproduction",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Nigar",
+        "last_name": "Gurbanova"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Christophe",
+        "last_name": "Joubert"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2013,
+    "source": "Proceedings of the 21th IEEE International Conference on Program Comprehension",
+    "pages": "73-82",
+    "websites": [
+      "http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6613835&isnumber=6613823"
+    ],
+    "publisher": "IEEE",
+    "id": "603a7fa2-acaf-3ca2-b613-b727f18518de",
+    "created": "2013-04-12T16:42:17.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-04-22T16:33:01.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2013-MonitoringInteractionsForReproduction",
+    "abstract": "The first step to comprehend and fix a software bug is usually to reproduce the corresponding failure. Reproducing a failure requires information about steps to reproduce, i.e. the steps necessary to make a failure occur in the development environment. In case of an application with a user interface, steps to reproduce consist of the interactions between a user and the application that precede the failure. Unfortunately, bug reports typically lack this information. Users are either unaware of its importance to developers, are unable to describe it, or simply do not have time to report it. In this paper, we present a simple but effective and resource efficient approach to monitor interactions between users and their applications at a high level of abstraction, e.g. editing operations and commands. This minimizes the monitoring overhead and acquires meaningful interactions that can be interpreted by developers. We present the Timeline Tool that visualizes the monitored interaction traces preceding failures. To evaluate our approach we conducted an experiment with 12 developers and asked them to reproduce bug reports from a real open-source project. We found that developers were able to derive steps to reproduce from monitored interaction traces. In particular, inexperienced developers profited from the Timeline Tool, as they were able to reproduce failures that they could not reproduce without it. The monitoring overhead was rather small (approx. 10-14 % CPU and 2% memory) and users felt it does not hinder their work."
+  },
+  {
+    "title": "Robots that know what they can do - Semantic representation of robot components, capabilities and actions",
+    "type": "thesis",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      }
+    ],
+    "year": 2010,
+    "institution": "Technische Universität München",
+    "department": "Institut für Informatik",
+    "id": "d4ef3b6d-2d89-3595-b2ed-69c152d4de47",
+    "created": "2013-04-18T19:21:01.000Z",
+    "file_attached": false,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2013-09-17T12:52:47.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2010-Thesis",
+    "user_context": "Diploma Thesis"
+  },
+  {
+    "title": "Creating an ontology for aircraft design - An experience report about development process and the resulting ontology",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Markus",
+        "last_name": "Ast"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Glas"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      }
+    ],
+    "year": 2013,
+    "source": "Deutscher Luft- und Raumfahrtkongress 2013",
+    "id": "7f0d40db-c49c-3cf5-aae3-6168ecae5790",
+    "created": "2013-09-16T13:58:56.000Z",
+    "file_attached": false,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2013-09-17T12:52:47.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ast2013-OntologyForAircraftDesign"
+  },
+  {
+    "title": "Towards Identification of Software Improvements and Specification Updates By Comparing Monitored and Specified End User Behavior",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Tom-Michael",
+        "last_name": "Hesse"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Paech"
+      }
+    ],
+    "year": 2013,
+    "source": "Proceedings of the 29th IEEE International Conference on Software Maintenance",
+    "keywords": [
+      "a mediocre",
+      "comparison of observed and",
+      "consequently",
+      "machine learning",
+      "many software applications have",
+      "reverse modeling",
+      "software evolution",
+      "specification",
+      "specified behavior",
+      "testing",
+      "use case detection",
+      "user monitoring",
+      "user needs"
+    ],
+    "pages": "464-467",
+    "publisher": "IEEE",
+    "id": "1c367231-13c7-33e1-9375-78009e56e883",
+    "created": "2013-09-17T12:51:08.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-04-22T16:33:02.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2013-ComparingUserBehavior"
+  },
+  {
+    "title": "Reproducing Software Failures By Exploiting the Action History of Undo Features",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 36th International Conference on Software Engineering",
+    "pages": "496-499",
+    "publisher": "ACM",
+    "id": "d5482a83-3bd9-3342-8bbc-9da93dda50df",
+    "created": "2014-02-25T10:55:40.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-04-22T16:32:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2014-UndoHistory"
+  },
+  {
+    "title": "How to Improve Decision Documentation in Software Evolution?",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tom-Michael",
+        "last_name": "Hesse"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Paech"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the First Collaborative Workshop on Evolution and Maintenance of Long-Living Systems",
+    "pages": "14-15",
+    "series": "EMLS'14",
+    "id": "bdecb72f-0783-3e07-b45b-7621284ffa24",
+    "created": "2014-05-21T12:58:06.000Z",
+    "file_attached": false,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2014-05-21T12:58:06.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Hesse2014-ImproveDecisionDocuInSevo"
+  },
+  {
+    "title": "Semiautomatic Security Requirements Engineering and Evolution using Decision Documentation, Heuristics, and User Monitoring",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tom-Michael",
+        "last_name": "Hesse"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Gärtner"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Paech"
+      },
+      {
+        "first_name": "Kurt",
+        "last_name": "Schneider"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 1st International Workshop on Evolving Security and Privacy Requirements Engineering",
+    "identifiers": {
+      "isbn": "9781479963409"
+    },
+    "keywords": [
+      "horst"
+    ],
+    "pages": "1-6",
+    "publisher": "IEEE",
+    "id": "a5f38ba7-5bd5-3667-9322-5e4910ed0fb9",
+    "created": "2014-08-13T10:56:27.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-04-22T16:33:03.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Hesse2014-SecurityRE"
+  },
+  {
+    "title": "Automated Extraction of Failure Reproduction Steps from User Interaction Traces",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Stefan",
+        "last_name": "Nosovic"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2015,
+    "source": "Proceedings of the 22nd IEEE International Conference on Software Analysis, Evolution, and Reengineering",
+    "identifiers": {
+      "isbn": "9781479984695"
+    },
+    "series": "SANER'15",
+    "id": "04e39f37-e26d-3e97-8ac9-c37c3f0d27a7",
+    "created": "2015-04-22T16:32:56.000Z",
+    "file_attached": true,
+    "profile_id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+    "last_modified": "2015-05-01T12:49:12.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Roehm2015-ExtractionOfFrsFromMUI"
+  }
+]

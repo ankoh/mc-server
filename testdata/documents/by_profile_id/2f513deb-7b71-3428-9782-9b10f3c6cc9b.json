@@ -1,0 +1,442 @@
+[
+  {
+    "title": "Requirements Engineering for Scientific Computing: A Model-Based Approach",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Matteo",
+        "last_name": "Harutunian"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Gerrit",
+        "last_name": "Buse"
+      }
+    ],
+    "year": 2011,
+    "source": "2011 IEEE Seventh International Conference on e-Science Workshops",
+    "identifiers": {
+      "doi": "10.1109/eScienceW.2011.30",
+      "isbn": "978-1-4673-0026-1"
+    },
+    "pages": "128-134",
+    "websites": [
+      "http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6130741"
+    ],
+    "month": 12,
+    "publisher": "Ieee",
+    "id": "d0c4c78f-338d-347b-9d63-dae849d0195f",
+    "created": "2012-10-23T08:47:08.000Z",
+    "accessed": "2012-10-23",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:15.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "A domain specific requirements model for scientific computing: NIER track",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceeding of the 33rd international conference on Software engineering",
+    "identifiers": {
+      "doi": "http://doi.acm.org.eaccess.ub.tum.de/10.1145/1985793.1985922",
+      "isbn": "978-1-4503-0445-0"
+    },
+    "keywords": [
+      "domain specific",
+      "requirements modeling",
+      "scientific computing"
+    ],
+    "pages": "848-851",
+    "websites": [
+      "http://doi.acm.org.eaccess.ub.tum.de/10.1145/1985793.1985922"
+    ],
+    "publisher": "ACM",
+    "city": "New York, NY, USA",
+    "series": "ICSE '11",
+    "id": "05cb7d5b-a0ee-3690-aa3d-17b3c3c04554",
+    "created": "2013-03-18T14:55:06.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:14.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Li:2011",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Comparing state- and operation-based change tracking on models",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Markus",
+        "last_name": "Herrmannsdoerfery"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Liz"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helmingx"
+      },
+      {
+        "first_name": "Joern",
+        "last_name": "David"
+      }
+    ],
+    "year": 2010,
+    "source": "Proceedings - IEEE International Enterprise Distributed Object Computing Workshop, EDOC",
+    "identifiers": {
+      "doi": "10.1109/EDOC.2010.15",
+      "isbn": "9780769541631",
+      "issn": "15417719"
+    },
+    "pages": "163-172",
+    "id": "e3066099-3b43-3c31-b014-3d4ae558732b",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:23.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "abstract": "In recent years, models are increasingly used throughout the entire lifecycle in software development projects. In effect, the need for collaborating on these models emerged, requiring change tracking and versioning. However, many researchers have shown that existing methods and tools for Version Control (VC) do not work well on graph-like models, such as UML, SysML or domain-specific modeling languages. To alleviate this, alternative techniques and methods have been proposed which can be classified into state-based and operation-based approaches. Existing research shows advantages of operation-based over state-based approaches in selected use cases, such as conflict detection or merging. However, there are only few results available on the advantages of operation-based approaches in the most common use case of a VC system: review and understand change. In this paper, we present and discuss both approaches and their use cases. Moreover, we present the results of an empirical study to compare a state-based with an operation-based approach for the use case of reviewing and understanding change. For this study, we have mined an operation-based model repository and interviewed users to assess their understanding of randomly selected changes. Our results indicate that users better understand complex changes in the operation-based representation."
+  },
+  {
+    "title": "Requirements patterns for seismology software applications",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Pelties"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Käser"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Nararan"
+      }
+    ],
+    "year": 2012,
+    "source": "2012 2nd IEEE International Workshop on Requirements Patterns, RePa 2012 - Proceedings",
+    "identifiers": {
+      "doi": "10.1109/RePa.2012.6359967",
+      "isbn": "9781467343763"
+    },
+    "keywords": [
+      "domain-specific",
+      "requirements pattern",
+      "seismology"
+    ],
+    "pages": "12-16",
+    "id": "e989c852-5be6-336c-9c28-549d6d44c185",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:15.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "abstract": "Requirements patterns help reusing the knowledge of capturing required functionalities and properties of a system. To improve requirements engineering in seismological software development, we identify commonly used requirements patterns. This paper introduces research of identifying two main requirements patterns in projects typical for computational seismology, namely, the forward simulation pattern and the data access pattern. They help efficiently and effectively eliciting requirements by providing necessary abstractions. We present a dynamic rupture example to illustrate how to apply both patterns. The patterns can foster a more productive requirements engineering process and sharing software development knowledge within the domain."
+  },
+  {
+    "title": "Sentiment analysis of commit comments in GitHub: an empirical study",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Emitza",
+        "last_name": "Guzman"
+      },
+      {
+        "first_name": "David",
+        "last_name": "Azócar"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 11th Working Conference on Mining Software Repositories - MSR 2014",
+    "identifiers": {
+      "doi": "10.1145/2597073.2597118",
+      "isbn": "9781450328630"
+    },
+    "keywords": [
+      "Human Factors in Software Engineering",
+      "Sentiment Analysis"
+    ],
+    "pages": "352-355",
+    "websites": [
+      "http://dl.acm.org.prox.lib.ncsu.edu/citation.cfm?id=2597073.2597118"
+    ],
+    "id": "fbd19353-5499-3f3a-ad40-a810efda7d83",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:24.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "abstract": "Emotions have a high impact in productivity, task quality, creativity, group rapport and job satisfaction. In this work we use lexical sentiment analysis to study emotions expressed in commit comments of different open source projects and analyze their relationship with different factors such as used programming language, time and day of the week in which the commit was made, team distribution and project approval. Our results show that projects developed in Java tend to have more negative commit comments, and that projects that have more distributed teams tend to have a higher positive polarity in their emotional content. Additionally, we found that commit comments written on Mondays tend to a more negative emotion. While our results need to be confirmed by a more representative sample they are an initial step into the study of emotions and related factors in open source projects."
+  },
+  {
+    "title": "Reengineering a scientific software and lessons learned",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceeding of the 4th International Workshop on Software Engineering for Computational Scientific Engineering",
+    "identifiers": {
+      "doi": "10.1145/1985782.1985789",
+      "isbn": "9781450305983",
+      "issn": "02705257"
+    },
+    "keywords": [
+      "do-",
+      "main specific",
+      "maintenance",
+      "reengineering",
+      "requirements modeling",
+      "scientific computing"
+    ],
+    "pages": "41-45",
+    "websites": [
+      "http://dl.acm.org/citation.cfm?id=1985789"
+    ],
+    "id": "33d622b1-6e87-3a1c-98a9-5a9d807c4cd6",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:12:46.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "abstract": "SeisSol is a scientific software for the numerical simulation of seismic wave phenomena. However, there are three main problems in the SeisSol project. First, the project documentation is incomplete. Second, the source code comprehensibility is low. Third, the dependencies between the modules in the system are complicated. To solve the problems and to enhance the software quality, we perform a reengineering process on SeisSol. The process contains four steps, reverse engineering, requirements reengineering, redesign and source code refactoring. In the requirements reengineering step, we employ a novel approach to elicit requirements efficiently for such a scientific computing project. Through the reengineering process, the documentation of source code, requirements and the improved design is generated, the system is more modularized and easier to be extended, as well as the source code are more comprehensible. We also discuss the lessons learned during the reengineering process. Copyright 2011 ACM."
+  },
+  {
+    "title": "Which traceability visualization is suitable in this context? A comparative study",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)",
+    "identifiers": {
+      "doi": "10.1007/978-3-642-28714-5_17",
+      "isbn": "9783642287138",
+      "issn": "03029743"
+    },
+    "keywords": [
+      "Context",
+      "Empirical Experiment",
+      "Traceability",
+      "Visualization"
+    ],
+    "pages": "194-210",
+    "volume": "7195 LNCS",
+    "id": "f9b5c3da-27f1-38ca-aab7-716e6e6022b1",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Automated Requirements Extraction for Scientific Software",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Emitza",
+        "last_name": "Guzman"
+      },
+      {
+        "first_name": "Konstantina",
+        "last_name": "Tsiamoura"
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Schneider"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2015,
+    "source": "Procedia Computer Science",
+    "identifiers": {
+      "doi": "10.1016/j.procs.2015.05.326",
+      "issn": "18770509"
+    },
+    "keywords": [
+      "natural language processing",
+      "requirements engineering",
+      "scientific software"
+    ],
+    "pages": "582-591",
+    "volume": "51",
+    "websites": [
+      "http://linkinghub.elsevier.com/retrieve/pii/S1877050915011345"
+    ],
+    "publisher": "Elsevier Masson SAS",
+    "id": "0e791ad5-7c1b-3e2e-8edc-4131c1573892",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:17.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Teaching Global Software Engineering: Interactive Exercises for the Classroom",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Christian",
+        "last_name": "Lescher"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "2014 IEEE 9th International Conference on Global Software Engineering",
+    "identifiers": {
+      "doi": "10.1109/ICGSE.2014.14",
+      "isbn": "978-1-4799-4360-9"
+    },
+    "pages": "163-172",
+    "websites": [
+      "http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6915267"
+    ],
+    "id": "f08db754-fd8f-32f0-a280-00450769f26a",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:20.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Towards a Framework for Empirical Project Analysis for Software Engineering Models",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Helmut",
+        "last_name": "Naughton"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      }
+    ],
+    "year": 2009,
+    "source": "ASE VASE Workshop",
+    "id": "0d0f3ff7-35a1-3feb-b50b-dbeccda2d9ae",
+    "created": "2015-06-25T14:07:11.000Z",
+    "file_attached": true,
+    "profile_id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+    "last_modified": "2015-06-25T14:07:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Koegel09towardsa",
+    "source_type": "inproceedings"
+  }
+]

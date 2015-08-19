@@ -1,0 +1,479 @@
+[
+  {
+    "title": "Real Projects with Informal Models",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Dora",
+        "last_name": "Dzvonyar"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 10th edition of the Educators' Symposium",
+    "keywords": [
+      "Usability Engineering"
+    ],
+    "id": "09443936-01cf-3019-9f8a-2dbe6e8c107f",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:50:44.000Z",
+    "tags": [
+      "Usability Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "dzvonyar2014real",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Introducing Continuous Delivery of Mobile Apps in a Corporate Environment: A Case Study",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Klepper"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      }
+    ],
+    "year": 2015,
+    "source": "Proceedings of the 2nd International Workshop on Rapid Continuous Software Engineering",
+    "keywords": [
+      "Agile Development",
+      "Continuous Software Engineering"
+    ],
+    "pages": "5-11",
+    "publisher": "IEEE/ACM",
+    "id": "166ec998-0bdc-394e-8d78-d6dc81e15d6b",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:46:00.000Z",
+    "tags": [
+      "Agile Development",
+      "Continuous Software Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "klepper2015introducing",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "The serious game: weMakeWords",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Ruth",
+        "last_name": "Demmel"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Ludwig",
+        "last_name": "Schubert"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of the 10th SIGPLAN symposium on New ideas, new paradigms, and reflections on programming and software",
+    "pages": "109-110",
+    "institution": "ACM",
+    "id": "e1d455c7-107a-3c45-aa2d-9607a74995a0",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-06-23T09:51:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "demmel2011serious",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Teaching Tornado: from Communication Models to Releases",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Wagner"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 8th edition of the Educators' Symposium",
+    "keywords": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education",
+      "Usability Engineering"
+    ],
+    "pages": "5-12",
+    "institution": "ACM",
+    "id": "d8010b85-e3a5-33ae-ad0a-9eae8d80cfca",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:56:08.000Z",
+    "tags": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education",
+      "Usability Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "bruegge2012tornado",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Implications and Potential of Real-time Collaboration for the Design Process",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Martin",
+        "last_name": "Glas"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Schramme"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      }
+    ],
+    "year": 2014,
+    "source": "Deutsche Gesellschaft f{ü}r Luft-und Raumfahrt",
+    "id": "d061baa0-9b34-3a4c-97ca-d0eb5bb91e98",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-06-23T09:51:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "glas2014implications",
+    "source_type": "article"
+  },
+  {
+    "title": "Model-based Real-time Synchronization",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Model-based Real-time Synchronization",
+    "keywords": [
+      "collaboration",
+      "conflict avoidance",
+      "face-to-face",
+      "models",
+      "peer-to-",
+      "real-time",
+      "same-time",
+      "sioning",
+      "synchronization",
+      "ver-"
+    ],
+    "websites": [
+      "http://pi.informatik.uni-siegen.de/CVSM2014/cvsm2014_submission_4.pdf"
+    ],
+    "id": "5e7e070a-b8b4-3df5-ab5c-632a600bc27c",
+    "created": "2015-06-23T09:51:22.000Z",
+    "accessed": "2014-05-18",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-06-23T09:51:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Krusche2014"
+  },
+  {
+    "title": "Rugby: An Agile Process Model Based on Continuous Delivery",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Wagner"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 1st International Workshop on Rapid Continuous Software Engineering",
+    "keywords": [
+      "Agile Development",
+      "Continuous Software Engineering"
+    ],
+    "pages": "42-50",
+    "publisher": "ACM",
+    "id": "d23f4fa1-15d3-39fb-9136-094b45c904de",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:46:00.000Z",
+    "tags": [
+      "Agile Development",
+      "Continuous Software Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "krusche2014rugby",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Software Engineering Project Courses with Industrial Clients",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      }
+    ],
+    "year": 2015,
+    "source": "ACM Transactions on Computing Education",
+    "keywords": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education"
+    ],
+    "id": "34a18266-ead5-3672-b24f-85d526635a6e",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:56:08.000Z",
+    "tags": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "bruegge2015software",
+    "source_type": "article"
+  },
+  {
+    "title": "Evaluation of Cross-Platform Frameworks for Mobile Applications",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Andreas",
+        "last_name": "Sommer"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      }
+    ],
+    "year": 2013,
+    "source": "Proceedings of the 1st European Workshop on Mobile Engineering",
+    "pages": "363-376",
+    "id": "a5cef976-7961-39ac-b23f-5ce25cfcd869",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-06-23T09:51:22.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "sommer2013evaluation",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Mobile Scrum",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Tobias",
+        "last_name": "Konsek"
+      }
+    ],
+    "year": 2013,
+    "source": "Proceedings of the 1st European Workshop on Mobile Engineering",
+    "keywords": [
+      "Agile Development"
+    ],
+    "pages": "319-325",
+    "id": "e84d80a1-7e85-367e-b0c5-805a2936b4c6",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:46:00.000Z",
+    "tags": [
+      "Agile Development"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "krusche2013mobile",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Introduction of Continuous Delivery in Multi-Customer Project Courses",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 36th International Conference on Software Engineering",
+    "keywords": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education",
+      "Usability Engineering"
+    ],
+    "pages": "335-343",
+    "institution": "IEEE",
+    "id": "056e0afa-1996-3a4b-9077-d058f22314ec",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-07-23T07:56:08.000Z",
+    "tags": [
+      "Agile Development",
+      "Continuous Software Engineering",
+      "Education",
+      "Usability Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "krusche2014intro",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "User Feedback in Mobile Development",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Proceedings of the 2nd International Workshop on MobileDeLi",
+    "keywords": [
+      "Continuous Software Engineering"
+    ],
+    "pages": "25-26",
+    "institution": "ACM",
+    "id": "84235681-fd5f-34d5-bbab-b3f4b2d9093a",
+    "created": "2015-06-23T09:51:22.000Z",
+    "file_attached": false,
+    "profile_id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+    "last_modified": "2015-06-30T08:26:00.000Z",
+    "tags": [
+      "Continuous Software Engineering"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "krusche2014user",
+    "source_type": "inproceedings"
+  }
+]

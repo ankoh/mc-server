@@ -1,0 +1,691 @@
+[
+  {
+    "title": "WEMAKEWORDS - AN ADAPTIVE AND COLLABORATIVE SERIOUS GAME FOR LITERACY ACQUISITION",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Pagano"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2011,
+    "source": "IADIS International Conference - Game and Entertainment",
+    "city": "Rome, Italy",
+    "id": "7f1441be-36b1-3959-b0db-5d0556f5dec1",
+    "created": "2011-07-07T08:33:04.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:21:39.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2011",
+    "abstract": "In this work we propose to use serious games for literacy acquisition in early reading. We propose a model for adap¬tivity of the game to the learner. Furthermore we motivate the importance of collaboration between learners. We show how adaptability, individualization, and collaboration are realized in the seri¬ous game weMakeWords. weMakeWords is an adaptive serious game for literacy acquisition that enforces collabora¬tive actions between players where children aged between 4 and 8 are constructing words in teams. Finally we present a preliminary evaluation of game concepts that shows initial promising results."
+  },
+  {
+    "title": "ADAPTIVITY IN STORY-DRIVEN SERIOUS GAMES",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2011,
+    "source": "IADIS International Conference - Game and Entertainment",
+    "city": "Rome, Italy",
+    "id": "e51002a5-7e39-370e-9c0c-79fb01ae2625",
+    "created": "2011-07-07T08:36:10.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:21:39.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kohler2011"
+  },
+  {
+    "title": "On the Application of different Research Methods in Software Engineering",
+    "type": "report",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Fisnik",
+        "last_name": "Kraja"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Krugel"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Schulz"
+      }
+    ],
+    "year": 2009,
+    "pages": "28",
+    "city": "München",
+    "institution": "Center of Doctoral Studies in Informatics and its Applications",
+    "id": "4e7984ca-beb7-3f8c-adb4-c0dd347a1a75",
+    "created": "2011-07-07T08:45:12.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T11:45:30.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2009",
+    "abstract": "In this article we investigate on the applicability of different research methods with regard to problems in the field of software engineering by focusing on reliability of software systems. We firstly review existing literature on design science research, quantitative research as well as qualitative research and provide a thorough introduction to each of those research methods. In doing so, we highlight major benefits and shortcomings of the methods and clearly point out the circumstances and preconditions which have to be met when applying a certain technique. In addition, we identify the main questions being addressed by each of the research approaches. In a second step, we put every single method into action by adopting them for a specific research question in the domain of software engineering. Thereby, we particularly center on software system reliability and how it can be improved by applying each of the presented research methods. We conclude in emphasizing, that each of the research methods is able to answer different subsets of questions and that the methods can be used in combination to provide a more comprehensive picture of the problem."
+  },
+  {
+    "title": "Philosophy of Science -Three Philosophical Perspectives on Software Reliability",
+    "type": "report",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Fisnik",
+        "last_name": "Kraja"
+      },
+      {
+        "first_name": "Johannes",
+        "last_name": "Krugel"
+      },
+      {
+        "first_name": "Christopher",
+        "last_name": "Schulz"
+      }
+    ],
+    "year": 2009,
+    "pages": "22",
+    "city": "München",
+    "institution": "Center of Doctoral Studies in Informatics and its Applications",
+    "id": "17b5a6d9-0fb3-333a-969b-cf2cd7cebb2c",
+    "created": "2011-07-07T08:47:15.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T11:45:30.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2009",
+    "abstract": "The question of philosophy of science has been always tackled by researchers coming from different fields and therefore possesses unequal stances. The present article aims at providing an introductory overview on the domain of philosophy of science by representing a general starting point for further research. Philosophic reasoning has always brought novelties. In this article we show how these novelties can be adapted to the environment of computer science. In doing so, we take a closer look on the software engineering research which is performed to enhance general software reliability. After briefly motivate the topic, we describe the main approaches Karl Raimund Popper, Thomas Kuhn as well as Wilhelm Kamlah and Paul Lorenzen propose in their work in a short but concise manner. Next, we attempt to exemplify the philosophers' ideas by applying their principal concepts to the field of software reliability. Finally, we conclude this report by summarizing the most important findings and by highlighting the adaptability of philosophical aspects."
+  },
+  {
+    "title": "A quick prototyping framework for adaptive serious games with 2D physics on mobile touch devices",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "IADIS Mobile Learning 2012 (ML 2012)",
+    "keywords": [
+      "Adaptivity",
+      "Physics",
+      "Prototyping",
+      "Serious Games"
+    ],
+    "city": "Berlin",
+    "id": "e41ab9d9-6ede-389f-8701-14969c797243",
+    "created": "2011-11-29T12:23:24.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-14T10:59:30.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "H2012",
+    "abstract": "In recent years mobile devices like the iPhone (and Android devices) became even more powerful than netbooks. This computational power can be used for complex simulations and games that were until now just possible on desktop computers. We propose adaptive games with 2D physics on mobile devices that can be used for learning purposes. We argue that even young children can understand and apply physical laws in such games. Because of the touch displays, abstract physical concepts can be made more tangible as one can directly touch the objects on the screen. Furthermore, digital games can provide an individualized learning and playing experience for each child with the integrated Adaptivity. In this work we show the problems that arise when developing serious games featuring adaptivity and physics and we propose a solution to them: a quick prototyping framework called TangoPhysics. TangoPhysics suggests a new way of prototyping mobile games: The prototypes are constructed directly on the mobile device, and can be tested at any moment. We show that the development time of a serious game can be dramatically reduced with our framework. At the same time the development is simplified dramatically allowing not only programmers, but also teachers and in the long run maybe even students to develop their own serious games,"
+  },
+  {
+    "title": "Towards a conceptual model for adaptivity in serious games",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Pagano"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "IADIS International Conference - Game and Entertainment",
+    "websites": [
+      "http://iadisportal.org/previouseditions/GET_2012.pdf"
+    ],
+    "city": "Lisbon, Portugal",
+    "id": "56b5b548-4b67-373c-bc74-bef816515bfd",
+    "created": "2012-01-13T10:42:43.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:08:53.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2012"
+  },
+  {
+    "title": "Adaptive Serious Game Development",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Pagano"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "The 2nd International Workshop on Games and Software Engineering (GAS 2012)",
+    "websites": [
+      "http://2012.gasworkshop.org/projected-schedule/ICSE - Adaptive Serious Game Development - Barbara KA%CC%83%C2%B6hler.pdf?attredirects=0&d=1",
+      "http://2012.gasworkshop.org/projected-schedule"
+    ],
+    "day": 29,
+    "city": "Zurich, Switzerland",
+    "id": "fb5a72a7-6758-34cf-a6a9-71b35477ee28",
+    "created": "2012-01-13T10:52:30.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:21:39.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2012a"
+  },
+  {
+    "title": "Application of Adaptivity in Serious Games",
+    "type": "book",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      }
+    ],
+    "year": 2012,
+    "identifiers": {
+      "isbn": "978-3-8440-1505-8"
+    },
+    "keywords": [
+      "adaptivity",
+      "games engineering",
+      "serious games"
+    ],
+    "pages": "178",
+    "publisher": "Shaker Verlag",
+    "id": "600afef3-3815-3c4e-9131-9a67b0c65d46",
+    "created": "2012-06-18T07:25:41.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-04-01T07:29:08.000Z",
+    "tags": [
+      "adaptivity",
+      "games engineering",
+      "serious games"
+    ],
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ismailovic2012c",
+    "abstract": "In serious games, learning is intrinsic to play and in contrast to e- Learning systems, the learning process is based on exploration and experience. Serious games use goals, rules, challenge, and interaction in order to motivate learning activities. In the past serious games have focused mostly on customization that allows the player to manipulate the game world. E-Learning, on the other hand, has focused on observation of the learner to provide adaptivity of the learning process, where learning process consisted of learning content and different presentation types. One contribution of this thesis is a grounded theory of adaptivity in serious games. The theory is based on explorative and experimental studies that research the role of human tutors in serious games. Another contribution is a framework that enables observation of the user’s actions in a game and the connectivity of the game world and learning content. This framework provides a unified playing process and development process model for serious games supporting dynamic adaptivity for the game world as well as for the learning process. We have used the framework in several cases in games for children ranging from literacy acquisition to preschool mathematics. Based on these studies we conclude that the use of the framework lowers the effort to provide adaptivity in game development."
+  },
+  {
+    "title": "A Framework For Adaptivity In Educational Serious Games Based On Agent Systems",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Ahmed Elsherbiny",
+        "last_name": "Hasan"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2014,
+    "source": "GAMEON-ARABIA'2014",
+    "keywords": [
+      "adaptivity",
+      "artificial intelligence",
+      "learning",
+      "serious games"
+    ],
+    "issue": "Ulicsak",
+    "websites": [
+      "http://www.eurosis.org/cms/index.php?q=node/2742"
+    ],
+    "city": "AOU Muscat",
+    "id": "3f42dc2d-2644-3b61-a2a9-54f7eb871aa5",
+    "created": "2014-02-14T10:13:22.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-14T10:49:56.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Hasan2014"
+  },
+  {
+    "title": "Powwow: A Tool for Collaborative Software Jam Sessions",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Paul Ioan",
+        "last_name": "Muntean"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Paetzold"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2013,
+    "source": "COLLA 2013 - The Third International Conference on Advanced Collaborative Networks, Systems and Applications",
+    "city": "Nice, France",
+    "id": "cea6f48a-1fa9-3059-891c-2207eff2ab97",
+    "created": "2014-02-14T10:13:22.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T11:56:45.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Ism2013"
+  },
+  {
+    "title": "Feedback in low vs. high fidelity visuals for game prototypes",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Blagina",
+        "last_name": "Simeonova"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "2012 Second International Workshop on Games and Software Engineering: Realizing User Engagement with Game Engineering Techniques (GAS)",
+    "identifiers": {
+      "isbn": "978-1-4673-1768-9",
+      "doi": "10.1109/GAS.2012.6225926"
+    },
+    "keywords": [
+      "-game engineering",
+      "game engineering",
+      "serious games",
+      "style",
+      "styling"
+    ],
+    "pages": "42-47",
+    "websites": [
+      "http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6225926"
+    ],
+    "publisher": "IEEE",
+    "day": 9,
+    "id": "3b546497-4221-3631-ba5d-8f25227348ed",
+    "created": "2014-02-14T10:45:53.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-14T10:50:34.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Kohler2012",
+    "abstract": "Prototypes have proven to be a good practice in different areas. In the gaming industry, they help identify usability and gameplay issues, among others. The earlier these issues are identified, the less effort is required fixing them. But game assets like graphics are often expensive and are available later on, or even after game functionality has been implemented. Game prototypes are in this case created using lower fidelity visuals. While this technique makes it possible to perform usability tests, it may bias the feedback provided by usability testers. In this paper we investigate how the fidelity of the prototypes used for usability testing influence the feedback provided by testers."
+  },
+  {
+    "title": "THE SQUARE DANCE FRAMEWORK - A FRAMEWORK APPROACH FOR MODULE-BASED SERIOUS GAMES",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Waldmann"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "GET 2012 - IADIS Game and Entertainment Techonologies",
+    "keywords": [
+      "adaptivity",
+      "framework",
+      "serious game engineering"
+    ],
+    "issue": "Susi 2007",
+    "month": 7,
+    "id": "4fb0cb36-1d88-3974-8d91-3e44ce59562a",
+    "created": "2014-02-14T10:56:56.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T11:52:59.000Z",
+    "read": false,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Waldmann2009a"
+  },
+  {
+    "title": "STRATEGATIONS - GAME BASED GAME MANIPULATION IN REAL TIME STRATEGY GAMES",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Jakasovic"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2013,
+    "source": "GET 2013 - IADIS Game and Entertainment Techonologies",
+    "keywords": [
+      "game manipulation",
+      "manipulation based games",
+      "real time strategy games"
+    ],
+    "month": 7,
+    "id": "2a135e79-4d67-3d4b-a735-ad64e1083614",
+    "created": "2014-02-16T11:46:53.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T11:53:09.000Z",
+    "read": true,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Jakasovic2012",
+    "abstract": "Real time strategy games have become very popular over the last years. Games like StarCraft or Warcraft are very successful on the desktop market. In a real time strategy game the player needs to defeat his opponents by using resources and units. By doing so the user is constraint by an economical model that was created by the developer. For example the player cannot create new resource types or unit types and cannot change the model by itself. In this paper we present an approach where the player can manipulate this game model in order to create new resource types or unit types in a game based way. Our approach enables new and creative possible game strategies for the player. We present the model and also an evaluation of the approach in this paper. We focus mainly on the mobile market in our approach but it can also be used for other platforms."
+  },
+  {
+    "title": "A FRAMEWORK FOR THE CREATION OF MOBILE EDUCATIONAL GAMES FOR DYSLEXIC CHILDREN",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Daniel",
+        "last_name": "Richter"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Muntean"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2013,
+    "source": "ML 2013 - Mobile Learning",
+    "keywords": [
+      "dyslexia",
+      "educational games",
+      "legaframework",
+      "mobile games"
+    ],
+    "month": 3,
+    "city": "Lisbon, Portugal",
+    "id": "415076c5-0339-36ed-bc77-bcb948ffce28",
+    "created": "2014-02-16T11:51:00.000Z",
+    "file_attached": true,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:21:39.000Z",
+    "read": false,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Haladjian2013"
+  },
+  {
+    "title": "A FRAMEWORK FOR GAME TUNING",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Frank",
+        "last_name": "Ziegler"
+      },
+      {
+        "first_name": "Blagina",
+        "last_name": "Simeonova"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Paul",
+        "last_name": "Muntean"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2012,
+    "source": "GET 2012 - IADIS Game and Entertainment Techonologies",
+    "month": 7,
+    "city": "Lisbon, Portugal",
+    "id": "a04a42c2-27b1-3fe1-8513-cc2e2e6693e0",
+    "created": "2014-02-16T15:04:43.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:06:00.000Z",
+    "read": false,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Haladjian2012a"
+  },
+  {
+    "title": "Architekturen mobiler Multi-Plattform Apps",
+    "type": "book_section",
+    "authors": [
+      {
+        "first_name": "Felix",
+        "last_name": "Willnecker"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Wolfgang",
+        "last_name": "Maison"
+      }
+    ],
+    "year": 2011,
+    "source": "Smart Mobile Apps",
+    "identifiers": {
+      "isbn": "3200065265"
+    },
+    "publisher": "Springer-Verlag",
+    "id": "b5dedb49-a530-3694-a25c-e25924588331",
+    "created": "2014-02-16T15:05:45.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:09:41.000Z",
+    "read": false,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Willnecker2011a",
+    "abstract": "Die dramatisch schnelle Entwicklung von Smartphones und Tablets hatte zur Folge, dass extrem heterogene Systemlandschaften entstanden sind. Für die Entwicklung von Applikationen der Post-PC Ära sind daher eine Reihe von Ansätzen zur Multi-Plattformentwicklung entstanden. Dieser Beitrag be- leuchtet die Vor- und Nachteile verschiedener Systemarchitekturen für die Entwicklung von Multi-Plattform Smart Mobile Apps: Angefangen bei Web Apps, über Hybrid Apps und Cross-Compilern bis hin zu Applikationsbe- schreibungssprachen."
+  },
+  {
+    "title": "Rocking the Keys with a Multi-Touch Interface",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Walther"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailović"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2013,
+    "source": "NIME 2013 - 13th International Conference on New Interfaces for Musical Expression",
+    "month": 7,
+    "id": "847e325e-74f3-3369-a562-611f81124368",
+    "created": "2014-02-16T15:08:33.000Z",
+    "file_attached": false,
+    "profile_id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+    "last_modified": "2014-02-16T15:08:52.000Z",
+    "read": false,
+    "starred": true,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Walther2013"
+  }
+]

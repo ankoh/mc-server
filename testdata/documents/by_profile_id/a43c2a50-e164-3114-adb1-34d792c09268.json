@@ -1,0 +1,187 @@
+[
+  {
+    "title": "Towards automation of iteration planning",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Zardosht",
+        "last_name": "Hodaie"
+      }
+    ],
+    "year": 2009,
+    "source": "Proceeding of the 24th ACM SIGPLAN conference companion on Object oriented programming systems languages and applications - OOPSLA '09",
+    "keywords": [
+      "automated",
+      "genetic algorithm",
+      "iteration planning",
+      "machine learning",
+      "model",
+      "release planning",
+      "semi-",
+      "task assignment",
+      "unicase",
+      "unified"
+    ],
+    "pages": "965",
+    "websites": [
+      "http://dl.acm.org/citation.cfm?doid=1639950.1640065"
+    ],
+    "publisher": "ACM Press",
+    "id": "485489ff-4b6d-3c2a-ad0a-05674bc79757",
+    "created": "2015-04-08T11:51:30.000Z",
+    "file_attached": false,
+    "profile_id": "a43c2a50-e164-3114-adb1-34d792c09268",
+    "last_modified": "2015-04-08T11:51:32.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "abstract": "Iterations are time-boxed periods with an intended outcome that is often a set of implemented requirements. Iterations are part of most common software development lifecycle models. Planning of iterations is a non-trivial task due to the multi-dimensional criteria. (1) The first dimension concerns the question what shall be completed in the iteration, also referred to as \"release planning\". Decisions in this dimension are based on criteria such as dependencies and priorities of requirements. (2) The second dimension concerns the decision, which project participant should work on which task, also referred to as \"task assignment\". Decisions in this dimension are based on criteria such as the expertise and the workload of the developers. The decisions in both dimensions are considerably complex. Therefore several approaches exist to semi-automatically support the decisions limited to one of the two dimensions mentioned above. None of the existing approaches considers both dimensions at the same time. In this paper we propose a combination of approaches from semi-automatic release planning and from semi-automatic task assignment. This results in a semi-automated two-dimensional solution for the problem of iteration planning, We suggest the use of a genetic algorithm to optimize the resulting iteration plans in both dimensions of the problem."
+  },
+  {
+    "title": "Automatic Assignment of Work Items",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Holger",
+        "last_name": "Arndt"
+      },
+      {
+        "first_name": "Zardosht",
+        "last_name": "Hodaie"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      }
+    ],
+    "year": 2011,
+    "source": "Communications in Computer and Information Science",
+    "identifiers": {
+      "isbn": "9783642233906",
+      "doi": "10.1007/978-3-642-23391-3_17",
+      "issn": "18650929"
+    },
+    "keywords": [
+      "Bug report",
+      "Machine learning",
+      "Task assignment",
+      "UJP",
+      "UNICASE",
+      "Unified model"
+    ],
+    "pages": "236-250",
+    "volume": "230",
+    "websites": [
+      "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.303.2941"
+    ],
+    "id": "c34d8e35-a28a-3b42-bbf2-61ac3b294c22",
+    "created": "2015-07-20T19:17:47.000Z",
+    "accessed": "2015-07-20",
+    "file_attached": true,
+    "profile_id": "a43c2a50-e164-3114-adb1-34d792c09268",
+    "last_modified": "2015-07-20T19:33:50.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Semi-Automatic Assignment of Work Items",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Holger",
+        "last_name": "Arndt"
+      },
+      {
+        "first_name": "Zardosht",
+        "last_name": "Hodaie"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      }
+    ],
+    "year": 2010,
+    "source": "ENASE",
+    "pages": "149--158",
+    "volume": "10",
+    "id": "1007d0a0-b1c8-3ee9-aa36-08a2bb898a32",
+    "created": "2015-07-20T19:17:55.000Z",
+    "file_attached": false,
+    "profile_id": "a43c2a50-e164-3114-adb1-34d792c09268",
+    "last_modified": "2015-07-20T19:33:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Quantification of Coronary Arterial Stenosis by Inflating Tubes in CT Angiographic images",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Abouzar",
+        "last_name": "Eslami"
+      },
+      {
+        "first_name": "Amin",
+        "last_name": "Aboee"
+      },
+      {
+        "first_name": "Zardosht",
+        "last_name": "Hodaei"
+      }
+    ],
+    "year": 2012,
+    "source": "Coronary.Bigr.Nl",
+    "keywords": [
+      "computed tomographic angiography",
+      "coronary artery",
+      "stenosis"
+    ],
+    "websites": [
+      "http://coronary.bigr.nl/stenoses/pdf/Eslami_camp_158.pdf"
+    ],
+    "id": "deff5e74-3c82-3e54-bcef-2fa61bd608e1",
+    "created": "2015-07-20T19:33:50.000Z",
+    "file_attached": false,
+    "profile_id": "a43c2a50-e164-3114-adb1-34d792c09268",
+    "last_modified": "2015-07-20T19:33:50.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "eslami2012quantification",
+    "source_type": "inproceedings"
+  }
+]

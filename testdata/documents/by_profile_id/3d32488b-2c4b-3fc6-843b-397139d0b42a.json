@@ -1,0 +1,54 @@
+[
+  {
+    "title": "User Model and System Model: the Yin and Yang in User-Centered Software Development",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Han",
+        "last_name": "Xu"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Creighton"
+      },
+      {
+        "first_name": "Naoufel",
+        "last_name": "Boulila"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2013,
+    "source": "Proceedings of the ACM International Symposium on New ideas, New paradigms, and Reflections on Programming and Software (Onward)",
+    "keywords": [
+      "Centered Design",
+      "Scenario Based Design",
+      "Software Engineering",
+      "System Engineering",
+      "User",
+      "Video",
+      "Yin-Yang Principle"
+    ],
+    "websites": [
+      "http://dl.acm.org/citation.cfm?id=2514737"
+    ],
+    "publisher": "ACM",
+    "city": "Indianapolis",
+    "id": "34562b05-c893-34a9-a2fe-bf21ba3152d1",
+    "created": "2013-11-27T22:02:52.000Z",
+    "file_attached": false,
+    "profile_id": "3d32488b-2c4b-3fc6-843b-397139d0b42a",
+    "last_modified": "2014-11-24T21:25:26.000Z",
+    "tags": [
+      "ucd"
+    ],
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "Xu2013"
+  }
+]

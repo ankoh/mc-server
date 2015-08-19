@@ -1,0 +1,666 @@
+[
+  {
+    "title": "Interaction Centric Requirements Traceability",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of 6th International Conference on Evaluation of Novel Approaches to Software Engineering",
+    "city": "Beijing - China",
+    "id": "c81e3eb9-8a4c-38e9-8009-ea62c975aca4",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "11",
+    "source_type": "inproceedings",
+    "abstract": "Requirement Traceability provides the ability to follow the life-cycle of a requirement from its evolution till subsequent refinement and use. A key issue that restricts the adaptation of approaches to create and maintain these relationships is the lack of tool support that employs a centralized repository for heterogeneous artifacts. Different artifacts are stored in different repositories and thus traceability links are expensive to maintain. Centralized repository can facilitate capturing the stakeholders interaction, which result in creation and mod- ification of the artifacts and their relationship. These interactions hold the rationale behind changes. In this paper we propose a novel model-based CASE tool UNICASE, which aids in maintaining requirements trace- ability by incorporating disparate artifacts. Further, the tool facilitates capturing the evolution of requirements invoked by the informal communication in the form of discussion and comments."
+  },
+  {
+    "title": "Adaptive Serious Game Development",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailovic"
+      },
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Dennis",
+        "last_name": "Pagano"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2012,
+    "source": "ICSE Workshop on Games and Software Engineering",
+    "city": "Zuerich, Switzerland",
+    "id": "a3478ac2-6367-33ca-a1ea-f98490f61705",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "3",
+    "source_type": "conference"
+  },
+  {
+    "title": "Aus dem Entwickler-Nähkästchen: Teil 1",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      }
+    ],
+    "year": 2010,
+    "source": "JaxEnter",
+    "id": "22582fcb-db8d-3da7-a02c-b213b0af63b8",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "20",
+    "source_type": "article",
+    "abstract": "Aus dem Entwickler-N{ä}hk{ä}stchen plaudern Java-Entwickler aller Couleur {ü}ber Ihre pers{ö}nlichen Ups und Downs mit der \"beliebtesten Programmiersprache der Welt\". Und nach all den Hiobs-Botschaften {ü}ber den ins Stocken geratene Java Community Process, die Querelen Oracles mit der Community und das bevorstehende \"Ableben\" von Java beginnen wir zum Start der Serie mit der sch{ö}nen Frage: Was gef{ä}llt dir an der Programmierung mit Java? http://it-republik.de/jaxenter/artikel/10-Antworten-auf-die-Frage-Was-gefaellt-dir-an-der-Programmierung-mit-Java-3500.html"
+  },
+  {
+    "title": "Reengineering a Scientific Software and Lessons Learned",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      }
+    ],
+    "year": 2011,
+    "source": "proceedings of Software Engineering for Computational Science and Engineering Workshop, ICSE 2011",
+    "city": "Hawaii",
+    "id": "8ef75ee9-8940-3318-aa02-9348a5e4a5e0",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "14",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Smart Mobile Apps in der Lehre, Smart Mobile Apps: Mit Business-Apps ins Zeitalter mobiler Gesch{ä}ftsprozesse",
+    "type": "book",
+    "authors": [
+      {
+        "first_name": "M.",
+        "last_name": "Wagner"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2011,
+    "publisher": "Springer Verlag",
+    "editors": [
+      {
+        "first_name": "S Verclas & C Linnhoff-Popien",
+        "last_name": "(eds)"
+      }
+    ],
+    "id": "056fdfe0-4533-326e-b15d-92168c6ea829",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "16",
+    "source_type": "book"
+  },
+  {
+    "title": "A quick prototyping framework for adaptive serious games with 2D physics on mobile touch devices",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Juan",
+        "last_name": "Haladjian"
+      },
+      {
+        "first_name": "Damir",
+        "last_name": "Ismailovic"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Köhler"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2012,
+    "source": "Conference on Mobile Learning 2012 (ML 2012),",
+    "city": "Berlin",
+    "id": "34b37be9-79b9-35b6-9477-fe28f9430c2c",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "7",
+    "source_type": "conference"
+  },
+  {
+    "title": "EMFStore - A Repository for EMF Models",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      }
+    ],
+    "year": 2010,
+    "source": "Poster Reception, Eclipse Summit Europe",
+    "city": "Ludwigsburg",
+    "id": "4fa98170-979f-3ab6-bba6-906b2f07b91b",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "23",
+    "source_type": "conference",
+    "abstract": "EMFStore is a repository for EMF-based models. It is geared towards collaborative editing of the stored models. Therefore support for conflict detection, merging and versioning models is built into the repository. EMFStore also ships with a set of client plugins containing a facade API for the server and more importantly views for commiting changes to, updating changes from the repository as well as interactively merging models in a local workspace. EMFStore also supports changes to the Ecore model of stored EMF model instances by generating model migrators. This is a useful feature if your application evolves and requires changing your data model for example."
+  },
+  {
+    "title": "A modeling language to support early lifecycle requirements modeling for systems engineering",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Florian",
+        "last_name": "Schneider"
+      },
+      {
+        "first_name": "Helmut",
+        "last_name": "Naughton"
+      },
+      {
+        "first_name": "Brian",
+        "last_name": "Berenbach"
+      }
+    ],
+    "year": 2012,
+    "source": "Procedia Computer Science",
+    "pages": "201-206",
+    "volume": "8",
+    "issue": "0",
+    "id": "804e7b74-8f90-38bf-902c-f4845404f40c",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "4",
+    "source_type": "inproceedings",
+    "abstract": "The current implementation of the SysML tends to be design-centric with minimal support for activities upstream of design such as product line engineering, goal conflict resolution and hazard/threat modeling. Furthermore, currently provided extensions, such as those for business modeling, tend to be narrowly focused. This paper describes ongoing research in providing systems engineering support for activities that take place prior to system requirements definition, including resolving goal conflicts, identifying and mitigating potential hazards and threats, and specifying features and feature variations in product lines. A new modeling language is proposed (referred to as the Unified Requirements Modeling Language). The core concepts of a single meta-model for requirements engineering are presented alongside exemplary usage showing the power of the language together with its graphical notation. The meta-model, for the first time, proposes a formal relationship between various types of actors, goals, requirements, product line components, and hazard and threat modeling artifacts that integrates with both UML and SysML. Available at http://www.sciencedirect.com/science/article/pii/S1877050912000440"
+  },
+  {
+    "title": "Enhanced Traceability in Model-based CASE Tools using Ontologies and Information Retrieval",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Delater"
+      },
+      {
+        "first_name": "B.",
+        "last_name": "Paech"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of the 4th International Workshop on Managing Requirements Knowledge (MaRK'11)",
+    "city": "Trento (Italy)",
+    "id": "7bd91a9a-e635-3dd3-8b91-797b66e2298b",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "10",
+    "source_type": "inproceedings",
+    "abstract": "Model-based CASE tools provide mechanisms to capture and store heterogeneous artifacts produced during the software development process. These tools incorporate a meta- model describing artifact types and traceability links. Although model-based CASE tools provide required means to create and link different artifact types, still the process of linking artifacts is primarily manual resulting in missing or broken traceability links. This paper proposes a novel approach to create and utilize a project-specific ontology derived from the textual and structural information available in the development artifacts to assist the traceability link creation process. We discuss the benefits and challenges of incorporating the proposed approach in a model-based CASE tool."
+  },
+  {
+    "title": "How Do Professional Developers Comprehend Software?",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "R.",
+        "last_name": "Tiarks"
+      },
+      {
+        "first_name": "R",
+        "last_name": "Koschke"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 34th International Conference on Software Engineering",
+    "id": "df30bdad-f9e3-3386-9583-5515f01cfb77",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "9",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "A Domain Specific Requirements Model for Scientific Computing",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      }
+    ],
+    "year": 2011,
+    "source": "proceedings of New Ideas and Emerging Results (NIER) track, ICSE 2011",
+    "city": "Hawaii",
+    "id": "18307283-fbe6-331c-be54-3b3af7eb2c06",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "13",
+    "source_type": "inproceedings",
+    "abstract": "Requirements engineering is a core activity in software engineering. However, formal requirements engineering methodologies and documented requirements are often missing in scientific computing projects. We claim that there is a need for methodologies, which capture requirements for scientific computing projects, because traditional requirements engineering methodologies are difficult to apply in this domain. We propose a novel domain specific requirements model to meet this need. We conducted an exploratory experiment to evaluate the usage of this model in scientific computing projects. The results indicate that the proposed model facilitates the communication across the domain boundary, which is between the scientific computing domain and the software engineering domain. It supports requirements elicitation for the projects efficiently."
+  },
+  {
+    "title": "Mit EMP die Divergenzen in der Eclipse-Modeling-Landschaft eliminieren",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      }
+    ],
+    "year": 2010,
+    "source": "JaxEnter",
+    "id": "d2ab76aa-1660-3862-96ae-f6c155fd9252",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "22",
+    "source_type": "article",
+    "abstract": "Auf dem Eclipse Summit Europe sprach Jonas Helming mit Stephan Eberle, Co-Leader des Eclipse-Modeling-Projektes Sphinx, {ü}ber die neuen Trends in der Eclipse Modeling Platform. http://it-republik.de/jaxenter/artikel/Mit-EMP-die-Divergenzen-in-der-Eclipse-Modeling-Landschaft-eliminieren-3451.html"
+  },
+  {
+    "title": "From pixels to bytes: evolutionary scenario based design with video",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Han",
+        "last_name": "Xu"
+      },
+      {
+        "first_name": "Oliver",
+        "last_name": "Creighton"
+      },
+      {
+        "first_name": "Naoufel",
+        "last_name": "Boulila"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 20th International Symposium on the Foundations of Software Engineering (FSE)",
+    "city": "Cary, North Carolina, USA",
+    "id": "b52dc190-db63-3d8e-b2af-711aaf5e2c3e",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "1",
+    "source_type": "inproceedings",
+    "abstract": "Change and user involvement are two major challenges in agile software projects. As change and user involvement usually arise spontaneously, reaction to change, validation and communication are thereby expected to happen in a continuous way in the project lifecycle. We propose Evolutionary Scenario Based Design, which employs video in fulfilling this goal, and present a new idea that supports video production using SecondLife-like virtual world technology."
+  },
+  {
+    "title": "An approach to develop location-based efficiency systems without real test drives",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Thomas",
+        "last_name": "Ganslmeier"
+      },
+      {
+        "first_name": "M.",
+        "last_name": "Kellner"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2012,
+    "source": "International Electric Vehicle Conference (IEVC)",
+    "city": "Greenville, USA",
+    "id": "6444b71c-2d3b-3215-8d8b-5cf231c72475",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "5",
+    "source_type": "conference"
+  },
+  {
+    "title": "Requirements Engineering for Scientific Computing: A Model-Based Approach.",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Matteo",
+        "last_name": "Harutunian"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Gerrit",
+        "last_name": "Buse"
+      }
+    ],
+    "year": 2011,
+    "source": "e-Science Workshops 2011",
+    "pages": "128-134",
+    "id": "da2abe73-24c3-39ca-ba43-089b76a4a94a",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "18",
+    "source_type": "article"
+  },
+  {
+    "title": "SLPC++: Teaching software engineering project courses in industrial application landscapes - A tutorial",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Helmut",
+        "last_name": "Naughton"
+      },
+      {
+        "first_name": "Michaela",
+        "last_name": "Gluchow"
+      }
+    ],
+    "year": 2011,
+    "source": "CSEE&T 2011",
+    "pages": "549-551",
+    "id": "540428f4-a505-3ab8-8b7a-3ac3dee87533",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "17",
+    "source_type": "article"
+  },
+  {
+    "title": "Automatically Detecting Developer Activities and Problems in Software Development Work",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Tobias",
+        "last_name": "Roehm"
+      },
+      {
+        "first_name": "Walid",
+        "last_name": "Maalej"
+      }
+    ],
+    "year": 2012,
+    "source": "Proceedings of the 34th International Conference on Software Engineering, NIER Track",
+    "id": "950733cb-0b1f-35e6-97d0-6f36cfbc0347",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "8",
+    "source_type": "inproceedings"
+  },
+  {
+    "title": "Modellierung auf dem Eclipse Summit 2010 Modellierung auf dem Eclipse Summit 2010",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      }
+    ],
+    "year": 2010,
+    "source": "JaxEnter",
+    "id": "bcf3cbab-1221-3846-9551-3e2caffe1d59",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "21",
+    "source_type": "article",
+    "abstract": "Europa, insbesondere Deutschland und Frankreich, sind Hochburgen der Software-Modellierung. Alleine ein Blick in das Programm der diesj{ä}hrigen Eclipse Summit zeigt, dass auch hier Modellierung eines der zentralen Themen war. So gro{ß} die Zahl der verschiedenen Beitr{ä}ge, so gro{ß} ist die Vielfalt der verf{ü}gbaren Projekte. So gro{ß} ist aber auch teilweise die Verwirrung der Entwickler bei der Auswahl der passenden Technologie. Das ist per se kein schlechter Zustand. Jeff Noris zeigte in seiner Keynote eindrucksvoll, warum es f{ü}r Innovationen oft wichtig ist, sich mehrere Wege gleichzeitig offen zu halten. http://it-republik.de/jaxenter/artikel/Modellierung-auf-dem-Eclipse-Summit-2010-3453.html"
+  },
+  {
+    "title": "EMF Client Platform (ECP) - \"...only one click to a data-centric application\"",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Jonas",
+        "last_name": "Helming"
+      },
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      }
+    ],
+    "year": 2010,
+    "source": "Poster Reception, Eclipse Summit Europe",
+    "city": "Ludwigsburg",
+    "id": "5d2e11ae-8e22-3451-a1b9-d481ebf1cc2d",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "24",
+    "source_type": "conference",
+    "abstract": "The Eclipse Modeling Framework (EMF) allows generating the entity classes of an application based on a model. Such entity-centric applications follow a common template. They provide a tree-based view for navigation and for browsing all entities, a detailed editor for one entity of the model and a number of additional customized views. Additionally the entities have to be validated, persisted, versioned and shared among multiple clients. Building such applications in Eclipse usually requires the use of several frameworks additional to EMF. Therefore it is still a long way from an EMF model to a running application fulfilling basic requirements. This is especially true for developers inexperienced with Eclipse technology. They have to overcome a high entry barrier as they have to evaluate, select and comprehend a variety of existing frameworks and their interplay. Therefore the goal of the EMF Client Platform (EMFCP) is to provide a one-click start to the creation of an entity-centric EMF application. The resulting application is based on a selection of existing frameworks and already delivers basic features. It can be refined and adapted step by step."
+  },
+  {
+    "title": "Conflict Detection on Models - An Empirical Study",
+    "type": "report",
+    "authors": [
+      {
+        "first_name": "Maximilian",
+        "last_name": "Koegel"
+      },
+      {
+        "first_name": "Markus",
+        "last_name": "Herrmannsdoerfer"
+      },
+      {
+        "first_name": "Otto von",
+        "last_name": "Wesendonk"
+      }
+    ],
+    "year": 2010,
+    "institution": "Technische Universit{ä}t M{ü}nchen",
+    "id": "4cdff2ab-7c75-398e-ba05-ce36e17e8aa2",
+    "created": "2014-10-29T14:48:49.000Z",
+    "file_attached": false,
+    "profile_id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+    "last_modified": "2014-11-17T20:44:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false,
+    "citation_key": "19",
+    "source_type": "techreport",
+    "abstract": "Software Configuration Management (SCM) systems are employed to facilitate collaboration on software engineering artifacts such as models. Therefore, they need to detect concurrent change -- also known as conflict detection. However, many researchers recognized that conflict detection on models is not well supported in traditional SCM systems since they are engineered for textual files. Their conflict detection shows many false positives, and they require a merge every time the same the same file is changed. Operation-based conflict detection and merging have been proposed to overcome these problems and reduce false positives. In this paper, we present an empirical study to compare traditional file-based, textual conflict detection with operation-based conflict detection on models. We compare two different strategies of file-based with two operation-based strategies in a multi-case study. We show that operation-based conflict detection results in fewer conflicts and thus requires fewer merges."
+  }
+]

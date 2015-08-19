@@ -1,0 +1,190 @@
+[
+  {
+    "title": "Agile Factory - An Example of an Industry 4.0 Manufacturing Process",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Constantin",
+        "last_name": "Scheuermann"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Verclas"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2015,
+    "source": "3rd IEEE International Conference on Cyber-Physical Systems, Networks and Publications",
+    "pages": "5",
+    "city": "Hong Kong",
+    "id": "06b27c18-6afb-309e-b5c9-b74b82c46ee8",
+    "created": "2015-06-09T15:56:54.000Z",
+    "file_attached": true,
+    "profile_id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+    "last_modified": "2015-07-01T06:39:07.000Z",
+    "tags": [
+      "Cyber-Physical Systems"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "citation_key": "Scheuermann2015",
+    "abstract": "Since the late 90s the idea of mass customization in industry is present. The main goal is to handle the con-sumer demand for customized products. Recent developments in research, engineering and technology enable industries to move from profitable linear assembly lines to profitable non-linear, dynamic assembly lines to satisfy such a demand. Industry 4.0, a German governmental initiative, encourages industries to use interconnected Cyber-Physical Systems (CPSs) to create context-sensitive and decentralized factory environments. CPSs in combination with tracking technologies and a component based assembly line can create a factory environment that allows customers to change their requirements during assembly-time. Such change is typically not considered in the domain of manufacturing. In modern software engineering projects, agile techniques allow customer change during the entire development phase. Such change results in customer oriented, customized software products. In this paper we describe the development of an Agile Factory prototype. The developed Agile Factory prototype transfers agile software engineering techniques to the domain of manufacturing. It explores the impact and feasibility of customer changes during assembly-time using a commercially available software frame-work. The assembly line of the Agile Factory is component based, using trackable mobile worktables in combination with stationary workstations. Therefore, each product with its associated request is trackable during assembly-time which enables us to implement a customer feedback loop. The feedback loop allows change requests during assembly-time. Without the integration of such tracking techniques a customer feedback loop is very difficult up to impossible to implement. We created a Cyber-Physical Human System (CPHS) using smart factory-hardware in combination with an accepted manufacturing software framework. We bridge the virtual and physical world enabling the customer and the factory worker to communicate with actual physical objects."
+  },
+  {
+    "title": "Evaluation of adjacent channel interference in single radio vehicular Ad-Hoc networks",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Lasowski"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Scheuermann"
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Gschwandtner"
+      },
+      {
+        "first_name": "Claudia",
+        "last_name": "Linnhoff-Popien"
+      }
+    ],
+    "year": 2011,
+    "source": "2011 IEEE Consumer Communications and Networking Conference, CCNC'2011",
+    "identifiers": {
+      "doi": "10.1109/CCNC.2011.5766470",
+      "isbn": "9781424487905",
+      "scopus": "2-s2.0-79957910331"
+    },
+    "id": "4d65b95b-7404-373f-af93-0696fb88fdf2",
+    "created": "2015-06-29T07:12:46.000Z",
+    "file_attached": true,
+    "profile_id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+    "last_modified": "2015-06-29T07:12:46.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "VANETS extend the driver's horizon to decrease traffic accidents by utilizing IEEE 802.11p wireless networks. In high density traffic situations an overloaded communication channel leads to significant packet loss. To overcome this problem multiple channels can be used in IEEE 802.11p. This itself leads to adjacent channel interference and impacts the performance of nearby channels. In this paper we define performance requirements with respect to packet loss and communication range. We show the impact of ACI on simultaneous channel usage by using our multi channel propagation extension for JiST/SWANS. We evaluate the performance on adjacent channels with respect to maximum channel load and variable transmit power. Our results show that the simultaneous usage of nearby channels is an serious issue when no channel access synchronization is applied."
+  },
+  {
+    "title": "A multi channel synchronization approach in dual radio vehicular ad-hoc networks",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Robert",
+        "last_name": "Lasowski"
+      },
+      {
+        "first_name": "Florian",
+        "last_name": "Gschwandtner"
+      },
+      {
+        "first_name": "Constantin",
+        "last_name": "Scheuermann"
+      },
+      {
+        "first_name": "Markus",
+        "last_name": "Duchon"
+      }
+    ],
+    "year": 2011,
+    "source": "IEEE Vehicular Technology Conference",
+    "identifiers": {
+      "doi": "10.1109/VETECS.2011.5956640",
+      "issn": "15502252",
+      "scopus": "2-s2.0-80051982390",
+      "isbn": "9781424483310"
+    },
+    "id": "e0182966-e01b-3908-87de-b07e82f84a7e",
+    "created": "2015-06-29T07:15:03.000Z",
+    "file_attached": true,
+    "profile_id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+    "last_modified": "2015-06-29T07:15:04.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "Abstract-Simultaneous usage of multiple channels in vehicular ad-hoc networks (VANETS) has strong impacts on the communication range of the adjacent channel caused by adjacent channel interference (ACI). This is a big issue in dual radio environments where the distance between the interfering and receiving radio is low. To enhance the communication range on the service channel 2 (SCH2) while using the adjacent control channel (CCH) simultaneously we introduce 3CSMA/CA. It allows to synchronize the transmissions on SCH2 regarding a defined radius of relevance by tracking signal strength of ongoing transmissions on CCH. We present the advantages of 3CSMA/CA by varying node density based on simulations and show the benefit in case no synchronization is applied."
+  },
+  {
+    "title": "Evaluation of Barcode Decoding Performance using ZXING Library",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Constantin",
+        "last_name": "Scheuermann"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Werner"
+      },
+      {
+        "first_name": "Moritz",
+        "last_name": "Kessel"
+      },
+      {
+        "first_name": "Claudia",
+        "last_name": "Linnhoff-Popien"
+      },
+      {
+        "first_name": "Stephan A W",
+        "last_name": "Verclas"
+      }
+    ],
+    "year": 2012,
+    "source": "Second Workshop on Smart Mobile Applications",
+    "keywords": [
+      "Barcode",
+      "Optical Transmission Pattern",
+      "QR-Code",
+      "ZXing"
+    ],
+    "id": "b74a1471-23a7-37cb-bc96-d9b3d15782e8",
+    "created": "2015-06-29T07:16:13.000Z",
+    "file_attached": true,
+    "profile_id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+    "last_modified": "2015-07-20T15:55:23.000Z",
+    "tags": [
+      "Optical-Transmission-Patterns"
+    ],
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "In this paper a reliable, valid and generic software envi-ronment is introduced which offers the possibility to eval-uate and compare different Optical Transmission Patterns (OTPs). This framework generates a huge library of evalua-tion images applying synthetically all distortions one should expect for a real-world application. The synthetic analy-sis environment is based on OpenGL, which enables three-dimensional operations covering for example perspective pro-jections as well as dynamic three-dimensional modifications through vertex programs and tessellation. We examined most common OTPs, like the QR-Code, MaxiCode and EAN-13. To evaluate the expressiveness of the OpenGL environ-ment, we build a mechanical device offering practical re-sults, which can be confronted with our theoretical results. We found out that QR-Code delivers the best decoding re-sults but still suffers from decoding problems within cer-tain angles. Moreover we could prove that the results of the OpenGL environment highly correlate with the practical re-sults."
+  },
+  {
+    "title": "Implementation of an Indoor Test Bed for the Evaluation of Car-To-Car Communication Services",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Florian Gschwandtner",
+        "last_name": "Constantin Scheuermann, Simon Eumes, Claudia Linnhoff-Popien, Stephan A W Verclas"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of the First International Workshop on Smart Mobile Applications",
+    "id": "e6caef79-9d63-3270-916c-907a2d512964",
+    "created": "2015-08-13T13:47:18.000Z",
+    "file_attached": false,
+    "profile_id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+    "last_modified": "2015-08-13T13:47:18.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  }
+]

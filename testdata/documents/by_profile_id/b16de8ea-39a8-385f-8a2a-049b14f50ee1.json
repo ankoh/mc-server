@@ -1,0 +1,231 @@
+[
+  {
+    "title": "The intuitive control of smart home and office environments",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Vivian",
+        "last_name": "Loftness"
+      },
+      {
+        "first_name": "Volker",
+        "last_name": "Hartkopf"
+      }
+    ],
+    "year": 2011,
+    "source": "Proceedings of the 10th SIGPLAN symposium on New ideas, new paradigms, and reflections on programming and software - ONWARD '11",
+    "identifiers": {
+      "isbn": "9781450309417",
+      "doi": "10.1145/2048237.2048255"
+    },
+    "pages": "113",
+    "websites": [
+      "http://dl.acm.org/citation.cfm?doid=2048237.2048255"
+    ],
+    "publisher": "ACM Press",
+    "city": "New York, New York, USA",
+    "id": "ffa4da85-4206-3c4a-ae86-82d0563730aa",
+    "created": "2014-02-20T08:17:03.000Z",
+    "file_attached": true,
+    "profile_id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+    "last_modified": "2014-02-20T12:59:52.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Visual representations for supporting an ontology-based semantic navigation of medical volume data",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Kelm"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Huber"
+      },
+      {
+        "first_name": "Sascha",
+        "last_name": "Seifert"
+      }
+    ],
+    "year": 2010,
+    "source": "Proceedings of the 11th IASTED International Conference Computer Graphics and Imaging (CGIM 2010)",
+    "keywords": [
+      "artificial intelligence techniques",
+      "graphical",
+      "image ontology",
+      "imaging",
+      "information visualization",
+      "medical"
+    ],
+    "pages": "303-308",
+    "volume": "D",
+    "id": "404c566c-1f59-357e-bc04-25cf8ed5cf44",
+    "created": "2014-02-20T08:18:53.000Z",
+    "file_attached": true,
+    "profile_id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+    "last_modified": "2014-02-20T13:08:22.000Z",
+    "read": true,
+    "starred": false,
+    "authored": true,
+    "confirmed": true,
+    "hidden": false
+  },
+  {
+    "title": "Introducing Continuous Delivery of Mobile Apps in a Corporate Environment: A Case Study",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Sebastian",
+        "last_name": "Klepper"
+      },
+      {
+        "first_name": "Stephan",
+        "last_name": "Krusche"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Lukas",
+        "last_name": "Alperowitz"
+      }
+    ],
+    "year": 2015,
+    "source": "2nd International Workshop on Rapid Continuous Software Engineering (RCoSE'15)",
+    "keywords": [
+      "Agile Methods",
+      "Configuration Manage-ment",
+      "Continuous Delivery",
+      "Continuous Integration",
+      "Index Terms—Release Management",
+      "Software Evolution",
+      "User Feed-back",
+      "User Involvement"
+    ],
+    "id": "bbe4d31d-fa81-348f-a02d-c4d758b3d7cb",
+    "created": "2015-07-15T14:17:28.000Z",
+    "file_attached": true,
+    "profile_id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+    "last_modified": "2015-07-15T14:21:09.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "—Software development is conducted in increasingly dynamic business environments. Organizations need the capa-bility to develop, release and learn from software in rapid parallel cycles. The abilities to continuously deliver software, to involve users, and to collect and prioritize their feedback are necessary for software evolution. In 2014, we introduced Rugby, an agile process model with workflows for continuous delivery and feedback management, and evaluated it in university projects together with industrial clients. Based on Rugby's release management workflow we identified the specific needs for project-based organizations developing mobile applications. Varying characteristics and restrictions in projects teams in corporate environments impact both process and infrastructure. We found that applicability and acceptance of continuous delivery in industry depend on its adaptability. To address issues in industrial projects with respect to delivery process, infrastructure, neglected testing and continuity, we extended Rugby's workflow and made it tailorable. Eight projects at Capgemini, a global provider of consulting, technology and outsourcing services, applied a tailored version of the workflow. The evaluation of these projects shows anecdotal evidence that the application of the workflow significantly reduces the time required to build and deliver mobile applications in industrial projects, while at the same time increasing the number of builds and internal deliveries for feedback."
+  },
+  {
+    "title": "Design of a Framework for Controlling Smart Environments",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Stefan",
+        "last_name": "Nosović"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      }
+    ],
+    "year": 2014,
+    "source": "Internet of Things, Smart Spaces, and Next Generation Networks and Systems",
+    "keywords": [
+      "pattern-based architectures",
+      "smart environments",
+      "uniform communication protocols"
+    ],
+    "pages": "29-39",
+    "websites": [
+      "http://www1.in.tum.de"
+    ],
+    "publisher": "Springer International Publishing",
+    "city": "St. Petersburg, Russia",
+    "id": "d64177fd-fff1-3070-b53a-ac10fe10f192",
+    "created": "2015-07-15T14:17:52.000Z",
+    "file_attached": true,
+    "profile_id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+    "last_modified": "2015-07-15T14:20:15.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "Controlling a smart environment consisting of fixtures that communicate using different protocols is challenging. In this paper, a design of a highly extensible framework for controlling smart environ-ments is proposed. The design is based on low coupled Web Services communicating over an Enterprise Service Bus (ESB). The framework is independent from the fixture (sensor, actuator) communication pro-tocols. It provides communication protocol abstractions that enable the framework to be extended with arbitrary fixture communication protocol implementation. The framework enables users to control fixtures using a uniform REST-based protocol. In addition, the proposed framework contains components that enable smart environment automation, collect user activity and context data and manage user rights."
+  },
+  {
+    "title": "Serious Games for Home-based Stroke Rehabilitation",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Raoul",
+        "last_name": "Friedrich"
+      },
+      {
+        "first_name": "Patrick",
+        "last_name": "Hiesel"
+      },
+      {
+        "first_name": "Sebastian",
+        "last_name": "Peters"
+      },
+      {
+        "first_name": "Daniel P",
+        "last_name": "Siewiorek"
+      },
+      {
+        "first_name": "Asim",
+        "last_name": "Smailagic"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      }
+    ],
+    "year": 2015,
+    "source": "Studies in Health Technology and Informatics",
+    "identifiers": {
+      "doi": "10.3233/978-1-61499-538-8-157"
+    },
+    "keywords": [
+      "HCI",
+      "Serious games",
+      "home-based exercising",
+      "stroke rehabilitation"
+    ],
+    "pages": "157-160",
+    "volume": "213",
+    "id": "c2f6053e-13d6-3a1b-8ba0-a5044048359f",
+    "created": "2015-07-15T14:21:34.000Z",
+    "file_attached": true,
+    "profile_id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+    "last_modified": "2015-07-15T14:23:54.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "On average, two thousand residents in the United States experience a stroke every day. These circumstances account for $28 billion direct costs annually and given the latest predictions, these costs will more than triple by 2030. In our research, we propose a portfolio of serious games for home-based stroke rehabili-tation. The objective of the game approach is to enrich the training experience and establish a higher level of compliance to prescribed exercises, while maintaining a supportive training environment as found in common therapy sessions. Our system provides a collection of mini games based on rehabilitation exercises used in con-ventional physical therapy, monitors the patient's performance while exercising and provides clinicians with an interface to personalize the training. The clinician can set the current state of rehabilitation and change the playable games over time to drive diversification. While the system still has to be evaluated, an early stage case study with one patient offered positive indications towards this concept."
+  }
+]

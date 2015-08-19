@@ -1,0 +1,394 @@
+[
+  {
+    "title": "Leveraging Traceability between Code and Tasks for Code Review and Release Management",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Jan",
+        "last_name": "Finis"
+      },
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Delater"
+      }
+    ],
+    "keywords": [
+      "-traceability",
+      "branch",
+      "code review",
+      "patch",
+      "release management"
+    ],
+    "id": "46714c63-8212-3ab7-ac4b-1e0c6bcbc55d",
+    "created": "2015-07-16T07:47:34.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:47:36.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "—The software maintenance process relies on trace-ability information captured throughout the development of a software product. Traceability from code to software engineer-ing artifacts like features or requirements has been extensively researched. In this paper, we focus on traceability links between code and tasks. Tasks can be further linked to other artifacts such as features or requirements. In this paper, we present an approach for (semi-) automatic creation of traceability links between code and tasks. The core idea is to let the developers create the links themselves while they use a version control system. We use these traceability links to improve the processes of code review and release management. A prototype based on this work has been implemented and integrated into the model-based CASE tool UNICASE. We applied the developed prototype in the open-source project UNICASE itself and report about our significant experiences."
+  },
+  {
+    "title": "Tracing Requirements and Source Code during Software Development",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Alexander",
+        "last_name": "Delater"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Paech"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      }
+    ],
+    "keywords": [
+      "-traceability",
+      "information needs",
+      "requirements",
+      "software development",
+      "source code"
+    ],
+    "id": "6d0354af-61ee-38b8-9fc3-943878f11eb8",
+    "created": "2015-07-16T07:48:50.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:48:51.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "—Traceability links between requirements and source code are often created after development. This re-duces the possibilities for developers to use these traceability links during the development process. Additionally, existing approaches applied after development do not consider artifacts from project management, which are used for planning and organizing a project. These artifacts can serve as a mediator between requirements and source code. In contrast to these existing approaches, we present an approach that creates traceability links between requirements and source code as the development progresses by incorporating artifacts from project management. In this paper, we make two key contributions. First, a Traceability Information Model integrating require-ments, source code and artifacts from project management. Second, an approach for the (semi-) automatic creation of traceability links between artifacts from the Traceability In-formation Model achieving traceability between requirements and source code during the development process. We identified a catalog of information needs of developers from literature regarding requirements, source code that realizes these re-quirements, and work done by co-workers implementing these requirements. The presented approach satisfies the information needs of the developers during the development process while keeping the traceability links up-to-date."
+  },
+  {
+    "title": "Bug Report Assignee Recommendation using Activity Profiles",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Hoda",
+        "last_name": "Naguib"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Brügge"
+      },
+      {
+        "first_name": "Dina",
+        "last_name": "Helal"
+      }
+    ],
+    "keywords": [
+      "Index Terms—Activity profile",
+      "assignee recommen-dation",
+      "bug report",
+      "bug tracking"
+    ],
+    "id": "94ba2226-ce60-386b-a7e3-fab12c051e37",
+    "created": "2015-07-16T07:51:40.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:51:41.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "—One question which frequently arises within the context of artifacts stored in a bug tracking repository is: \" who should work on this bug report? \" A number of approaches exist to semi-automatically identify and recommend developers, e.g. using machine learning techniques and social networking analysis. In this work, we propose a new approach for assignee recommendation leveraging user activities in a bug tracking repository. Within the bug tracking repository, an activity profile is created for each user from the history of all his activities (i.e. review, assign, and resolve). This profile, to some extent, indicates the user's role, expertise, and involvement in this project. These activities influence and contribute to the identification and ranking of suitable assignees. In order to evaluate our work, we apply it to bug reports of three different projects. Our results indicate that the proposed approach is able to achieve an average hit ratio of 88%. Comparing this result to the LDA-SVM–based assignee recommendation technique, it was found that the proposed approach performs better."
+  },
+  {
+    "title": "A Domain Specific Requirements Model for Scientific Computing (NIER Track)",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "M Koegel",
+        "last_name": "Y Li, N Narayan, J Helming"
+      }
+    ],
+    "source": "Proceedings of the 33rd International Conference on Software Engineering",
+    "websites": [
+      "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.303.5699&rep=rep1&type=pdf"
+    ],
+    "id": "efd533f1-9468-3708-a003-f6d621528489",
+    "created": "2015-07-16T07:51:49.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:53:15.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  },
+  {
+    "title": "Requirements patterns for seismology software applications",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Christian",
+        "last_name": "Pelties"
+      },
+      {
+        "first_name": "Martin",
+        "last_name": "Käser"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Nararan"
+      }
+    ],
+    "year": 2012,
+    "source": "2012 2nd IEEE International Workshop on Requirements Patterns, RePa 2012 - Proceedings",
+    "identifiers": {
+      "isbn": "9781467343763",
+      "scopus": "2-s2.0-84871551149",
+      "doi": "10.1109/RePa.2012.6359967"
+    },
+    "keywords": [
+      "domain-specific",
+      "requirements pattern",
+      "seismology"
+    ],
+    "id": "9bb5134d-8779-3537-b846-cfc71ac6894c",
+    "created": "2015-07-16T07:54:20.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:54:21.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "Requirements patterns help reusing the knowledge of capturing required functionalities and properties of a system. To improve requirements engineering in seismological software development, we identify commonly used requirements patterns. This paper introduces research of identifying two main requirements patterns in projects typical for computational seismology, namely, the forward simulation pattern and the data access pattern. They help efficiently and effectively eliciting requirements by providing necessary abstractions. We present a dynamic rupture example to illustrate how to apply both patterns. The patterns can foster a more productive requirements engineering process and sharing software development knowledge within the domain."
+  },
+  {
+    "title": "Automatic Assignment of Work Items",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Nitesh Narayan",
+        "last_name": "Jonas Helming, Holger Arndt, Zardosht Hodaie, Maximilian Koegel"
+      }
+    ],
+    "year": 2011,
+    "source": " Evaluation of Novel Approaches to Software Engineering Communications in Computer and Information Science ",
+    "pages": "pp 236-250 ",
+    "volume": "230",
+    "websites": [
+      "http://link.springer.com/chapter/10.1007/978-3-642-23391-3_17"
+    ],
+    "id": "7bd5604b-a003-3d78-aa4a-754e4d40d788",
+    "created": "2015-07-16T07:56:39.000Z",
+    "file_attached": false,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:56:39.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  },
+  {
+    "title": "Enhanced traceability in model-based CASE tools using ontologies and information retrieval",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Alexander",
+        "last_name": "Delater"
+      },
+      {
+        "first_name": "Barbara",
+        "last_name": "Paech"
+      }
+    ],
+    "year": 2011,
+    "source": "2011 4th International Workshop on Managing Requirements Knowledge, MaRK'11 - Part of the 19th IEEE International Requirements Engineering Conference, RE'11",
+    "identifiers": {
+      "isbn": "9781457709388",
+      "scopus": "2-s2.0-80555126113",
+      "doi": "10.1109/MARK.2011.6046559"
+    },
+    "keywords": [
+      "CASE tool",
+      "artifacts",
+      "information retrieval",
+      "ontology",
+      "traceability link"
+    ],
+    "id": "7a49a29a-9bac-34ee-aa9e-9a4d393bfa90",
+    "created": "2015-07-16T07:57:02.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:57:03.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "Model-based CASE tools provide mechanisms to capture and store heterogeneous artifacts produced during the software development process. These tools incorporate a meta-model describing artifact types and traceability links. Although model-based CASE tools provide required means to create and link different artifact types, still the process of linking artifacts is primarily manual resulting in missing or broken traceability links. This paper proposes a novel approach to create and utilize a project-specific ontology derived from the textual and structural information available in the development artifacts to assist the traceability link creation process. We discuss the benefits and challenges of incorporating the proposed approach in a model-based CASE tool."
+  },
+  {
+    "title": "Requirements Engineering for Scientific Computing: a Model-based Approach",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Yang",
+        "last_name": "Li"
+      },
+      {
+        "first_name": "Matteo",
+        "last_name": "Harutunian"
+      },
+      {
+        "first_name": "Nitesh",
+        "last_name": "Narayan"
+      },
+      {
+        "first_name": "Bernd",
+        "last_name": "Bruegge"
+      },
+      {
+        "first_name": "Gerrit",
+        "last_name": "Buse"
+      }
+    ],
+    "identifiers": {
+      "doi": "10.1109/eScienceW.2011.30"
+    },
+    "id": "eda443ba-654d-3871-bc94-bf5f0cac5c7d",
+    "created": "2015-07-16T07:58:11.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:58:11.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false,
+    "abstract": "—Requirements engineering is crucial to the success of software development. However, in many scientific computing projects, traditional requirements engineering practices are ig-nored. We claim that there is a need for methodologies, which help capturing and managing requirements for these projects, to collaboratively develop scientific software with greater in-teroperability. We propose a model-based approach to elicit and manage requirements in scientific computing projects. The proposed approach is based on a meta-model in order to deal with the high complexity and frequent change in scientific software development. The meta-model also provides abstractions and notations targeted at scientific computing projects. The approach supports requirements engineering in these projects with the flex-ibility of easily managing requirements versioning, traceability and communication across the boundary of disciplines. A tool prototype is implemented. To evaluate the proposed approach, we applied it in scientific computing projects. The approach has showed its advantages in the application and promotes software engineering in these projects."
+  },
+  {
+    "title": "From Informal Project Management Artifacts to Formal System Models",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Walid Maalej",
+        "last_name": "Jonas Helming, Nitesh Narayan, Holger Arndt, Maximilian Koegel"
+      }
+    ],
+    "websites": [
+      "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.303.3886&rep=rep1&type=pdf"
+    ],
+    "id": "75bd239b-711b-3296-8ebe-04abe6c065de",
+    "created": "2015-07-16T07:58:40.000Z",
+    "file_attached": true,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T07:59:41.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  },
+  {
+    "title": "INTERACTION CENTRIC REQUIREMENTS TRACEABILITY",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Maximilian Koegel",
+        "last_name": "Nitesh Narayan, Yang Li, Jonas Helming"
+      }
+    ],
+    "year": 2011,
+    "source": "In the proceedings of 6th International Conference on Evaluation of Novel Approaches to Software Engineering",
+    "city": "Beijing ",
+    "id": "3fe7e233-b67e-3d1a-8fae-9199a5b2897c",
+    "created": "2015-07-16T08:00:57.000Z",
+    "file_attached": false,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T08:00:57.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  },
+  {
+    "title": "Semi-automatic Assignment of Work Items.",
+    "type": "conference_proceedings",
+    "authors": [
+      {
+        "first_name": "Nitesh Narayan",
+        "last_name": "Jonas Helming, Holger Arndt, Zardosht Hodaie, Maximilian Koegel"
+      }
+    ],
+    "source": " ENASE, 2010",
+    "websites": [
+      "http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.303.2941&rep=rep1&type=pdf"
+    ],
+    "id": "c6b3d090-5f68-3220-9a5e-dce2e9eb545f",
+    "created": "2015-07-16T08:02:48.000Z",
+    "file_attached": false,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T08:02:48.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  },
+  {
+    "title": "Requirements Engineering for Computational Seismology Software",
+    "type": "journal",
+    "authors": [
+      {
+        "first_name": "Heiner Igel",
+        "last_name": "Yang Li, Bernd Bruegge, Simon Stähler, Nitesh Narayan"
+      }
+    ],
+    "year": 2013,
+    "source": "Advanced Computing Lecture Notes in Computational Science and Engineering ",
+    "pages": "157-175",
+    "volume": "93",
+    "id": "97bfb532-36a0-3f9b-a69f-add9151e05cb",
+    "created": "2015-07-16T08:04:41.000Z",
+    "file_attached": false,
+    "profile_id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+    "last_modified": "2015-07-16T10:09:44.000Z",
+    "read": false,
+    "starred": false,
+    "authored": true,
+    "confirmed": false,
+    "hidden": false
+  }
+]
