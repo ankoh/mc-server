@@ -1,0 +1,47 @@
+{
+  "id": "26f3b2ae-61d5-3f70-a5d1-4dd75cc56e2b",
+  "first_name": "Tobias",
+  "last_name": "Roehm",
+  "display_name": "Tobias Roehm",
+  "link": "https://www.mendeley.com/profiles/tobias-roehm/",
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/8e/ed/8eedd7531811767be7090c5557d21939854f0e98-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2010-01-13T11:09:44.000Z"
+}

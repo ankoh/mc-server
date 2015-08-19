@@ -1,0 +1,44 @@
+{
+  "id": "2f513deb-7b71-3428-9782-9b10f3c6cc9b",
+  "first_name": "Yang",
+  "last_name": "Li",
+  "display_name": "Yang Li",
+  "link": "https://www.mendeley.com/profiles/yang-li11/",
+  "academic_status": "Student  > Ph. D. Student",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2010-07-27T08:21:20.000Z"
+}

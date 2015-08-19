@@ -1,0 +1,42 @@
+{
+  "id": "49732bcf-b75a-386e-83b6-6a720bb0e882",
+  "first_name": "Miriam",
+  "last_name": "Schmidberger",
+  "display_name": "Miriam Schmidberger",
+  "link": "https://www.mendeley.com/profiles/miriam-schmidberger/",
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2011-01-20T08:33:39.000Z"
+}

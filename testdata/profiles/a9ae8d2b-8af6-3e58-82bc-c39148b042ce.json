@@ -1,0 +1,120 @@
+{
+  "id": "a9ae8d2b-8af6-3e58-82bc-c39148b042ce",
+  "first_name": "Stephan",
+  "last_name": "Krusche",
+  "display_name": "Stephan Krusche",
+  "link": "https://www.mendeley.com/profiles/stephan-krusche/",
+  "institution": "Technische Universität München - Technical University of Muenchen",
+  "institution_details": {
+    "name": "Technische Universität München - Technical University of Muenchen",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "research_interests": "Real-time Collaboration\nPeer-to-Peer Communication\nUsability Engineering\nMobile Engineering\nAgile Engineering\nFramework Development\nModel Driven Software Development",
+  "research_interests_list": [
+    "Real-time Collaboration\nPeer-to-Peer Communication\nUsability Engineering\nMobile Engineering\nAgile Engineering\nFramework Development\nModel Driven Software Development"
+  ],
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science",
+    "subdisciplines": [
+      "Software Engineering"
+    ]
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science",
+      "subdisciplines": [
+        "Software Engineering"
+      ]
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/de/31/de31b90ad528acb081e87c34797c0c7f90394d3d-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2011-06-15T19:51:37.000Z",
+  "education": [
+    {
+      "id": "a2bb18ed-99bc-4008-9e86-35ee6b8920b6",
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Master of Science (TUM)",
+      "start_date": "2008-10-01",
+      "end_date": "2011-03-01",
+      "website": "www1.in.tum.de/krusche"
+    },
+    {
+      "id": "51f4035a-76ac-4617-bc67-35ee6b89f4ef",
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Bachelor of Science (TUM)",
+      "start_date": "2005-10-01",
+      "end_date": "2008-09-01",
+      "website": "www1.in.tum.de/krusche"
+    }
+  ],
+  "employment": [
+    {
+      "id": "1b001893-86b2-4333-b6cf-35ee6b8868ce",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "position": "Research Assistant",
+      "start_date": "2011-04-01",
+      "website": "www1.in.tum.de/krusche",
+      "is_main_employment": true
+    }
+  ],
+  "biography": "Born June 3, 1986 in Nuremberg, Germany"
+}

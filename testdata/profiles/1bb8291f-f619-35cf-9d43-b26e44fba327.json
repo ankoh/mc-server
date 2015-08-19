@@ -1,0 +1,118 @@
+{
+  "id": "1bb8291f-f619-35cf-9d43-b26e44fba327",
+  "first_name": "Helmut",
+  "last_name": "Naughton",
+  "display_name": "Dipl. Math. (Univ.), M. Appl. Inf. Helmut Naughton",
+  "link": "https://www.mendeley.com/profiles/helmut-naughton/",
+  "institution": "Technische Universität München, Institut für Informatik, Chair for Applied Software Engineering",
+  "institution_details": {
+    "name": "Technische Universität München, Institut für Informatik, Chair for Applied Software Engineering",
+    "city": "Garching bei München",
+    "state": "Bavaria",
+    "country": "Germany"
+  },
+  "research_interests": "Requirements Engineering",
+  "research_interests_list": [
+    "Requirements Engineering"
+  ],
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science",
+    "subdisciplines": [
+      "Software Engineering"
+    ]
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science",
+      "subdisciplines": [
+        "Software Engineering"
+      ]
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816std.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816std.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/28/f6/28f696c5849de78f1ee9e06d00b67ec7177d0816-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2009-12-02T10:00:31.000Z",
+  "education": [
+    {
+      "id": "a84b26cc-9e5f-40a2-b83d-35ee6b895094",
+      "institution": "Ludwig-Maximilians-Universität München",
+      "institution_details": {
+        "name": "Ludwig-Maximilians-Universität München",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Diplom Mathematiker",
+      "start_date": "2000-10-01",
+      "end_date": "2005-11-01"
+    },
+    {
+      "id": "4cd5bee6-f393-4f1c-8fb4-35ee6b8950c4",
+      "institution": "Technische Universität München",
+      "institution_details": {
+        "name": "Technische Universität München",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Master of Applied Informatics",
+      "start_date": "2006-09-01",
+      "end_date": "2008-08-01"
+    }
+  ],
+  "employment": [
+    {
+      "id": "b897ce7f-c430-4867-a0b2-35ee6b88b501",
+      "institution_details": {
+        "name": "Technische Universität München, Institut für Informatik, Chair for Applied Software Engineering",
+        "city": "Garching bei München",
+        "state": "Bavaria",
+        "country": "Germany"
+      },
+      "institution": "Technische Universität München, Institut für Informatik, Chair for Applied Software Engineering",
+      "position": "Research Assistant",
+      "start_date": "2008-11-01",
+      "is_main_employment": true
+    }
+  ],
+  "title": "Dipl. Math. (Univ.), M. Appl. Inf.",
+  "biography": "..."
+}

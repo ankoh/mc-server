@@ -1,0 +1,103 @@
+{
+  "id": "e9f58b91-98db-3e14-9fb7-61ee0e9878e4",
+  "first_name": "Damir",
+  "last_name": "Ismailović",
+  "display_name": "Dr. Damir Ismailović",
+  "link": "https://www.mendeley.com/profiles/damir-ismailovic/",
+  "institution": "Technische Universität München - Technical University of Muenchen",
+  "institution_details": {
+    "name": "Technische Universität München - Technical University of Muenchen",
+    "city": "Münchenstein",
+    "state": "Basel-Landschaft",
+    "country": "Switzerland"
+  },
+  "research_interests": "Serious Games\nIntelligent Learning \nResearch of methods and algorithms from the following areas: Intelligent Tutoring Systems (ITS), Knowledge Management (KM), Artiﬁcial Intelligence (AI), Computational Intelligence (CI), Machine Learning (ML) and Behavio",
+  "research_interests_list": [
+    "Serious Games\nIntelligent Learning \nResearch of methods and algorithms from the following areas: Intelligent Tutoring Systems (ITS)",
+    "Knowledge Management (KM)",
+    "Artiﬁcial Intelligence (AI)",
+    "Computational Intelligence (CI)",
+    "Machine Learning (ML) and Behavio"
+  ],
+  "academic_status": "Student  > Postgraduate",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/1b/a5/1ba540cd41df59c6720eeb0f8cc5f18bd1414b18-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2009-11-28T16:31:55.000Z",
+  "employment": [
+    {
+      "id": "68f9853c-efd7-426e-ab9f-35ee6b8866d7",
+      "institution_details": {
+        "name": "Technische Universität München",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "institution": "Technische Universität München",
+      "position": "Research Assistant",
+      "start_date": "2008-06-01",
+      "website": "http://www1.in.tum.de"
+    },
+    {
+      "id": "505ffe3f-0c0f-4976-b551-35ee6b8880cc",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Münchenstein",
+        "state": "Basel-Landschaft",
+        "country": "Switzerland"
+      },
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "position": "Postdoc",
+      "start_date": "2012-08-01",
+      "website": "www1.in.tum.de/damirismailovic",
+      "is_main_employment": true
+    }
+  ],
+  "title": "Dr."
+}

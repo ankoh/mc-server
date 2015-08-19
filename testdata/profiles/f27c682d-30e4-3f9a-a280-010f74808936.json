@@ -1,0 +1,122 @@
+{
+  "id": "f27c682d-30e4-3f9a-a280-010f74808936",
+  "first_name": "Barbara",
+  "last_name": "Reichart",
+  "display_name": "Barbara Reichart",
+  "link": "https://www.mendeley.com/profiles/barbara-reichart/",
+  "institution": "Technische Universität München - Technical University of Muenchen",
+  "institution_details": {
+    "name": "Technische Universität München - Technical University of Muenchen",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "research_interests": "Serious Game\nAdaptivity\nCollaboration\nCompetition\nSocial Interaction",
+  "research_interests_list": [
+    "Serious Game\nAdaptivity\nCollaboration\nCompetition\nSocial Interaction"
+  ],
+  "academic_status": "Student (Master)",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/e5/52/e55249e3ac551fbc5bace64457811fdbcff604be-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2010-11-24T17:34:24.000Z",
+  "education": [
+    {
+      "id": "ceea935e-1278-499d-bba2-35ee6b8904e4",
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Bachelor",
+      "start_date": "2005-10-01",
+      "end_date": "2009-03-01"
+    },
+    {
+      "id": "52a364af-9209-4b0a-a04a-35ee6b8995a7",
+      "institution": "Georgia Institute of Technology",
+      "institution_details": {
+        "name": "Georgia Institute of Technology",
+        "city": "Atlanta",
+        "state": "Georgia",
+        "country": "United States"
+      },
+      "start_date": "2008-08-01",
+      "end_date": "2008-12-01"
+    },
+    {
+      "id": "cbfb03bc-ed84-42a3-88c4-35ee6b89494b",
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "degree": "Master",
+      "start_date": "2009-01-01",
+      "end_date": "2011-03-01"
+    }
+  ],
+  "employment": [
+    {
+      "id": "34e6828d-9f78-4a3b-90cb-35ee6b88f6fa",
+      "institution_details": {
+        "name": "Technische Universität München - Technical University of Muenchen",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "institution": "Technische Universität München - Technical University of Muenchen",
+      "position": "Doctoral Student",
+      "start_date": "2011-05-01",
+      "is_main_employment": true
+    }
+  ]
+}

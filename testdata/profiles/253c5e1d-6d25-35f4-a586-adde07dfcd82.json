@@ -1,0 +1,42 @@
+{
+  "id": "253c5e1d-6d25-35f4-a586-adde07dfcd82",
+  "first_name": "Emitzá",
+  "last_name": "Guzmán",
+  "display_name": "Emitzá Guzmán",
+  "link": "https://www.mendeley.com/profiles/emitza-guzman/",
+  "academic_status": "Student (Master)",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2010-07-26T15:02:30.000Z"
+}

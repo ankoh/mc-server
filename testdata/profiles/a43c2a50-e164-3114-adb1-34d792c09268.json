@@ -1,0 +1,50 @@
+{
+  "id": "a43c2a50-e164-3114-adb1-34d792c09268",
+  "first_name": "Zardosht",
+  "last_name": "Hodaie",
+  "display_name": "Zardosht Hodaie",
+  "link": "https://www.mendeley.com/profiles/zardosht-hodaie/",
+  "academic_status": "Student  > Ph. D. Student",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/c4/35/c4357df31d187ab508b2f53c2e0be61148b54337-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2015-03-30T19:31:32.000Z",
+  "biography": "Doctoral Student at Technische Universität München"
+}

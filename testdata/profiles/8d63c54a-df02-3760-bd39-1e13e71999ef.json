@@ -1,0 +1,47 @@
+{
+  "id": "8d63c54a-df02-3760-bd39-1e13e71999ef",
+  "first_name": "Stefan",
+  "last_name": "Nosovic",
+  "display_name": "Stefan Nosovic",
+  "link": "https://www.mendeley.com/profiles/stefan-nosovic/",
+  "academic_status": "Doctoral Student",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/ac/23/ac23fd33db19e9cfa859b3ed0bb44cb04ae43343-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2014-02-14T10:22:19.000Z"
+}

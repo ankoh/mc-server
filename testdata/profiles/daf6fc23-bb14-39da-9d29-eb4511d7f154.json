@@ -1,0 +1,86 @@
+{
+  "id": "daf6fc23-bb14-39da-9d29-eb4511d7f154",
+  "first_name": "Applied",
+  "last_name": "Software Engineering",
+  "display_name": "Applied Software Engineering, Lehrstuhl für Informatik 1",
+  "link": "https://www.mendeley.com/profiles/applied-software-engineering/",
+  "institution": "Technische Universitat Munchen",
+  "institution_details": {
+    "id": "e9e83d92-64cc-53d8-92f9-5d24a8548eaf",
+    "name": "Technische Universitat Munchen",
+    "city": "Munchen",
+    "state": "Bayern",
+    "country": "DE"
+  },
+  "research_interests": "User Centered Design\nContinuous Delivery\nAgile Development\nGames Engineering & Serious Games\nMeta Modeling & Modeling Language Engineering\nHuman Aspects in Software Engineering\nVideo based Requirements Engineering\nSoftware Engineering for Scientific Compu",
+  "research_interests_list": [
+    "User Centered Design\nContinuous Delivery\nAgile Development\nGames Engineering & Serious Games\nMeta Modeling & Modeling Language Engineering\nHuman Aspects in Software Engineering\nVideo based Requirements Engineering\nSoftware Engineering for Scientific Compu"
+  ],
+  "academic_status": "Professor",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/ec/eb/eceb6f702cf3ea732e571bd14f391436511eaad5-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2014-02-28T13:51:07.000Z",
+  "employment": [
+    {
+      "id": "dcccb770-6168-4b0a-8eab-35ee6b886113",
+      "institution_details": {
+        "id": "e9e83d92-64cc-53d8-92f9-5d24a8548eaf",
+        "name": "Technische Universitat Munchen",
+        "city": "Munchen",
+        "state": "Bayern",
+        "country": "DE"
+      },
+      "created": "2015-05-13T16:12:44.000Z",
+      "institution": "Technische Universitat Munchen"
+    }
+  ],
+  "title": "Lehrstuhl für Informatik 1",
+  "biography": "Developing and managing software is always on the move. Continuously growing complexity and shortened development cycles require high flexibility, new ideas and the courage to challenge traditional approaches. This is what we aim in our research projects and teaching courses.\nTogether with industrial and research partners, we develop, evaluate and implement new methods and solutions to support practitioners in dealing with software engineering today's challenges.\n \nTeaching and training students in topics around software engineering is our main concern. We offer lectures, seminars and practical courses in real projects and with real customers, following a learning by doing approach. Our students can prepare themselves for professional life, gain much theoretical and practical knowledge and have a lot of fun."
+}

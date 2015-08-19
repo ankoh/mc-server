@@ -1,0 +1,63 @@
+{
+  "id": "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d",
+  "first_name": "Juan",
+  "last_name": "Haladjian",
+  "display_name": "Juan Haladjian, M.Sc",
+  "link": "https://www.mendeley.com/profiles/juan-haladjian/",
+  "research_interests": "eTextiles and wearable computing.",
+  "research_interests_list": [
+    "eTextiles and wearable computing."
+  ],
+  "academic_status": "Student  > Master",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/19/20/1920ed66f1e54be07ad6e9cde5d06e36fbc643d7-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2011-02-21T20:17:25.000Z",
+  "title": "M.Sc"
+}

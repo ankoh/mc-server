@@ -1,0 +1,42 @@
+{
+  "id": "3662b634-8adb-3bc9-ac56-0d85c76e872c",
+  "first_name": "Oliver",
+  "last_name": "Creighton",
+  "display_name": "Oliver Creighton",
+  "link": "https://www.mendeley.com/profiles/oliver-creighton/",
+  "academic_status": "Post Doc",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2014-04-12T15:49:14.000Z"
+}

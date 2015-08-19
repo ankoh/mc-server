@@ -1,0 +1,61 @@
+{
+  "id": "f78cf5fc-db4c-3755-ae40-c022266496b6",
+  "first_name": "Bernd",
+  "last_name": "Bruegge",
+  "display_name": "Bernd Bruegge",
+  "link": "https://www.mendeley.com/profiles/bernd-bruegge1/",
+  "research_interests": "The list of my publications is available on my DBLP and ResearchGate pages:\n\nDBLP: http://dblp.uni-trier.de/pers/hd/b/Br=uuml=gge:Bernd\n\nResearchGate: http://www.researchgate.net/researcher/6509206_Bernd_Bruegge",
+  "research_interests_list": [
+    "The list of my publications is available on my DBLP and ResearchGate pages:\n\nDBLP: http://dblp.uni-trier.de/pers/hd/b/Br=uuml=gge:Bernd\n\nResearchGate: http://www.researchgate.net/researcher/6509206_Bernd_Bruegge"
+  ],
+  "academic_status": "Professor",
+  "discipline": {
+    "name": "Computer and Information Science"
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science"
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/80/f9/80f92358e21aa3cb2b2ff08a91d0863e087efc76-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "feace17e-1f80-492c-aa01-35ee6b8bfe13",
+    "latitude": 49.45,
+    "longitude": 11.05,
+    "name": "Nuremberg, Germany",
+    "city": "Nuremberg",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2014-02-28T15:46:28.000Z",
+  "biography": "The list of my publications is available on my DBLP and ResearchGate pages:\n\nDBLP: http://dblp.uni-trier.de/pers/hd/b/Br=uuml=gge:Bernd\n\nResearchGate: http://www.researchgate.net/researcher/6509206_Bernd_Bruegge"
+}

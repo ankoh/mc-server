@@ -1,0 +1,49 @@
+{
+  "id": "6820e59e-1c4c-3ca3-a497-e8ee45f2a489",
+  "first_name": "Constantin",
+  "last_name": "Scheuermann",
+  "display_name": "Constantin Scheuermann",
+  "link": "https://www.mendeley.com/profiles/constantin-scheuermann/",
+  "academic_status": "Student  > Ph. D. Student",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620.jpg",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620.jpg",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/77/68/776820afbc9dc25dea03e87a21853990b5220620-p256x256.jpg",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2014-10-29T15:31:06.000Z"
+}

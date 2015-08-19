@@ -1,0 +1,61 @@
+{
+  "id": "3d32488b-2c4b-3fc6-843b-397139d0b42a",
+  "first_name": "Han",
+  "last_name": "Xu",
+  "display_name": "Han Xu",
+  "link": "https://www.mendeley.com/profiles/han-xu3/",
+  "research_interests": "Innovation, Scenario Based Approach, Requirements Engineering, Lean and Agile",
+  "research_interests_list": [
+    "Innovation",
+    "Scenario Based Approach",
+    "Requirements Engineering",
+    "Lean and Agile"
+  ],
+  "academic_status": "Researcher",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2011-12-15T11:53:13.000Z",
+  "biography": ""
+}

@@ -1,0 +1,57 @@
+{
+  "id": "b16de8ea-39a8-385f-8a2a-049b14f50ee1",
+  "first_name": "Sebastian",
+  "last_name": "Peters",
+  "display_name": "Sebastian Peters",
+  "link": "https://www.mendeley.com/profiles/sebastian-peters1/",
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science",
+    "subdisciplines": [
+      "Software Engineering"
+    ]
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science",
+      "subdisciplines": [
+        "Software Engineering"
+      ]
+    }
+  ],
+  "photo": {
+    "standard": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png"
+  },
+  "photos": [
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square.png",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2012-10-24T09:52:49.000Z"
+}

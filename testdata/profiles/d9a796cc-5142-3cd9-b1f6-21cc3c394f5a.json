@@ -1,0 +1,77 @@
+{
+  "id": "d9a796cc-5142-3cd9-b1f6-21cc3c394f5a",
+  "first_name": "Nitesh",
+  "last_name": "Narayan",
+  "display_name": "Nitesh Narayan",
+  "link": "https://www.mendeley.com/profiles/nitesh-narayan/",
+  "institution": "Technische Universitat Munchen",
+  "institution_details": {
+    "id": "e9e83d92-64cc-53d8-92f9-5d24a8548eaf",
+    "name": "Technische Universitat Munchen",
+    "city": "Munchen",
+    "state": "Bayern",
+    "country": "DE"
+  },
+  "research_interests": "Traceability, Multimodal Interfaces, Requirements Engineering",
+  "research_interests_list": [
+    "Traceability",
+    "Multimodal Interfaces",
+    "Requirements Engineering"
+  ],
+  "academic_status": "Student  > Ph. D. Student",
+  "discipline": {
+    "name": "Computer Science",
+    "subdisciplines": []
+  },
+  "disciplines": [
+    {
+      "name": "Computer Science",
+      "subdisciplines": []
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a-standard.jpg",
+    "square": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a-standard.jpg",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/7d/95/7d95ce41d0fa11a3a8fdbbd8ee44505a4d74d46a-p256x256.jpg",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "created": "2010-07-27T07:33:09.000Z",
+  "education": [
+    {
+      "id": "77b527f3-a4dd-4049-9810-35ee6b89698e",
+      "created": "2015-07-16T08:14:39.000Z",
+      "institution": "Technische Universitat Munchen",
+      "institution_details": {
+        "id": "e9e83d92-64cc-53d8-92f9-5d24a8548eaf",
+        "name": "Technische Universitat Munchen",
+        "city": "Munchen",
+        "state": "Bayern",
+        "country": "DE"
+      }
+    }
+  ]
+}

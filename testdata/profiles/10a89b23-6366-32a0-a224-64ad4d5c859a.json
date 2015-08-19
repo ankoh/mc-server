@@ -1,0 +1,90 @@
+{
+  "id": "10a89b23-6366-32a0-a224-64ad4d5c859a",
+  "first_name": "Hoda",
+  "last_name": "Naguib",
+  "display_name": "Hoda Naguib, M.Sc in Information Systems",
+  "link": "https://www.mendeley.com/profiles/hoda-naguib/",
+  "institution": "Technical University of Munich",
+  "institution_details": {
+    "name": "Technical University of Munich",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "research_interests": "Software Engineering :\n    * Release Mangment\n    * Rationale Management\n    * Bug reporting Lifecycle\n    * The use of social networking in software engineering",
+  "research_interests_list": [
+    "Software Engineering :\n    * Release Mangment\n    * Rationale Management\n    * Bug reporting Lifecycle\n    * The use of social networking in software engineering"
+  ],
+  "academic_status": "Ph.D. Student",
+  "discipline": {
+    "name": "Computer and Information Science",
+    "subdisciplines": [
+      "Artificial Intelligence"
+    ]
+  },
+  "disciplines": [
+    {
+      "name": "Computer and Information Science",
+      "subdisciplines": [
+        "Artificial Intelligence"
+      ]
+    }
+  ],
+  "photo": {
+    "original": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2.png",
+    "standard": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2std.png",
+    "square": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2-square.jpg"
+  },
+  "photos": [
+    {
+      "url": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2.png",
+      "original": true
+    },
+    {
+      "height": 120,
+      "url": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2std.png",
+      "original": false
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "url": "http://s3.amazonaws.com/mendeley-photos/b8/71/b871b16354117406f550269cdc28a4d18ea3d7e2-square.jpg",
+      "original": false
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "url": "http://s3.amazonaws.com/mendeley-photos/awaiting_square_256.png",
+      "original": false
+    }
+  ],
+  "verified": true,
+  "user_type": "normal",
+  "location": {
+    "id": "65792c05-6dd1-4620-b5c8-35ee6b8bc635",
+    "latitude": 48.14,
+    "longitude": 11.58,
+    "name": "Munich, Germany",
+    "city": "Munich",
+    "state": "Bayern",
+    "country": "Germany"
+  },
+  "created": "2010-07-28T14:17:44.000Z",
+  "employment": [
+    {
+      "id": "1fe021af-0b8e-4974-9e00-35ee6b885169",
+      "institution_details": {
+        "name": "Technical University of Munich",
+        "city": "Munich",
+        "state": "Bayern",
+        "country": "Germany"
+      },
+      "institution": "Technical University of Munich",
+      "position": "Phd Student ",
+      "start_date": "2009-07-01",
+      "website": "http://www1.in.tum.de/static/lehrstuhl/index.php/people/213-hoda-naguib",
+      "is_main_employment": true
+    }
+  ],
+  "title": "M.Sc in Information Systems"
+}
