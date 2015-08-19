@@ -3,7 +3,6 @@ from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 # Controller imports
-from mendelycache.controllers.crawler import CrawlerController
 from mendelycache.controllers.fields import FieldsController
 from mendelycache.controllers.profiles import ProfilesController
 from mendelycache.controllers.publications import PublicationsController
@@ -17,7 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
 
 # Create the controllers
-crawler_controller = CrawlerController(app, db)
 fields_controller = FieldsController(app, db)
 profiles_controller = ProfilesController(app, db)
 publications_controller = PublicationsController(app, db)
