@@ -1,5 +1,6 @@
+[![build status](https://gitlab-ci.kohn.io/projects/19/status.png?ref=master)](https://gitlab-ci.kohn.io/projects/19?ref=master)
 
-## Mendeley Cache Server [![build status](https://gitlab-ci.kohn.io/projects/19/status.png?ref=master)](https://gitlab-ci.kohn.io/projects/19?ref=master)
+## Mendeley Cache Server
 
 This project aims to build a cache server for the Mendeley API that identifies additional coherences and provides an extended REST API.
 
