@@ -13,5 +13,4 @@ github:
     - chmod 700 ~/.ssh/
     - chmod 600 ~/.ssh/config
     - chmod 600 ~/.ssh/github.key 
-    - git remote add github github:ankoh/mendeley-cache-server.git
-    - git push --all github
+    - git push --all github:ankoh/mendeley-cache-server.git
