@@ -162,9 +162,9 @@
     "year": 2012,
     "source": "2012 2nd IEEE International Workshop on Requirements Patterns, RePa 2012 - Proceedings",
     "identifiers": {
-      "isbn": "9781467343763",
+      "doi": "10.1109/RePa.2012.6359967",
       "scopus": "2-s2.0-84871551149",
-      "doi": "10.1109/RePa.2012.6359967"
+      "isbn": "9781467343763"
     },
     "keywords": [
       "domain-specific",
@@ -234,9 +234,9 @@
     "year": 2011,
     "source": "2011 4th International Workshop on Managing Requirements Knowledge, MaRK'11 - Part of the 19th IEEE International Requirements Engineering Conference, RE'11",
     "identifiers": {
-      "isbn": "9781457709388",
+      "doi": "10.1109/MARK.2011.6046559",
       "scopus": "2-s2.0-80555126113",
-      "doi": "10.1109/MARK.2011.6046559"
+      "isbn": "9781457709388"
     },
     "keywords": [
       "CASE tool",

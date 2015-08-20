@@ -654,7 +654,7 @@
     "confirmed": true,
     "hidden": false,
     "citation_key": "Willnecker2011a",
-    "abstract": "Die dramatisch schnelle Entwicklung von Smartphones und Tablets hatte zur Folge, dass extrem heterogene Systemlandschaften entstanden sind. Für die Entwicklung von Applikationen der Post-PC Ära sind daher eine Reihe von Ansätzen zur Multi-Plattformentwicklung entstanden. Dieser Beitrag be- leuchtet die Vor- und Nachteile verschiedener Systemarchitekturen für die Entwicklung von Multi-Plattform Smart Mobile Apps: Angefangen bei Web Apps, über Hybrid Apps und Cross-Compilern bis hin zu Applikationsbe- schreibungssprachen."
+    "abstract": "Die dramatisch schnelle Entwicklung von Smartphones und Tablets hatte zur Folge, dass extrem heterogene Systemlandschaften entstanden sind. Für die Entwicklung von Applikationen der Post-PC Ära sind daher eine Reihe von Ansätzen zur Multi-Plattformentwicklung entstanden. Dieser Beitrag be- leuchtet die Vor- und Nachteile verschiedener Systemarchitekturen für die Entwicklung von Multi-Plattform Smart Mobile Apps: Angefangen bei Web Apps, über Hybrid Apps und Cross-Compilern bis hin zu Applikationsbe- schreibungssprachen."
   },
   {
     "title": "Rocking the Keys with a Multi-Touch Interface",

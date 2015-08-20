@@ -61,8 +61,8 @@
     "source": "2011 IEEE Consumer Communications and Networking Conference, CCNC'2011",
     "identifiers": {
       "doi": "10.1109/CCNC.2011.5766470",
-      "isbn": "9781424487905",
-      "scopus": "2-s2.0-79957910331"
+      "scopus": "2-s2.0-79957910331",
+      "isbn": "9781424487905"
     },
     "id": "4d65b95b-7404-373f-af93-0696fb88fdf2",
     "created": "2015-06-29T07:12:46.000Z",
@@ -101,9 +101,9 @@
     "source": "IEEE Vehicular Technology Conference",
     "identifiers": {
       "doi": "10.1109/VETECS.2011.5956640",
+      "isbn": "9781424483310",
       "issn": "15502252",
-      "scopus": "2-s2.0-80051982390",
-      "isbn": "9781424483310"
+      "scopus": "2-s2.0-80051982390"
     },
     "id": "e0182966-e01b-3908-87de-b07e82f84a7e",
     "created": "2015-06-29T07:15:03.000Z",
