@@ -7,8 +7,11 @@ unittest:
 
 github:
   script:
-    - echo "$GITHUB_DEPLOYMENT_KEY" > github.key
     - mkdir -p ~/.ssh/
-    - printf "Host github\n    HostName github.com\n    User git\n    IdentityFile %s/github.key\n" "$(pwd)" > ~/.ssh/config
+    - echo "$GITHUB_DEPLOYMENT_KEY" > ~/.ssh/github.key
+    - printf "Host github\n    HostName github.com\n    User git\n    IdentityFile ~/.ssh/github.key\n" >> ~/.ssh/config
+    - chmod 700 ~/.ssh/
+    - chmod 600 ~/.ssh/config
+    - chmod 600 ~/.ssh/github.key 
     - git remote add github github:ankoh/mendeley-cache-server.git
     - git push --all github
