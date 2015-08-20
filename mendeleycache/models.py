@@ -124,13 +124,11 @@ class Profile:
                  first_name: str,
                  last_name: str,
                  display_name: str,
-                 email: str,
                  link: str):
         self.__identifier = identifier
         self.__first_name = first_name
         self.__last_name = last_name
         self.__display_name = display_name
-        self.__email = email
         self.__link = link
 
     @property
@@ -148,10 +146,6 @@ class Profile:
     @property
     def display_name(self) -> str:
         return self.__display_name
-
-    @property
-    def email(self) -> str:
-        return self.__email
 
     @property
     def link(self) -> str:
