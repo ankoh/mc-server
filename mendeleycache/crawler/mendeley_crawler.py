@@ -30,21 +30,19 @@ class MendeleyCrawler(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def get_documents_by_profile_id(self, profile_id: str, all_view: bool) -> [Document]:
+    def get_documents_by_profile_id(self, profile_id: str) -> [Document]:
         """
         get_documents_by_profile_id returns documents given a profile_id and whether the document shall be loaded completely
         :param profile_id: id of the user profile
-        :param all_view: whether the 'all' view from Mendeley shall be used
         :return:
         """
         pass
 
     @abstractmethod
-    def get_documents_by_group_id(self, group_id: str, all_view: bool) -> [Document]:
+    def get_documents_by_group_id(self, group_id: str) -> [Document]:
         """
         get_documents_by_group_id returns documents given a group_id and whether the document shall be loaded completely
         :param group_id: id of the research group
-        :param all_view: whether the 'all' view from Mendeley shall be used
         :return:
         """
         pass

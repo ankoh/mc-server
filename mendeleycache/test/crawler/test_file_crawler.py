@@ -82,6 +82,23 @@ class TestFileCrawler(unittest.TestCase):
             self.assertEqual(t[3], profile.display_name)
             self.assertEqual(t[4], profile.link)
 
+    def test_get_documents_by_profile_id(self):
+        crwler = FileCrawler()
 
-        # Helmut Naughton
-        profile = crwler.get_profile_by_id('1bb8291f-f619-35cf-9d43-b26e44fba327')
+        # invalid id
+        documents = crwler.get_documents_by_profile_id('1bb8291f)-f619-35cf-9d43-b26e44fba327')
+        self.assertIsNone(documents)
+
+        # valid but not existing id
+        documents = crwler.get_documents_by_profile_id('notexisting-f619-35cf-9d43-b26e44fba327')
+        self.assertIsNotNone(documents)
+        self.assertEqual(0, len(documents))
+
+        documents = crwler.get_documents_by_profile_id('6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d')
+        self.assertIsNotNone(documents)
+        self.assertEqual(4, len(documents))
+
+        pass
+
+    def test_get_documents_by_group_id(self):
+        pass

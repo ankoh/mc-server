@@ -45,7 +45,6 @@ class Document:
                  core_source: str,
                  core_year: int,
                  core_authors: [(str, str)],
-                 core_identifiers: [(str, str)],
                  core_keywords: [str],
                  tags: [str]):
         self.__core_id = core_id
@@ -58,7 +57,6 @@ class Document:
         self.__core_source = core_source
         self.__core_year = core_year
         self.__core_authors = core_authors
-        self.__core_identifiers = core_identifiers
         self.__core_keywords = core_keywords
         self.__tags = tags
 
@@ -101,10 +99,6 @@ class Document:
     @property
     def core_authors(self) -> [(str, str)]:
         return self.__core_authors
-
-    @property
-    def core_identifiers(self) -> [(str, str)]:
-        return self.__core_identifiers
 
     @property
     def core_keywords(self) -> [str]:
