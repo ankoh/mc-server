@@ -1,6 +1,14 @@
-before_script:
-  - pip install --quiet -r requirements.txt
-
 unittest:
   script:
+    - pip install --quiet -r requirements.txt
     - python -m unittest discover -v
+  tags:
+    - python3
+
+github:
+  script:
+    - echo "$GITHUB_DEPLOYMENT_KEY" > github.key
+    - mkdir -p ~/.ssh/
+    - printf "Host github\n    HostName github.com\n    User git\n    IdentityFile $(pwd)/github.key\n" > ~/.ssh/config
+    - git remote add github github:ankoh/mendeley-cache-server.git
+    - git push --all github
