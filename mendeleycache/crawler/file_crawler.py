@@ -7,10 +7,11 @@ import logging
 from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.models import *
 from mendeleycache.utils.files import get_path
-from mendeleycache.utils.reflection import get_class_attributes, get_string_value_if_key_exists, get_dict_if_key_exists
+from mendeleycache.utils.reflection import get_class_attributes, get_default, get_dict_if_key_exists
 from mendeleycache.utils.validator import is_valid_mendeley_id
 import json
 import pprint
+from datetime import date
 
 
 class FileCrawler(AbstractCrawler):
@@ -87,12 +88,12 @@ class FileCrawler(AbstractCrawler):
         core_id = json_doc['id']
         core_profile_id = json_doc['profile_id']
         core_title = json_doc['title']
-        core_type = json_doc['type']
+        core_type = get_default(json_doc, 'type', 'conference_proceedings')
         core_created = parse(json_doc['created'])
         core_last_modified = parse(json_doc['last_modified'])
-        core_year = int(json_doc['year'])
-        core_abstract = get_string_value_if_key_exists(json_doc, 'abstract')
-        core_source = get_string_value_if_key_exists(json_doc, 'source')
+        core_year = int(get_default(json_doc, 'year', date.today().year))
+        core_abstract = get_default(json_doc, 'abstract', "")
+        core_source = get_default(json_doc, 'source', "")
 
         # Core tuples
         core_authors = []
@@ -100,8 +101,8 @@ class FileCrawler(AbstractCrawler):
         tags = []
 
         for author in get_dict_if_key_exists(json_doc, 'authors'):
-            first_name = get_string_value_if_key_exists(author, 'first_name')
-            last_name = get_string_value_if_key_exists(author, 'last_name')
+            first_name = get_default(author, 'first_name', "")
+            last_name = get_default(author, 'last_name', "")
             core_authors.append((first_name, last_name))
 
         for keyword in get_dict_if_key_exists(json_doc, 'keywords'):

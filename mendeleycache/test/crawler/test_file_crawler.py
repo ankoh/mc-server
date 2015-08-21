@@ -19,7 +19,7 @@ class TestFileCrawler(unittest.TestCase):
         # valid id
         members = crwler.get_group_members('d0b7f41f-ad37-3b47-ab70-9feac35557cc')
         self.assertIsNotNone(members)
-        self.assertNotEqual(0, len(members))
+        self.assertEqual(22, len(members))
 
         # valid but not existing id
         members = crwler.get_group_members('notexisting-ad37-3b47-ab70-9feac35557cc')

@@ -4,17 +4,18 @@ from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.config import ServiceConfiguration
 from queue import Queue
 from threading import Thread
+import traceback
 
 # number of workers that are used to fetch the publications & profiles in parallel
-number_workers = 4
-
+number_profile_workers = 2
+number_document_workers = 4
 
 class CrawlerController:
     """
     The crawler controller spawns mutliple crawlers and returns the results afterwards
     """
-    def __init__(self, config: ServiceConfiguration, crawler: AbstractCrawler):
-        self.__research_group = config.mendeley.research_group
+    def __init__(self, crawler: AbstractCrawler, research_group: str):
+        self.__research_group = research_group
         self.__crawler = crawler
 
         self.__members = []
@@ -43,28 +44,46 @@ class CrawlerController:
     def succeeded(self):
         return self.__succeeded
 
-    # Worker queue
-    __profile_id_queue = Queue()
+    # Worker queues
+    __profile_queue = Queue()
+    __profile_documents_queue = Queue()
 
-    def profile_id_worker(self):
+    def profile_worker(self):
         """
-        Given a prefilled queue with profile ids this worker will
-        pop an id and fetch profile and documents
+        Given a prefilled profile queue this worker will pop an id
+        and fetch the associated profile
         :return:
         """
-        while not self.__profile_id_queue.empty():
-            profile_id = self.__profile_id_queue.get()
-            # Fetch the profile
-            profile = self.__crawler.get_profile_by_id(profile_id)
-            self.__profiles[profile_id] = profile
-            # Fetch the document
-            documents = self.__crawler.get_documents_by_profile_id(profile_id)
-            self.__profile_documents[profile_id] = documents
-            # Mark task as done
-            self.__profile_id_queue.task_done()
+        while not self.__profile_queue.empty():
+            try:
+                profile_id = self.__profile_queue.get()
+                # Fetch the profile
+                profile = self.__crawler.get_profile_by_id(profile_id)
+                self.__profiles[profile_id] = profile
+                # Mark task as done
+                self.__profile_queue.task_done()
+            except Exception as e:
+                traceback.print_exc()
+                self.__profile_queue.task_done()
 
-            # DEBUG
-            print(profile_id + " fetched")
+    def document_worker(self):
+        """
+        Given a prefilled profile_documents queue this worker will pop an id
+        and fetch the associated documents
+        :return:
+        """
+        while not self.__profile_documents_queue.empty():
+            try:
+                profile_id = self.__profile_documents_queue.get()
+                # Fetch the document
+                documents = self.__crawler.get_documents_by_profile_id(profile_id)
+                self.__profile_documents[profile_id] = documents
+                # Mark task as done
+                self.__profile_documents_queue.task_done()
+            except Exception as e:
+                traceback.print_exc()
+                self.__profile_documents_queue.task_done()
+
 
     def crawl_group_members(self):
         """
@@ -79,22 +98,31 @@ class CrawlerController:
         :return:
         """
         for member in self.__members:
-            self.__profile_id_queue.put(member.profile_id)
+            self.__profile_queue.put(member.profile_id)
+            self.__profile_documents_queue.put(member.profile_id)
 
-        for i in range(number_workers):
-            t = Thread(target=self.profile_id_worker)
+        # Create profile crawlers
+        for i in range(number_profile_workers):
+            t = Thread(target=self.profile_worker)
             t.daemon = False
             t.start()
 
-        # Wait for all workers to complete
-        self.__profile_id_queue.join()
+        # Create document crawlers
+        for i in range(number_document_workers):
+            t = Thread(target=self.document_worker)
+            t.daemon = False
+            t.start()
+
+        # Wait for both queues to complete
+        self.__profile_queue.join()
+        self.__profile_documents_queue.join()
 
     def crawl_group_documents(self):
         """
         Fetches the publications that are associated with the pre-configured group
         :return:
         """
-        self.__group_publications = self.__crawler.get_documents_by_group_id(self.__research_group)
+        self.__group_documents = self.__crawler.get_documents_by_group_id(self.__research_group)
 
     def crawl_all(self):
         """

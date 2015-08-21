@@ -8,12 +8,13 @@ from mendeleycache.config import ServiceConfiguration
 
 import unittest
 
+config_file = get_path('config.yml')
+
 
 class TestServiceConfiguration(unittest.TestCase):
-    config_file = get_path('config.yml')
-
-    def write_valid(self):
-        with open(self.config_file, 'w') as config:
+    @staticmethod
+    def write_valid():
+        with open(config_file, 'w') as config:
             config.truncate()
             valid_config = (
                 "mendeley:\n"
@@ -30,8 +31,9 @@ class TestServiceConfiguration(unittest.TestCase):
             )
             config.write(valid_config)
 
-    def write_invalid_1(self):
-        with open(self.config_file, 'w') as config:
+    @staticmethod
+    def write_invalid_1():
+        with open(config_file, 'w') as config:
             config.truncate()
             invalid_config = (
                 "blabla:\n"
@@ -51,17 +53,17 @@ class TestServiceConfiguration(unittest.TestCase):
     def test_service_configuration_load(self):
         # test a non existent configuration
         config = ServiceConfiguration()
-        remove(self.config_file) if exists(self.config_file) else None
+        remove(config_file) if exists(config_file) else None
         self.assertRaises(InvalidConfigurationException, config.load)
 
         # then test an invalid configuration
         config = ServiceConfiguration()
-        self.write_invalid_1()
+        TestServiceConfiguration.write_invalid_1()
         self.assertRaises(InvalidConfigurationException, config.load)
 
         # then test a valid configuration
         config = ServiceConfiguration()
-        self.write_valid()
+        TestServiceConfiguration.write_valid()
         try:
             config.load()
             self.assertEqual(config.mendeley.app_id, 231209)
@@ -77,4 +79,4 @@ class TestServiceConfiguration(unittest.TestCase):
 
 
     def tearDown(self):
-        remove(self.config_file) if exists(self.config_file) else None
+        remove(config_file) if exists(config_file) else None
