@@ -49,3 +49,4 @@ class TestCrawlerController(unittest.TestCase):
         for member in crwler_controller.members:
             self.assertIn(member.profile_id, crwler_controller.profile_documents)
         self.assertGreater(len(crwler_controller.group_documents), 0)
+        self.assertTrue(crwler_controller.succeeded)
