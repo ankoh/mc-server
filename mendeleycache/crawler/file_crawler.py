@@ -4,7 +4,7 @@ from os.path import exists
 from dateutil.parser import parse
 import logging
 
-from mendeleycache.crawler.mendeley_crawler import MendeleyCrawler
+from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.models import *
 from mendeleycache.utils.files import get_path
 from mendeleycache.utils.reflection import get_class_attributes, get_string_value_if_key_exists, get_dict_if_key_exists
@@ -13,7 +13,7 @@ import json
 import pprint
 
 
-class FileCrawler(MendeleyCrawler):
+class FileCrawler(AbstractCrawler):
     """
     The FileCrawler is a subclass of MendeleyCrawler and shall be used as Stub
     for the Mendeley API during the client Protractor tests

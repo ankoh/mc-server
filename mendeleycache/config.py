@@ -5,6 +5,7 @@ from mendeleycache.utils.files import get_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
 import yaml
 
+
 class MendeleyConfiguration:
     """
     Configuration of the Mendeley API app access
@@ -23,6 +24,7 @@ class MendeleyConfiguration:
     @property
     def research_group(self):
         return self.__research_group
+
 
 class DatabaseConfiguration:
     """
@@ -50,6 +52,7 @@ class DatabaseConfiguration:
     @property
     def secret(self):
         return self.__secret
+
 
 class GeneralConfiguration:
     """

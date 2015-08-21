@@ -1,7 +1,7 @@
 __author__ = 'kohn'
 
-from mendeleycache.crawler.mendeley_crawler import MendeleyCrawler
+from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 
 
-class SDKCrawler(MendeleyCrawler):
+class SDKCrawler(AbstractCrawler):
     pass

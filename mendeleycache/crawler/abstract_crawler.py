@@ -5,7 +5,7 @@ from abc import ABCMeta
 from abc import abstractmethod
 
 
-class MendeleyCrawler(metaclass=ABCMeta):
+class AbstractCrawler(metaclass=ABCMeta):
     """
         The MendeleyCrawler is an abstract base class that describes
         the functionality to access (Publication-)Documents, (User-)Profiles and (Research-)Groups
