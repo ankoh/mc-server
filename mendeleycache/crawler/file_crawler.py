@@ -33,7 +33,7 @@ class FileCrawler(MendeleyCrawler):
             return []
 
         # If yes open and parse json
-        with open(path) as json_file:
+        with open(path, 'r') as json_file:
             json_data = json.load(json_file)
 
             # Now iterate over the list and create new members
@@ -63,7 +63,7 @@ class FileCrawler(MendeleyCrawler):
             return None
 
         # If yes open and parse json
-        with open(path) as json_file:
+        with open(path, 'r') as json_file:
             json_data = json.load(json_file)
 
             identifier = json_data['id']
@@ -146,7 +146,7 @@ class FileCrawler(MendeleyCrawler):
             return []
 
         # If yes open and parse json
-        with open(path) as json_file:
+        with open(path, 'r') as json_file:
             json_data = json.load(json_file)
 
             for json_doc in json_data:
@@ -175,7 +175,7 @@ class FileCrawler(MendeleyCrawler):
             return []
 
         # If yes open and parse json
-        with open(path) as json_file:
+        with open(path, 'r') as json_file:
             json_data = json.load(json_file)
 
             for json_doc in json_data:
