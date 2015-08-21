@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 __author__ = 'kohn'
 
 import unittest
@@ -98,7 +100,82 @@ class TestFileCrawler(unittest.TestCase):
         self.assertIsNotNone(documents)
         self.assertEqual(4, len(documents))
 
-        pass
+        # check first document (eb4a3fe7-f756-3112-8a12-6cdf0d16a9ad)
+        document = documents[0]
+        self.assertEqual(document.core_title, "A quick prototyping tool for serious games with real time physics")
+        self.assertEqual(document.core_profile_id, "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d")
+        self.assertEqual(document.core_id, "eb4a3fe7-f756-3112-8a12-6cdf0d16a9ad")
+        self.assertEqual(document.core_type, "thesis")
+        self.assertEqual(document.core_abstract, "")
+        self.assertEqual(document.core_source, "")
+        self.assertEqual(document.core_year, 2011)
+        self.assertIsNotNone(document.core_authors)
+        self.assertEqual(len(document.core_authors), 1)
+        self.assertIsNotNone(document.core_keywords)
+        self.assertEqual(len(document.core_keywords), 0)
+        self.assertIsNotNone(document.tags)
+        self.assertEqual(len(document.tags), 3)
+
+        # check second document (d782c4cd-ed24-3b2d-9816-8ba0580ea704)
+        document = documents[1]
+        self.assertEqual(document.core_title, "A quick prototyping framework for adaptive serious games with 2D physics on mobile touch devices")
+        self.assertEqual(document.core_profile_id, "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d")
+        self.assertEqual(document.core_id, "d782c4cd-ed24-3b2d-9816-8ba0580ea704")
+        self.assertEqual(document.core_type, "conference_proceedings")
+        self.assertEqual(document.core_abstract, "In recent years mobile devices like the iPhone (and Android devices) became even more powerful than netbooks. This computational power can be used for complex simulations and games that were until now just possible on desktop computers. We propose adaptive games with 2D physics on mobile devices that can be used for learning purposes. We argue that even young children can understand and apply physical laws in such games. Because of the touch displays, abstract physical concepts can be made more tangible as one can directly touch the objects on the screen. Furthermore, digital games can provide an individualized learning and playing experience for each child with the integrated Adaptivity. In this work we show the problems that arise when developing serious games featuring adaptivity and physics and we propose a solution to them: a quick prototyping framework called TangoPhysics. TangoPhysics suggests a new way of prototyping mobile games: The prototypes are constructed directly on the mobile device, and can be tested at any moment. We show that the development time of a serious game can be dramatically reduced with our framework. At the same time the development is simplified dramatically allowing not only programmers, but also teachers and in the long run maybe even students to develop their own serious games,")
+        self.assertEqual(document.core_source, "IADIS Mobile Learning 2012 ML 2012")
+        self.assertEqual(document.core_year, 2012)
+        self.assertIsNotNone(document.core_authors)
+        self.assertEqual(len(document.core_authors), 4)
+        self.assertIsNotNone(document.core_keywords)
+        self.assertEqual(len(document.core_keywords), 4)
+        self.assertIsNotNone(document.tags)
+        self.assertEqual(len(document.tags), 0)
+
+        # check third document (b8912127-4443-304f-8599-779ec5c515a9)
+        document = documents[2]
+        self.assertEqual(document.core_title, "A framework for game tuning")
+        self.assertEqual(document.core_profile_id, "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d")
+        self.assertEqual(document.core_id, "b8912127-4443-304f-8599-779ec5c515a9")
+        self.assertEqual(document.core_type, "conference_proceedings")
+        self.assertEqual(document.core_abstract, "")
+        self.assertEqual(document.core_source, "Proceedings of the IADIS International Conference Game and Entertainment Technologies 2012")
+        self.assertEqual(document.core_year, 2012)
+        self.assertIsNotNone(document.core_authors)
+        self.assertEqual(len(document.core_authors), 7)
+        self.assertIsNotNone(document.core_keywords)
+        self.assertEqual(len(document.core_keywords), 0)
+        self.assertIsNotNone(document.tags)
+        self.assertEqual(len(document.tags), 0)
+
+         # check fourth document (97a6fc9e-70b3-321a-b1c6-477c1946cf3d)
+        document = documents[3]
+        self.assertEqual(document.core_title, "A framework for the creation of mobile games targeting dyslexic children")
+        self.assertEqual(document.core_profile_id, "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d")
+        self.assertEqual(document.core_id, "97a6fc9e-70b3-321a-b1c6-477c1946cf3d")
+        self.assertEqual(document.core_type, "conference_proceedings")
+        self.assertEqual(document.core_abstract, "")
+        self.assertEqual(document.core_source, "IADIS Mobile Learning 2013")
+        self.assertEqual(document.core_year, 2013)
+        self.assertIsNotNone(document.core_authors)
+        self.assertEqual(len(document.core_authors), 5)
+        self.assertIsNotNone(document.core_keywords)
+        self.assertEqual(len(document.core_keywords), 0)
+        self.assertIsNotNone(document.tags)
+        self.assertEqual(len(document.tags), 0)
 
     def test_get_documents_by_group_id(self):
-        pass
+        crwler = FileCrawler()
+
+        # invalid id
+        documents = crwler.get_documents_by_group_id('1bb8291f)-f619-35cf-9d43-b26e44fba327')
+        self.assertIsNone(documents)
+
+        # valid but not existing id
+        documents = crwler.get_documents_by_group_id('notexisting-f619-35cf-9d43-b26e44fba327')
+        self.assertIsNotNone(documents)
+        self.assertEqual(0, len(documents))
+
+        documents = crwler.get_documents_by_group_id('d0b7f41f-ad37-3b47-ab70-9feac35557cc')
+        self.assertIsNotNone(documents)
+        self.assertEqual(20, len(documents))

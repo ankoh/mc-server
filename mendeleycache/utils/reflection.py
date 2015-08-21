@@ -6,14 +6,14 @@ def get_class_attributes(target) -> [str]:
 
 
 def get_string_value_if_key_exists(dct, key) -> str:
-    if key in dct:
+    if key in dct and not dct[key] is None:
         return dct[key]
     else:
-        ""
+        return ""
 
 
 def get_dict_if_key_exists(dct, key):
-    if key in dct:
+    if key in dct and not dct[key] is None:
         return dct[key]
     else:
         return dict()
