@@ -66,10 +66,10 @@ class TestAnalysisController(unittest.TestCase):
         self.assertTrue(len(ctrl.unified_field_title_to_documents["tag1"]), 1)
         self.assertIn("docid1", ctrl.unified_field_title_to_documents["tag1"])
 
-        # Now add a new document for the same tag
-        ctrl.analyze_field_tag("docid2", "t ag - 1")
+        # Now add a new document for the same tag (but different field name)
+        ctrl.analyze_field_tag("docid2", "t -ag - 1")
         self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
-        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("T Ag 1", ctrl.unified_field_title_to_field["tag1"].title)
         self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
         # Check if document docid2 is now linked with tag 1
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)

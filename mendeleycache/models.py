@@ -145,6 +145,7 @@ class Profile:
     def link(self) -> str:
         return self.__link
 
+
 class CacheField:
     """
     Class that represents a cache field
@@ -156,6 +157,10 @@ class CacheField:
     @property
     def title(self) -> str:
         return self.__title
+
+    @title.setter
+    def title(self, value: str):
+        self.__title = value
 
     @property
     def unified_title(self) -> str:
@@ -174,6 +179,10 @@ class CacheDocument:
     def title(self) -> str:
         return self.__title
 
+    @title.setter
+    def title(self, value: str):
+        self.__title = value
+
     @property
     def unified_title(self) -> str:
         return self.__unified_title
@@ -191,6 +200,10 @@ class CacheProfile:
     def name(self) -> str:
         return self.__name
 
+    @name.setter
+    def name(self, value: str):
+        self.__name = value
+
     @property
     def unified_name(self) -> str:
         return self.__unified_name
@@ -207,6 +220,10 @@ class CacheUnknownProfile:
     @property
     def name(self) -> str:
         return self.__name
+
+    @name.setter
+    def name(self, value: str):
+        self.__name = value
 
     @property
     def unified_name(self) -> str:
