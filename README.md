@@ -11,7 +11,7 @@ This project aims to build a cache server for the Mendeley API that identifies a
 
 We use a [GitLab Server](https://gitlab.kohn.io/ankoh/mendeley-cache-server) bundled with [GitLab CI](https://gitlab-ci.kohn.io/projects/19) for continuous builds and deployments.
 
-Feel free to contribute there as soon as the software reaches a certain level of professionality.
+Feel free to contribute as soon as the software reaches a certain level of professionality.
 
 **Attention: At the moment both servers use self-signed SSL certificates.**
 
