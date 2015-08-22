@@ -79,6 +79,7 @@ class TestAnalysisController(unittest.TestCase):
         'maxmustermann': [document_3],
         'heinrichmustermann': [document_4]
     }
+    group_documents = [ document1, document_same_title_1, document_3, document_4 ]
 
     def test_process_profiles(self):
         ctrl = AnalysisController(self.profiles, {}, [])
@@ -190,6 +191,25 @@ class TestAnalysisController(unittest.TestCase):
         self.assertEqual(ctrl.unified_name_to_unknown_profile["nichtexistent"].name, "Nicht Existent")
         self.assertEqual(ctrl.unified_name_to_unknown_profile["nichtexistent"].unified_name, "nichtexistent")
 
+    def assert_participations(self, ctrl):
+        # Check if participated_documents are set correctly
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["hansmustermann"]), 2)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["maxmustermann"]), 0)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["heinrichmustermann"]), 1)
+        self.assertIn("title1", ctrl.unified_name_to_participated_documents["hansmustermann"])
+        self.assertIn("title2", ctrl.unified_name_to_participated_documents["hansmustermann"])
+        self.assertIn("title3", ctrl.unified_name_to_participated_documents["heinrichmustermann"])
+
+        # Check if unknown authors are set correctly
+        self.assertEqual(len(ctrl.unified_name_to_unknown_profile), 2)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nichtexistent"]), 1)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nocheiner"]), 1)
+
+        self.assertEqual(len(ctrl.unified_document_title_to_documents), 3)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title1"]), 2)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title2"]), 1)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title3"]), 1)
+
     def test_process_profile_documents(self):
         ctrl = AnalysisController(self.profiles, self.profile_documents, [])
         ctrl.process_profiles()
@@ -203,29 +223,11 @@ class TestAnalysisController(unittest.TestCase):
         self.assertIn("title2", ctrl.unified_name_to_authored_documents["maxmustermann"])
         self.assertIn("title3", ctrl.unified_name_to_authored_documents["heinrichmustermann"])
 
-        # Check if participated_documents are set correctly
-        self.assertEqual(len(ctrl.unified_name_to_participated_documents["hansmustermann"]), 2)
-        self.assertEqual(len(ctrl.unified_name_to_participated_documents["maxmustermann"]), 0)
-        self.assertEqual(len(ctrl.unified_name_to_participated_documents["heinrichmustermann"]), 1)
-        self.assertIn("title1", ctrl.unified_name_to_participated_documents["hansmustermann"])
-        self.assertIn("title2", ctrl.unified_name_to_participated_documents["hansmustermann"])
-        self.assertIn("title3", ctrl.unified_name_to_authored_documents["heinrichmustermann"])
-
-        # Check if unknown authors are set correctly
-        self.assertEqual(len(ctrl.unified_name_to_unknown_profile), 2)
-        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nichtexistent"]), 1)
-        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nocheiner"]), 1)
-
-        self.assertEqual(len(ctrl.unified_document_title_to_documents), 3)
-        self.assertEqual(len(ctrl.unified_document_title_to_documents["title1"]), 2)
-        self.assertEqual(len(ctrl.unified_document_title_to_documents["title2"]), 1)
-        self.assertEqual(len(ctrl.unified_document_title_to_documents["title3"]), 1)
+        self.assert_participations(ctrl)
 
     def test_process_group_documents(self):
-        pass
+        ctrl = AnalysisController(self.profiles, {}, self.group_documents)
+        ctrl.process_profiles()
+        ctrl.process_group_documents()
 
-    def test_process_all(self):
-        pass
-
-    def test_integrate_process_profile_documents(self):
-        pass
+        self.assert_participations(ctrl)
