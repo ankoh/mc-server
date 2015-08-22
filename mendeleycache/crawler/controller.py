@@ -10,6 +10,7 @@ import traceback
 number_profile_workers = 2
 number_document_workers = 4
 
+
 class CrawlerController:
     """
     The crawler controller spawns mutliple crawlers and returns the results afterwards
