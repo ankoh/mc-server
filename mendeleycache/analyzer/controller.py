@@ -11,43 +11,38 @@ class AnalysisController:
     it works on the crawled documents && profiles and merges duplicates + identifies research fields
     """
 
-    # unified_name_to_profiles maps unified person names to their profiles to eliminate duplicates
-    __unified_name_to_profiles = dict()
-
-    # unified_name_to_unknown_profiles maps unified person names to unknown profiles in the document processing phase
-    # finally dummy profiles will be added for those as well
-    __unified_name_to_unknown_profile = dict()
-
-    # unified_name_to_read_name maps unified person names to their real names
-    # a collision is resolved by choosing the longer real name (!!)
-    __unified_name_to_real_name = dict()
-
-    # unified_name_to_authored_documents maps unified person names to the authored document titles
-    # (resolved via get_documents_by_profile_id)
-    __unified_name_to_authored_documents = dict()
-
-    # unified_name_to_participated_documents maps unified person names to document titles where the name appeared
-    # in the "authors" list
-    __unified_name_to_participated_documents = dict()
-
-    # unified_document_title_to_documents maps unified document titles to document objects
-    __unified_document_title_to_documents = dict()
-
-    # unified_field_title_to_fields maps unified field titles to field objects
-    __unified_field_title_to_field = dict()
-
-    # unified_field_title_to_documents maps unified field titles to unified document titles
-    __unified_field_title_to_documents = dict()
-
-    # Data of the crawler
-    __profiles = []
-    __profile_docs = {}
-    __group_docs = []
-
     def __init__(self, profiles: [], profile_docs: {}, group_docs: []):
         self.__profiles = profiles
         self.__profile_docs = profile_docs
         self.__group_docs = group_docs
+
+        # unified_name_to_profiles maps unified person names to their profiles to eliminate duplicates
+        self.__unified_name_to_profiles = dict()
+
+        # unified_name_to_unknown_profiles maps unified person names to unknown profiles in the document processing phase
+        # finally dummy profiles will be added for those as well
+        self.__unified_name_to_unknown_profile = dict()
+
+        # unified_name_to_read_name maps unified person names to their real names
+        # a collision is resolved by choosing the longer real name (!!)
+        self.__unified_name_to_real_name = dict()
+
+        # unified_name_to_authored_documents maps unified person names to the authored document titles
+        # (resolved via get_documents_by_profile_id)
+        self.__unified_name_to_authored_documents = dict()
+
+        # unified_name_to_participated_documents maps unified person names to document titles where the name appeared
+        # in the "authors" list
+        self.__unified_name_to_participated_documents = dict()
+
+        # unified_document_title_to_documents maps unified document titles to document objects
+        self.__unified_document_title_to_documents = dict()
+
+        # unified_field_title_to_fields maps unified field titles to field objects
+        self.__unified_field_title_to_field = dict()
+
+        # unified_field_title_to_documents maps unified field titles to unified document titles
+        self.__unified_field_title_to_documents = dict()
 
     @property
     def unified_name_to_profiles(self):
@@ -176,12 +171,12 @@ class AnalysisController:
             profile_unified, profile_real = unify_profile_name(profile.first_name, profile.last_name)
 
             # Check if the profile identifier has stored documents
-            if profile.identifier not in self.__profile_docs:
+            if profile_unified not in self.__profile_docs:
                 # TODO: Log warning for analysis report
                 continue
 
             # Process these documents
-            docs = self.__profile_docs[profile.identifier]
+            docs = self.__profile_docs[profile_unified]
             for doc in docs:
                 # Create unified document title
                 doc_unified, doc_real = unify_document_title(doc.core_title)
@@ -201,7 +196,7 @@ class AnalysisController:
                 for author in doc.core_authors:
                     self.analyze_author(doc_unified, author)
 
-                # Analyze the tags fiels of the doc to find research fields
+                # Analyze the tags fields of the doc to find research fields
                 for tag in doc.tags:
                     self.analyze_field_tag(doc_unified, tag)
 

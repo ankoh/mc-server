@@ -4,6 +4,8 @@ import unittest
 from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.models import Profile, Document
 
+from datetime import datetime
+
 
 class TestAnalysisController(unittest.TestCase):
     profile1 = Profile("id1", "Hans", "Mustermann", "Neuer besserer Hans Mustermann", "")
@@ -11,7 +13,72 @@ class TestAnalysisController(unittest.TestCase):
     profile2 = Profile("id2", "Max", "Mustermann", "Max Mustermann", "")
     profile3 = Profile("id3", "Heinrich", "Mustermann", "Prof. Dr. Dr. Heinrich Mustermann", "")
 
+    document1 = Document(
+        core_id="doc1",
+        core_profile_id="id1",
+        core_title="title1",
+        core_type="",
+        core_created=datetime.now(),
+        core_last_modified=datetime.now(),
+        core_abstract="",
+        core_source="",
+        core_year=2015,
+        core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent")],
+        core_keywords=[],
+        tags=["t ag- 1"]
+    )
+
+    document_same_title_1 = Document(
+        core_id="doc2",
+        core_profile_id="id1",
+        core_title="title1",
+        core_type="",
+        core_created=datetime.now(),
+        core_last_modified=datetime.now(),
+        core_abstract="",
+        core_source="",
+        core_year=2015,
+        core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent"), ("Noch", "Einer")],
+        core_keywords=[],
+        tags=["t ag- 1", "t ag -2"]
+    )
+
+    document_3 = Document(
+        core_id="doc3",
+        core_profile_id="id2",
+        core_title="title2",
+        core_type="",
+        core_created=datetime.now(),
+        core_last_modified=datetime.now(),
+        core_abstract="",
+        core_source="",
+        core_year=2015,
+        core_authors=[("Hans", "Mustermann")],
+        core_keywords=[],
+        tags=["t ag- 3"]
+    )
+
+    document_4 = Document(
+        core_id="doc4",
+        core_profile_id="id3",
+        core_title="title3",
+        core_type="",
+        core_created=datetime.now(),
+        core_last_modified=datetime.now(),
+        core_abstract="",
+        core_source="",
+        core_year=2015,
+        core_authors=[("Heinrich", "Mustermann")],
+        core_keywords=[],
+        tags=[]
+    )
+
     profiles = [profile1, profile2, profile3, profile4]
+    profile_documents = {
+        'hansmustermann': [document1, document_same_title_1],
+        'maxmustermann': [document_3],
+        'heinrichmustermann': [document_4]
+    }
 
     def test_process_profiles(self):
         ctrl = AnalysisController(self.profiles, {}, [])
@@ -123,9 +190,31 @@ class TestAnalysisController(unittest.TestCase):
         self.assertEqual(ctrl.unified_name_to_unknown_profile["nichtexistent"].name, "Nicht Existent")
         self.assertEqual(ctrl.unified_name_to_unknown_profile["nichtexistent"].unified_name, "nichtexistent")
 
-
     def test_process_profile_documents(self):
-        pass
+        ctrl = AnalysisController(self.profiles, self.profile_documents, [])
+        ctrl.process_profiles()
+        ctrl.process_profile_documents()
+
+        # Check if authored_documents are set correctly
+        self.assertEqual(len(ctrl.unified_name_to_authored_documents["hansmustermann"]), 1)
+        self.assertEqual(len(ctrl.unified_name_to_authored_documents["maxmustermann"]), 1)
+        self.assertEqual(len(ctrl.unified_name_to_authored_documents["heinrichmustermann"]), 1)
+        self.assertIn("title1", ctrl.unified_name_to_authored_documents["hansmustermann"])
+        self.assertIn("title2", ctrl.unified_name_to_authored_documents["maxmustermann"])
+        self.assertIn("title3", ctrl.unified_name_to_authored_documents["heinrichmustermann"])
+
+        # Check if participated_documents are set correctly
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["hansmustermann"]), 2)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["maxmustermann"]), 0)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["heinrichmustermann"]), 1)
+        self.assertIn("title1", ctrl.unified_name_to_participated_documents["hansmustermann"])
+        self.assertIn("title2", ctrl.unified_name_to_participated_documents["hansmustermann"])
+        self.assertIn("title3", ctrl.unified_name_to_authored_documents["heinrichmustermann"])
+
+        # Check if unknown authors are set correctly
+        self.assertEqual(len(ctrl.unified_name_to_unknown_profile), 2)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nichtexistent"]), 1)
+        self.assertEqual(len(ctrl.unified_name_to_participated_documents["nocheiner"]), 1)
 
     def test_process_group_documents(self):
         pass
