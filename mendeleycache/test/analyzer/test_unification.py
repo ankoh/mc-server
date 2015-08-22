@@ -3,6 +3,7 @@ __author__ = 'kohn'
 import unittest
 from mendeleycache.analyzer.unification import unify_document_title, unify_field_title, unify_profile_name
 
+
 class TestUnification(unittest.TestCase):
     def test_unify_document_title(self):
         title = "Requirements Engineering for Scientific Computing: A Model-Based Approach"

@@ -1,7 +1,7 @@
 __author__ = 'kohn'
 
 from mendeleycache.crawler.file_crawler import FileCrawler
-from mendeleycache.crawler.controller import CrawlerController
+from mendeleycache.crawler.controller import CrawlController
 import unittest
 
 
@@ -13,7 +13,7 @@ class TestCrawlerController(unittest.TestCase):
         :return:
         """
         crwler = FileCrawler()
-        crwler_controller = CrawlerController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
+        crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
         self.assertIsNotNone(crwler_controller.members)
         self.assertEqual(len(crwler_controller.members), 0)
         crwler_controller.crawl_group_members()
@@ -25,7 +25,7 @@ class TestCrawlerController(unittest.TestCase):
         :return:
         """
         crwler = FileCrawler()
-        crwler_controller = CrawlerController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
+        crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
         crwler_controller.crawl_group_members()
         crwler_controller.crawl_profiles()
         self.assertIsNotNone(crwler_controller.profiles)
@@ -35,14 +35,14 @@ class TestCrawlerController(unittest.TestCase):
 
     def test_crawl_group_documents(self):
         crwler = FileCrawler()
-        crwler_controller = CrawlerController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
+        crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
         crwler_controller.crawl_group_members()
         crwler_controller.crawl_group_documents()
         self.assertGreater(len(crwler_controller.group_documents), 0)
 
     def test_crawl_all(self):
         crwler = FileCrawler()
-        crwler_controller = CrawlerController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
+        crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
         crwler_controller.crawl_all()
         self.assertEqual(len(crwler_controller.profiles), 22)
         for member in crwler_controller.members:

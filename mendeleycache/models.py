@@ -111,7 +111,7 @@ class Document:
 
 class Profile:
     """
-    Class that respresents a single author profile
+    Class that represents a single author profile
     """
     def __init__(self,
                  identifier: str,
@@ -144,3 +144,65 @@ class Profile:
     @property
     def link(self) -> str:
         return self.__link
+
+
+class UnknownProfile:
+    """
+    Class that represents an unknown author
+    """
+    def __init__(self, name: str):
+        self.__name = name
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+class CacheField:
+    """
+    Class that represents a cache field
+    """
+    def __init__(self, title: str, unified_title: str):
+        self.__title = title
+        self.__unified_title = unified_title
+
+    @property
+    def title(self) -> str:
+        return self.__title
+
+    @property
+    def unified_title(self) -> str:
+        return self.__unified_title
+
+
+class CacheDocument:
+    """
+    Class that represents a cache document
+    """
+    def __init__(self, title: str, unified_title: str):
+        self.__title = title
+        self.__unified_title = unified_title
+
+    @property
+    def title(self) -> str:
+        return self.__title
+
+    @property
+    def unified_title(self) -> str:
+        return self.__unified_title
+
+
+class CacheProfile:
+    """
+    Class that represents a cache profile
+    """
+    def __init__(self, name: str, unified_name: str):
+        self.__name = name
+        self.__unified_name = unified_name
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+    @property
+    def unified_name(self) -> str:
+        return self.__unified_name

@@ -2,6 +2,7 @@ __author__ = 'kohn'
 
 from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.config import ServiceConfiguration
+from mendeleycache.models import Member, Profile, Document
 from queue import Queue
 from threading import Thread
 import traceback
@@ -11,7 +12,7 @@ number_profile_workers = 2
 number_document_workers = 4
 
 
-class CrawlerController:
+class CrawlController:
     """
     The crawler controller spawns mutliple crawlers and returns the results afterwards
     """
@@ -20,29 +21,29 @@ class CrawlerController:
         self.__crawler = crawler
 
         self.__members = []
-        self.__profiles = dict()
+        self.__profiles = []
         self.__profile_documents = dict()
         self.__group_documents = []
         self.__succeeded = False
 
     @property
-    def members(self):
+    def members(self) -> [Member]:
         return self.__members
 
     @property
-    def profiles(self):
+    def profiles(self) -> [Profile]:
         return self.__profiles
 
     @property
-    def profile_documents(self):
+    def profile_documents(self) -> {}:
         return self.__profile_documents
 
     @property
-    def group_documents(self):
+    def group_documents(self) -> {}:
         return self.__group_documents
 
     @property
-    def succeeded(self):
+    def succeeded(self) -> bool:
         return self.__succeeded
 
     # Worker queues
@@ -60,7 +61,7 @@ class CrawlerController:
                 profile_id = self.__profile_queue.get()
                 # Fetch the profile
                 profile = self.__crawler.get_profile_by_id(profile_id)
-                self.__profiles[profile_id] = profile
+                self.__profiles.append(profile)
                 # Mark task as done
                 self.__profile_queue.task_done()
             except Exception as e:
