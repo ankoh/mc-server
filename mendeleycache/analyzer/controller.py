@@ -195,7 +195,7 @@ class AnalysisController:
 
                 # Append the doc title to the authored_docs of that unified profile name
                 authored_docs = self.__unified_name_to_authored_documents[profile_unified]
-                authored_docs.append(doc_unified)
+                authored_docs.add(doc_unified)
 
                 # Process core_authors field of the doc to find participants
                 for author in doc.core_authors:
