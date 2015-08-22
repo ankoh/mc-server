@@ -43,10 +43,72 @@ class TestAnalysisController(unittest.TestCase):
         self.assertIn("heinrichmustermann", ctrl.unified_name_to_authored_documents)
         self.assertIn("heinrichmustermann", ctrl.unified_name_to_participated_documents)
 
-    def test_analyze_author(self):
-        pass
-
     def test_analyze_field_tag(self):
+        ctrl = AnalysisController([], {}, [])
+        ctrl.analyze_field_tag("docid1", "t ag-1")
+
+        # Check if CacheField for tag1 was created
+        self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_field)
+        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
+        # Check if document docid1 has been added to tag1
+        self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_documents)
+        self.assertTrue(len(ctrl.unified_field_title_to_documents["tag1"]), 1)
+        self.assertIn("docid1", ctrl.unified_field_title_to_documents["tag1"])
+
+        # Now add the same tag for the same document (written slightly different)
+        ctrl.analyze_field_tag("docid1", "t ag - 1")
+        self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_field)
+        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
+        # Check if document docid1 is still the only doc
+        self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_documents)
+        self.assertTrue(len(ctrl.unified_field_title_to_documents["tag1"]), 1)
+        self.assertIn("docid1", ctrl.unified_field_title_to_documents["tag1"])
+
+        # Now add a new document for the same tag
+        ctrl.analyze_field_tag("docid2", "t ag - 1")
+        self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_field)
+        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
+        # Check if document docid2 is now linked with tag 1
+        self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
+        self.assertIn("tag1", ctrl.unified_field_title_to_documents)
+        self.assertTrue(len(ctrl.unified_field_title_to_documents["tag1"]), 2)
+        self.assertIn("docid1", ctrl.unified_field_title_to_documents["tag1"])
+        self.assertIn("docid2", ctrl.unified_field_title_to_documents["tag1"])
+
+        # Now add an old document with a new tag
+        ctrl.analyze_field_tag("docid2", "t ag - 2")
+        self.assertTrue(len(ctrl.unified_field_title_to_field), 2)
+        self.assertIn("tag2", ctrl.unified_field_title_to_field)
+        self.assertEqual("Tag 2", ctrl.unified_field_title_to_field["tag2"].title)
+        self.assertEqual("tag2", ctrl.unified_field_title_to_field["tag2"].unified_title)
+        # Check if document docid2 is now linked with tag 2
+        self.assertTrue(len(ctrl.unified_field_title_to_documents), 2)
+        self.assertIn("tag2", ctrl.unified_field_title_to_documents)
+        self.assertTrue(len(ctrl.unified_field_title_to_documents["tag2"]), 1)
+        self.assertIn("docid2", ctrl.unified_field_title_to_documents["tag2"])
+
+        # Now add a new document with a new tag
+        ctrl.analyze_field_tag("docid3", "t ag - 3")
+        self.assertTrue(len(ctrl.unified_field_title_to_field), 3)
+        self.assertIn("tag3", ctrl.unified_field_title_to_field)
+        self.assertEqual("Tag 3", ctrl.unified_field_title_to_field["tag3"].title)
+        self.assertEqual("tag3", ctrl.unified_field_title_to_field["tag3"].unified_title)
+        # Check if document docid3 is now linked with tag 3
+        self.assertTrue(len(ctrl.unified_field_title_to_documents), 3)
+        self.assertIn("tag3", ctrl.unified_field_title_to_documents)
+        self.assertTrue(len(ctrl.unified_field_title_to_documents["tag3"]), 1)
+        self.assertIn("docid3", ctrl.unified_field_title_to_documents["tag3"])
+
+
+    def test_analyze_author(self):
         pass
 
     def test_process_profile_documents(self):
