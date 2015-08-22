@@ -1,7 +1,7 @@
 __author__ = 'kohn'
 
 from mendeleycache.analyzer.unification import unify_profile_name, unify_field_title, unify_document_title
-from mendeleycache.models import CacheDocument, CacheField, CacheProfile, Profile, Document, UnknownProfile
+from mendeleycache.models import CacheDocument, CacheField, CacheProfile, Profile, Document, CacheUnknownProfile
 from mendeleycache.analyzer.validator import is_field_tag
 
 
@@ -126,7 +126,8 @@ class AnalysisController:
             # If not, check if there is already an unknown_profile for this unified name
             # If not, create one
             if author_unified not in self.__unified_name_to_unknown_profile:
-                self.__unified_name_to_unknown_profile[author_unified] = UnknownProfile(author_real)
+                self.__unified_name_to_unknown_profile[author_unified] = CacheUnknownProfile(
+                    name=author_real, unified_name=author_unified)
                 # Add document to participated_documents
                 participated_docs = set()
                 participated_docs.add(doc_unified)

@@ -145,18 +145,6 @@ class Profile:
     def link(self) -> str:
         return self.__link
 
-
-class UnknownProfile:
-    """
-    Class that represents an unknown author
-    """
-    def __init__(self, name: str):
-        self.__name = name
-
-    @property
-    def name(self) -> str:
-        return self.__name
-
 class CacheField:
     """
     Class that represents a cache field
@@ -194,6 +182,23 @@ class CacheDocument:
 class CacheProfile:
     """
     Class that represents a cache profile
+    """
+    def __init__(self, name: str, unified_name: str):
+        self.__name = name
+        self.__unified_name = unified_name
+
+    @property
+    def name(self) -> str:
+        return self.__name
+
+    @property
+    def unified_name(self) -> str:
+        return self.__unified_name
+
+
+class CacheUnknownProfile:
+    """
+    Class that represents an unknown profile
     """
     def __init__(self, name: str, unified_name: str):
         self.__name = name
