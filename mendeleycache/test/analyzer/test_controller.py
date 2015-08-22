@@ -216,6 +216,11 @@ class TestAnalysisController(unittest.TestCase):
         self.assertEqual(len(ctrl.unified_name_to_participated_documents["nichtexistent"]), 1)
         self.assertEqual(len(ctrl.unified_name_to_participated_documents["nocheiner"]), 1)
 
+        self.assertEqual(len(ctrl.unified_document_title_to_documents), 3)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title1"]), 2)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title2"]), 1)
+        self.assertEqual(len(ctrl.unified_document_title_to_documents["title3"]), 1)
+
     def test_process_group_documents(self):
         pass
 

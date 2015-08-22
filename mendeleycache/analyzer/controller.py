@@ -167,8 +167,7 @@ class AnalysisController:
         Iterates over the profile documents, finds research fields, finds duplicates, finds author profiles
         :return:
         """
-        for profile in self.__profiles:
-            profile_unified, profile_real = unify_profile_name(profile.first_name, profile.last_name)
+        for profile_unified in self.__unified_name_to_profiles:
 
             # Check if the profile identifier has stored documents
             if profile_unified not in self.__profile_docs:
