@@ -3,6 +3,9 @@ __author__ = 'kohn'
 from mendeleycache.data.config import create_engine
 from mendeleycache.config import DatabaseConfiguration
 from mendeleycache.data.schema import read_mysql_schema, read_sqlite_schema
+from mendeleycache.data.api_scripts import ApiScripts
+from mendeleycache.data.crawl_scripts import CrawlScripts
+
 from sqlalchemy.exc import DBAPIError
 
 
@@ -14,6 +17,8 @@ class DataController:
     def __init__(self, config: DatabaseConfiguration):
         self._config = config
         self._engine = create_engine(self._config)
+        self._api_scripts = ApiScripts(self._engine)
+        self._crawl_scripts = CrawlScripts(self._engine)
 
     @property
     def engine(self):
@@ -22,6 +27,14 @@ class DataController:
         :return:
         """
         return self._engine
+
+    @property
+    def api_scripts(self):
+        return self._api_scripts
+
+    @property
+    def crawl_scripts(self):
+        return self._crawl_scripts
 
     def table_exists(self, table_name: str) -> bool:
         """
@@ -48,3 +61,4 @@ class DataController:
         with self._engine.connect() as conn:
             for cmd in schema:
                 conn.execute(cmd)
+
