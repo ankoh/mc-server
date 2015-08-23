@@ -17,8 +17,8 @@ class DataController:
     def __init__(self, config: DatabaseConfiguration):
         self._config = config
         self._engine = create_engine(self._config)
-        self._api_scripts = ApiScripts(self._engine)
-        self._crawl_scripts = CrawlScripts(self._engine)
+        self._api_data = ApiScripts(self._engine)
+        self._crawl_data = CrawlScripts(self._engine)
 
     @property
     def engine(self):
@@ -29,12 +29,12 @@ class DataController:
         return self._engine
 
     @property
-    def api_scripts(self):
-        return self._api_scripts
+    def api_data(self):
+        return self._api_data
 
     @property
-    def crawl_scripts(self):
-        return self._crawl_scripts
+    def crawl_data(self):
+        return self._crawl_data
 
     def table_exists(self, table_name: str) -> bool:
         """
