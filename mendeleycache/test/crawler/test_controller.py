@@ -5,7 +5,7 @@ from mendeleycache.crawler.controller import CrawlController
 import unittest
 
 
-class TestCrawlerController(unittest.TestCase):
+class TestCrawlController(unittest.TestCase):
 
     def test_crawl_group_members(self):
         """
