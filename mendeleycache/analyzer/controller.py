@@ -11,10 +11,10 @@ class AnalysisController:
     it works on the crawled documents && profiles and merges duplicates + identifies research fields
     """
 
-    def __init__(self, profiles: [], profile_docs: {}, group_docs: []):
-        self.__profiles = profiles
-        self.__profile_docs = profile_docs
-        self.__group_docs = group_docs
+    def __init__(self):
+        self.__profiles = []
+        self.__profile_docs = {}
+        self.__group_docs = []
 
         # unified_name_to_profiles maps unified person names to their profiles to eliminate duplicates
         self.__unified_name_to_profiles = dict()
@@ -75,6 +75,18 @@ class AnalysisController:
     @property
     def unified_field_title_to_documents(self):
         return self.__unified_field_title_to_documents
+
+    def prepare(self, profiles, profile_docs, group_docs):
+        """
+        Prepare the AnalysisController with data
+        :param profiles:
+        :param profile_docs
+        :param group_docs:
+        :return:
+        """
+        self.__profiles = profiles
+        self.__profile_docs = profile_docs
+        self.__group_docs = group_docs
 
     def process_profiles(self):
         """
@@ -235,7 +247,7 @@ class AnalysisController:
             for tag in doc.tags:
                 self.analyze_field_tag(doc_unified, tag)
 
-    def process_all(self):
+    def execute(self):
         """
         Process all input
         :return:

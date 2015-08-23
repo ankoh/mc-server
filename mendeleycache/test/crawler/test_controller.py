@@ -43,7 +43,7 @@ class TestCrawlerController(unittest.TestCase):
     def test_crawl_all(self):
         crwler = FileCrawler()
         crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
-        crwler_controller.crawl_all()
+        crwler_controller.execute()
         self.assertEqual(len(crwler_controller.profiles), 22)
         for member in crwler_controller.members:
             self.assertIn(member.profile_id, crwler_controller.profile_documents)

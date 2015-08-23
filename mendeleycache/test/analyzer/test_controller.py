@@ -82,7 +82,8 @@ class TestAnalysisController(unittest.TestCase):
     group_documents = [ document1, document_same_title_1, document_3, document_4 ]
 
     def test_process_profiles(self):
-        ctrl = AnalysisController(self.profiles, {}, [])
+        ctrl = AnalysisController()
+        ctrl.prepare(self.profiles, {}, [])
         ctrl.process_profiles()
 
         self.assertEqual(len(ctrl.unified_name_to_profiles), 3)
@@ -112,7 +113,8 @@ class TestAnalysisController(unittest.TestCase):
         self.assertIn("heinrichmustermann", ctrl.unified_name_to_participated_documents)
 
     def test_analyze_field_tag(self):
-        ctrl = AnalysisController([], {}, [])
+        ctrl = AnalysisController()
+        ctrl.prepare([], {}, [])
         ctrl.analyze_field_tag("docid1", "t ag-1")
 
         # Check if CacheField for tag1 was created
@@ -166,7 +168,8 @@ class TestAnalysisController(unittest.TestCase):
         self.assertIn("docid3", ctrl.unified_field_title_to_documents["tag3"])
 
     def test_analyze_author(self):
-        ctrl = AnalysisController(self.profiles, {}, [])
+        ctrl = AnalysisController()
+        ctrl.prepare(self.profiles, {}, [])
         ctrl.process_profiles()
 
         # Find an existing profile as author of a doc
@@ -211,7 +214,8 @@ class TestAnalysisController(unittest.TestCase):
         self.assertEqual(len(ctrl.unified_document_title_to_documents["title3"]), 1)
 
     def test_process_profile_documents(self):
-        ctrl = AnalysisController(self.profiles, self.profile_documents, [])
+        ctrl = AnalysisController()
+        ctrl.prepare(self.profiles, self.profile_documents, [])
         ctrl.process_profiles()
         ctrl.process_profile_documents()
 
@@ -226,7 +230,8 @@ class TestAnalysisController(unittest.TestCase):
         self.assert_participations(ctrl)
 
     def test_process_group_documents(self):
-        ctrl = AnalysisController(self.profiles, {}, self.group_documents)
+        ctrl = AnalysisController()
+        ctrl.prepare(self.profiles, {}, self.group_documents)
         ctrl.process_profiles()
         ctrl.process_group_documents()
 

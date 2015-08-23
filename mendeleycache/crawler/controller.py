@@ -126,7 +126,7 @@ class CrawlController:
         """
         self.__group_documents = self.__crawler.get_documents_by_group_id(self.__research_group)
 
-    def crawl_all(self):
+    def execute(self):
         """
         Subsequently trigger crawler for members, group_publications and profiles
         :return:
