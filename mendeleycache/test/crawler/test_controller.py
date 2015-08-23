@@ -17,7 +17,7 @@ class TestCrawlerController(unittest.TestCase):
         self.assertIsNotNone(crwler_controller.members)
         self.assertEqual(len(crwler_controller.members), 0)
         crwler_controller.crawl_group_members()
-        self.assertEqual(len(crwler_controller.members), 22)
+        self.assertEqual(len(crwler_controller.members), 19)
 
     def test_crawl_profiles(self):
         """
@@ -29,7 +29,7 @@ class TestCrawlerController(unittest.TestCase):
         crwler_controller.crawl_group_members()
         crwler_controller.crawl_profiles()
         self.assertIsNotNone(crwler_controller.profiles)
-        self.assertEqual(len(crwler_controller.profiles), 22)
+        self.assertEqual(len(crwler_controller.profiles), 19)
         for member in crwler_controller.members:
             self.assertIn(member.profile_id, crwler_controller.profile_documents)
 
@@ -40,11 +40,11 @@ class TestCrawlerController(unittest.TestCase):
         crwler_controller.crawl_group_documents()
         self.assertGreater(len(crwler_controller.group_documents), 0)
 
-    def test_crawl_all(self):
+    def test_execute(self):
         crwler = FileCrawler()
         crwler_controller = CrawlController(crwler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
         crwler_controller.execute()
-        self.assertEqual(len(crwler_controller.profiles), 22)
+        self.assertEqual(len(crwler_controller.profiles), 19)
         for member in crwler_controller.members:
             self.assertIn(member.profile_id, crwler_controller.profile_documents)
         self.assertGreater(len(crwler_controller.group_documents), 0)

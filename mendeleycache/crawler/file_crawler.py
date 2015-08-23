@@ -42,7 +42,9 @@ class FileCrawler(AbstractCrawler):
                 identifier = member['profile_id']
                 role = member['role']
                 joined = parse(member['joined'])
-                result.append(Member(identifier, joined, role))
+
+                if role != 'follower':
+                    result.append(Member(identifier, joined, role))
 
         # Return results
         return result

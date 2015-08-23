@@ -27,6 +27,7 @@ class PipelineController:
         :return:
         """
         self._crawl_controller.execute()
+
         profiles = self._crawl_controller.profiles
         profile_docs = self._crawl_controller.profile_documents
         group_docs = self._crawl_controller.group_documents
