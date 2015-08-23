@@ -93,6 +93,6 @@ AND phd.cache_profile_id = p.id
 AND f.id IN (
 	1234
 )
-AND p.id in (
+AND p.id IN (
 	1234
 );

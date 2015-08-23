@@ -30,28 +30,57 @@ class DatabaseConfiguration:
     """
     Configuration of the database access
     """
-    def __init__(self, hostname: str, port: str, db: str, user: str, secret: str):
+    def __init__(self, engine: str, ):
+        self.__engine = engine
+
+    @property
+    def engine(self):
+        return self.__engine
+
+
+class MySQLConfiguration(DatabaseConfiguration):
+    def __init__(self, engine: str, hostname: str, port: str, db: str, user: str, secret: str):
         self.__hostname = hostname
         self.__port = port
         self.__db = db
         self.__user = user
         self.__secret = secret
+        super(MySQLConfiguration, self).__init__(engine)
 
     @property
     def hostname(self):
         return self.__hostname
+
     @property
     def port(self):
         return self.__port
+
     @property
     def db(self):
         return self.__db
+
     @property
     def user(self):
         return self.__user
+
     @property
     def secret(self):
         return self.__secret
+
+
+class SQLiteConfiguration(DatabaseConfiguration):
+    def __init__(self, engine: str, path: str, in_memory: bool):
+        self.__path = path
+        self.__in_memory = in_memory
+        super(SQLiteConfiguration, self).__init__(engine)
+
+    @property
+    def path(self):
+        return self.__path
+
+    @property
+    def in_memory(self):
+        return self.__in_memory
 
 
 class GeneralConfiguration:
@@ -125,20 +154,38 @@ class ServiceConfiguration:
 
             # Check the database configuration
             db_data = cfg['database']
-            if 'hostname' not in db_data:
-                missing_attribute('database.hostname')
-            if 'port' not in db_data:
-                missing_attribute('database.port')
-            if 'db' not in db_data:
-                missing_attribute('database.db')
-            if 'user' not in db_data:
-                missing_attribute('database.user')
-            if 'secret' not in db_data:
-                missing_attribute('database.secret')
-            self.__database = DatabaseConfiguration(
-                hostname=db_data['hostname'],
-                port=db_data['port'],
-                db=db_data['db'],
-                user=db_data['user'],
-                secret=db_data['secret']
-            )
+            if 'engine' not in db_data:
+                missing_attribute('database.engine')
+
+            engine = db_data['engine']
+            if engine == 'mysql':
+                if 'hostname' not in db_data:
+                    missing_attribute('database[mysql].hostname')
+                if 'port' not in db_data:
+                    missing_attribute('database[mysql].port')
+                if 'db' not in db_data:
+                    missing_attribute('database[mysql].db')
+                if 'user' not in db_data:
+                    missing_attribute('database[mysql].user')
+                if 'secret' not in db_data:
+                    missing_attribute('database[mysql].secret')
+                self.__database = MySQLConfiguration(
+                    engine=db_data['engine'],
+                    hostname=db_data['hostname'],
+                    port=db_data['port'],
+                    db=db_data['db'],
+                    user=db_data['user'],
+                    secret=db_data['secret']
+                )
+            elif engine == 'sqlite':
+                if 'path' not in db_data:
+                    missing_attribute('database[sqlite].path')
+                if 'in_memory' not in db_data:
+                    missing_attribute('database[sqlite].in_memory')
+                self.__database = SQLiteConfiguration(
+                    engine=db_data['engine'],
+                    path=db_data['path'],
+                    in_memory=db_data['in_memory']
+                )
+            else:
+                raise InvalidConfigurationException("Database engine %s is not supported" % engine)
