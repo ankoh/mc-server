@@ -5,4 +5,10 @@ import sqlalchemy
 
 
 def create_engine(config: ServiceConfiguration):
-    pass
+    if config.database.engine == "mysql":
+        pass
+    elif config.database.engine == "sqlite":
+        pass
+    else:
+        # TODO: Log warning
+        return None

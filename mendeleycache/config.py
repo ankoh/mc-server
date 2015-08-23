@@ -69,18 +69,13 @@ class MySQLConfiguration(DatabaseConfiguration):
 
 
 class SQLiteConfiguration(DatabaseConfiguration):
-    def __init__(self, engine: str, path: str, in_memory: bool):
+    def __init__(self, engine: str, path: str):
         self.__path = path
-        self.__in_memory = in_memory
         super(SQLiteConfiguration, self).__init__(engine)
 
     @property
     def path(self):
         return self.__path
-
-    @property
-    def in_memory(self):
-        return self.__in_memory
 
 
 class GeneralConfiguration:
@@ -180,12 +175,9 @@ class ServiceConfiguration:
             elif engine == 'sqlite':
                 if 'path' not in db_data:
                     missing_attribute('database[sqlite].path')
-                if 'in_memory' not in db_data:
-                    missing_attribute('database[sqlite].in_memory')
                 self.__database = SQLiteConfiguration(
                     engine=db_data['engine'],
                     path=db_data['path'],
-                    in_memory=db_data['in_memory']
                 )
             else:
                 raise InvalidConfigurationException("Database engine %s is not supported" % engine)

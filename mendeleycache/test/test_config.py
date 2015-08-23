@@ -45,7 +45,6 @@ class TestServiceConfiguration(unittest.TestCase):
                 "database:\n"
                 "  engine: sqlite\n"
                 "  path: ''\n"
-                "  in_memory: true\n"
             )
             config.write(valid_config)
 
@@ -147,7 +146,6 @@ class TestServiceConfiguration(unittest.TestCase):
             self.assertEqual(config.mendeley.research_group, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
             self.assertEqual(config.database.engine, "sqlite")
             self.assertEqual(config.database.path, "")
-            self.assertEqual(config.database.in_memory, True)
         except InvalidConfigurationException as e:
             self.fail(e)
 
