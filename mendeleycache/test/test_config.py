@@ -2,13 +2,13 @@ __author__ = 'kohn'
 
 from os import remove
 from os.path import exists
-from mendeleycache.utils.files import get_path
+from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
 from mendeleycache.config import ServiceConfiguration
 
 import unittest
 
-config_file = get_path('config.yml')
+config_file = get_relative_path('config.yml')
 
 
 class TestServiceConfiguration(unittest.TestCase):

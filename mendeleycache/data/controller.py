@@ -2,6 +2,8 @@ __author__ = 'kohn'
 
 from mendeleycache.data.config import create_engine
 from mendeleycache.config import DatabaseConfiguration
+from mendeleycache.data.schema import read_mysql_schema, read_sqlite_schema
+from sqlalchemy.exc import DBAPIError
 
 
 class DataController:
@@ -20,3 +22,29 @@ class DataController:
         :return:
         """
         return self._engine
+
+    def table_exists(self, table_name: str) -> bool:
+        """
+        Tests if the database is already initialized
+        :return:
+        """
+        try:
+            with self._engine.connect() as conn:
+                result = conn.execute("SELECT * FROM %s" % table_name)
+                return True
+        except DBAPIError as e:
+            return False
+
+    def run_schema(self):
+        """
+        Runs the schema initialization and returns if it was successfull
+        """
+        schema = []
+        if self._config.engine == "sqlite":
+            schema = read_sqlite_schema()
+        elif self._config.engine == "mysql":
+            schema = read_mysql_schema()
+
+        with self._engine.connect() as conn:
+            for cmd in schema:
+                conn.execute(cmd)

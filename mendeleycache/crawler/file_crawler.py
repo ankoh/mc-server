@@ -6,7 +6,7 @@ import logging
 
 from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.models import *
-from mendeleycache.utils.files import get_path
+from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.reflection import get_class_attributes, get_default, get_dict_if_key_exists
 from mendeleycache.utils.validator import is_valid_mendeley_id
 import json
@@ -27,7 +27,7 @@ class FileCrawler(AbstractCrawler):
         result = []
 
         # Construct a file path relative to the project root
-        path = get_path('test', 'samples', 'groups', '%s.json' % group_id)
+        path = get_relative_path('test', 'samples', 'groups', '%s.json' % group_id)
 
         # Check if path exists
         if not exists(path):
@@ -57,7 +57,7 @@ class FileCrawler(AbstractCrawler):
             return None
 
         # Construct a file path relative to the project root
-        path = get_path('test', 'samples', 'profiles', '%s.json' % profile_id)
+        path = get_relative_path('test', 'samples', 'profiles', '%s.json' % profile_id)
 
         # Check if path exists
         if not exists(path):
@@ -140,7 +140,7 @@ class FileCrawler(AbstractCrawler):
         results = []
 
         # Construct a file path relative to the project root
-        path = get_path('test', 'samples', 'documents', 'by_profile_id', '%s.json' % profile_id)
+        path = get_relative_path('test', 'samples', 'documents', 'by_profile_id', '%s.json' % profile_id)
 
         # Check if path exists
         if not exists(path):
@@ -169,7 +169,7 @@ class FileCrawler(AbstractCrawler):
         results = []
 
         # Construct a file path relative to the project root
-        path = get_path('test', 'samples', 'documents', 'by_group_id', '%s.json' % group_id)
+        path = get_relative_path('test', 'samples', 'documents', 'by_group_id', '%s.json' % group_id)
 
         # Check if path exists
         if not exists(path):

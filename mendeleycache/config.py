@@ -1,7 +1,7 @@
 __author__ = 'kohn'
 
 from os.path import exists
-from mendeleycache.utils.files import get_path
+from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
 import yaml
 
@@ -112,7 +112,7 @@ class ServiceConfiguration:
 
         # Construct a file path relative to the project root
         # TODO: we could also allow an (absolute) path parameter
-        path = get_path('config.yml')
+        path = get_relative_path('config.yml')
 
         # Check if path exists
         if not exists(path):

@@ -5,7 +5,7 @@ from os.path import dirname, join
 BASE = dirname(dirname(__file__))
 
 
-def get_path(*path):
+def get_relative_path(*path):
     """
     Construct the path relative to the project root
     get_path('samples', 'groups', '42.json')
