@@ -52,4 +52,3 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.table_exists('document_access_log_has_cache_document'))
         self.assertTrue(ctrl.table_exists('field_access_log'))
         self.assertTrue(ctrl.table_exists('field_access_log_has_cache_field'))
-

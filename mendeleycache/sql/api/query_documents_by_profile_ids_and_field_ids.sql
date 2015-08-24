@@ -4,7 +4,7 @@ SELECT
    d.title
 FROM
    mendeley_document md,
-   cache_documendt d,
+   cache_document d,
    cache_profile p,
    cache_field f,
    cache_document_has_cache_field dhf,
@@ -14,5 +14,5 @@ AND d.id = dhf.cache_document_id
 AND dhf.cache_field_id = f.id
 AND d.id = phd.cache_document_id
 AND phd.cache_profile_id = p.id
-AND f.id in :fiel_ids
-AND p.id in :profile_ids
+AND f.id in ( :field_ids )
+AND p.id in ( :profile_ids )

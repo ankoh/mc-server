@@ -9,6 +9,11 @@ from mendeleycache.utils.regex import sql_comments
 import textwrap
 import re
 
+"""
+Attention: Apparently text() does not support lists.
+I'll build the statement myself and take care of sql injections
+For api_scripts.py thats still pretty straight forward
+"""
 
 class ApiScripts:
     def __init__(self, engine: Engine):
@@ -33,7 +38,7 @@ class ApiScripts:
         path = get_relative_path('sql', 'api', 'query_profiles_slim.sql')
         with open(path, "r") as sql_file:
             sql = sql_file.read()
-            self._query_profiles_slim = re.sub(sql_comments, ' ', sql).replace(';', ' ')
+            self._query_profiles_slim = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
         # query_documents_by_profile_ids_and_field_ids
         path = get_relative_path('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
@@ -53,8 +58,10 @@ class ApiScripts:
         AND are associated with these profiles
         :return:
         """
+        profile_ids_string = "(%s)" % (','.join(str(profile_ids)))
+        field_ids_string = "(%s)" % (','.join(str(field_ids)))
         query = text(self._query_documents_by_profile_ids_and_field_ids)
-        return self._engine.execute(query, field_ids=field_ids, profile_ids=profile_ids).fetchall()
+        return self._engine.execute(query, field_ids=profile_ids_string, profile_ids=field_ids_string).fetchall()
 
     def get_profiles_slim(self):
         """
@@ -72,8 +79,10 @@ class ApiScripts:
         :param slim:
         :return:
         """
+        profile_ids_string = "(%s)" % (','.join(str(profile_ids)))
+        field_ids_string = "(%s)" % (','.join(str(field_ids)))
         query = text(self._query_profiles_by_profile_ids_or_field_ids)
-        return self._engine.execute(query, field_ids=field_ids, profile_ids=profile_ids).fetchall()
+        return self._engine.execute(query, field_ids=field_ids_string, profile_ids=profile_ids_string).fetchall()
 
     def get_fields(self):
         """

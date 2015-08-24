@@ -7,6 +7,7 @@ from sqlalchemy.engine import Engine
 
 import re
 
+
 class CrawlScripts:
     def __init__(self, engine: Engine):
         self._engine = engine

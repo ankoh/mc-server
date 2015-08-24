@@ -52,6 +52,7 @@ CREATE INDEX mendeley_document_mendeley_profile_id on mendeley_document(mendeley
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cache_profile (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(255) NOT NULL,
   unified_name VARCHAR(255) NOT NULL UNIQUE,
   mendeley_profile_id INTEGER UNIQUE,
   FOREIGN KEY (mendeley_profile_id)
@@ -64,6 +65,7 @@ CREATE TABLE IF NOT EXISTS cache_profile (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cache_document (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(255) NOT NULL,
   unified_title VARCHAR(255) NOT NULL UNIQUE,
   mendeley_document_id INTEGER UNIQUE,
   FOREIGN KEY (mendeley_document_id)
