@@ -9,7 +9,7 @@ FROM
      SELECT id, MAX(cnt) AS cnt
      FROM
      (
-      SELECT p.id AS id , count(*) AS cnt
+      SELECT p.id AS id , COUNT(*) AS cnt
       FROM
          cache_profile p,
          cache_document d,
