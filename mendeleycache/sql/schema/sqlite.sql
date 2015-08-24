@@ -6,7 +6,7 @@
 CREATE TABLE IF NOT EXISTS mendeley_profile (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   cache_profile_id INTEGER NOT NULL,
-  m_id VARCHAR(255) NOT NULL UNIQUE,
+  m_id VARCHAR(255) UNIQUE NOT NULL,
   m_first_name VARCHAR(35) NOT NULL,
   m_last_name VARCHAR(35) NOT NULL,
   m_display_name VARCHAR(80),
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS mendeley_document (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   mendeley_profile_id INTEGER NOT NULL,
   cache_document_id INTEGER NOT NULL,
-  m_core_id VARCHAR(255),
+  m_core_id VARCHAR(255) UNIQUE NOT NULL,
   m_core_title VARCHAR(255),
   m_core_type VARCHAR(45),
   m_core_created DATETIME,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS cache_profile (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(255) NOT NULL,
   unified_name VARCHAR(255) NOT NULL UNIQUE,
-  mendeley_profile_id INTEGER UNIQUE,
+  mendeley_profile_id INTEGER,
   FOREIGN KEY (mendeley_profile_id)
     REFERENCES mendeley_profile (id)
     ON DELETE SET NULL
