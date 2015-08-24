@@ -16,7 +16,7 @@ FROM
          cache_profile_has_cache_document phd
       WHERE p.id = phd.cache_profile_id
       AND phd.cache_document_id = d.id
-      AND p.id IN ( :profile_ids )
+      AND p.id IN :profile_ids
       GROUP BY p.id
 
       UNION ALL
@@ -32,7 +32,7 @@ FROM
       AND phd.cache_document_id = d.id
       AND d.id = dhf.cache_document_id
       AND dhf.cache_field_id = f.id
-      AND f.id IN ( :field_ids )
+      AND f.id IN :field_ids
       GROUP BY p.id
      )
      GROUP BY id

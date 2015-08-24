@@ -6,14 +6,17 @@ from sqlalchemy.sql import text
 from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.regex import sql_comments
 
-import textwrap
 import re
 
 """
-Attention: Apparently text() does not support lists.
-I'll build the statement myself and take care of sql injections
-For api_scripts.py thats still pretty straight forward
+ATTENTION: Apparently text() does not support lists in the in statement.
+I'll build the statement myself and take care of sql injections.
+For api_scripts.py that's still pretty straight forward.
+
+The limitation arises in the DBAPI that SQLALCHEMY uses:
+http://stackoverflow.com/questions/14512228/sqlalchemy-raw-sql-parameter-substitution-with-an-in-clause
 """
+
 
 class ApiScripts:
     def __init__(self, engine: Engine):
@@ -58,14 +61,16 @@ class ApiScripts:
         AND are associated with these profiles
         :return:
         """
-        profile_ids_string = "(%s)" % (','.join(str(profile_ids)))
-        field_ids_string = "(%s)" % (','.join(str(field_ids)))
-        query = text(self._query_documents_by_profile_ids_and_field_ids)
-        return self._engine.execute(query, field_ids=profile_ids_string, profile_ids=field_ids_string).fetchall()
+        profile_ids_string = '(%s)' % (','.join(map(str, profile_ids)))
+        field_ids_string = '(%s)' % (','.join(map(str, field_ids)))
+        query = self._query_documents_by_profile_ids_and_field_ids
+        query = re.sub(':profile_ids', profile_ids_string, query)
+        query = re.sub(':field_ids', field_ids_string, query)
+        return self._engine.execute(query).fetchall()
 
     def get_profiles_slim(self):
         """
-        Query slim profiles for fast UI autocompletion
+        Query slim profiles for fast UI auto completion
         :param profile_ids:
         :return:
         """
@@ -79,10 +84,12 @@ class ApiScripts:
         :param slim:
         :return:
         """
-        profile_ids_string = "(%s)" % (','.join(str(profile_ids)))
-        field_ids_string = "(%s)" % (','.join(str(field_ids)))
-        query = text(self._query_profiles_by_profile_ids_or_field_ids)
-        return self._engine.execute(query, field_ids=field_ids_string, profile_ids=profile_ids_string).fetchall()
+        profile_ids_string = '(%s)' % (','.join(map(str, profile_ids)))
+        field_ids_string = '(%s)' % (','.join(map(str, field_ids)))
+        query = self._query_profiles_by_profile_ids_or_field_ids
+        query = re.sub(':profile_ids', profile_ids_string, query)
+        query = re.sub(':field_ids', field_ids_string, query)
+        return self._engine.execute(query).fetchall()
 
     def get_fields(self):
         """
