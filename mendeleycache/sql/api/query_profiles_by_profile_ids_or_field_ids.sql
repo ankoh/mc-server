@@ -6,10 +6,10 @@ FROM
    cache_profile p,
    mendeley_profile mp,
    (
-     SELECT id, MAX(cnt) as cnt
+     SELECT id, MAX(cnt) AS cnt
      FROM
      (
-      SELECT p.id as id , count(*) as cnt
+      SELECT p.id AS id , count(*) AS cnt
       FROM
          cache_profile p,
          cache_document d,
@@ -21,7 +21,7 @@ FROM
 
       UNION ALL
 
-      SELECT p.id as id, count(*) as cnt
+      SELECT p.id AS id, COUNT(DISTINCT(d.id)) AS cnt
        FROM
          cache_profile p,
          cache_document d,
@@ -33,7 +33,7 @@ FROM
       AND d.id = dhf.cache_document_id
       AND dhf.cache_field_id = f.id
       AND f.id IN :field_ids
-      GROUP BY f.id, p.id
+      GROUP BY p.id
      )
      GROUP BY id
    ) c
