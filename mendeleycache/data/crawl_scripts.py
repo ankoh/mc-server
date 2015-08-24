@@ -62,16 +62,17 @@ class CrawlScripts:
             sql = sql_file.read()
             self._link_profiles_to_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
-    def replace_mendeley_documents(docs: [Document]):
+    def replace_mendeley_documents(self, docs: [Document]):
         """
         Given a document list, this method replaces the documents in the database with new ones
         :param docs:
         :return:
         """
-        pass
+
+
     
     
-    def replace_mendeley_profiles(docs: [Profile]):
+    def replace_mendeley_profiles(self, docs: [Profile]):
         """
         Given a profile list, this method replaces the profiles in the database with new ones
         :param docs:
@@ -80,7 +81,7 @@ class CrawlScripts:
         pass
     
     
-    def update_cache_documents(unified_document_title_to_documents: {}):
+    def update_cache_documents(self, unified_document_title_to_documents: {}):
         """
         Given a unified_document_title to documents map, merges the documents and creates the FK references
         :param unified_document_title_to_documents:
@@ -89,7 +90,7 @@ class CrawlScripts:
         pass
     
     
-    def update_cache_profiles(unified_name_to_profiles: {}, unified_name_to_real_name: {}):
+    def update_cache_profiles(self, unified_name_to_profiles: {}, unified_name_to_real_name: {}):
         """
         Given a unified_profile_name to profiles map, merges the profiles and creates the FK references
         :param unified_name_to_profiles:
@@ -99,7 +100,7 @@ class CrawlScripts:
         pass
     
     
-    def update_cache_fields(unified_field_title_to_field: {}):
+    def update_cache_fields(self, unified_field_title_to_field: {}):
         """
         Given a unified_field_title to field map, updates the fields
         :param unified_field_title_to_field:
@@ -108,7 +109,7 @@ class CrawlScripts:
         pass
     
     
-    def link_profiles_to_documents(engine: Engine,
+    def link_profiles_to_documents(self, engine: Engine,
                                    unified_name_to_authored_documents: {},
                                    unified_name_to_participated_documents: {}):
         """
@@ -121,7 +122,7 @@ class CrawlScripts:
         pass
     
     
-    def link_fields_to_documents(unified_field_title_to_documents: {}):
+    def link_fields_to_documents(self, unified_field_title_to_documents: {}):
         """
         Given a unified_field_title to documents map, creates the N:M relations in the database
         :param unified_field_title_to_documents:

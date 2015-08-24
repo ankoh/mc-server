@@ -1,12 +1,13 @@
--- Schema for MYSQL
+-- Schema for SQLite
 
 -- -----------------------------------------------------
 -- Table mendeley_profile
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mendeley_profile (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  cache_profile_id INTEGER NOT NULL,
-  m_id VARCHAR(255) NOT NULL UNIQUE,
+  cache_profile_id INTEGER,
+  unified_name VARCHAR(255) NOT NULL,
+  m_id VARCHAR(255) UNIQUE NOT NULL,
   m_first_name VARCHAR(35) NOT NULL,
   m_last_name VARCHAR(35) NOT NULL,
   m_display_name VARCHAR(80),
@@ -16,14 +17,17 @@ CREATE TABLE IF NOT EXISTS mendeley_profile (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+CREATE INDEX mendeley_profile_unified_name ON mendeley_profile(unified_name);
+
 -- -----------------------------------------------------
 -- Table mendeley_document
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS mendeley_document (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   mendeley_profile_id INTEGER NOT NULL,
-  cache_document_id INTEGER NOT NULL,
-  m_core_id VARCHAR(255),
+  cache_document_id INTEGER,
+  unified_title VARCHAR(255),
+  m_core_id VARCHAR(255) UNIQUE NOT NULL,
   m_core_title VARCHAR(255),
   m_core_type VARCHAR(45),
   m_core_created DATETIME,
@@ -44,8 +48,9 @@ CREATE TABLE IF NOT EXISTS mendeley_document (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX mendeley_document_cache_document_id on mendeley_document(cache_document_id);
-CREATE INDEX mendeley_document_mendeley_profile_id on mendeley_document(mendeley_profile_id);
+CREATE INDEX mendeley_document_cache_document_id ON mendeley_document(cache_document_id);
+CREATE INDEX mendeley_document_mendeley_profile_id ON mendeley_document(mendeley_profile_id);
+CREATE INDEX mendeley_document_unified_title ON mendeley_document(unified_title);
 
 -- -----------------------------------------------------
 -- Table cache_profile
@@ -54,7 +59,7 @@ CREATE TABLE IF NOT EXISTS cache_profile (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   unified_name VARCHAR(255) NOT NULL UNIQUE,
-  mendeley_profile_id INTEGER UNIQUE,
+  mendeley_profile_id INTEGER,
   FOREIGN KEY (mendeley_profile_id)
     REFERENCES mendeley_profile (id)
     ON DELETE SET NULL
