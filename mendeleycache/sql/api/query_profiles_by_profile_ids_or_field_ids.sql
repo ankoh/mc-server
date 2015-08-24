@@ -33,7 +33,7 @@ FROM
       AND d.id = dhf.cache_document_id
       AND dhf.cache_field_id = f.id
       AND f.id IN :field_ids
-      GROUP BY p.id
+      GROUP BY f.id, p.id
      )
      GROUP BY id
    ) c
