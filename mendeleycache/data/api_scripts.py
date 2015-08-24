@@ -1,7 +1,6 @@
 __author__ = 'kohn'
 
 from sqlalchemy.engine import Engine
-from sqlalchemy.sql import text
 
 from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.regex import sql_comments
@@ -74,7 +73,7 @@ class ApiScripts:
         :param profile_ids:
         :return:
         """
-        query = text(self._query_profiles_slim)
+        query = self._query_profiles_slim
         return self._engine.execute(query).fetchall()
 
     def get_profiles_by_profile_ids_or_field_ids(self, profile_ids: [int], field_ids: [int]):
@@ -96,7 +95,7 @@ class ApiScripts:
         Queries all research fields
         :return:
         """
-        query = text(self._query_fields)
+        query = self._query_fields
         return self._engine.execute(query).fetchall()
 
 
