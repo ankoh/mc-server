@@ -1,12 +1,65 @@
 __author__ = 'kohn'
 
+from mendeleycache.utils.files import get_relative_path
+from mendeleycache.utils.regex import sql_comments
 from mendeleycache.models import Document, Profile
 from sqlalchemy.engine import Engine
 
+import re
 
 class CrawlScripts:
     def __init__(self, engine: Engine):
         self._engine = engine
+
+        self._replace_mendeley_documents = ""
+        self._replace_mendeley_profiles = ""
+        self._update_cache_documents = ""
+        self._update_cache_fields = ""
+        self._update_cache_profiles = ""
+        self._link_fields_to_documents = ""
+        self._link_profiles_to_documents = ""
+
+        self.read_sql()
+
+    def read_sql(self):
+        """
+        Read the sql files and load them into the class variables
+        :return:
+        """
+        path = get_relative_path('sql', 'crawler', 'replace_mendeley_documents.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._replace_mendeley_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'replace_mendeley_profiles.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._replace_mendeley_profiles = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'update_cache_documents.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._update_cache_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'update_cache_fields.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._update_cache_fields = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'update_cache_profiles.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._update_cache_profiles = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'link_fields_to_documents.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._link_fields_to_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+
+        path = get_relative_path('sql', 'crawler', 'link_profiles_to_documents.sql')
+        with open(path, "r") as sql_file:
+            sql = sql_file.read()
+            self._link_profiles_to_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
     def replace_mendeley_documents(docs: [Document]):
         """
