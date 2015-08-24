@@ -27,25 +27,25 @@ class ApiScripts:
         """
         path = get_relative_path('sql', 'api', 'query_fields.sql')
         with open(path, "r") as sql_file:
-            sql = sql_file.read().replace(';', ' ')
-            self._query_fields = re.sub(sql_comments, ' ', sql)
+            sql = sql_file.read()
+            self._query_fields = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
         path = get_relative_path('sql', 'api', 'query_profiles_slim.sql')
         with open(path, "r") as sql_file:
-            sql = sql_file.read().replace(';', ' ')
-            self._query_profiles_slim = re.sub(sql_comments, ' ', sql)
+            sql = sql_file.read()
+            self._query_profiles_slim = re.sub(sql_comments, ' ', sql).replace(';', ' ')
 
         # query_documents_by_profile_ids_and_field_ids
         path = get_relative_path('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
         with open(path, "r") as sql_file:
-            sql = sql_file.read().replace(';', ' ')
-            self._query_documents_by_profile_ids_and_field_ids = re.sub(sql_comments, ' ', sql)
+            sql = sql_file.read()
+            self._query_documents_by_profile_ids_and_field_ids = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
         # profiles_by_profile_ids_or_field_ids
         path = get_relative_path('sql', 'api', 'query_profiles_by_profile_ids_or_field_ids.sql')
         with open(path, "r") as sql_file:
-            sql = sql_file.read().replace(';', ' ')
-            self._query_profiles_by_profile_ids_or_field_ids = re.sub(sql_comments, ' ', sql)
+            sql = sql_file.read()
+            self._query_profiles_by_profile_ids_or_field_ids = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
 
     def get_documents_by_profile_ids_and_field_ids(self, profile_ids: [int], field_ids: [int]):
         """
