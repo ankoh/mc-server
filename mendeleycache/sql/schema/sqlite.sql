@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS mendeley_document (
   cache_document_id INTEGER,
   unified_title VARCHAR(255),
   m_core_id VARCHAR(255) UNIQUE NOT NULL,
+  m_core_profile_id VARCHAR(255) NOT NULL,
   m_core_title VARCHAR(255),
   m_core_type VARCHAR(45),
   m_core_created DATETIME,

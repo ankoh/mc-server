@@ -2,9 +2,9 @@
 REPLACE
 INTO mendeley_documents
   (
-    mendeley_profile_id,
-    cache_document_id,
+    unified_title,
     m_core_id,
+    m_core_profile_id,
     m_core_title,
     m_core_type,
     m_core_created,
