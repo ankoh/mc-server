@@ -66,9 +66,13 @@ class CrawlScripts:
                 tags=""
             )
 
-        mendeley_documents_string = "(%s)" % (",".join(map(prepare_doc, docs)))
+        # If there's nothing to insert, abort
+        if len(docs) == 0:
+            return None
+
+        documents_string = ",".join(map(prepare_doc, docs))
         sql = self._replace_mendeley_documents
-        sql = re.sub(':documents', mendeley_documents_string, sql)
+        sql = re.sub(':documents', documents_string, sql)
         return self._engine.execute(sql).fetchall()
 
     def replace_mendeley_profiles(self,
@@ -96,7 +100,11 @@ class CrawlScripts:
                 link=p.link
             )
 
-        mendeley_profiles_string = "(%s)" % (",".join(map(prepare_profile, profiles)))
+        # If there's nothing to insert, abort
+        if len(profiles) == 0:
+            return None
+
+        mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
         sql = self._replace_mendeley_documents
         sql = re.sub(':profiles', mendeley_profiles_string, sql)
         return self._engine.execute(sql).fetchall()
@@ -109,7 +117,7 @@ class CrawlScripts:
         :return:
         """
         cache_document_strings = []
-        for _, doc_list in unified_document_title_to_documents.iteritems():
+        for _, doc_list in unified_document_title_to_documents.items():
             # flatten the document list down to one document
             reference_doc = None
             """:type : Document"""
@@ -132,7 +140,12 @@ class CrawlScripts:
                         title=r
                     )
                 )
-        cache_documents_string = '(%s)' % (','.join(cache_document_strings))
+
+        # If there's nothing to insert, abort
+        if len(cache_document_strings) == 0:
+            return None
+
+        cache_documents_string = ','.join(cache_document_strings)
         sql = self._update_cache_documents
         sql = re.sub(':cache_documents', cache_documents_string, sql)
         return self._engine.execute(sql).fetchall()
@@ -146,7 +159,7 @@ class CrawlScripts:
         :return:
         """
         cache_profile_strings = []
-        for _, profile_list in unified_name_to_profiles.iteritems():
+        for _, profile_list in unified_name_to_profiles.items():
             # flatten the profile list down to one profile
             reference_profile = None
             """:type : Profile"""
@@ -169,7 +182,12 @@ class CrawlScripts:
                         name=r
                     )
                 )
-        cache_profiles_string = '(%s)' % (','.join(cache_profile_strings))
+
+        # If there's nothing to insert, abort
+        if len(cache_profile_strings) == 0:
+            return None
+
+        cache_profiles_string = ','.join(cache_profile_strings)
         sql = self._update_cache_profiles
         sql = re.sub(':cache_profiles', cache_profiles_string, sql)
         return self._engine.execute(sql).fetchall()
@@ -182,7 +200,7 @@ class CrawlScripts:
         :return:
         """
         cache_field_strings = []
-        for _, field in unified_field_title_to_field.iteritems():
+        for _, field in unified_field_title_to_field.items():
             s = "({unified_title},{title})"
             cache_field_strings.append(
                 s.format(
@@ -191,7 +209,11 @@ class CrawlScripts:
                 )
             )
 
-        cache_fields_string = '(%s)' % (','.join(cache_field_strings))
+        # If there's nothing to insert, abort
+        if len(cache_field_strings) == 0:
+            return None
+
+        cache_fields_string = ','.join(cache_field_strings)
         sql = self._update_cache_fields
         sql = re.sub(':cache_fields', cache_fields_string, sql)
         return self._engine.execute(sql).fetchall()
@@ -227,7 +249,11 @@ class CrawlScripts:
                     )
                 )
 
-        unified_name_unified_title_tuples_string = '(%s)' % (','.join(unified_name_unified_title_tuple_strings))
+        # If there's nothing to insert, abort
+        if len(unified_name_unified_title_tuple_strings) == 0:
+            return None
+
+        unified_name_unified_title_tuples_string = ','.join(unified_name_unified_title_tuple_strings)
         sql = self._link_profiles_to_documents
         sql = re.sub(':profile_has_document', unified_name_unified_title_tuples_string, sql)
         return self._engine.execute(sql).fetchall()
@@ -250,7 +276,11 @@ class CrawlScripts:
                     )
                 )
 
-        field_title_doc_title_tuples_string = '(%s)' % (','.join(field_title_doc_title_tuple_strings))
+        # If there's nothing to insert, abort
+        if len(field_title_doc_title_tuple_strings) == 0:
+            return None
+
+        field_title_doc_title_tuples_string = ','.join(field_title_doc_title_tuple_strings)
         sql = self._link_fields_to_documents
         sql = re.sub(':document_has_field', field_title_doc_title_tuples_string, sql)
         return self._engine.execute(sql).fetchall()
