@@ -109,7 +109,7 @@ class CrawlScripts:
         :return:
         """
         cache_document_strings = []
-        for unified_title, doc_list in unified_document_title_to_documents.iteritems():
+        for _, doc_list in unified_document_title_to_documents.iteritems():
             # flatten the document list down to one document
             reference_doc = None
             """:type : Document"""
@@ -118,8 +118,8 @@ class CrawlScripts:
                 if reference_doc is None or doc.core_last_modified > reference_doc.core_last_modified:
                     reference_doc = doc
 
-            # if we found at least one reference_doc (which we will always),
-            # add the corresponding sql insert string to the r array
+            # if we found at least one reference_doc (which we should),
+            # add the corresponding sql insert string to the cache_document_strings array
             if reference_doc is not None:
                 u, r = unify_document_title(reference_doc.core_title)
                 s = "({document_mid}," \
@@ -136,19 +136,42 @@ class CrawlScripts:
         sql = self._update_cache_documents
         sql = re.sub(':cache_documents', cache_documents_string, sql)
         return self._engine.execute(sql).fetchall()
-    
-    
+
     def update_cache_profiles(self,
-                              unified_name_to_profiles: {},
-                              unified_name_to_real_name: {}):
+                              unified_name_to_profiles: {}):
         """
         Given a unified_profile_name to profiles map, merges the profiles and creates the FK references
         :param unified_name_to_profiles:
         :param unified_name_to_real_name:
         :return:
         """
-        sql = self._update_cache_profiles
+        cache_profile_strings = []
+        for _, profile_list in unified_name_to_profiles.iteritems():
+            # flatten the profile list down to one profile
+            reference_profile = None
+            """:type : Profile"""
 
+            for profile in profile_list:
+                if reference_profile is None or len(profile.display_name) > len(reference_profile.display_name):
+                    reference_profile = profile
+
+            # if we found at least one reference_profile (which we should)
+            # add the corresponding sql insert string to the cache_profile_strings array
+            if reference_profile is not None:
+                u, r = unify_profile_name(profile.first_name, profile.last_name)
+                s = "({profile_mid}," \
+                    "{unified_title}," \
+                    "{title})"
+                cache_profile_strings.append(
+                    s.format(
+                        profile_mid=reference_profile.identifier,
+                        unified_name=u,
+                        name=r
+                    )
+                )
+        cache_profiles_string = '(%s)' % (','.join(cache_profile_strings))
+        sql = self._update_cache_profiles
+        sql = re.sub(':cache_profiles', cache_profiles_string, sql)
         return self._engine.execute(sql).fetchall()
 
     

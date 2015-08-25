@@ -23,10 +23,6 @@ class AnalysisController:
         # document processing phase eventually dummy profiles will be added for those as well
         self._unified_name_to_unknown_profile = dict()
 
-        # unified_name_to_read_name maps unified person names to their real names
-        # a collision is resolved by choosing the longer real name (!!)
-        self._unified_name_to_real_name = dict()
-
         # unified_name_to_authored_documents maps unified person names to the authored document titles
         # (resolved via get_documents_by_profile_id)
         self._unified_name_to_authored_documents = dict()
@@ -51,10 +47,6 @@ class AnalysisController:
     @property
     def unified_name_to_unknown_profile(self):
         return self._unified_name_to_unknown_profile
-
-    @property
-    def unified_name_to_real_name(self):
-        return self._unified_name_to_real_name
 
     @property
     def unified_name_to_authored_documents(self):
@@ -103,10 +95,6 @@ class AnalysisController:
                 existing_profiles = self._unified_name_to_profiles[unified]
             existing_profiles.append(profile)
             self._unified_name_to_profiles[unified] = existing_profiles
-
-            # The real name of the profile is derived from the same base as the unified
-            # I'll directly replace them every time
-            self._unified_name_to_real_name[unified] = real
 
             # Store empty entries in documents maps for that profile
             # (then we don't need to check the key every time)
