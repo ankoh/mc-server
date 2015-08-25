@@ -198,6 +198,70 @@ class TestCrawlScripts(unittest.TestCase):
         r = data_controller.crawl_data.update_cache_documents(dict())
         self.assertIsNone(r)
 
+        document1 = Document(
+            core_id="doc1",
+            core_profile_id="id1",
+            core_title="sametitle1",
+            core_type="conference_proceedings",
+            core_created=datetime.now(),
+            core_last_modified=datetime.now(),
+            core_abstract="Older Abtract",
+            core_source="Older source",
+            core_year=2015,
+            core_authors=[],
+            core_keywords=[],
+            tags=[]
+        )
+        document2 = Document(
+            core_id="doc2",
+            core_profile_id="id2",
+            core_title="title2",
+            core_type="conference_proceedings",
+            core_created=datetime.now(),
+            core_last_modified=datetime.now(),
+            core_abstract="blabla2",
+            core_source="ACM xyz",
+            core_year=2014,
+            core_authors=[],
+            core_keywords=[],
+            tags=[]
+        )
+        document3 = Document(
+            core_id="doc3",
+            core_profile_id="id3",
+            core_title="sametitle1",
+            core_type="conference_proceedings",
+            core_created=datetime.now(),
+            core_last_modified=datetime.now(),
+            core_abstract="Newer abstract",
+            core_source="Newer source",
+            core_year=2015,
+            core_authors=[],
+            core_keywords=[],
+            tags=[]
+        )
+        unified_document_title_to_documents = dict()
+        unified_document_title_to_documents["samtetitle1"] = [document1, document3]
+        unified_document_title_to_documents["title2"] = [document2]
+
+        # Trigger cache document update
+        data_controller.crawl_data.update_cache_documents(unified_document_title_to_documents)
+
+         # Check data count in the table
+        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_document").fetchone()
+        self.assertEqual(cnt[0], 2)
+
+        # Then query sametitle row
+        row = data_controller.engine.execute(
+            "SELECT document_mid, unified_title, title "
+            "FROM cache_document "
+            "WHERE unified_title='sametitle1'"
+        ).fetchone()
+
+        self.assertEqual(row["document_mid"], "doc3")
+        self.assertEqual(row["unified_title"], "sametitle1")
+        self.assertEqual(row["title"], "sametitle1")
+
     def test_update_cache_profiles(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)
@@ -206,6 +270,31 @@ class TestCrawlScripts(unittest.TestCase):
         # The call shall not crash with empty input
         r = data_controller.crawl_data.update_cache_profiles(dict())
         self.assertIsNone(r)
+
+        profile1 = Profile("id1", "Hans", "Mustermann", "Longer Real Name", "")
+        profile2 = Profile("id2", "Max", "Mustermann", "", "")
+        profile3 = Profile("id3", "Hans", "Mustermann", "", "")
+
+        unified_name_to_profiles = dict()
+        unified_name_to_profiles["hansmustermann"] = [profile1, profile3]
+        unified_name_to_profiles["maxmustermann"] = [profile2]
+
+        data_controller.crawl_data.update_cache_profiles(unified_name_to_profiles)
+
+        # Check data count in the table
+        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_profile").fetchone()
+        self.assertEqual(cnt[0], 2)
+
+        # Then query sametitle row
+        row = data_controller.engine.execute(
+            "SELECT profile_mid, unified_name, name "
+            "FROM cache_profile "
+            "WHERE unified_name='hansmustermann'"
+        ).fetchone()
+
+        self.assertEqual(row["profile_mid"], "id1")
+        self.assertEqual(row["unified_name"], "hansmustermann")
+        self.assertEqual(row["name"], "Hans Mustermann")
 
     def test_update_cache_fields(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")

@@ -154,7 +154,10 @@ class CrawlScripts:
         cache_documents_string = ','.join(cache_document_strings)
         sql = self._update_cache_documents
         sql = re.sub(':cache_documents', cache_documents_string, sql)
-        return self._engine.execute(sql).fetchall()
+
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return self._engine.execute(sql)
 
     def update_cache_profiles(self,
                               unified_name_to_profiles: {}):
@@ -179,8 +182,8 @@ class CrawlScripts:
             if reference_profile is not None:
                 u, r = unify_profile_name(profile.first_name, profile.last_name)
                 s = "('{profile_mid}'," \
-                    "'{unified_title}'," \
-                    "'{title}')"
+                    "'{unified_name}'," \
+                    "'{name}')"
                 cache_profile_strings.append(
                     s.format(
                         profile_mid=reference_profile.identifier,
@@ -196,7 +199,10 @@ class CrawlScripts:
         cache_profiles_string = ','.join(cache_profile_strings)
         sql = self._update_cache_profiles
         sql = re.sub(':cache_profiles', cache_profiles_string, sql)
-        return self._engine.execute(sql).fetchall()
+
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return self._engine.execute(sql)
 
     def update_cache_fields(self,
                             unified_field_title_to_field: {}):

@@ -1,6 +1,6 @@
 -- noinspection SqlResolve
 REPLACE
-INTO cache_documents
+INTO cache_document
   (
     document_mid,
     unified_title,

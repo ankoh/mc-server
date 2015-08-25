@@ -1,6 +1,6 @@
 -- noinspection SqlResolve
 REPLACE
-INTO cache_profiles
+INTO cache_profile
   (
     profile_mid,
     unified_name,
