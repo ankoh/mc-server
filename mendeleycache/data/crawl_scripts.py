@@ -39,12 +39,12 @@ class CrawlScripts:
                 "'{owner_mid}'," \
                 "'{unified_title}'," \
                 "'{title}'," \
-                "'{type}'," \
+                "'{doc_type}'," \
                 "'{created}'," \
                 "'{last_modified}'," \
                 "'{abstract}'," \
                 "'{source}'," \
-                "'{year}'," \
+                "'{pub_year}'," \
                 "'{authors}'," \
                 "'{keywords}'," \
                 "'{tags}'," \
@@ -55,15 +55,16 @@ class CrawlScripts:
                 owner_mid=doc.core_profile_id,
                 unified_title=u,
                 title=doc.core_title,
-                type=doc.core_type,
+                doc_type=doc.core_type,
                 created=doc.core_created,
                 last_modified=doc.core_last_modified,
                 abstract=doc.core_abstract,
                 source=doc.core_source,
-                year=doc.core_year,
+                pub_year=doc.core_year,
                 authors="",
                 keywords="",
-                tags=""
+                tags="",
+                derived_bibtex=""
             )
 
         # If there's nothing to insert, abort
@@ -76,7 +77,7 @@ class CrawlScripts:
         
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql).fetchall()
+            return self._engine.execute(sql)
 
     def replace_profiles(self, profiles: [Profile]):
         """
