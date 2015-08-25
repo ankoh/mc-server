@@ -27,7 +27,7 @@ class CrawlScripts:
         self._link_profiles_to_documents = \
             read_single_statement_sql_file('sql', 'crawler', 'link_profiles_to_documents.sql')
 
-    def replace_mendeley_documents(self, docs: [Document]):
+    def replace_documents(self, docs: [Document]):
         """
         Given a document list, this method replaces the documents in the database with new ones
         :param docs:
@@ -35,20 +35,20 @@ class CrawlScripts:
         """
 
         def prepare_doc(doc: Document) -> str:
-            r = "({mid}," \
-                "{owner_mid}," \
-                "{unified_title}," \
-                "{title}," \
-                "{type}," \
-                "{created}," \
-                "{last_modified}," \
-                "{abstract}," \
-                "{source}," \
-                "{year}," \
-                "{authors}," \
-                "{keywords}," \
-                "{tags}," \
-                "{derived_bibtex})"
+            r = "('{mid}'," \
+                "'{owner_mid}'," \
+                "'{unified_title}'," \
+                "'{title}'," \
+                "'{type}'," \
+                "'{created}'," \
+                "'{last_modified}'," \
+                "'{abstract}'," \
+                "'{source}'," \
+                "'{year}'," \
+                "'{authors}'," \
+                "'{keywords}'," \
+                "'{tags}'," \
+                "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
             return r.format(
                 mid=doc.core_id,
@@ -73,10 +73,12 @@ class CrawlScripts:
         documents_string = ",".join(map(prepare_doc, docs))
         sql = self._replace_mendeley_documents
         sql = re.sub(':documents', documents_string, sql)
-        return self._engine.execute(sql).fetchall()
+        
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return self._engine.execute(sql).fetchall()
 
-    def replace_mendeley_profiles(self,
-                                  profiles: [Profile]):
+    def replace_profiles(self, profiles: [Profile]):
         """
         Given a profile list, this method replaces the profiles in the database with new ones
         :param docs:
@@ -84,12 +86,12 @@ class CrawlScripts:
         """
 
         def prepare_profile(p: Profile) -> str:
-            r = "({mid}," \
-                "{unified_name}," \
-                "{first_name}," \
-                "{last_name}," \
-                "{display_name}," \
-                "{link})"
+            r = "('{mid}'," \
+                "'{unified_name}'," \
+                "'{first_name}'," \
+                "'{last_name}'," \
+                "'{display_name}'," \
+                "'{link}')"
             u, _ = unify_profile_name(p.first_name, p.last_name)
             return r.format(
                 mid=p.identifier,
@@ -105,9 +107,12 @@ class CrawlScripts:
             return None
 
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
-        sql = self._replace_mendeley_documents
+        sql = self._replace_mendeley_profiles
         sql = re.sub(':profiles', mendeley_profiles_string, sql)
-        return self._engine.execute(sql).fetchall()
+
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return self._engine.execute(sql)
 
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):
@@ -130,9 +135,9 @@ class CrawlScripts:
             # add the corresponding sql insert string to the cache_document_strings array
             if reference_doc is not None:
                 u, r = unify_document_title(reference_doc.core_title)
-                s = "({document_mid}," \
-                    "{unified_title}," \
-                    "{title})"
+                s = "('{document_mid}'," \
+                    "'{unified_title}'," \
+                    "'{title}')"
                 cache_document_strings.append(
                     s.format(
                         document_mid=reference_doc.core_id,
@@ -172,9 +177,9 @@ class CrawlScripts:
             # add the corresponding sql insert string to the cache_profile_strings array
             if reference_profile is not None:
                 u, r = unify_profile_name(profile.first_name, profile.last_name)
-                s = "({profile_mid}," \
-                    "{unified_title}," \
-                    "{title})"
+                s = "('{profile_mid}'," \
+                    "'{unified_title}'," \
+                    "'{title}')"
                 cache_profile_strings.append(
                     s.format(
                         profile_mid=reference_profile.identifier,
@@ -201,7 +206,7 @@ class CrawlScripts:
         """
         cache_field_strings = []
         for _, field in unified_field_title_to_field.items():
-            s = "({unified_title},{title})"
+            s = "('{unified_title}','{title}')"
             cache_field_strings.append(
                 s.format(
                     unified_title=field.unified_title,
@@ -231,7 +236,7 @@ class CrawlScripts:
         unified_name_unified_title_tuple_strings=[]
         for unified_name, doc_list in unified_name_to_authored_documents:
             for doc_unified in doc_list:
-                s = "({unified_name},{unified_title})"
+                s = "('{unified_name}','{unified_title}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
                         unified_name=unified_name,
@@ -241,7 +246,7 @@ class CrawlScripts:
 
         for unified_name, doc_list in unified_name_to_participated_documents:
             for doc_unified in doc_list:
-                s = "({unified_name},{unified_title})"
+                s = "('{unified_name}','{unified_title}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
                         unified_name=unified_name,
@@ -268,7 +273,7 @@ class CrawlScripts:
         field_title_doc_title_tuple_strings=[]
         for unified_field_title, doc_list in unified_field_title_to_documents:
             for doc_unified in doc_list:
-                s = "({unified_field_title},{unified_doc_title})"
+                s = "('{unified_field_title}','{unified_doc_title}')"
                 field_title_doc_title_tuple_strings.append(
                     s.format(
                         unified_field_title=unified_field_title,

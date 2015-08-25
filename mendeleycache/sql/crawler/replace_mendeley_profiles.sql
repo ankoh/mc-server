@@ -10,4 +10,4 @@ INTO profile
     link
   )
 VALUES
-  :profiles
+  :profiles;
