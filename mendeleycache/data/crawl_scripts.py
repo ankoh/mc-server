@@ -206,11 +206,32 @@ class CrawlScripts:
         :param unified_name_to_participated_documents:
         :return:
         """
-        sql = self._link_profiles_to_documents
+        unified_name_unified_title_tuple_strings=[]
+        for unified_name, doc_list in unified_name_to_authored_documents:
+            for doc_unified in doc_list:
+                s = "({unified_name},{unified_title})"
+                unified_name_unified_title_tuple_strings.append(
+                    s.format(
+                        unified_name=unified_name,
+                        unified_title=doc_unified
+                    )
+                )
 
+        for unified_name, doc_list in unified_name_to_participated_documents:
+            for doc_unified in doc_list:
+                s = "({unified_name},{unified_title})"
+                unified_name_unified_title_tuple_strings.append(
+                    s.format(
+                        unified_name=unified_name,
+                        unified_title=doc_unified
+                    )
+                )
+
+        unified_name_unified_title_tuples_string = '(%s)' % (','.join(unified_name_unified_title_tuple_strings))
+        sql = self._link_profiles_to_documents
+        sql = re.sub(':profile_has_document', unified_name_unified_title_tuples_string, sql)
         return self._engine.execute(sql).fetchall()
-    
-    
+
     def link_fields_to_documents(self,
                                  unified_field_title_to_documents: {}):
         """
@@ -218,6 +239,18 @@ class CrawlScripts:
         :param unified_field_title_to_documents:
         :return:
         """
-        sql = self._link_fields_to_documents
+        field_title_doc_title_tuple_strings=[]
+        for unified_field_title, doc_list in unified_field_title_to_documents:
+            for doc_unified in doc_list:
+                s = "({unified_field_title},{unified_doc_title})"
+                field_title_doc_title_tuple_strings.append(
+                    s.format(
+                        unified_field_title=unified_field_title,
+                        unified_doc_title=doc_unified
+                    )
+                )
 
+        field_title_doc_title_tuples_string = '(%s)' % (','.join(field_title_doc_title_tuple_strings))
+        sql = self._link_fields_to_documents
+        sql = re.sub(':document_has_field', field_title_doc_title_tuples_string, sql)
         return self._engine.execute(sql).fetchall()
