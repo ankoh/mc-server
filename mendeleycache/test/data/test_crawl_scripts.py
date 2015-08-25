@@ -4,7 +4,7 @@ import unittest
 
 from mendeleycache.config import SQLiteConfiguration
 from mendeleycache.data.controller import DataController
-from mendeleycache.data.api_scripts import ApiScripts
+from mendeleycache.data.api_data import ApiScripts
 
 from mendeleycache.models import Profile, Document, CacheField
 from datetime import datetime
@@ -12,13 +12,13 @@ from datetime import datetime
 
 class TestCrawlScripts(unittest.TestCase):
 
-    def test_replace_documents(self):
+    def test_update_documents(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
         # The call shall not crash with empty input
-        r = data_controller.crawl_data.replace_documents([])
+        r = data_controller.crawl_data.update_documents([])
         self.assertIsNone(r)
 
         document1 = Document(
@@ -49,7 +49,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_keywords=[],
             tags=[]
         )
-        data_controller.crawl_data.replace_documents([document1, document2])
+        data_controller.crawl_data.update_documents([document1, document2])
 
         # Check data count in the table
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM document").fetchone()
@@ -111,7 +111,7 @@ class TestCrawlScripts(unittest.TestCase):
             tags=[]
         )
 
-        data_controller.crawl_data.replace_documents([document1, document2])
+        data_controller.crawl_data.update_documents([document1, document2])
 
         # Check data count in the table
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM document").fetchone()
@@ -134,18 +134,18 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(rows[0]["source"], "ACM xyz1")
         self.assertEqual(rows[0]["pub_year"], 2015)
 
-    def test_replace_profiles(self):
+    def test_update_profiles(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
         # The call shall not crash with empty input
-        r = data_controller.crawl_data.replace_profiles([])
+        r = data_controller.crawl_data.update_profiles([])
         self.assertIsNone(r)
 
         profile1 = Profile("id1", "Hans", "Mustermann", "", "")
         profile2 = Profile("id2", "Max", "Mustermann", "", "")
-        data_controller.crawl_data.replace_profiles([profile1, profile2])
+        data_controller.crawl_data.update_profiles([profile1, profile2])
 
         # Check data count in the table
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM profile").fetchone()
@@ -171,7 +171,7 @@ class TestCrawlScripts(unittest.TestCase):
 
         profile1 = Profile("id1", "Hans", "Supermann", "", "")
         profile2 = Profile("id2", "Max", "Mustermann", "", "")
-        data_controller.crawl_data.replace_profiles([profile1, profile2])
+        data_controller.crawl_data.update_profiles([profile1, profile2])
 
         # Check data count in the table
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM profile").fetchone()
@@ -318,19 +318,15 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(cnt[0], 2)
 
          # Then query rows
-        rows = data_controller.engine.execute(
+        row = data_controller.engine.execute(
             "SELECT title, unified_title "
             "FROM cache_field "
-        ).fetchall()
+            "WHERE unified_title='field1' "
+        ).fetchone()
 
         # Check first row
-        self.assertEqual(rows[0]["title"], "field 1")
-        self.assertEqual(rows[0]['unified_title'], "field1")
-
-        # Check second row
-        self.assertEqual(rows[1]["title"], "field 2")
-        self.assertEqual(rows[1]['unified_title'], "field2")
-
+        self.assertEqual(row["title"], "field 1")
+        self.assertEqual(row['unified_title'], "field1")
 
     def test_link_profiles_to_documents(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")

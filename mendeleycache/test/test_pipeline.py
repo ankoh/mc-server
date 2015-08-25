@@ -15,6 +15,7 @@ class TestPipeline(unittest.TestCase):
     def test_execute(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)
+        data_controller.run_schema()
 
         crawler = FileCrawler()
         crawl_controller = CrawlController(crawler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")

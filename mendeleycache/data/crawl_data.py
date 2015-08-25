@@ -1,8 +1,9 @@
 __author__ = 'kohn'
 
-from mendeleycache.data.reader import read_single_statement_sql_file
+from mendeleycache.data.reader import read_sql_statements
 from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
+from mendeleycache.utils.sanitize import sanitize_text
 from sqlalchemy.engine import Engine
 
 import re
@@ -13,21 +14,21 @@ class CrawlScripts:
         self._engine = engine
 
         self._replace_documents =\
-            read_single_statement_sql_file('sql', 'crawler', 'replace_documents.sql')
+            read_sql_statements('sql', 'crawler', 'replace_documents.sql')
         self._replace_profiles = \
-            read_single_statement_sql_file('sql', 'crawler', 'replace_profiles.sql')
+            read_sql_statements('sql', 'crawler', 'replace_profiles.sql')
         self._update_cache_documents = \
-            read_single_statement_sql_file('sql', 'crawler', 'update_cache_documents.sql')
+            read_sql_statements('sql', 'crawler', 'update_cache_documents.sql')
         self._update_cache_fields = \
-            read_single_statement_sql_file('sql', 'crawler', 'update_cache_fields.sql')
+            read_sql_statements('sql', 'crawler', 'update_cache_fields.sql')
         self._update_cache_profiles = \
-            read_single_statement_sql_file('sql', 'crawler', 'update_cache_profiles.sql')
+            read_sql_statements('sql', 'crawler', 'update_cache_profiles.sql')
         self._link_fields_to_documents = \
-            read_single_statement_sql_file('sql', 'crawler', 'link_fields_to_documents.sql')
+            read_sql_statements('sql', 'crawler', 'link_fields_to_documents.sql')
         self._link_profiles_to_documents = \
-            read_single_statement_sql_file('sql', 'crawler', 'link_profiles_to_documents.sql')
+            read_sql_statements('sql', 'crawler', 'link_profiles_to_documents.sql')
 
-    def replace_documents(self, docs: [Document]):
+    def update_documents(self, docs: [Document]):
         """
         Given a document list, this method replaces the documents in the database with new ones
         :param docs:
@@ -51,15 +52,15 @@ class CrawlScripts:
                 "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
             return r.format(
-                mid=doc.core_id,
-                owner_mid=doc.core_profile_id,
-                unified_title=u,
-                title=doc.core_title,
-                doc_type=doc.core_type,
+                mid=sanitize_text(doc.core_id),
+                owner_mid=sanitize_text(doc.core_profile_id),
+                unified_title=sanitize_text(u),
+                title=sanitize_text(doc.core_title),
+                doc_type=sanitize_text(doc.core_type),
                 created=doc.core_created,
                 last_modified=doc.core_last_modified,
-                abstract=doc.core_abstract,
-                source=doc.core_source,
+                abstract=sanitize_text(doc.core_abstract),
+                source=sanitize_text(doc.core_source),
                 pub_year=doc.core_year,
                 authors="",
                 keywords="",
@@ -72,14 +73,14 @@ class CrawlScripts:
             return None
 
         documents_string = ",".join(map(prepare_doc, docs))
-        sql = self._replace_documents
+        sql = self._replace_documents[0]
         sql = re.sub(':documents', documents_string, sql)
         
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql)
+            return conn.execute(sql)
 
-    def replace_profiles(self, profiles: [Profile]):
+    def update_profiles(self, profiles: [Profile]):
         """
         Given a profile list, this method replaces the profiles in the database with new ones
         :param docs:
@@ -95,12 +96,12 @@ class CrawlScripts:
                 "'{link}')"
             u, _ = unify_profile_name(p.first_name, p.last_name)
             return r.format(
-                mid=p.identifier,
-                unified_name=u,
-                first_name=p.first_name,
-                last_name=p.last_name,
-                display_name=p.display_name,
-                link=p.link
+                mid=sanitize_text(p.identifier),
+                unified_name=sanitize_text(u),
+                first_name=sanitize_text(p.first_name),
+                last_name=sanitize_text(p.last_name),
+                display_name=sanitize_text(p.display_name),
+                link=sanitize_text(p.link)
             )
 
         # If there's nothing to insert, abort
@@ -108,12 +109,12 @@ class CrawlScripts:
             return None
 
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
-        sql = self._replace_profiles
+        sql = self._replace_profiles[0]
         sql = re.sub(':profiles', mendeley_profiles_string, sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql)
+            return conn.execute(sql)
 
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):
@@ -141,9 +142,9 @@ class CrawlScripts:
                     "'{title}')"
                 cache_document_strings.append(
                     s.format(
-                        document_mid=reference_doc.core_id,
-                        unified_title=u,
-                        title=r
+                        document_mid=sanitize_text(reference_doc.core_id),
+                        unified_title=sanitize_text(u),
+                        title=sanitize_text(r)
                     )
                 )
 
@@ -152,12 +153,12 @@ class CrawlScripts:
             return None
 
         cache_documents_string = ','.join(cache_document_strings)
-        sql = self._update_cache_documents
+        sql = self._update_cache_documents[0]
         sql = re.sub(':cache_documents', cache_documents_string, sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql)
+            return conn.execute(sql)
 
     def update_cache_profiles(self,
                               unified_name_to_profiles: {}):
@@ -186,9 +187,9 @@ class CrawlScripts:
                     "'{name}')"
                 cache_profile_strings.append(
                     s.format(
-                        profile_mid=reference_profile.identifier,
-                        unified_name=u,
-                        name=r
+                        profile_mid=sanitize_text(reference_profile.identifier),
+                        unified_name=sanitize_text(u),
+                        name=sanitize_text(r)
                     )
                 )
 
@@ -197,12 +198,12 @@ class CrawlScripts:
             return None
 
         cache_profiles_string = ','.join(cache_profile_strings)
-        sql = self._update_cache_profiles
+        sql = self._update_cache_profiles[0]
         sql = re.sub(':cache_profiles', cache_profiles_string, sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql)
+            return conn.execute(sql)
 
     def update_cache_fields(self,
                             unified_field_title_to_field: {}):
@@ -216,8 +217,8 @@ class CrawlScripts:
             s = "('{unified_title}','{title}')"
             cache_field_strings.append(
                 s.format(
-                    unified_title=field.unified_title,
-                    title=field.title
+                    unified_title=sanitize_text(field.unified_title),
+                    title=sanitize_text(field.title)
                 )
             )
 
@@ -226,12 +227,12 @@ class CrawlScripts:
             return None
 
         cache_fields_string = ','.join(cache_field_strings)
-        sql = self._update_cache_fields
+        sql = self._update_cache_fields[0]
         sql = re.sub(':cache_fields', cache_fields_string, sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return self._engine.execute(sql)
+            return conn.execute(sql)
     
     def link_profiles_to_documents(self,
                                    unified_name_to_authored_documents: {},
@@ -244,23 +245,23 @@ class CrawlScripts:
         :return:
         """
         unified_name_unified_title_tuple_strings=[]
-        for unified_name, doc_list in unified_name_to_authored_documents:
+        for unified_name, doc_list in unified_name_to_authored_documents.items():
             for doc_unified in doc_list:
                 s = "('{unified_name}','{unified_title}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
-                        unified_name=unified_name,
-                        unified_title=doc_unified
+                        unified_name=sanitize_text(unified_name),
+                        unified_title=sanitize_text(doc_unified)
                     )
                 )
 
-        for unified_name, doc_list in unified_name_to_participated_documents:
+        for unified_name, doc_list in unified_name_to_participated_documents.items():
             for doc_unified in doc_list:
                 s = "('{unified_name}','{unified_title}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
-                        unified_name=unified_name,
-                        unified_title=doc_unified
+                        unified_name=sanitize_text(unified_name),
+                        unified_title=sanitize_text(doc_unified)
                     )
                 )
 
@@ -268,10 +269,25 @@ class CrawlScripts:
         if len(unified_name_unified_title_tuple_strings) == 0:
             return None
 
-        unified_name_unified_title_tuples_string = ','.join(unified_name_unified_title_tuple_strings)
-        sql = self._link_profiles_to_documents
-        sql = re.sub(':profile_has_document', unified_name_unified_title_tuples_string, sql)
-        return self._engine.execute(sql).fetchall()
+        # Get the different statements in the sql file
+        temp = self._link_profiles_to_documents[0]
+        insert = self._link_profiles_to_documents[1]
+        delete = self._link_profiles_to_documents[2]
+        link = self._link_profiles_to_documents[3]
+        drop = self._link_profiles_to_documents[4]
+
+        unified_name_unified_title_tuples_string = '%s' % ','.join(unified_name_unified_title_tuple_strings)
+        insert = re.sub(':profiles_to_documents', unified_name_unified_title_tuples_string, insert)
+
+
+
+        # Fire the sql scripts in a transaction
+        with self._engine.begin() as conn:
+            conn.execute(temp)
+            conn.execute(insert)
+            conn.execute(delete)
+            conn.execute(link)
+            conn.execute(drop)
 
     def link_fields_to_documents(self,
                                  unified_field_title_to_documents: {}):
@@ -281,13 +297,13 @@ class CrawlScripts:
         :return:
         """
         field_title_doc_title_tuple_strings=[]
-        for unified_field_title, doc_list in unified_field_title_to_documents:
+        for unified_field_title, doc_list in unified_field_title_to_documents.items():
             for doc_unified in doc_list:
                 s = "('{unified_field_title}','{unified_doc_title}')"
                 field_title_doc_title_tuple_strings.append(
                     s.format(
-                        unified_field_title=unified_field_title,
-                        unified_doc_title=doc_unified
+                        unified_field_title=sanitize_text(unified_field_title),
+                        unified_doc_title=sanitize_text(doc_unified)
                     )
                 )
 
@@ -295,7 +311,20 @@ class CrawlScripts:
         if len(field_title_doc_title_tuple_strings) == 0:
             return None
 
-        field_title_doc_title_tuples_string = ','.join(field_title_doc_title_tuple_strings)
-        sql = self._link_fields_to_documents
-        sql = re.sub(':document_has_field', field_title_doc_title_tuples_string, sql)
-        return self._engine.execute(sql).fetchall()
+         # Get the different statements in the sql file
+        temp = self._link_profiles_to_documents[0]
+        insert = self._link_profiles_to_documents[1]
+        delete = self._link_profiles_to_documents[2]
+        link = self._link_profiles_to_documents[3]
+        drop = self._link_profiles_to_documents[4]
+
+        field_title_doc_title_tuples_string = '%s' % ','.join(field_title_doc_title_tuple_strings)
+        insert = re.sub(':fields_to_documents', field_title_doc_title_tuples_string, insert)
+
+        # Fire the sql scripts in a transaction
+        with self._engine.begin() as conn:
+            conn.execute(temp)
+            conn.execute(insert)
+            conn.execute(delete)
+            conn.execute(link)
+            conn.execute(drop)

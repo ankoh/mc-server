@@ -40,6 +40,13 @@ class AnalysisController:
         # unified_field_title_to_documents maps unified field titles to unified document titles
         self._unified_field_title_to_documents = dict()
 
+        # list of all documents
+        self._documents = []
+
+    @property
+    def documents(self):
+        return self._documents
+
     @property
     def unified_name_to_profiles(self):
         return self._unified_name_to_profiles
@@ -79,6 +86,16 @@ class AnalysisController:
         self._profiles = profiles
         self._profile_docs = profile_docs
         self._group_docs = group_docs
+
+        # Clean state
+        self._unified_name_to_profiles = dict()
+        self._unified_name_to_unknown_profile = dict()
+        self._unified_name_to_authored_documents = dict()
+        self._unified_name_to_participated_documents = dict()
+        self._unified_document_title_to_documents = dict()
+        self._unified_field_title_to_field = dict()
+        self._unified_field_title_to_documents = dict()
+        self._documents = []
 
     def process_profiles(self):
         """
@@ -177,6 +194,9 @@ class AnalysisController:
             # Process these documents
             docs = self._profile_docs[profile_unified]
             for doc in docs:
+                # Add doc to all docs
+                self._documents.append(doc)
+
                 # Create unified document title
                 doc_unified, doc_real = unify_document_title(doc.core_title)
 
@@ -205,6 +225,9 @@ class AnalysisController:
         :return:
         """
         for doc in self._group_docs:
+            # Add doc to all docs
+            self._documents.append(doc)
+
             # Create unified document title
             doc_unified, doc_real = unify_document_title(doc.core_title)
 

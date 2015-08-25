@@ -2,9 +2,9 @@ __author__ = 'kohn'
 
 from mendeleycache.data.config import create_engine
 from mendeleycache.config import DatabaseConfiguration
-from mendeleycache.data.schema import read_mysql_schema, read_sqlite_schema
-from mendeleycache.data.api_scripts import ApiScripts
-from mendeleycache.data.crawl_scripts import CrawlScripts
+from mendeleycache.data.api_data import ApiScripts
+from mendeleycache.data.crawl_data import CrawlScripts
+from mendeleycache.data.reader import read_sql_statements
 
 from sqlalchemy.exc import DBAPIError
 
@@ -54,11 +54,11 @@ class DataController:
         """
         schema = []
         if self._config.engine == "sqlite":
-            schema = read_sqlite_schema()
+            schema = read_sql_statements('sql', 'schema', 'sqlite.sql')
         elif self._config.engine == "mysql":
-            schema = read_mysql_schema()
+            schema = read_sql_statements('sql', 'schema', 'mysql.sql')
 
-        with self._engine.connect() as conn:
+        with self._engine.begin() as conn:
             for cmd in schema:
                 conn.execute(cmd)
 

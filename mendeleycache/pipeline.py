@@ -26,11 +26,35 @@ class PipelineController:
         This is later scheduled like once per day
         :return:
         """
+
+        # Run the crawler
         self._crawl_controller.execute()
 
         profiles = self._crawl_controller.profiles
         profile_docs = self._crawl_controller.profile_documents
         group_docs = self._crawl_controller.group_documents
 
+        # Then pipe the data to the analysis controller
         self._analysis_controller.prepare(profiles, profile_docs, group_docs)
         self._analysis_controller.execute()
+
+        # Then store the all data with the data controller
+        self._data_controller.crawl_data.update_profiles(
+            profiles
+        )
+        self._data_controller.crawl_data.update_documents(
+            self._analysis_controller.documents
+        )
+        self._data_controller.crawl_data.update_cache_profiles(
+            self._analysis_controller.unified_name_to_profiles
+        )
+        self._data_controller.crawl_data.update_cache_documents(
+            self._analysis_controller.unified_document_title_to_documents
+        )
+        self._data_controller.crawl_data.update_cache_fields(
+            self._analysis_controller.unified_field_title_to_field
+        )
+        self._data_controller.crawl_data.link_profiles_to_documents(
+            self._analysis_controller.unified_name_to_authored_documents,
+            self._analysis_controller.unified_name_to_participated_documents
+        )

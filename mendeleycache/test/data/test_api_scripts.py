@@ -4,7 +4,7 @@ import unittest
 
 from mendeleycache.config import SQLiteConfiguration
 from mendeleycache.data.controller import DataController
-from mendeleycache.data.api_scripts import ApiScripts
+from mendeleycache.data.api_data import ApiScripts
 
 
 class TestApiScripts(unittest.TestCase):

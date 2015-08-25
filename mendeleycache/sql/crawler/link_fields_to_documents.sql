@@ -1,4 +1,26 @@
 -- noinspection SqlResolve
+
+-- Create temporary table
+CREATE TEMPORARY TABLE IF NOT EXISTS temp_fields_to_documents (
+  unified_field_title VARCHAR(255) NOT NULL,
+  unified_document_title VARCHAR(255) NOT NULL,
+  PRIMARY KEY(unified_field_title, unified_document_title));
+
+
+-- Spool data into temporary table
+INSERT
+INTO temp_fields_to_documents
+(
+  unified_field_title,
+  unified_document_title
+)
+VALUES
+  :fields_to_documents;
+
+-- Delete existing links
+DELETE FROM cache_document_has_cache_field;
+
+-- Create associations via join
 INSERT
 INTO cache_document_has_cache_field
 (
@@ -10,6 +32,11 @@ SELECT
   cf.id
 FROM
   cache_document cd,
-  cache_field cf
-WHERE (cd.unified_title, cf.unified_title)
-IN :document_has_field
+  cache_field cf,
+  temp_fields_to_documents ftd
+WHERE cd.unified_title = ftd.unified_document_title
+AND cf.unified_title = ftd.unified_field_title;
+
+
+-- Drop temporary table
+DROP TABLE IF EXISTS temp_fields_to_documents;
