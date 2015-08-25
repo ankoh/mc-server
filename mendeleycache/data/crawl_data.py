@@ -14,9 +14,9 @@ class CrawlScripts:
         self._engine = engine
 
         self._replace_documents =\
-            read_sql_statements('sql', 'crawler', 'replace_documents.sql')
+            read_sql_statements('sql', 'crawler', 'update_documents.sql')
         self._replace_profiles = \
-            read_sql_statements('sql', 'crawler', 'replace_profiles.sql')
+            read_sql_statements('sql', 'crawler', 'update_profiles.sql')
         self._update_cache_documents = \
             read_sql_statements('sql', 'crawler', 'update_cache_documents.sql')
         self._update_cache_fields = \
