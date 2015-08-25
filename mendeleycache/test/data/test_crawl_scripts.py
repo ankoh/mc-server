@@ -6,7 +6,7 @@ from mendeleycache.config import SQLiteConfiguration
 from mendeleycache.data.controller import DataController
 from mendeleycache.data.api_scripts import ApiScripts
 
-from mendeleycache.models import Profile, Document
+from mendeleycache.models import Profile, Document, CacheField
 from datetime import datetime
 
 
@@ -285,7 +285,7 @@ class TestCrawlScripts(unittest.TestCase):
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_profile").fetchone()
         self.assertEqual(cnt[0], 2)
 
-        # Then query sametitle row
+        # Then query same title row
         row = data_controller.engine.execute(
             "SELECT profile_mid, unified_name, name "
             "FROM cache_profile "
@@ -304,6 +304,33 @@ class TestCrawlScripts(unittest.TestCase):
         # The call shall not crash with empty input
         r = data_controller.crawl_data.update_cache_fields(dict())
         self.assertIsNone(r)
+
+        field1 = CacheField(title="field 1", unified_title="field1")
+        field2 = CacheField(title="field 2", unified_title="field2")
+        unified_field_title_to_field = dict()
+        unified_field_title_to_field["field1"] = field1
+        unified_field_title_to_field["field2"] = field2
+
+        data_controller.crawl_data.update_cache_fields(unified_field_title_to_field)
+
+        # Check data count in the table
+        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_field").fetchone()
+        self.assertEqual(cnt[0], 2)
+
+         # Then query rows
+        rows = data_controller.engine.execute(
+            "SELECT title, unified_title "
+            "FROM cache_field "
+        ).fetchall()
+
+        # Check first row
+        self.assertEqual(rows[0]["title"], "field 1")
+        self.assertEqual(rows[0]['unified_title'], "field1")
+
+        # Check second row
+        self.assertEqual(rows[1]["title"], "field 2")
+        self.assertEqual(rows[1]['unified_title'], "field2")
+
 
     def test_link_profiles_to_documents(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")

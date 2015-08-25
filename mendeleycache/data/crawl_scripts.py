@@ -228,7 +228,10 @@ class CrawlScripts:
         cache_fields_string = ','.join(cache_field_strings)
         sql = self._update_cache_fields
         sql = re.sub(':cache_fields', cache_fields_string, sql)
-        return self._engine.execute(sql).fetchall()
+
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return self._engine.execute(sql)
     
     def link_profiles_to_documents(self,
                                    unified_name_to_authored_documents: {},

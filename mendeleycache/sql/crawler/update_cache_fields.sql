@@ -1,6 +1,6 @@
 -- noinspection SqlResolve
 REPLACE
-INTO cache_fields
+INTO cache_field
   (
     unified_title,
     title
