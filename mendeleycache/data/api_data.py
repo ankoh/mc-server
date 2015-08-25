@@ -17,7 +17,7 @@ http://stackoverflow.com/questions/14512228/sqlalchemy-raw-sql-parameter-substit
 """
 
 
-class ApiScripts:
+class ApiData:
     def __init__(self, engine: Engine):
         self._engine = engine
 

@@ -2,8 +2,8 @@ __author__ = 'kohn'
 
 from mendeleycache.data.config import create_engine
 from mendeleycache.config import DatabaseConfiguration
-from mendeleycache.data.api_data import ApiScripts
-from mendeleycache.data.crawl_data import CrawlScripts
+from mendeleycache.data.api_data import ApiData
+from mendeleycache.data.crawl_data import CrawlData
 from mendeleycache.data.reader import read_sql_statements
 
 from sqlalchemy.exc import DBAPIError
@@ -17,8 +17,8 @@ class DataController:
     def __init__(self, config: DatabaseConfiguration):
         self._config = config
         self._engine = create_engine(self._config)
-        self._api_data = ApiScripts(self._engine)
-        self._crawl_data = CrawlScripts(self._engine)
+        self._api_data = ApiData(self._engine)
+        self._crawl_data = CrawlData(self._engine)
 
     @property
     def engine(self):

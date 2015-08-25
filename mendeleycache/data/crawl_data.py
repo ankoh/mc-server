@@ -9,7 +9,7 @@ from sqlalchemy.engine import Engine
 import re
 
 
-class CrawlScripts:
+class CrawlData:
     def __init__(self, engine: Engine):
         self._engine = engine
 

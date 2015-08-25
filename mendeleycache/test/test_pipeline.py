@@ -33,3 +33,8 @@ class TestPipeline(unittest.TestCase):
 
         # Second run shall not crash either
         pipeline_controller.execute()
+
+        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM profile").fetchone()
+        self.assertEqual(cnt[0], 19)
+        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_profile").fetchone()
+        self.assertEqual(cnt[0], 19)
