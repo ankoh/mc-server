@@ -99,11 +99,6 @@ class TestAnalysisController(unittest.TestCase):
         self.assertEqual(ctrl.unified_name_to_profiles["maxmustermann"][0], self.profile2)
         self.assertEqual(ctrl.unified_name_to_profiles["heinrichmustermann"][0], self.profile3)
 
-        # check that the real names are set && updated correctly
-        self.assertEqual(ctrl.unified_name_to_real_name["hansmustermann"], "Hans Mustermann")
-        self.assertEqual(ctrl.unified_name_to_real_name["maxmustermann"], "Max Mustermann")
-        self.assertEqual(ctrl.unified_name_to_real_name["heinrichmustermann"], "Heinrich Mustermann")
-
         # check that the document sets are created
         self.assertIn("hansmustermann", ctrl.unified_name_to_authored_documents)
         self.assertIn("hansmustermann", ctrl.unified_name_to_participated_documents)
