@@ -25,8 +25,8 @@ class TestDataController(unittest.TestCase):
         ctrl = DataController(sqlite_in_memory)
 
         # First check that none of the tables exists
-        self.assertFalse(ctrl.table_exists('mendeley_profile'))
-        self.assertFalse(ctrl.table_exists('mendeley_document'))
+        self.assertFalse(ctrl.table_exists('profile'))
+        self.assertFalse(ctrl.table_exists('document'))
         self.assertFalse(ctrl.table_exists('cache_profile'))
         self.assertFalse(ctrl.table_exists('cache_document'))
         self.assertFalse(ctrl.table_exists('cache_field'))
@@ -41,8 +41,8 @@ class TestDataController(unittest.TestCase):
         ctrl.run_schema()
 
         # After schema creation all tables need to exist
-        self.assertTrue(ctrl.table_exists('mendeley_profile'))
-        self.assertTrue(ctrl.table_exists('mendeley_document'))
+        self.assertTrue(ctrl.table_exists('profile'))
+        self.assertTrue(ctrl.table_exists('document'))
         self.assertTrue(ctrl.table_exists('cache_profile'))
         self.assertTrue(ctrl.table_exists('cache_document'))
         self.assertTrue(ctrl.table_exists('cache_field'))

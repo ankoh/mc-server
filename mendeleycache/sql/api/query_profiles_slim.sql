@@ -1,18 +1,18 @@
 -- noinspection SqlResolve
 SELECT
-   p.id,
-   p.name,
-   c.cnt
+   cp.id,
+   cp.name,
+   agg.cnt
 FROM
-   cache_profile p,
+   cache_profile cp,
    (
-     SELECT p.id as id, count(*) as cnt
+     SELECT cp.id AS id, COUNT(*) AS cnt
      FROM
-      cache_profile p,
-      cache_document d,
-      cache_profile_has_cache_document phd
-     WHERE p.id = phd.cache_profile_id
-     AND d.id = phd.cache_document_id
-     GROUP BY p.id
-   ) c
-WHERE p.id = c.id
+      cache_profile cp,
+      cache_document cd,
+      cache_profile_has_cache_document cphcd
+     WHERE cp.id = cphcd.cache_profile_id
+     AND cd.id = cphcd.cache_document_id
+     GROUP BY cp.id
+   ) agg
+WHERE cp.id = agg.id

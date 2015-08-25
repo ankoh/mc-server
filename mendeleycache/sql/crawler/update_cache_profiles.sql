@@ -2,8 +2,9 @@
 REPLACE
 INTO cache_profiles
   (
-    title,
-    unified_title
+    profile_mid,
+    unified_title,
+    title
   )
 VALUES
   :cache_profiles

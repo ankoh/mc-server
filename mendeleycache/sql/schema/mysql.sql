@@ -1,82 +1,95 @@
 -- Schema for SQLite
 
 -- -----------------------------------------------------
--- Table mendeley_profile
+-- Table profile
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mendeley_profile (
+CREATE TABLE IF NOT EXISTS profile (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  mid VARCHAR(255) UNIQUE NOT NULL,
   cache_profile_id INTEGER,
   unified_name VARCHAR(255) NOT NULL,
-  m_id VARCHAR(255) UNIQUE NOT NULL,
-  m_first_name VARCHAR(35) NOT NULL,
-  m_last_name VARCHAR(35) NOT NULL,
-  m_display_name VARCHAR(80),
-  m_link VARCHAR(255),
+  first_name VARCHAR(35) NOT NULL,
+  last_name VARCHAR(35) NOT NULL,
+  display_name VARCHAR(80),
+  link VARCHAR(255),
   FOREIGN KEY (cache_profile_id)
     REFERENCES cache_profile (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX mendeley_profile_unified_name ON mendeley_profile(unified_name);
+-- Foreign key profile -> cache_profile
+CREATE INDEX profile_cache_profile_id ON profile(cache_profile_id);
+-- The index on unified_name is needed to resolve the right cache_profile(id)
+CREATE INDEX profile_unified_name ON profile(unified_name);
 
 -- -----------------------------------------------------
--- Table mendeley_document
+-- Table document
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mendeley_document (
+CREATE TABLE IF NOT EXISTS document (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  mendeley_profile_id INTEGER NOT NULL,
+  mid VARCHAR(255) UNIQUE NOT NULL,
   cache_document_id INTEGER,
   unified_title VARCHAR(255),
-  m_core_id VARCHAR(255) UNIQUE NOT NULL,
-  m_core_title VARCHAR(255),
-  m_core_type VARCHAR(45),
-  m_core_created DATETIME,
-  m_core_last_modified DATETIME,
-  m_core_abstract TEXT,
-  m_core_source VARCHAR(255),
-  m_core_year SMALLINT,
-  m_core_authors TEXT,
-  m_core_keywords TEXT,
-  m_tags_tags TEXT,
+  title VARCHAR(255),
+  owner_mid VARCHAR(255) NOT NULL,
+  type VARCHAR(45),
+  created DATETIME,
+  last_modified DATETIME,
+  abstract TEXT,
+  source VARCHAR(255),
+  year SMALLINT,
+  authors TEXT,
+  keywords TEXT,
+  tags TEXT,
   derived_bibtex TEXT,
   FOREIGN KEY (cache_document_id)
     REFERENCES cache_document (id)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  FOREIGN KEY (mendeley_profile_id)
-    REFERENCES mendeley_profile (id)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX mendeley_document_cache_document_id ON mendeley_document(cache_document_id);
-CREATE INDEX mendeley_document_mendeley_profile_id ON mendeley_document(mendeley_profile_id);
-CREATE INDEX mendeley_document_unified_title ON mendeley_document(unified_title);
+-- Foreign key document -> cache_document
+CREATE INDEX document_cache_document_id ON document(cache_document_id);
+-- The index on unified_title is needed to resolve the right cache_document(id)
+CREATE INDEX document_unified_title ON document(unified_title);
 
 -- -----------------------------------------------------
 -- Table cache_profile
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cache_profile (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  profile_id INTEGER,
+  profile_mid VARCHAR(255),
   name VARCHAR(255) NOT NULL,
   unified_name VARCHAR(255) NOT NULL UNIQUE,
-  mendeley_profile_id INTEGER,
-  FOREIGN KEY (mendeley_profile_id)
-    REFERENCES mendeley_profile (id)
+  FOREIGN KEY (profile_id)
+    REFERENCES profile (id)
     ON DELETE SET NULL
     ON UPDATE CASCADE);
+
+-- Foreign key cache_profile -> profile
+CREATE INDEX cache_profile_profile_id ON cache_profile(profile_id);
+-- The index on profile_mid is needed to resolve the right profile
+CREATE INDEX cache_profile_profile_mid ON cache_profile(profile_mid);
 
 -- -----------------------------------------------------
 -- Table cache_document
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cache_document (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  document_id INTEGER,
+  document_mid VARCHAR(255),
   title VARCHAR(255) NOT NULL,
   unified_title VARCHAR(255) NOT NULL UNIQUE,
-  mendeley_document_id INTEGER UNIQUE,
-  FOREIGN KEY (mendeley_document_id)
-    REFERENCES mendeley_document (id)
+  FOREIGN KEY (document_id)
+    REFERENCES document (id)
     ON DELETE SET NULL
     ON UPDATE CASCADE);
+
+-- Foreign key cache_document -> document
+CREATE INDEX cache_document_document_id ON cache_document(document_id);
+-- The index on document_mid is needed to resolve the right document
+CREATE INDEX cache_document_document_mid ON cache_document(document_mid);
+
 
 -- -----------------------------------------------------
 -- Table cache_field
@@ -103,6 +116,8 @@ CREATE TABLE IF NOT EXISTS cache_document_has_cache_field (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+-- Foreign keys for cache_document_has_cache_field -> cache_field
+-- and cache_document_has_cache_field -> cache_document
 CREATE INDEX cache_document_has_cache_field_field_id on cache_document_has_cache_field(cache_field_id);
 CREATE INDEX cache_document_has_cache_field_document_id on cache_document_has_cache_field(cache_document_id);
 
@@ -123,6 +138,8 @@ CREATE TABLE IF NOT EXISTS cache_profile_has_cache_document (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+-- Foreign keys for cache_profile_has_cache_document -> cache_profile
+-- and cache_profile_has_cache_document -> cache_document
 CREATE INDEX cache_profile_has_cache_document_profile_id on cache_profile_has_cache_document(cache_profile_id);
 CREATE INDEX cache_profile_has_cache_document_document_id on cache_profile_has_cache_document(cache_document_id);
 
@@ -134,6 +151,11 @@ CREATE TABLE IF NOT EXISTS document_access_log (
   type VARCHAR(45) NOT NULL DEFAULT 'file',
   date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
+-- I need to filter for the different document access types
+CREATE INDEX document_access_log_type ON document_access_log(type);
+
+-- The document access logs need to be ordered for the query (last 7 weeks)
+CREATE INDEX document_access_log_date ON document_access_log(date DESC);
 
 -- -----------------------------------------------------
 -- Table document_access_log_has_cache_document
@@ -151,6 +173,8 @@ CREATE TABLE IF NOT EXISTS document_access_log_has_cache_document (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+-- Foreign keys for document_access_log_has_cache_document -> cache_document_access_log
+-- and document_access_log_has_cache_document -> cache_document
 CREATE INDEX document_access_log_has_cache_document_log_id on document_access_log_has_cache_document(document_access_log_id);
 CREATE INDEX document_access_log_has_cache_document_document_id on document_access_log_has_cache_document(cache_document_id);
 
@@ -161,6 +185,9 @@ CREATE INDEX document_access_log_has_cache_document_document_id on document_acce
 CREATE TABLE IF NOT EXISTS field_access_log (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   date DATETIME DEFAULT CURRENT_TIMESTAMP);
+
+-- The field access logs need to be ordered for the query (last 7 weeks)
+CREATE INDEX field_access_log_date ON field_access_log(date DESC);
 
 
 -- -----------------------------------------------------
@@ -179,5 +206,7 @@ CREATE TABLE IF NOT EXISTS field_access_log_has_cache_field (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
+-- Foreign keys for field_access_log_has_cache_field -> field_access_log
+-- and field_access_log_has_cache_field -> cache_field
 CREATE INDEX field_access_log_has_cache_field_log_id on field_access_log_has_cache_field(field_access_log_id);
 CREATE INDEX field_access_log_has_cache_field_field_id on field_access_log_has_cache_field(cache_field_id);

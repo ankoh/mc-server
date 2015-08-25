@@ -1,41 +1,41 @@
 -- noinspection SqlResolve
 SELECT
-   mp.*,
-   c.cnt
+   p.*,
+   agg.cnt
 FROM
-   cache_profile p,
-   mendeley_profile mp,
+   cache_profile cp,
+   profile p,
    (
      SELECT id, MAX(cnt) AS cnt
      FROM
      (
-      SELECT p.id AS id , COUNT(*) AS cnt
+      SELECT cp.id AS id , COUNT(*) AS cnt
       FROM
-         cache_profile p,
-         cache_document d,
-         cache_profile_has_cache_document phd
-      WHERE p.id = phd.cache_profile_id
-      AND phd.cache_document_id = d.id
-      AND p.id IN :profile_ids
-      GROUP BY p.id
+         cache_profile cp,
+         cache_document cd,
+         cache_profile_has_cache_document cphcd
+      WHERE cp.id = cphcd.cache_profile_id
+      AND cphcd.cache_document_id = cd.id
+      AND cp.id IN :profile_ids
+      GROUP BY cp.id
 
       UNION ALL
 
-      SELECT p.id AS id, COUNT(DISTINCT(d.id)) AS cnt
+      SELECT cp.id AS id, COUNT(DISTINCT(cd.id)) AS cnt
        FROM
-         cache_profile p,
-         cache_document d,
-         cache_field f,
-         cache_profile_has_cache_document phd,
-         cache_document_has_cache_field dhf
-      WHERE p.id = phd.cache_profile_id
-      AND phd.cache_document_id = d.id
-      AND d.id = dhf.cache_document_id
-      AND dhf.cache_field_id = f.id
-      AND f.id IN :field_ids
-      GROUP BY p.id
+         cache_profile cp,
+         cache_document cd,
+         cache_field cf,
+         cache_profile_has_cache_document cphcd,
+         cache_document_has_cache_field cdhcf
+      WHERE cp.id = cphcd.cache_profile_id
+      AND cphcd.cache_document_id = cd.id
+      AND cd.id = cdhcf.cache_document_id
+      AND cdhcf.cache_field_id = cf.id
+      AND cf.id IN :field_ids
+      GROUP BY cp.id
      )
      GROUP BY id
-   ) c
-WHERE p.id = c.id
-AND p.id = mp.cache_profile_id
+   ) agg
+WHERE cp.id = agg.id
+AND cp.id = p.cache_profile_id

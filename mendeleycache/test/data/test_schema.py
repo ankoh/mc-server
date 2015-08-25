@@ -8,8 +8,8 @@ class TestSchema(unittest.TestCase):
 
     def test_read_sqlite_schema(self):
         cmds = read_sqlite_schema()
-        self.assertEqual(len(cmds), 23 + 1)
+        self.assertEqual(len(cmds), 30 + 1)
 
     def test_read_mysql_schema(self):
         cmds = read_mysql_schema()
-        self.assertEqual(len(cmds), 23 + 1)
+        self.assertEqual(len(cmds), 30 + 1)

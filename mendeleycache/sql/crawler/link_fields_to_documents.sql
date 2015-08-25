@@ -6,10 +6,10 @@ INTO cache_document_has_cache_field
   cache_field_id
 )
 SELECT
-  d.id,
-  f.id
+  cd.id,
+  cf.id
 FROM
-  cache_document d,
-  cache_field f
-WHERE (d.unified_title, f.unified_title)
+  cache_document cd,
+  cache_field cf
+WHERE (cd.unified_title, cf.unified_title)
 IN :document_has_field

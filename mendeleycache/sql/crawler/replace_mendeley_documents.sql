@@ -1,21 +1,21 @@
 -- noinspection SqlResolve
 REPLACE
-INTO mendeley_documents
+INTO document
   (
+    mid,
+    owner_mid,
     unified_title,
-    m_core_id,
-    m_core_profile_id,
-    m_core_title,
-    m_core_type,
-    m_core_created,
-    m_core_last_modified,
-    m_core_abstract,
-    m_core_source,
-    m_core_year,
-    m_core_authors,
-    m_core_keywords,
-    m_tags_tags,
+    title,
+    type,
+    created,
+    last_modified,
+    abstract,
+    source,
+    year,
+    authors,
+    keywords,
+    tags,
     derived_bibtex
   )
 VALUES
-  :mendeley_documents
+  :documents

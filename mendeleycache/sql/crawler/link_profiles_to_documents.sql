@@ -6,10 +6,10 @@ INTO cache_profile_has_cache_document
   cache_document_id
 )
 SELECT
-  p.id,
-  d.id
+  cp.id,
+  cd.id
 FROM
-  cache_profile p,
-  cache_document d
-WHERE (p.unified_name, d.unified_title)
+  cache_profile cp,
+  cache_document cd
+WHERE (cp.unified_name, cd.unified_title)
 IN :profile_has_document

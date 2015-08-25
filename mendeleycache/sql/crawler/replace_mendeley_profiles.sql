@@ -1,13 +1,13 @@
 -- noinspection SqlResolve
 REPLACE
-INTO mendeley_profiles
+INTO profile
   (
-    cache_profile_id,
-    m_id,
-    m_first_name,
-    m_last_name,
-    m_display_name,
-    m_link
+    mid,
+    unified_name,
+    first_name,
+    last_name,
+    display_name,
+    link
   )
 VALUES
-  :mendeley_profiles
+  :profiles

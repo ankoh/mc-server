@@ -1,18 +1,18 @@
 -- noinspection SqlResolve
 SELECT
-   f.id, 
-   f.title, 
-   c.cnt 
+   cf.id,
+   cf.title,
+   agg.cnt
 FROM 
-   cache_field f, 
+   cache_field cf,
    ( 
-      SELECT f.id as id, count(*) as cnt 
+      SELECT cf.id AS id, count(*) AS cnt
       FROM 
-        cache_field f, 
-        cache_document d, 
-        cache_document_has_cache_field dhf 
-      WHERE f.id = dhf.cache_document_id 
-      AND dhf.cache_document_id = d.id 
-      GROUP BY f.id 
-   ) c 
-WHERE f.id = c.id 
+        cache_field cf,
+        cache_document cd,
+        cache_document_has_cache_field cdhcf
+      WHERE cf.id = cdhcf.cache_document_id
+      AND cdhcf.cache_document_id = cd.id
+      GROUP BY cf.id
+   ) agg
+WHERE cf.id = agg.id

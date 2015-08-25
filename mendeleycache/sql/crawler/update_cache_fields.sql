@@ -2,8 +2,8 @@
 REPLACE
 INTO cache_fields
   (
-    title,
-    unified_title
+    unified_title,
+    title
   )
 VALUES
   :cache_fields

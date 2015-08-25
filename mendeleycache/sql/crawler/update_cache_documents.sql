@@ -2,8 +2,9 @@
 REPLACE
 INTO cache_documents
   (
-    name,
-    unified_name
+    document_mid,
+    unified_title,
+    title
   )
 VALUES
   :cache_documents

@@ -1,8 +1,7 @@
 __author__ = 'kohn'
 
-from mendeleycache.utils.files import get_relative_path
-from mendeleycache.utils.regex import sql_comments
-from mendeleycache.analyzer.unification import unify_document_title
+from mendeleycache.data.reader import read_single_statement_sql_file
+from mendeleycache.analyzer.unification import unify_document_title, unify_profile_name
 from mendeleycache.models import Document, Profile
 from sqlalchemy.engine import Engine
 
@@ -13,55 +12,20 @@ class CrawlScripts:
     def __init__(self, engine: Engine):
         self._engine = engine
 
-        self._replace_mendeley_documents = ""
-        self._replace_mendeley_profiles = ""
-        self._update_cache_documents = ""
-        self._update_cache_fields = ""
-        self._update_cache_profiles = ""
-        self._link_fields_to_documents = ""
-        self._link_profiles_to_documents = ""
-
-        self.read_sql()
-
-    def read_sql(self):
-        """
-        Read the sql files and load them into the class variables
-        :return:
-        """
-        path = get_relative_path('sql', 'crawler', 'replace_mendeley_documents.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._replace_mendeley_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'replace_mendeley_profiles.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._replace_mendeley_profiles = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'update_cache_documents.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._update_cache_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'update_cache_fields.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._update_cache_fields = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'update_cache_profiles.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._update_cache_profiles = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'link_fields_to_documents.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._link_fields_to_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'crawler', 'link_profiles_to_documents.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._link_profiles_to_documents = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+        self._replace_mendeley_documents =\
+            read_single_statement_sql_file('sql', 'crawler', 'replace_mendeley_documents.sql')
+        self._replace_mendeley_profiles = \
+            read_single_statement_sql_file('sql', 'crawler', 'replace_mendeley_profiles.sql')
+        self._update_cache_documents = \
+            read_single_statement_sql_file('sql', 'crawler', 'update_cache_documents.sql')
+        self._update_cache_fields = \
+            read_single_statement_sql_file('sql', 'crawler', 'update_cache_fields.sql')
+        self._update_cache_profiles = \
+            read_single_statement_sql_file('sql', 'crawler', 'update_cache_profiles.sql')
+        self._link_fields_to_documents = \
+            read_single_statement_sql_file('sql', 'crawler', 'link_fields_to_documents.sql')
+        self._link_profiles_to_documents = \
+            read_single_statement_sql_file('sql', 'crawler', 'link_profiles_to_documents.sql')
 
     def replace_mendeley_documents(self, docs: [Document]):
         """
@@ -71,57 +35,72 @@ class CrawlScripts:
         """
 
         def prepare_doc(doc: Document) -> str:
-            r = "({unified_title}," \
-                "{m_core_id}," \
-                "{m_core_profile_id}," \
-                "{m_core_title}," \
-                "{m_core_type}," \
-                "{m_core_created}," \
-                "{m_core_last_modified}," \
-                "{m_core_abstract}," \
-                "{m_core_source}," \
-                "{m_core_year}," \
-                "{m_core_authors}," \
-                "{m_core_keywords}," \
-                "{m_tags_tags}," \
+            r = "({mid}," \
+                "{owner_mid}," \
+                "{unified_title}," \
+                "{title}," \
+                "{type}," \
+                "{created}," \
+                "{last_modified}," \
+                "{abstract}," \
+                "{source}," \
+                "{year}," \
+                "{authors}," \
+                "{keywords}," \
+                "{tags}," \
                 "{derived_bibtex})"
             u, _ = unify_document_title(doc.core_title)
-            r.format(
+            return r.format(
+                mid=doc.core_id,
+                owner_mid=doc.core_profile_id,
                 unified_title=u,
-                m_core_id=doc.core_id,
-                m_core_profile_id = doc.core_profile_id,
-                m_core_title = doc.core_title,
-                m_core_type = doc.core_type,
-                m_core_created = doc.core_created,
-                m_core_last_modified = doc.core_last_modified,
-                m_core_abstract = doc.core_abstract,
-                m_core_source = doc.core_source,
-                m_core_year = doc.core_year,
-                m_core_authors = "",
-                m_core_keywords = "",
-                m_tags_tags = "",
-                derived_bibtex = "")
-            return r
+                title=doc.core_title,
+                type=doc.core_type,
+                created=doc.core_created,
+                last_modified=doc.core_last_modified,
+                abstract=doc.core_abstract,
+                source=doc.core_source,
+                year=doc.core_year,
+                authors="",
+                keywords="",
+                tags=""
+            )
 
         mendeley_documents_string = "(%s)" % (",".join(map(prepare_doc, docs)))
         sql = self._replace_mendeley_documents
-        sql = re.sub(':mendeley_documents', mendeley_documents_string, sql)
+        sql = re.sub(':documents', mendeley_documents_string, sql)
         return self._engine.execute(sql).fetchall()
 
-    
-    
     def replace_mendeley_profiles(self,
-                                  docs: [Profile]):
+                                  profiles: [Profile]):
         """
         Given a profile list, this method replaces the profiles in the database with new ones
         :param docs:
         :return:
         """
-        sql = self._replace_mendeley_profiles
 
+        def prepare_profile(p: Profile) -> str:
+            r = "({mid}," \
+                "{unified_name}," \
+                "{first_name}," \
+                "{last_name}," \
+                "{display_name}," \
+                "{link})"
+            u, _ = unify_profile_name(p.first_name, p.last_name)
+            return r.format(
+                mid=p.identifier,
+                unified_name=u,
+                first_name=p.first_name,
+                last_name=p.last_name,
+                display_name=p.display_name,
+                link=p.link
+            )
+
+        mendeley_profiles_string = "(%s)" % (",".join(map(prepare_profile, profiles)))
+        sql = self._replace_mendeley_documents
+        sql = re.sub(':profiles', mendeley_profiles_string, sql)
         return self._engine.execute(sql).fetchall()
-    
-    
+
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):
         """
@@ -129,8 +108,33 @@ class CrawlScripts:
         :param unified_document_title_to_documents:
         :return:
         """
-        sql = self._update_cache_documents
+        cache_document_strings = []
+        for unified_title, doc_list in unified_document_title_to_documents.iteritems():
+            # flatten the document list down to one document
+            reference_doc = None
+            """:type : Document"""
 
+            for doc in doc_list:
+                if reference_doc is None or doc.core_last_modified > reference_doc.core_last_modified:
+                    reference_doc = doc
+
+            # if we found at least one reference_doc (which we will always),
+            # add the corresponding sql insert string to the r array
+            if reference_doc is not None:
+                u, r = unify_document_title(reference_doc.core_title)
+                s = "({document_mid}," \
+                    "{unified_title}," \
+                    "{title})"
+                cache_document_strings.append(
+                    s.format(
+                        document_mid=reference_doc.core_id,
+                        unified_title=u,
+                        title=r
+                    )
+                )
+        cache_documents_string = '(%s)' % (','.join(cache_document_strings))
+        sql = self._update_cache_documents
+        sql = re.sub(':cache_documents', cache_documents_string, sql)
         return self._engine.execute(sql).fetchall()
     
     

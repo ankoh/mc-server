@@ -2,8 +2,8 @@ __author__ = 'kohn'
 
 from sqlalchemy.engine import Engine
 
-from mendeleycache.utils.files import get_relative_path
-from mendeleycache.utils.regex import sql_comments
+from mendeleycache.data.reader import read_single_statement_sql_file
+
 
 import re
 
@@ -21,38 +21,14 @@ class ApiScripts:
     def __init__(self, engine: Engine):
         self._engine = engine
 
-        self._query_fields = ""
-        self._query_profiles_slim = ""
-        self._query_documents_by_profile_ids_and_field_ids = ""
-        self._query_profiles_by_profile_ids_or_field_ids = ""
-        self.read_sql()
-
-    def read_sql(self):
-        """
-        Read the sql files and load them into the class variables
-        :return:
-        """
-        path = get_relative_path('sql', 'api', 'query_fields.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._query_fields = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        path = get_relative_path('sql', 'api', 'query_profiles_slim.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._query_profiles_slim = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        # query_documents_by_profile_ids_and_field_ids
-        path = get_relative_path('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._query_documents_by_profile_ids_and_field_ids = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
-
-        # profiles_by_profile_ids_or_field_ids
-        path = get_relative_path('sql', 'api', 'query_profiles_by_profile_ids_or_field_ids.sql')
-        with open(path, "r") as sql_file:
-            sql = sql_file.read()
-            self._query_profiles_by_profile_ids_or_field_ids = re.sub(sql_comments, ' ', sql).replace('\n', ' ')
+        self._query_fields =\
+            read_single_statement_sql_file('sql', 'api', 'query_fields.sql')
+        self._query_profiles_slim =\
+            read_single_statement_sql_file('sql', 'api', 'query_profiles_slim.sql')
+        self._query_documents_by_profile_ids_and_field_ids =\
+            read_single_statement_sql_file('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
+        self._query_profiles_by_profile_ids_or_field_ids =\
+            read_single_statement_sql_file('sql', 'api', 'query_profiles_by_profile_ids_or_field_ids.sql')
 
     def get_documents_by_profile_ids_and_field_ids(self, profile_ids: [int], field_ids: [int]):
         """
