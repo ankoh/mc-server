@@ -30,6 +30,7 @@ class PipelineController:
         # Run the crawler
         self._crawl_controller.execute()
 
+        # Crawl results
         profiles = self._crawl_controller.profiles
         profile_docs = self._crawl_controller.profile_documents
         group_docs = self._crawl_controller.group_documents
@@ -38,6 +39,7 @@ class PipelineController:
         self._analysis_controller.prepare(profiles, profile_docs, group_docs)
         self._analysis_controller.execute()
 
+        # Analysis results
         documents = self._analysis_controller.documents
         unified_name_to_profiles = self._analysis_controller.unified_name_to_profiles
         unified_document_title_to_documents = self._analysis_controller.unified_document_title_to_documents
