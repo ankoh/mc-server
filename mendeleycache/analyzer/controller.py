@@ -75,6 +75,20 @@ class AnalysisController:
     def unified_field_title_to_documents(self):
         return self._unified_field_title_to_documents
 
+    def reset(self):
+        """
+        Reset the state of the controller
+        :return:
+        """
+        self._unified_name_to_profiles = dict()
+        self._unified_name_to_unknown_profile = dict()
+        self._unified_name_to_authored_documents = dict()
+        self._unified_name_to_participated_documents = dict()
+        self._unified_document_title_to_documents = dict()
+        self._unified_field_title_to_field = dict()
+        self._unified_field_title_to_documents = dict()
+        self._documents = []
+
     def prepare(self, profiles, profile_docs, group_docs):
         """
         Prepare the AnalysisController with data
@@ -86,16 +100,6 @@ class AnalysisController:
         self._profiles = profiles
         self._profile_docs = profile_docs
         self._group_docs = group_docs
-
-        # Clean state
-        self._unified_name_to_profiles = dict()
-        self._unified_name_to_unknown_profile = dict()
-        self._unified_name_to_authored_documents = dict()
-        self._unified_name_to_participated_documents = dict()
-        self._unified_document_title_to_documents = dict()
-        self._unified_field_title_to_field = dict()
-        self._unified_field_title_to_documents = dict()
-        self._documents = []
 
     def process_profiles(self):
         """
@@ -263,6 +267,7 @@ class AnalysisController:
         Process all input
         :return:
         """
+        self.reset()
         self.process_profiles()
         self.process_profile_documents()
         self.process_group_documents()

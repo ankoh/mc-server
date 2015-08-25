@@ -28,4 +28,8 @@ class TestPipeline(unittest.TestCase):
             analysis_controller=analysis_controller
         )
 
+        # Clean run shall not crash
+        pipeline_controller.execute()
+
+        # Second run shall not crash either
         pipeline_controller.execute()

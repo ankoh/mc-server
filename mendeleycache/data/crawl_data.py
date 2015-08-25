@@ -345,3 +345,26 @@ class CrawlScripts:
         with self._engine.begin() as conn:
             for stmt in self._generate_cache_links:
                 conn.execute(stmt)
+
+    def execute(self,
+                profiles,
+                documents,
+                unified_name_to_profiles,
+                unified_document_title_to_documents,
+                unified_field_title_to_field,
+                unified_name_to_authored_documents,
+                unified_name_to_participated_documents):
+        """
+        Given the required crawl data updates the whole cache
+        :return:
+        """
+        self.update_profiles(profiles)
+        self.update_documents(documents)
+        self.update_cache_profiles(unified_name_to_profiles)
+        self.update_cache_documents(unified_document_title_to_documents)
+        self.update_cache_fields(unified_field_title_to_field)
+        self.link_profiles_to_documents(
+            unified_name_to_authored_documents,
+            unified_name_to_participated_documents
+        )
+        self.generate_cache_links()

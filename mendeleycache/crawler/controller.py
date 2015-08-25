@@ -126,12 +126,24 @@ class CrawlController:
         """
         self.__group_documents = self.__crawler.get_documents_by_group_id(self.__research_group)
 
+    def reset(self):
+        """
+        Resets the state of the controller
+        :return:
+        """
+        self.__members = []
+        self.__profiles = []
+        self.__profile_documents = dict()
+        self.__group_documents = []
+        self.__succeeded = False
+
     def execute(self):
         """
         Subsequently trigger crawler for members, group_publications and profiles
         :return:
         """
-        self.__succeeded = False
+
+        self.reset()
         self.crawl_group_members()
         self.crawl_group_documents()
         self.crawl_profiles()

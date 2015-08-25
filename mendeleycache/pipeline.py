@@ -48,13 +48,12 @@ class PipelineController:
         unified_name_to_participated_documents = self._analysis_controller.unified_name_to_participated_documents
 
         # Then store the all data with the data controller
-        self._data_controller.crawl_data.update_profiles(profiles)
-        self._data_controller.crawl_data.update_documents(documents)
-        self._data_controller.crawl_data.update_cache_profiles(unified_name_to_profiles)
-        self._data_controller.crawl_data.update_cache_documents(unified_document_title_to_documents)
-        self._data_controller.crawl_data.update_cache_fields(unified_field_title_to_field)
-        self._data_controller.crawl_data.link_profiles_to_documents(
-            unified_name_to_authored_documents,
-            unified_name_to_participated_documents
+        self._data_controller.crawl_data.execute(
+            profiles=profiles,
+            documents=documents,
+            unified_name_to_profiles=unified_name_to_profiles,
+            unified_document_title_to_documents=unified_document_title_to_documents,
+            unified_field_title_to_field=unified_field_title_to_field,
+            unified_name_to_authored_documents=unified_name_to_authored_documents,
+            unified_name_to_participated_documents=unified_name_to_participated_documents
         )
-        self._data_controller.crawl_data.generate_cache_links()
