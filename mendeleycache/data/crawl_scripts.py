@@ -1,7 +1,7 @@
 __author__ = 'kohn'
 
 from mendeleycache.data.reader import read_single_statement_sql_file
-from mendeleycache.analyzer.unification import unify_document_title, unify_profile_name
+from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
 from sqlalchemy.engine import Engine
 
@@ -174,7 +174,6 @@ class CrawlScripts:
         sql = re.sub(':cache_profiles', cache_profiles_string, sql)
         return self._engine.execute(sql).fetchall()
 
-    
     def update_cache_fields(self,
                             unified_field_title_to_field: {}):
         """
@@ -182,10 +181,20 @@ class CrawlScripts:
         :param unified_field_title_to_field:
         :return:
         """
-        sql = self._update_cache_fields
+        cache_field_strings = []
+        for _, field in unified_field_title_to_field.iteritems():
+            s = "({unified_title},{title})"
+            cache_field_strings.append(
+                s.format(
+                    unified_title=field.unified_title,
+                    title=field.title
+                )
+            )
 
+        cache_fields_string = '(%s)' % (','.join(cache_field_strings))
+        sql = self._update_cache_fields
+        sql = re.sub(':cache_fields', cache_fields_string, sql)
         return self._engine.execute(sql).fetchall()
-    
     
     def link_profiles_to_documents(self,
                                    unified_name_to_authored_documents: {},
