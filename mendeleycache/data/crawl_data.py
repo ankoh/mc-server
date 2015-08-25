@@ -27,6 +27,8 @@ class CrawlScripts:
             read_sql_statements('sql', 'crawler', 'link_fields_to_documents.sql')
         self._link_profiles_to_documents = \
             read_sql_statements('sql', 'crawler', 'link_profiles_to_documents.sql')
+        self._generate_cache_links = \
+            read_sql_statements('sql', 'crawler', 'generate_cache_links.sql')
 
     def update_documents(self, docs: [Document]):
         """
@@ -72,13 +74,16 @@ class CrawlScripts:
         if len(docs) == 0:
             return None
 
+        delete = self._replace_documents[0]
+        insert = self._replace_documents[1]
+
         documents_string = ",".join(map(prepare_doc, docs))
-        sql = self._replace_documents[0]
-        sql = re.sub(':documents', documents_string, sql)
+        insert = re.sub(':documents', documents_string, insert)
         
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(sql)
+            conn.execute(delete)
+            return conn.execute(insert)
 
     def update_profiles(self, profiles: [Profile]):
         """
@@ -108,13 +113,16 @@ class CrawlScripts:
         if len(profiles) == 0:
             return None
 
+        delete = self._replace_profiles[0]
+        insert = self._replace_profiles[1]
+
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
-        sql = self._replace_profiles[0]
-        sql = re.sub(':profiles', mendeley_profiles_string, sql)
+        insert = re.sub(':profiles', mendeley_profiles_string, insert)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(sql)
+            conn.execute(delete)
+            return conn.execute(insert)
 
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):
@@ -328,3 +336,12 @@ class CrawlScripts:
             conn.execute(delete)
             conn.execute(link)
             conn.execute(drop)
+
+    def generate_cache_links(self):
+        """
+        Executes all linking steps that are required for the queries
+        :return:
+        """
+        with self._engine.begin() as conn:
+            for stmt in self._generate_cache_links:
+                conn.execute(stmt)

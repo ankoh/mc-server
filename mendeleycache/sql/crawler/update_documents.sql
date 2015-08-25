@@ -1,5 +1,8 @@
 -- noinspection SqlResolve
-REPLACE
+DELETE FROM document;
+
+-- noinspection SqlResolve
+INSERT
 INTO document
   (
     mid,
@@ -18,4 +21,4 @@ INTO document
     derived_bibtex
   )
 VALUES
-  :documents
+  :documents;

@@ -1,5 +1,8 @@
 -- noinspection SqlResolve
-REPLACE
+DELETE FROM profile;
+
+-- noinspection SqlResolve
+INSERT
 INTO profile
   (
     mid,

@@ -1,6 +1,5 @@
--- noinspection SqlResolve
-
 -- Create temporary table
+-- noinspection SqlResolve
 CREATE TEMPORARY TABLE IF NOT EXISTS temp_profile_to_documents (
   unified_profile_name VARCHAR(255) NOT NULL,
   unified_document_title VARCHAR(255) NOT NULL,
@@ -8,6 +7,7 @@ CREATE TEMPORARY TABLE IF NOT EXISTS temp_profile_to_documents (
 
 
 -- Spool data into temporary table
+-- noinspection SqlResolve
 INSERT
 INTO temp_profile_to_documents
 (
@@ -17,11 +17,13 @@ INTO temp_profile_to_documents
 VALUES
   :profiles_to_documents;
 
-
 -- Delete existing links
+-- noinspection SqlResolve
 DELETE FROM cache_profile_has_cache_document;
 
+
 -- Create associations via join
+-- noinspection SqlResolve
 INSERT
 INTO cache_profile_has_cache_document
 (
@@ -40,4 +42,5 @@ AND cd.unified_title = ptd.unified_document_title;
 
 
 -- Drop temporary table
+-- noinspection SqlResolve
 DROP TABLE IF EXISTS temp_profile_to_documents;
