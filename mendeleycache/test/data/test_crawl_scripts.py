@@ -134,8 +134,6 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(rows[0]["source"], "ACM xyz1")
         self.assertEqual(rows[0]["pub_year"], 2015)
 
-
-
     def test_replace_profiles(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)

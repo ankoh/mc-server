@@ -12,10 +12,10 @@ class CrawlScripts:
     def __init__(self, engine: Engine):
         self._engine = engine
 
-        self._replace_mendeley_documents =\
-            read_single_statement_sql_file('sql', 'crawler', 'replace_mendeley_documents.sql')
-        self._replace_mendeley_profiles = \
-            read_single_statement_sql_file('sql', 'crawler', 'replace_mendeley_profiles.sql')
+        self._replace_documents =\
+            read_single_statement_sql_file('sql', 'crawler', 'replace_documents.sql')
+        self._replace_profiles = \
+            read_single_statement_sql_file('sql', 'crawler', 'replace_profiles.sql')
         self._update_cache_documents = \
             read_single_statement_sql_file('sql', 'crawler', 'update_cache_documents.sql')
         self._update_cache_fields = \
@@ -72,7 +72,7 @@ class CrawlScripts:
             return None
 
         documents_string = ",".join(map(prepare_doc, docs))
-        sql = self._replace_mendeley_documents
+        sql = self._replace_documents
         sql = re.sub(':documents', documents_string, sql)
         
         # Fire the sql script in a transaction
@@ -108,7 +108,7 @@ class CrawlScripts:
             return None
 
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
-        sql = self._replace_mendeley_profiles
+        sql = self._replace_profiles
         sql = re.sub(':profiles', mendeley_profiles_string, sql)
 
         # Fire the sql script in a transaction
