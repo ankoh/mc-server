@@ -287,8 +287,6 @@ class CrawlData:
         unified_name_unified_title_tuples_string = '%s' % ','.join(unified_name_unified_title_tuple_strings)
         insert = re.sub(':profiles_to_documents', unified_name_unified_title_tuples_string, insert)
 
-
-
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
             conn.execute(temp)
@@ -320,11 +318,11 @@ class CrawlData:
             return None
 
          # Get the different statements in the sql file
-        temp = self._link_profiles_to_documents[0]
-        insert = self._link_profiles_to_documents[1]
-        delete = self._link_profiles_to_documents[2]
-        link = self._link_profiles_to_documents[3]
-        drop = self._link_profiles_to_documents[4]
+        temp = self._link_fields_to_documents[0]
+        insert = self._link_fields_to_documents[1]
+        delete = self._link_fields_to_documents[2]
+        link = self._link_fields_to_documents[3]
+        drop = self._link_fields_to_documents[4]
 
         field_title_doc_title_tuples_string = '%s' % ','.join(field_title_doc_title_tuple_strings)
         insert = re.sub(':fields_to_documents', field_title_doc_title_tuples_string, insert)
@@ -352,6 +350,7 @@ class CrawlData:
                 unified_name_to_profiles,
                 unified_document_title_to_documents,
                 unified_field_title_to_field,
+                unified_field_title_to_documents,
                 unified_name_to_authored_documents,
                 unified_name_to_participated_documents):
         """
@@ -367,4 +366,5 @@ class CrawlData:
             unified_name_to_authored_documents,
             unified_name_to_participated_documents
         )
+        self.link_fields_to_documents(unified_field_title_to_documents)
         self.generate_cache_links()

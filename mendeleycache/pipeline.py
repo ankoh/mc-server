@@ -44,6 +44,7 @@ class PipelineController:
         unified_name_to_profiles = self._analysis_controller.unified_name_to_profiles
         unified_document_title_to_documents = self._analysis_controller.unified_document_title_to_documents
         unified_field_title_to_field = self._analysis_controller.unified_field_title_to_field
+        unified_field_title_to_documents = self._analysis_controller.unified_field_title_to_documents
         unified_name_to_authored_documents = self._analysis_controller.unified_name_to_authored_documents
         unified_name_to_participated_documents = self._analysis_controller.unified_name_to_participated_documents
 
@@ -54,6 +55,7 @@ class PipelineController:
             unified_name_to_profiles=unified_name_to_profiles,
             unified_document_title_to_documents=unified_document_title_to_documents,
             unified_field_title_to_field=unified_field_title_to_field,
+            unified_field_title_to_documents=unified_field_title_to_documents,
             unified_name_to_authored_documents=unified_name_to_authored_documents,
             unified_name_to_participated_documents=unified_name_to_participated_documents
         )

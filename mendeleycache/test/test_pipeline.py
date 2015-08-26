@@ -34,7 +34,49 @@ class TestPipeline(unittest.TestCase):
         # Second run shall not crash either
         pipeline_controller.execute()
 
-        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM profile").fetchone()
-        self.assertEqual(cnt[0], 19)
-        cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_profile").fetchone()
-        self.assertEqual(cnt[0], 19)
+        rows = data_controller.engine.execute("SELECT * FROM profile").fetchall()
+        print()
+        print()
+        print("Profiles:")
+        for row in rows:
+            print(row)
+
+        rows = data_controller.engine.execute("SELECT * FROM cache_profile").fetchall()
+        print()
+        print("Cache profiles:")
+        for row in rows:
+            print(row)
+
+        rows = data_controller.engine.execute("SELECT * FROM document LIMIT 5").fetchall()
+        print()
+        print("First 5 Documents:")
+        for row in rows:
+            print(row)
+
+
+        rows = data_controller.engine.execute("SELECT * FROM cache_document").fetchall()
+        print()
+        print("Cache documents:")
+        for row in rows:
+            print(row)
+
+        rows = data_controller.engine.execute("SELECT * FROM cache_field").fetchall()
+        print()
+        print("Cache fields:")
+        for row in rows:
+            print(row)
+
+        rows = data_controller.engine.execute("SELECT * FROM cache_document_has_cache_field").fetchall()
+        print()
+        print("LINK: Cache document -> Cache field:")
+        for row in rows:
+            print(row)
+
+        rows = data_controller.engine.execute("SELECT * FROM cache_profile_has_cache_document").fetchall()
+        print()
+        print("LINK: Cache profile -> Cache document:")
+        for row in rows:
+            print(row)
+
+        print()
+        

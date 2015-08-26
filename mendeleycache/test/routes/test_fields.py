@@ -31,16 +31,31 @@ class TestFields(unittest.TestCase):
         # Parse json data
         data=response.get_data(as_text=True)
 
-    def test_get_pipeline_fields(self):
-        TestApp.write_debug_config()
-        app = MendeleyCache()
-
-        sut = app.test_client()
-        """:type : FlaskClient"""
-
-        # Fire fields versus an empty database
-        response= sut.get('/fields', follow_redirects=True)
-        """:type : Response"""
+    # def test_get_pipeline_fields(self):
+    #     TestApp.write_debug_config()
+    #     app = MendeleyCache()
+    #
+    #     sut = app.test_client()
+    #     """:type : FlaskClient"""
+    #
+    #     # Fire fields versus an empty database
+    #     response= sut.get('/fields', follow_redirects=True)
+    #     """:type : Response"""
+    #
+    #     data = response.get_data(as_text=True)
+    #     json_data = json.loads(data)
+    #     self.assertEqual(len(json_data), 0)
+    #
+    #     # Trigger the pipeline
+    #     app.pipeline_controller.execute()
+    #
+    #     # Fire fields versus a filled database
+    #     response= sut.get('/fields', follow_redirects=True)
+    #     """:type : Response"""
+    #
+    #     data = response.get_data(as_text=True)
+    #     #json_data = json.loads(data)
+    #     print(data)
 
     def tearDown(self):
         remove(TestApp.config_path) if exists(TestApp.config_path) else None
