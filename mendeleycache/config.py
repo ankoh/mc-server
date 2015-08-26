@@ -11,19 +11,21 @@ class MendeleyConfiguration:
     Configuration of the Mendeley API app access
     """
     def __init__(self, app_id: str, app_secret: str, research_group: str):
-        self.__app_id = app_id
-        self.__app_secret = app_secret
-        self.__research_group = research_group
+        self._app_id = app_id
+        self._app_secret = app_secret
+        self._research_group = research_group
 
     @property
     def app_id(self):
-        return self.__app_id
+        return self._app_id
+    
     @property
     def app_secret(self):
-        return self.__app_secret
+        return self._app_secret
+
     @property
     def research_group(self):
-        return self.__research_group
+        return self._research_group
 
 
 class DatabaseConfiguration:
@@ -31,51 +33,51 @@ class DatabaseConfiguration:
     Configuration of the database access
     """
     def __init__(self, engine: str, ):
-        self.__engine = engine
+        self._engine = engine
 
     @property
     def engine(self):
-        return self.__engine
+        return self._engine
 
 
 class MySQLConfiguration(DatabaseConfiguration):
     def __init__(self, engine: str, hostname: str, port: str, db: str, user: str, secret: str):
-        self.__hostname = hostname
-        self.__port = port
-        self.__db = db
-        self.__user = user
-        self.__secret = secret
+        self._hostname = hostname
+        self._port = port
+        self._db = db
+        self._user = user
+        self._secret = secret
         super(MySQLConfiguration, self).__init__(engine)
 
     @property
     def hostname(self):
-        return self.__hostname
+        return self._hostname
 
     @property
     def port(self):
-        return self.__port
+        return self._port
 
     @property
     def db(self):
-        return self.__db
+        return self._db
 
     @property
     def user(self):
-        return self.__user
+        return self._user
 
     @property
     def secret(self):
-        return self.__secret
+        return self._secret
 
 
 class SQLiteConfiguration(DatabaseConfiguration):
     def __init__(self, engine: str, path: str):
-        self.__path = path
+        self._path = path
         super(SQLiteConfiguration, self).__init__(engine)
 
     @property
     def path(self):
-        return self.__path
+        return self._path
 
 
 class GeneralConfiguration:
@@ -91,17 +93,28 @@ class ServiceConfiguration:
     Configuration of the Mendeley Cache
     """
     def __init__(self):
-        self.__mendeley = None
-        self.__database = None
-        self.__general = None
+        self._mendeley = None
+        """:type : MendeleyConfiguration"""
+
+        self._database = None
+        """:type : DatabaseConfiguration"""
+
+        self._general = None
+        """:type : GeneralConfiguration"""
+
+        self._version = "0.1.0"
 
     @property
     def mendeley(self):
-        return self.__mendeley
+        return self._mendeley
 
     @property
     def database(self):
-        return self.__database
+        return self._database
+
+    @property
+    def version(self):
+        return self._version
 
     def load(self):
         """
@@ -141,7 +154,7 @@ class ServiceConfiguration:
                 missing_attribute('mendeley.app_secret')
             if 'research_group' not in mendeley_data:
                 missing_attribute('mendeley.research_group')
-            self.__mendeley = MendeleyConfiguration(
+            self._mendeley = MendeleyConfiguration(
                 mendeley_data['app_id'],
                 mendeley_data['app_secret'],
                 mendeley_data['research_group']
@@ -164,7 +177,7 @@ class ServiceConfiguration:
                     missing_attribute('database[mysql].user')
                 if 'secret' not in db_data:
                     missing_attribute('database[mysql].secret')
-                self.__database = MySQLConfiguration(
+                self._database = MySQLConfiguration(
                     engine=db_data['engine'],
                     hostname=db_data['hostname'],
                     port=db_data['port'],
@@ -175,7 +188,7 @@ class ServiceConfiguration:
             elif engine == 'sqlite':
                 if 'path' not in db_data:
                     missing_attribute('database[sqlite].path')
-                self.__database = SQLiteConfiguration(
+                self._database = SQLiteConfiguration(
                     engine=db_data['engine'],
                     path=db_data['path'],
                 )
