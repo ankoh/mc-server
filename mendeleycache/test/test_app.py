@@ -7,15 +7,14 @@ from os.path import exists
 
 import unittest
 
-config_path = get_relative_path('config.yml')
-
 
 class TestApp(unittest.TestCase):
+    config_path = get_relative_path('config.yml')
 
     @staticmethod
     def write_debug_config():
         # Write valid configuration file
-        with open(config_path, 'w') as config:
+        with open(TestApp.config_path, 'w') as config:
             config.truncate()
             valid_config = (
                 "mendeley:\n"
@@ -35,4 +34,4 @@ class TestApp(unittest.TestCase):
         sut = app.test_client()
 
     def tearDown(self):
-        remove(config_path) if exists(config_path) else None
+        remove(TestApp.config_path) if exists(TestApp.config_path) else None
