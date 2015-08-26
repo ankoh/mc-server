@@ -8,6 +8,7 @@ from flask.testing import FlaskClient
 from flask.wrappers import Response
 
 from mendeleycache.test.test_app import TestApp
+from mendeleycache.app import MendeleyCache
 
 import json
 
@@ -16,7 +17,7 @@ class TestSystem(unittest.TestCase):
 
     def test_get_system(self):
         TestApp.write_debug_config()
-        from mendeleycache.app import app
+        app = MendeleyCache()
 
         sut = app.test_client()
         """:type : FlaskClient"""

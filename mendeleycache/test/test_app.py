@@ -1,6 +1,7 @@
 __author__ = 'kohn'
 
 from mendeleycache.utils.files import get_relative_path
+from mendeleycache.app import MendeleyCache
 
 from os import remove
 from os.path import exists
@@ -30,7 +31,7 @@ class TestApp(unittest.TestCase):
 
     def test_app_startup(self):
         TestApp.write_debug_config()
-        from mendeleycache.app import app
+        app = MendeleyCache()
         sut = app.test_client()
 
     def tearDown(self):

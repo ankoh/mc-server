@@ -14,43 +14,49 @@ from mendeleycache.crawler.file_crawler import FileCrawler
 from mendeleycache.crawler.controller import CrawlController
 from mendeleycache.pipeline import PipelineController
 
-# Initialize the main application
-app = Flask(__name__)
 
-# Read configuration
-# TODO: set the path to the config through environment variables and pass that as parameter
-config = ServiceConfiguration()
-config.load()
+class MendeleyCache(Flask):
+    def __init__(self, *args, **kwargs):
+        super(MendeleyCache, self).__init__('mendeleycache', *args, **kwargs)
 
-# Create service controllers
-data_controller = DataController(config.database)
-# TODO: Only run schema if in debug or schema not existing (index collision)
-data_controller.run_schema()
-# TODO: read crawler type from config as well
-crawler = FileCrawler()
-crawl_controller = CrawlController(crawler, config.mendeley.research_group)
-analysis_controller = AnalysisController()
-pipeline_controller = PipelineController(
-    data_controller=data_controller,
-    crawl_controller=crawl_controller,
-    analysis_controller=analysis_controller
-)
+        # Read configuration
+        # TODO: set the path to the config through environment variables and pass that as parameter
+        self.configuration = ServiceConfiguration()
+        self.configuration.load()
 
-# Create the routing controllers
-fields_controller = FieldsController(app, data_controller)
-profiles_controller = ProfilesController(app, data_controller)
-publications_controller = PublicationsController(app, data_controller)
-statistics_controller = StatisticsController(app, data_controller)
-system_controller = SystemController(app, data_controller, config)
+        # Create service controllers
+        self.data_controller = DataController(self.configuration.database)
+        # TODO: Only run schema if in debug or schema not existing (index collision)
+        self.data_controller.run_schema()
+        # TODO: read crawler type from config as well
+        self.crawler = FileCrawler()
+        self.crawl_controller = CrawlController(self.crawler, self.configuration.mendeley.research_group)
+        self.analysis_controller = AnalysisController()
+        self.pipeline_controller = PipelineController(
+            data_controller=self.data_controller,
+            crawl_controller=self.crawl_controller,
+            analysis_controller=self.analysis_controller
+        )
 
-# Register the url handlers
-fields_controller.register()
-profiles_controller.register()
-publications_controller.register()
-statistics_controller.register()
-system_controller.register()
+        # Create the routing controllers
+        self.fields_controller = FieldsController(self, self.data_controller)
+        self.profiles_controller = ProfilesController(self, self.data_controller)
+        self.publications_controller = PublicationsController(self, self.data_controller)
+        self.statistics_controller = StatisticsController(self, self.data_controller)
+        self.system_controller = SystemController(self, self.data_controller, self.configuration)
 
+        # Register the routes
+        self.register_routes()
+
+    def register_routes(self):
+        self.fields_controller.register()
+        self.profiles_controller.register()
+        self.publications_controller.register()
+        self.statistics_controller.register()
+        self.system_controller.register()
 
 # If entry point run the application
 if __name__ == '__main__':
+    # Initialize the main application
+    app = MendeleyCache(__name__)
     app.run(debug=True)

@@ -1,6 +1,6 @@
 __author__ = 'kohn'
 
-from flask import Flask, request
+from flask import Flask
 from mendeleycache.data.controller import DataController
 
 from mendeleycache.config import ServiceConfiguration
