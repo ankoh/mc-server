@@ -24,6 +24,8 @@ config.load()
 
 # Create service controllers
 data_controller = DataController(config.database)
+# TODO: Only run schema if in debug or schema not existing (index collision)
+data_controller.run_schema()
 # TODO: read crawler type from config as well
 crawler = FileCrawler()
 crawl_controller = CrawlController(crawler, config.mendeley.research_group)
