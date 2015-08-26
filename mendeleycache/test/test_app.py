@@ -12,9 +12,9 @@ config_path = get_relative_path('config.yml')
 
 class TestApp(unittest.TestCase):
 
-    def test_app_startup(self):
+    @staticmethod
+    def write_debug_config():
         # Write valid configuration file
-
         with open(config_path, 'w') as config:
             config.truncate()
             valid_config = (
@@ -29,6 +29,8 @@ class TestApp(unittest.TestCase):
             )
             config.write(valid_config)
 
+    def test_app_startup(self):
+        TestApp.write_debug_config()
         from mendeleycache.app import app
         sut = app.test_client()
 
