@@ -1,7 +1,7 @@
 unittest:
   script:
     - pip install --quiet -r requirements.txt
-    - python run_tests.py
+    - ./mc_tests.sh
   tags:
     - python3
 

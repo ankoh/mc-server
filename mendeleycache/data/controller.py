@@ -6,6 +6,7 @@ from mendeleycache.data.crawl_data import CrawlData
 from mendeleycache.data.reader import read_sql_statements
 from mendeleycache.utils.exceptions import InvalidConfigurationException
 from mendeleycache.config import DatabaseConfiguration, MySQLConfiguration, SQLiteConfiguration
+from mendeleycache.logging import log
 import sqlalchemy
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import DBAPIError
@@ -24,7 +25,7 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
             db=config.db
         )
     elif config.engine == "sqlite":
-        if not path:
+        if not config.path:
             path = "sqlite://"
         else:
             path = "sqlite:///{path}".format(
@@ -33,6 +34,11 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
     else:
         log.warn("Unknown engine %s" % config.engine)
         raise InvalidConfigurationException("Unknown database engine")
+
+    log.info("Creating engine {engine} with path {path}".format(
+        engine=config.engine,
+        path=path
+    ))
 
     # create engine
     return sqlalchemy.create_engine(path)
@@ -91,3 +97,4 @@ class DataController:
             for cmd in schema:
                 conn.execute(cmd)
 
+        log.info("Schema executed successfully")

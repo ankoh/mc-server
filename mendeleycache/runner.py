@@ -1,0 +1,61 @@
+__author__ = 'kohn'
+
+from mendeleycache.config import ServiceConfiguration
+from mendeleycache.data.controller import DataController
+from mendeleycache.crawler.file_crawler import FileCrawler
+from mendeleycache.crawler.controller import CrawlController
+from mendeleycache.analyzer.controller import AnalysisController
+from mendeleycache.pipeline import PipelineController
+from mendeleycache.logging import log
+
+import unittest
+from unittest import TestLoader
+from mendeleycache.utils.files import get_relative_path
+import logging
+
+import os
+import sys
+
+if len(sys.argv) >= 2:
+    log.info("Welcome to the MendeleyCache runner")
+
+    # Test runner
+    if sys.argv[1] == "tests":
+        # Disable logging for tests
+        logging.disable(logging.CRITICAL)
+
+        # Get project root path
+        project_root = get_relative_path(".")
+
+        # Prepare
+        loader = TestLoader()
+        runner = unittest.TextTestRunner(verbosity=2)
+
+        # Create suites
+        all = loader.discover(start_dir=project_root)
+
+        # Run suites
+        runner.run(all)
+
+    # Pipeline runner
+    elif sys.argv[1] == "pipeline":
+        config = ServiceConfiguration()
+        config.load()
+
+        data_controller = DataController(config.database)
+        if not data_controller.table_exists("cache_document"):
+            log.critical("Database is not initialized")
+            exit()
+
+        crawler = FileCrawler()
+        crawl_controller = CrawlController(crawler, config.mendeley.research_group)
+        analysis_controller = AnalysisController()
+        pipeline_controller = PipelineController(
+            data_controller=data_controller,
+            crawl_controller=crawl_controller,
+            analysis_controller=analysis_controller
+        )
+        pipeline_controller.execute()
+
+
+

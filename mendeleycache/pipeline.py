@@ -3,6 +3,7 @@ __author__ = 'kohn'
 from mendeleycache.data.controller import DataController
 from mendeleycache.crawler.controller import CrawlController
 from mendeleycache.analyzer.controller import AnalysisController
+from mendeleycache.logging import log
 
 
 class PipelineController:
@@ -59,3 +60,10 @@ class PipelineController:
             unified_name_to_authored_documents=unified_name_to_authored_documents,
             unified_name_to_participated_documents=unified_name_to_participated_documents
         )
+
+        log.info("Pipeline executed successfully\n"
+                 "- {profiles} profiles\n"
+                 "- {documents} documents\n".format(
+            profiles=len(profiles),
+            documents=len(documents)
+        ))
