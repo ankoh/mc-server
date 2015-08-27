@@ -2,6 +2,7 @@ __author__ = 'kohn'
 
 from mendeleycache.data.reader import read_sql_statements
 from mendeleycache.data.identifiers import generate_id
+from mendeleycache.data.bibtex import generate_bibtex
 from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
 from mendeleycache.utils.sanitize import sanitize_text
@@ -63,6 +64,9 @@ class CrawlData:
             keywords_string = ", ".join(doc.core_keywords)
             tags_string = ", ".join(doc.tags)
 
+            # Generate bibtex
+            bibtex = generate_bibtex(doc)
+
             return r.format(
                 mendeley_id=sanitize_text(doc.core_id),
                 cache_document_id=b64u,
@@ -77,7 +81,7 @@ class CrawlData:
                 authors=authors_string,
                 keywords=keywords_string,
                 tags=tags_string,
-                derived_bibtex=""
+                derived_bibtex=bibtex
             )
 
         # If there's nothing to insert, abort
