@@ -12,6 +12,7 @@ from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.crawler.file_crawler import FileCrawler
 from mendeleycache.crawler.controller import CrawlController
 from mendeleycache.pipeline import PipelineController
+from mendeleycache.logging import log
 
 
 class MendeleyCache(Flask):
@@ -45,6 +46,8 @@ class MendeleyCache(Flask):
 
         # Register the routes
         self.register_routes()
+
+        log.debug("MendeleyCache initialized")
 
     def register_routes(self):
         self.fields_controller.register()
