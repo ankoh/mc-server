@@ -57,8 +57,12 @@ class CrawlData:
             u, _ = unify_document_title(doc.core_title)
             b64u = generate_id(u)
 
+            # Produce plain TEXT from the lists
             author_string = map(lambda x: "{first} {last}".format(first=x[0], last=x[1]), doc.core_authors)
             authors_string = ", ".join(author_string)
+            keywords_string = ", ".join(doc.core_keywords)
+            tags_string = ", ".join(doc.tags)
+
             return r.format(
                 mendeley_id=sanitize_text(doc.core_id),
                 cache_document_id=b64u,
@@ -71,8 +75,8 @@ class CrawlData:
                 source=sanitize_text(doc.core_source),
                 pub_year=doc.core_year,
                 authors=authors_string,
-                keywords="",
-                tags="",
+                keywords=keywords_string,
+                tags=tags_string,
                 derived_bibtex=""
             )
 
