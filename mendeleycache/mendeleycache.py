@@ -47,7 +47,7 @@ class MendeleyCache(Flask):
         # Register the routes
         self.register_routes()
 
-        log.debug("MendeleyCache initialized")
+        log.info("MendeleyCache initialized")
 
     def register_routes(self):
         self.fields_controller.register()

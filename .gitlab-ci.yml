@@ -1,7 +1,7 @@
 unittest:
   script:
     - pip install --quiet -r requirements.txt
-    - python -m unittest discover -v
+    - python run_tests.py
   tags:
     - python3
 

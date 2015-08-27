@@ -8,4 +8,4 @@ mendeley:
 
 database:
   engine: 'sqlite'
-  path: ''
+  path: '/tmp/mendeleycache.db'
