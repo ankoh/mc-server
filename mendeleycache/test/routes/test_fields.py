@@ -13,8 +13,8 @@ from mendeleycache.app import MendeleyCache
 import json
 import time
 
-class TestFields(unittest.TestCase):
 
+class TestFields(unittest.TestCase):
     def test_get_empty_fields(self):
         TestApp.write_debug_config()
         app = MendeleyCache()

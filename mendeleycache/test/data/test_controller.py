@@ -32,10 +32,6 @@ class TestDataController(unittest.TestCase):
         self.assertFalse(ctrl.table_exists('cache_field'))
         self.assertFalse(ctrl.table_exists('cache_document_has_cache_field'))
         self.assertFalse(ctrl.table_exists('cache_profile_has_cache_document'))
-        self.assertFalse(ctrl.table_exists('document_access_log'))
-        self.assertFalse(ctrl.table_exists('document_access_log_has_cache_document'))
-        self.assertFalse(ctrl.table_exists('field_access_log'))
-        self.assertFalse(ctrl.table_exists('field_access_log_has_cache_field'))
 
         # Create schema
         ctrl.run_schema()
@@ -48,7 +44,3 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.table_exists('cache_field'))
         self.assertTrue(ctrl.table_exists('cache_document_has_cache_field'))
         self.assertTrue(ctrl.table_exists('cache_profile_has_cache_document'))
-        self.assertTrue(ctrl.table_exists('document_access_log'))
-        self.assertTrue(ctrl.table_exists('document_access_log_has_cache_document'))
-        self.assertTrue(ctrl.table_exists('field_access_log'))
-        self.assertTrue(ctrl.table_exists('field_access_log_has_cache_field'))
