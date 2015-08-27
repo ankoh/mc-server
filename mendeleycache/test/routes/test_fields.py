@@ -8,7 +8,7 @@ from flask.testing import FlaskClient
 from flask.wrappers import Response
 
 from mendeleycache.test.test_app import TestApp
-from mendeleycache.app import MendeleyCache
+from mendeleycache.mendeleycache import MendeleyCache
 
 import json
 import time
@@ -17,8 +17,8 @@ import time
 class TestFields(unittest.TestCase):
     def test_get_empty_fields(self):
         TestApp.write_debug_config()
-        app = MendeleyCache()
-        app = MendeleyCache()
+        app = MendeleyCache('mendeleycache')
+        app.debug = True
 
         sut = app.test_client()
         """:type : FlaskClient"""
@@ -34,7 +34,7 @@ class TestFields(unittest.TestCase):
 
     def test_get_pipeline_fields(self):
         TestApp.write_debug_config()
-        app = MendeleyCache()
+        app = MendeleyCache('mendeleycache')
         app.testing = True
 
         sut = app.test_client()

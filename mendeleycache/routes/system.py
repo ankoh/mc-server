@@ -15,7 +15,7 @@ class SystemController:
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/system', view_func=self.get_system_report)
+        self._app.add_url_rule('/system/', view_func=self.get_system_report)
 
     def get_system_report(self):
         json_result = dict()
