@@ -8,6 +8,7 @@ from mendeleycache.utils.sanitize import sanitize_text
 from sqlalchemy.engine import Engine
 
 import re
+import functools
 
 
 class CrawlData:
@@ -55,6 +56,9 @@ class CrawlData:
                 "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
             b64u = generate_id(u)
+
+            author_string = map(lambda x: "{first} {last}".format(first=x[0], last=x[1]), doc.core_authors)
+            authors_string = ", ".join(author_string)
             return r.format(
                 mendeley_id=sanitize_text(doc.core_id),
                 cache_document_id=b64u,
@@ -66,7 +70,7 @@ class CrawlData:
                 abstract=sanitize_text(doc.core_abstract),
                 source=sanitize_text(doc.core_source),
                 pub_year=doc.core_year,
-                authors="",
+                authors=authors_string,
                 keywords="",
                 tags="",
                 derived_bibtex=""
