@@ -6,7 +6,7 @@ SELECT
 FROM 
    cache_field cf,
    ( 
-      SELECT cf.id AS id, count(*) AS cnt
+      SELECT cf.id AS id, COUNT(*) AS cnt
       FROM 
         cache_field cf,
         cache_document cd,

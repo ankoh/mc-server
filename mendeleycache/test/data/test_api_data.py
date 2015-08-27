@@ -72,7 +72,9 @@ class TestApiScripts(unittest.TestCase):
 
         # Test slim profiles
         slim_profiles = data_controller.api_data.get_profiles_slim()
+        self.assertEqual(len(slim_profiles), 19)
 
         # Test fields
         fields = data_controller.api_data.get_fields()
+        self.assertEqual(len(fields), 4)
 

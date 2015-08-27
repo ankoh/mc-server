@@ -27,7 +27,7 @@ class CrawlData:
         self._update_cache_profiles = \
             read_sql_statements('sql', 'crawler', 'update_cache_profiles.sql')
         self._link_fields_to_documents = \
-            read_sql_statements('sql', 'crawler', 'link_fields_to_documents.sql')
+            read_sql_statements('sql', 'crawler', 'link_documents_to_fields.sql')
         self._link_profiles_to_documents = \
             read_sql_statements('sql', 'crawler', 'link_profiles_to_documents.sql')
         self._post_update = \
@@ -330,8 +330,8 @@ class CrawlData:
                 s = "('{cache_document_id}','{cache_field_id}')"
                 field_title_doc_title_tuple_strings.append(
                     s.format(
-                        cache_document_id=generate_id(unified_field_title),
-                        cache_field_id=generate_id(doc_unified)
+                        cache_document_id=generate_id(doc_unified),
+                        cache_field_id=generate_id(unified_field_title)
                     )
                 )
 
@@ -344,7 +344,7 @@ class CrawlData:
         insert = self._link_fields_to_documents[1]
 
         field_title_doc_title_tuples_string = '%s' % ','.join(field_title_doc_title_tuple_strings)
-        insert = re.sub(':fields_to_documents', field_title_doc_title_tuples_string, insert)
+        insert = re.sub(':documents_to_fields', field_title_doc_title_tuples_string, insert)
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:

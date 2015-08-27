@@ -85,6 +85,26 @@ CREATE TABLE IF NOT EXISTS cache_field (
   id VARCHAR(255) PRIMARY KEY,
   title VARCHAR(255) NOT NULL);
 
+-- -----------------------------------------------------
+-- Table cache_profile_has_cache_document
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS cache_profile_has_cache_document (
+  cache_profile_id VARCHAR(255) NOT NULL,
+  cache_document_id VARCHAR(255) NOT NULL,
+  PRIMARY KEY (cache_profile_id, cache_document_id),
+  FOREIGN KEY (cache_profile_id)
+    REFERENCES cache_profile (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (cache_document_id)
+    REFERENCES cache_document (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+-- Foreign keys for cache_profile_has_cache_document -> cache_profile
+-- and cache_profile_has_cache_document -> cache_document
+CREATE INDEX cache_profile_has_cache_document_profile_id on cache_profile_has_cache_document(cache_profile_id);
+CREATE INDEX cache_profile_has_cache_document_document_id on cache_profile_has_cache_document(cache_document_id);
 
 -- -----------------------------------------------------
 -- Table cache_document_has_cache_field
@@ -106,28 +126,6 @@ CREATE TABLE IF NOT EXISTS cache_document_has_cache_field (
 -- and cache_document_has_cache_field -> cache_document
 CREATE INDEX cache_document_has_cache_field_field_id on cache_document_has_cache_field(cache_field_id);
 CREATE INDEX cache_document_has_cache_field_document_id on cache_document_has_cache_field(cache_document_id);
-
-
--- -----------------------------------------------------
--- Table cache_profile_has_cache_document
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS cache_profile_has_cache_document (
-  cache_profile_id VARCHAR(255) NOT NULL,
-  cache_document_id VARCHAR(255) NOT NULL,
-  PRIMARY KEY (cache_profile_id, cache_document_id),
-  FOREIGN KEY (cache_profile_id)
-    REFERENCES cache_profile (id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  FOREIGN KEY (cache_document_id)
-    REFERENCES cache_document (id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE);
-
--- Foreign keys for cache_profile_has_cache_document -> cache_profile
--- and cache_profile_has_cache_document -> cache_document
-CREATE INDEX cache_profile_has_cache_document_profile_id on cache_profile_has_cache_document(cache_profile_id);
-CREATE INDEX cache_profile_has_cache_document_document_id on cache_profile_has_cache_document(cache_document_id);
 
 -- -----------------------------------------------------
 -- Table document_access_log

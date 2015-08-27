@@ -2,9 +2,10 @@
 SELECT
    cp.id,
    cp.name,
-   agg.cnt
+   CASE WHEN agg.cnt IS NULL THEN 0 ELSE agg.cnt END
 FROM
-   cache_profile cp,
+   cache_profile cp
+   LEFT OUTER JOIN
    (
      SELECT cp.id AS id, COUNT(*) AS cnt
      FROM
@@ -15,4 +16,4 @@ FROM
      AND cd.id = cphcd.cache_document_id
      GROUP BY cp.id
    ) agg
-WHERE cp.id = agg.id
+   ON cp.id = agg.id
