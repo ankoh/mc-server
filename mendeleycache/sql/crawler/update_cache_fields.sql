@@ -2,7 +2,7 @@
 REPLACE
 INTO cache_field
   (
-    unified_title,
+    id,
     title
   )
 VALUES

@@ -5,6 +5,7 @@ import unittest
 from mendeleycache.config import SQLiteConfiguration
 from mendeleycache.data.controller import DataController
 from mendeleycache.data.api_data import ApiData
+from mendeleycache.data.identifiers import generate_id
 
 from mendeleycache.models import Profile, Document, CacheField
 from datetime import datetime
@@ -57,26 +58,26 @@ class TestCrawlScripts(unittest.TestCase):
 
         # Then query rows
         rows = data_controller.engine.execute(
-            "SELECT mid, unified_title, title, owner_mid, doc_type, "
-            " created, last_modified, abstract, source, pub_year "
+            "SELECT id, mendeley_id, cache_document_id, owner_mendeley_id,"
+            " title, doc_type, created, last_modified, abstract, source, pub_year "
             "FROM document "
         ).fetchall()
 
         # Check first row
-        self.assertEqual(rows[0]["mid"], "doc1")
-        self.assertEqual(rows[0]["unified_title"], "title1")
+        self.assertEqual(rows[0]["mendeley_id"], "doc1")
+        self.assertEqual(rows[0]["cache_document_id"], generate_id("title1"))
+        self.assertEqual(rows[0]["owner_mendeley_id"], "id1")
         self.assertEqual(rows[0]['title'], "title1")
-        self.assertEqual(rows[0]['owner_mid'], "id1")
         self.assertEqual(rows[0]["doc_type"], "conference_proceedings")
         self.assertEqual(rows[0]['abstract'], "blabla")
         self.assertEqual(rows[0]["source"], "ACM xy")
         self.assertEqual(rows[0]["pub_year"], 2015)
 
         # Check second row
-        self.assertEqual(rows[1]["mid"], "doc2")
-        self.assertEqual(rows[1]["unified_title"], "title2")
+        self.assertEqual(rows[1]["mendeley_id"], "doc2")
+        self.assertEqual(rows[1]["cache_document_id"], generate_id("title2"))
+        self.assertEqual(rows[1]["owner_mendeley_id"], "id2")
         self.assertEqual(rows[1]['title'], "title2")
-        self.assertEqual(rows[1]['owner_mid'], "id2")
         self.assertEqual(rows[1]["doc_type"], "conference_proceedings")
         self.assertEqual(rows[1]['abstract'], "blabla2")
         self.assertEqual(rows[1]["source"], "ACM xyz")
@@ -119,16 +120,16 @@ class TestCrawlScripts(unittest.TestCase):
 
         # Then query rows
         rows = data_controller.engine.execute(
-            "SELECT mid, unified_title, title, owner_mid, doc_type, "
-            " created, last_modified, abstract, source, pub_year "
+            "SELECT id, mendeley_id, cache_document_id, owner_mendeley_id,"
+            " title, doc_type, created, last_modified, abstract, source, pub_year "
             "FROM document "
         ).fetchall()
 
          # Check first row
-        self.assertEqual(rows[0]["mid"], "doc1")
-        self.assertEqual(rows[0]["unified_title"], "newtitle1")
+        self.assertEqual(rows[0]["mendeley_id"], "doc1")
+        self.assertEqual(rows[0]["cache_document_id"], generate_id("newtitle1"))
+        self.assertEqual(rows[0]["owner_mendeley_id"], "id1")
         self.assertEqual(rows[0]['title'], "newtitle1")
-        self.assertEqual(rows[0]['owner_mid'], "id1")
         self.assertEqual(rows[0]["doc_type"], "conference_proceedings")
         self.assertEqual(rows[0]['abstract'], "blablaNew")
         self.assertEqual(rows[0]["source"], "ACM xyz1")
@@ -153,19 +154,19 @@ class TestCrawlScripts(unittest.TestCase):
 
         # Then query rows
         rows = data_controller.engine.execute(
-            "SELECT mid, unified_name, first_name, last_name, display_name "
+            "SELECT id, mendeley_id, cache_profile_id, first_name, last_name, display_name "
             "FROM profile "
         ).fetchall()
 
         # Check first row
-        self.assertEqual(rows[0]["mid"], "id1")
-        self.assertEqual(rows[0]["unified_name"], "hansmustermann")
+        self.assertEqual(rows[0]["mendeley_id"], "id1")
+        self.assertEqual(rows[0]["cache_profile_id"], generate_id("hansmustermann"))
         self.assertEqual(rows[0]['first_name'], "Hans")
         self.assertEqual(rows[0]['last_name'], "Mustermann")
 
         # Check second row
-        self.assertEqual(rows[1]["mid"], "id2")
-        self.assertEqual(rows[1]["unified_name"], "maxmustermann")
+        self.assertEqual(rows[1]["mendeley_id"], "id2")
+        self.assertEqual(rows[1]["cache_profile_id"], generate_id("maxmustermann"))
         self.assertEqual(rows[1]['first_name'], "Max")
         self.assertEqual(rows[1]['last_name'], "Mustermann")
 
@@ -179,13 +180,13 @@ class TestCrawlScripts(unittest.TestCase):
 
         # Then query rows
         rows = data_controller.engine.execute(
-            "SELECT mid, unified_name, first_name, last_name, display_name "
+            "SELECT id, mendeley_id, cache_profile_id, first_name, last_name, display_name "
             "FROM profile "
         ).fetchall()
 
         # Check first row
-        self.assertEqual(rows[0]["mid"], "id1")
-        self.assertEqual(rows[0]["unified_name"], "hanssupermann")
+        self.assertEqual(rows[0]["mendeley_id"], "id1")
+        self.assertEqual(rows[0]["cache_profile_id"], generate_id("hanssupermann"))
         self.assertEqual(rows[0]['first_name'], "Hans")
         self.assertEqual(rows[0]['last_name'], "Supermann")
 
@@ -247,19 +248,28 @@ class TestCrawlScripts(unittest.TestCase):
         # Trigger cache document update
         data_controller.crawl_data.update_cache_documents(unified_document_title_to_documents)
 
-         # Check data count in the table
+        # Check data count in the table
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_document").fetchone()
         self.assertEqual(cnt[0], 2)
 
         # Then query sametitle row
+        id = generate_id('sametitle1')
         row = data_controller.engine.execute(
-            "SELECT document_mid, unified_title, title "
+            "SELECT id, document_id, title "
             "FROM cache_document "
-            "WHERE unified_title='sametitle1'"
+            "WHERE id='%s'" % id
         ).fetchone()
+        self.assertEqual(row["id"], id)
+        self.assertEqual(row["title"], "sametitle1")
 
-        self.assertEqual(row["document_mid"], "doc3")
-        self.assertEqual(row["unified_title"], "sametitle1")
+        # Now update documents and check if the link is set correctly
+        data_controller.crawl_data.update_documents([document1, document2, document3])
+        row = data_controller.engine.execute(
+            "SELECT cd.title as title "
+            "FROM cache_document cd, document d "
+            "WHERE cd.document_id = d.id "
+            "AND cd.id='%s' " % id
+        ).fetchone()
         self.assertEqual(row["title"], "sametitle1")
 
     def test_update_cache_profiles(self):
@@ -286,14 +296,24 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(cnt[0], 2)
 
         # Then query same title row
+        id = generate_id('hansmustermann')
         row = data_controller.engine.execute(
-            "SELECT profile_mid, unified_name, name "
+            "SELECT id, profile_id, name "
             "FROM cache_profile "
-            "WHERE unified_name='hansmustermann'"
+            "WHERE id='%s'" % id
         ).fetchone()
 
-        self.assertEqual(row["profile_mid"], "id1")
-        self.assertEqual(row["unified_name"], "hansmustermann")
+        self.assertEqual(row["id"], id)
+        self.assertEqual(row["name"], "Hans Mustermann")
+
+        # Now update profiles and check if the link is set correctly
+        data_controller.crawl_data.update_profiles([profile1, profile2, profile3])
+        row = data_controller.engine.execute(
+            "SELECT cp.name as name "
+            "FROM cache_profile cp, profile p "
+            "WHERE cp.profile_id = p.id "
+            "AND cp.id='%s' " % id
+        ).fetchone()
         self.assertEqual(row["name"], "Hans Mustermann")
 
     def test_update_cache_fields(self):
@@ -317,16 +337,17 @@ class TestCrawlScripts(unittest.TestCase):
         cnt = data_controller.engine.execute("SELECT COUNT(*) FROM cache_field").fetchone()
         self.assertEqual(cnt[0], 2)
 
-         # Then query rows
+        # Then query rows
+        id = generate_id('field1')
         row = data_controller.engine.execute(
-            "SELECT title, unified_title "
+            "SELECT id, title "
             "FROM cache_field "
-            "WHERE unified_title='field1' "
+            "WHERE id='%s' " % id
         ).fetchone()
 
         # Check first row
-        self.assertEqual(row["title"], "field 1")
-        self.assertEqual(row['unified_title'], "field1")
+        self.assertEqual(row["id"], id)
+        self.assertEqual(row['title'], "field 1")
 
     def test_link_profiles_to_documents(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")

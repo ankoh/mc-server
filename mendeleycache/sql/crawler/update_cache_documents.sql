@@ -2,8 +2,7 @@
 REPLACE
 INTO cache_document
   (
-    document_mid,
-    unified_title,
+    id,
     title
   )
 VALUES

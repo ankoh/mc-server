@@ -34,6 +34,9 @@ class TestPipeline(unittest.TestCase):
         # Second run shall not crash either
         pipeline_controller.execute()
 
+        # Third run shall not crash either
+        pipeline_controller.execute()
+
         rows = data_controller.engine.execute("SELECT * FROM profile").fetchall()
         print()
         print()
@@ -79,4 +82,3 @@ class TestPipeline(unittest.TestCase):
             print(row)
 
         print()
-        

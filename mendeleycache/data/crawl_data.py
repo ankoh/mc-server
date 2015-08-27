@@ -1,6 +1,7 @@
 __author__ = 'kohn'
 
 from mendeleycache.data.reader import read_sql_statements
+from mendeleycache.data.identifiers import generate_id
 from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
 from mendeleycache.utils.sanitize import sanitize_text
@@ -27,8 +28,8 @@ class CrawlData:
             read_sql_statements('sql', 'crawler', 'link_fields_to_documents.sql')
         self._link_profiles_to_documents = \
             read_sql_statements('sql', 'crawler', 'link_profiles_to_documents.sql')
-        self._generate_cache_links = \
-            read_sql_statements('sql', 'crawler', 'generate_cache_links.sql')
+        self._post_update = \
+            read_sql_statements('sql', 'crawler', 'post_update.sql')
 
     def update_documents(self, docs: [Document]):
         """
@@ -38,9 +39,9 @@ class CrawlData:
         """
 
         def prepare_doc(doc: Document) -> str:
-            r = "('{mid}'," \
-                "'{owner_mid}'," \
-                "'{unified_title}'," \
+            r = "('{mendeley_id}'," \
+                "'{cache_document_id}'," \
+                "'{owner_mendeley_id}'," \
                 "'{title}'," \
                 "'{doc_type}'," \
                 "'{created}'," \
@@ -53,10 +54,11 @@ class CrawlData:
                 "'{tags}'," \
                 "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
+            b64u = generate_id(u)
             return r.format(
-                mid=sanitize_text(doc.core_id),
-                owner_mid=sanitize_text(doc.core_profile_id),
-                unified_title=sanitize_text(u),
+                mendeley_id=sanitize_text(doc.core_id),
+                cache_document_id=b64u,
+                owner_mendeley_id=sanitize_text(doc.core_profile_id),
                 title=sanitize_text(doc.core_title),
                 doc_type=sanitize_text(doc.core_type),
                 created=doc.core_created,
@@ -76,6 +78,10 @@ class CrawlData:
 
         delete = self._replace_documents[0]
         insert = self._replace_documents[1]
+        temp = self._replace_documents[2]
+        temp_insert = self._replace_documents[3]
+        update = self._replace_documents[4]
+        temp_drop = self._replace_documents[5]
 
         documents_string = ",".join(map(prepare_doc, docs))
         insert = re.sub(':documents', documents_string, insert)
@@ -83,7 +89,11 @@ class CrawlData:
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             conn.execute(delete)
-            return conn.execute(insert)
+            conn.execute(insert)
+            conn.execute(temp)
+            conn.execute(temp_insert)
+            conn.execute(update)
+            conn.execute(temp_drop)
 
     def update_profiles(self, profiles: [Profile]):
         """
@@ -93,16 +103,17 @@ class CrawlData:
         """
 
         def prepare_profile(p: Profile) -> str:
-            r = "('{mid}'," \
-                "'{unified_name}'," \
+            r = "('{mendeley_id}'," \
+                "'{cache_profile_id}'," \
                 "'{first_name}'," \
                 "'{last_name}'," \
                 "'{display_name}'," \
                 "'{link}')"
             u, _ = unify_profile_name(p.first_name, p.last_name)
+            b64u = generate_id(u)
             return r.format(
-                mid=sanitize_text(p.identifier),
-                unified_name=sanitize_text(u),
+                mendeley_id=sanitize_text(p.identifier),
+                cache_profile_id=b64u,
                 first_name=sanitize_text(p.first_name),
                 last_name=sanitize_text(p.last_name),
                 display_name=sanitize_text(p.display_name),
@@ -115,6 +126,10 @@ class CrawlData:
 
         delete = self._replace_profiles[0]
         insert = self._replace_profiles[1]
+        temp = self._replace_profiles[2]
+        temp_insert = self._replace_profiles[3]
+        update = self._replace_profiles[4]
+        temp_drop = self._replace_profiles[5]
 
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
         insert = re.sub(':profiles', mendeley_profiles_string, insert)
@@ -122,7 +137,11 @@ class CrawlData:
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             conn.execute(delete)
-            return conn.execute(insert)
+            conn.execute(insert)
+            conn.execute(temp)
+            conn.execute(temp_insert)
+            conn.execute(update)
+            conn.execute(temp_drop)
 
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):
@@ -145,13 +164,11 @@ class CrawlData:
             # add the corresponding sql insert string to the cache_document_strings array
             if reference_doc is not None:
                 u, r = unify_document_title(reference_doc.core_title)
-                s = "('{document_mid}'," \
-                    "'{unified_title}'," \
-                    "'{title}')"
+                b64u = generate_id(u)
+                s = "('{id}','{title}')"
                 cache_document_strings.append(
                     s.format(
-                        document_mid=sanitize_text(reference_doc.core_id),
-                        unified_title=sanitize_text(u),
+                        id=b64u,
                         title=sanitize_text(r)
                     )
                 )
@@ -190,13 +207,11 @@ class CrawlData:
             # add the corresponding sql insert string to the cache_profile_strings array
             if reference_profile is not None:
                 u, r = unify_profile_name(profile.first_name, profile.last_name)
-                s = "('{profile_mid}'," \
-                    "'{unified_name}'," \
-                    "'{name}')"
+                b64u = generate_id(u)
+                s = "('{id}','{name}')"
                 cache_profile_strings.append(
                     s.format(
-                        profile_mid=sanitize_text(reference_profile.identifier),
-                        unified_name=sanitize_text(u),
+                        id=b64u,
                         name=sanitize_text(r)
                     )
                 )
@@ -222,10 +237,11 @@ class CrawlData:
         """
         cache_field_strings = []
         for _, field in unified_field_title_to_field.items():
-            s = "('{unified_title}','{title}')"
+            b64u = generate_id(field.unified_title)
+            s = "('{id}','{title}')"
             cache_field_strings.append(
                 s.format(
-                    unified_title=sanitize_text(field.unified_title),
+                    id=b64u,
                     title=sanitize_text(field.title)
                 )
             )
@@ -255,21 +271,21 @@ class CrawlData:
         unified_name_unified_title_tuple_strings=[]
         for unified_name, doc_list in unified_name_to_authored_documents.items():
             for doc_unified in doc_list:
-                s = "('{unified_name}','{unified_title}')"
+                s = "('{cache_profile_id}','{cache_document_id}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
-                        unified_name=sanitize_text(unified_name),
-                        unified_title=sanitize_text(doc_unified)
+                        cache_profile_id=generate_id(unified_name),
+                        cache_document_id=generate_id(doc_unified)
                     )
                 )
 
         for unified_name, doc_list in unified_name_to_participated_documents.items():
             for doc_unified in doc_list:
-                s = "('{unified_name}','{unified_title}')"
+                s = "('{cache_profile_id}','{cache_document_id}')"
                 unified_name_unified_title_tuple_strings.append(
                     s.format(
-                        unified_name=sanitize_text(unified_name),
-                        unified_title=sanitize_text(doc_unified)
+                        cache_profile_id=generate_id(unified_name),
+                        cache_document_id=generate_id(doc_unified)
                     )
                 )
 
@@ -278,22 +294,16 @@ class CrawlData:
             return None
 
         # Get the different statements in the sql file
-        temp = self._link_profiles_to_documents[0]
+        delete = self._link_profiles_to_documents[0]
         insert = self._link_profiles_to_documents[1]
-        delete = self._link_profiles_to_documents[2]
-        link = self._link_profiles_to_documents[3]
-        drop = self._link_profiles_to_documents[4]
 
         unified_name_unified_title_tuples_string = '%s' % ','.join(unified_name_unified_title_tuple_strings)
         insert = re.sub(':profiles_to_documents', unified_name_unified_title_tuples_string, insert)
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
-            conn.execute(temp)
-            conn.execute(insert)
             conn.execute(delete)
-            conn.execute(link)
-            conn.execute(drop)
+            conn.execute(insert)
 
     def link_fields_to_documents(self,
                                  unified_field_title_to_documents: {}):
@@ -305,11 +315,11 @@ class CrawlData:
         field_title_doc_title_tuple_strings=[]
         for unified_field_title, doc_list in unified_field_title_to_documents.items():
             for doc_unified in doc_list:
-                s = "('{unified_field_title}','{unified_doc_title}')"
+                s = "('{cache_document_id}','{cache_field_id}')"
                 field_title_doc_title_tuple_strings.append(
                     s.format(
-                        unified_field_title=sanitize_text(unified_field_title),
-                        unified_doc_title=sanitize_text(doc_unified)
+                        cache_document_id=generate_id(unified_field_title),
+                        cache_field_id=generate_id(doc_unified)
                     )
                 )
 
@@ -318,30 +328,24 @@ class CrawlData:
             return None
 
          # Get the different statements in the sql file
-        temp = self._link_fields_to_documents[0]
+        delete = self._link_fields_to_documents[0]
         insert = self._link_fields_to_documents[1]
-        delete = self._link_fields_to_documents[2]
-        link = self._link_fields_to_documents[3]
-        drop = self._link_fields_to_documents[4]
 
         field_title_doc_title_tuples_string = '%s' % ','.join(field_title_doc_title_tuple_strings)
         insert = re.sub(':fields_to_documents', field_title_doc_title_tuples_string, insert)
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
-            conn.execute(temp)
-            conn.execute(insert)
             conn.execute(delete)
-            conn.execute(link)
-            conn.execute(drop)
+            conn.execute(insert)
 
-    def generate_cache_links(self):
+    def post_update(self):
         """
         Executes all linking steps that are required for the queries
         :return:
         """
         with self._engine.begin() as conn:
-            for stmt in self._generate_cache_links:
+            for stmt in self._post_update:
                 conn.execute(stmt)
 
     def execute(self,
@@ -357,14 +361,14 @@ class CrawlData:
         Given the required crawl data updates the whole cache
         :return:
         """
-        self.update_profiles(profiles)
-        self.update_documents(documents)
         self.update_cache_profiles(unified_name_to_profiles)
         self.update_cache_documents(unified_document_title_to_documents)
+        self.update_profiles(profiles)
+        self.update_documents(documents)
         self.update_cache_fields(unified_field_title_to_field)
         self.link_profiles_to_documents(
             unified_name_to_authored_documents,
             unified_name_to_participated_documents
         )
         self.link_fields_to_documents(unified_field_title_to_documents)
-        self.generate_cache_links()
+        self.post_update()

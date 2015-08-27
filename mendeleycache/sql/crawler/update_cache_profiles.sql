@@ -2,8 +2,7 @@
 REPLACE
 INTO cache_profile
   (
-    profile_mid,
-    unified_name,
+    id,
     name
   )
 VALUES
