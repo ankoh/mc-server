@@ -4,11 +4,13 @@ from mendeleycache.config import DatabaseConfiguration
 from mendeleycache.data.api_data import ApiData
 from mendeleycache.data.crawl_data import CrawlData
 from mendeleycache.data.reader import read_sql_statements
-
+from mendeleycache.utils.exceptions import InvalidConfigurationException
 from mendeleycache.config import DatabaseConfiguration, MySQLConfiguration, SQLiteConfiguration
 import sqlalchemy
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import DBAPIError
+
+from mendeleycache.logging import log
 
 
 def create_engine(config: DatabaseConfiguration) -> Engine:
@@ -22,13 +24,17 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
             db=config.db
         )
     elif config.engine == "sqlite":
-        path = "sqlite://"
-        if config.path:
-            path += config.path
+        if not path:
+            path = "sqlite://"
+        else:
+            path = "sqlite:///{path}".format(
+                path=config.path
+            )
     else:
-        # TODO: Log warning
-        return None
+        log.warn("Unknown engine %s" % config.engine)
+        raise InvalidConfigurationException("Unknown database engine")
 
+    # create engine
     return sqlalchemy.create_engine(path)
 
 
