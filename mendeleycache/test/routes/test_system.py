@@ -18,7 +18,7 @@ class TestSystem(unittest.TestCase):
     def test_get_system(self):
         TestApp.write_debug_config()
         app = MendeleyCache()
-
+        app = MendeleyCache()
         sut = app.test_client()
         """:type : FlaskClient"""
 

@@ -18,6 +18,7 @@ class TestFields(unittest.TestCase):
     def test_get_empty_fields(self):
         TestApp.write_debug_config()
         app = MendeleyCache()
+        app = MendeleyCache()
 
         sut = app.test_client()
         """:type : FlaskClient"""
@@ -34,6 +35,7 @@ class TestFields(unittest.TestCase):
     def test_get_pipeline_fields(self):
         TestApp.write_debug_config()
         app = MendeleyCache()
+        app.testing = True
 
         sut = app.test_client()
         """:type : FlaskClient"""
@@ -42,6 +44,7 @@ class TestFields(unittest.TestCase):
         response= sut.get('/fields', follow_redirects=True)
         """:type : Response"""
 
+        self.assertEqual(response.status_code, 200)
         data = response.get_data(as_text=True)
         json_data = json.loads(data)
         self.assertEqual(len(json_data), 0)
@@ -53,9 +56,10 @@ class TestFields(unittest.TestCase):
         response= sut.get('/fields', follow_redirects=True)
         """:type : Response"""
 
+        self.assertEqual(response.status_code, 200)
         data = response.get_data(as_text=True)
-        #json_data = json.loads(data)
-        print(data)
+        json_data = json.loads(data)
+        self.assertEqual(len(json_data), 4)
 
     def tearDown(self):
         remove(TestApp.config_path) if exists(TestApp.config_path) else None

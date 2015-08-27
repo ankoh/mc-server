@@ -32,6 +32,7 @@ class TestApp(unittest.TestCase):
     def test_app_startup(self):
         TestApp.write_debug_config()
         app = MendeleyCache()
+        app = MendeleyCache()
         sut = app.test_client()
 
     def tearDown(self):

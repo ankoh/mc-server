@@ -1,8 +1,8 @@
 -- noinspection SqlResolve
 SELECT
-   cf.id,
-   cf.title,
-   agg.cnt
+   cf.id as id,
+   cf.title as title,
+   agg.cnt as cnt
 FROM 
    cache_field cf,
    ( 

@@ -16,5 +16,12 @@ class FieldsController:
         self._app.add_url_rule('/fields', view_func=self.get_fields)
 
     def get_fields(self):
-        response = self._data_controller.api_data.get_fields()
+        fields = self._data_controller.api_data.get_fields()
+        response = []
+        for field in fields:
+            field_json = dict()
+            field_json["id"] = field["id"]
+            field_json["tile"] = field["title"]
+            field_json["cnt"] = field["cnt"]
+            response.append(field_json)
         return json.dumps(response)
