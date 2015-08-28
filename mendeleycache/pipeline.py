@@ -61,9 +61,17 @@ class PipelineController:
             unified_name_to_participated_documents=unified_name_to_participated_documents
         )
 
-        log.info("Pipeline executed successfully\n"
-                 "- {profiles} profiles\n"
-                 "- {documents} documents\n".format(
+        log.info("Pipeline has been executed\n"
+                 "\t| updated {profiles} profiles\n"
+                 "\t| updated {documents} documents\n"
+                 "\t| updated {unified_name_to_profiles} unified names\n"
+                 "\t| updated {unified_document_title_to_documents} unified titles\n"
+                 "\t| updated {unified_field_title_to_field} research fields\n"
+                 "\t| updated {unified_field_title_to_documents} field associations\n".format(
             profiles=len(profiles),
-            documents=len(documents)
+            documents=len(documents),
+            unified_name_to_profiles=len(unified_name_to_profiles),
+            unified_document_title_to_documents=len(unified_document_title_to_documents),
+            unified_field_title_to_field=len(unified_field_title_to_field),
+            unified_field_title_to_documents=len(unified_field_title_to_documents)
         ))

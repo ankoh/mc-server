@@ -6,6 +6,8 @@ from mendeleycache.data.bibtex import generate_bibtex
 from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
 from mendeleycache.utils.sanitize import sanitize_text
+from mendeleycache.logging import log
+
 from sqlalchemy.engine import Engine
 
 import re
@@ -95,17 +97,30 @@ class CrawlData:
         update = self._replace_documents[4]
         temp_drop = self._replace_documents[5]
 
-        documents_string = ",".join(map(prepare_doc, docs))
+        documents_string = ",\n ".join(map(prepare_doc, docs))
         insert = re.sub(':documents', documents_string, insert)
         
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
+            log.debug("Deleting existing documents")
             conn.execute(delete)
+
+            log.debug("Inserting new documents")
             conn.execute(insert)
+
+            log.debug("Creating temporary table")
             conn.execute(temp)
+
+            log.debug("Spooling data into temporary table")
             conn.execute(temp_insert)
+
+            log.debug("Creating document links")
             conn.execute(update)
+
+            log.debug("Dropping temporary table")
             conn.execute(temp_drop)
+
+        log.info("Documents have been updated")
 
     def update_profiles(self, profiles: [Profile]):
         """
@@ -148,12 +163,25 @@ class CrawlData:
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
+            log.debug("Deleting existing profiles")
             conn.execute(delete)
+
+            log.debug("Inserting new profiles")
             conn.execute(insert)
+
+            log.debug("Creating temporary table")
             conn.execute(temp)
+
+            log.debug("Spooling data into temporary table")
             conn.execute(temp_insert)
+
+            log.debug("Creating profile links")
             conn.execute(update)
+
+            log.debug("Dropping temporary table")
             conn.execute(temp_drop)
+
+        log.info("Profiles have been updated")
 
     def update_cache_documents(self,
                                unified_document_title_to_documents: {}):

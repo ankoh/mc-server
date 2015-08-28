@@ -22,6 +22,8 @@ if len(sys.argv) >= 2:
 
     # Test runner
     if sys.argv[1] == "tests":
+        log.info("Disabling non-critical logs for better unittest output")
+
         # Disable logging for tests
         logging.disable(logging.CRITICAL)
 
