@@ -6,7 +6,7 @@ import sys
 import sqlparse
 
 def create_logger():
-    formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(module)s - %(message)s')
+    formatter = logging.Formatter(fmt='%(asctime)s - %(levelname)s - %(module)s - %(funcName)s - %(message)s')
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)
     logger = logging.getLogger('mendeleycache')

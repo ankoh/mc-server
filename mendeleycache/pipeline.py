@@ -62,12 +62,12 @@ class PipelineController:
         )
 
         log.info("Pipeline has been executed\n"
-                 "\t| updated {profiles} profiles\n"
-                 "\t| updated {documents} documents\n"
-                 "\t| updated {unified_name_to_profiles} unified names\n"
-                 "\t| updated {unified_document_title_to_documents} unified titles\n"
-                 "\t| updated {unified_field_title_to_field} research fields\n"
-                 "\t| updated {unified_field_title_to_documents} field associations\n".format(
+                 "\t| replaced {profiles} profiles\n"
+                 "\t| replaced {documents} documents\n"
+                 "\t| replaced {unified_name_to_profiles} unified names\n"
+                 "\t| replaced {unified_document_title_to_documents} unified titles\n"
+                 "\t| replaced {unified_field_title_to_field} research fields\n"
+                 "\t| replaced {unified_field_title_to_documents} field associations\n".format(
             profiles=len(profiles),
             documents=len(documents),
             unified_name_to_profiles=len(unified_name_to_profiles),

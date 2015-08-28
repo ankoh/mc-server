@@ -97,7 +97,7 @@ class CrawlData:
         update = self._replace_documents[4]
         temp_drop = self._replace_documents[5]
 
-        documents_string = ",\n ".join(map(prepare_doc, docs))
+        documents_string = ",".join(map(prepare_doc, docs))
         insert = re.sub(':documents', documents_string, insert)
         
         # Fire the sql script in a transaction
@@ -215,6 +215,7 @@ class CrawlData:
 
         # If there's nothing to insert, abort
         if len(cache_document_strings) == 0:
+            log.warning("No cache documents have been found")
             return None
 
         cache_documents_string = ','.join(cache_document_strings)
@@ -223,7 +224,9 @@ class CrawlData:
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(sql)
+            log.debug("Updating cache documents")
+            conn.execute(sql)
+        log.info("Cache documents have been updated")
 
     def update_cache_profiles(self,
                               unified_name_to_profiles: {}):
@@ -258,6 +261,7 @@ class CrawlData:
 
         # If there's nothing to insert, abort
         if len(cache_profile_strings) == 0:
+            log.warning("No cache profiles have been found")
             return None
 
         cache_profiles_string = ','.join(cache_profile_strings)
@@ -266,7 +270,9 @@ class CrawlData:
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(sql)
+            log.debug("Updating cache profiles")
+            conn.execute(sql)
+        log.info("Cache profiles have been updated")
 
     def update_cache_fields(self,
                             unified_field_title_to_field: {}):
@@ -288,6 +294,7 @@ class CrawlData:
 
         # If there's nothing to insert, abort
         if len(cache_field_strings) == 0:
+            log.warning("No cache fields have been found")
             return None
 
         cache_fields_string = ','.join(cache_field_strings)
@@ -296,7 +303,9 @@ class CrawlData:
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(sql)
+            log.debug("Updating cache fields")
+            conn.execute(sql)
+        log.info("Cache fields have been updated")
     
     def link_profiles_to_documents(self,
                                    unified_name_to_authored_documents: {},
