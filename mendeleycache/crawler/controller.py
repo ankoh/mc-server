@@ -1,4 +1,4 @@
-__author__ = 'kohn'
+_author_ = 'kohn'
 
 from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.config import ServiceConfiguration
@@ -17,38 +17,38 @@ class CrawlController:
     The crawler controller spawns mutliple crawlers and returns the results afterwards
     """
     def __init__(self, crawler: AbstractCrawler, research_group: str):
-        self.__research_group = research_group
-        self.__crawler = crawler
+        self._research_group = research_group
+        self._crawler = crawler
 
-        self.__members = []
-        self.__profiles = []
-        self.__profile_documents = dict()
-        self.__group_documents = []
-        self.__succeeded = False
+        self._members = []
+        self._profiles = []
+        self._profile_documents = dict()
+        self._group_documents = []
+        self._succeeded = False
 
     @property
     def members(self) -> [Member]:
-        return self.__members
+        return self._members
 
     @property
     def profiles(self) -> [Profile]:
-        return self.__profiles
+        return self._profiles
 
     @property
     def profile_documents(self) -> {}:
-        return self.__profile_documents
+        return self._profile_documents
 
     @property
     def group_documents(self) -> {}:
-        return self.__group_documents
+        return self._group_documents
 
     @property
     def succeeded(self) -> bool:
-        return self.__succeeded
+        return self._succeeded
 
     # Worker queues
-    __profile_queue = Queue()
-    __profile_documents_queue = Queue()
+    _profile_queue = Queue()
+    _profile_documents_queue = Queue()
 
     def profile_worker(self):
         """
@@ -56,17 +56,17 @@ class CrawlController:
         and fetch the associated profile
         :return:
         """
-        while not self.__profile_queue.empty():
+        while not self._profile_queue.empty():
             try:
-                profile_id = self.__profile_queue.get()
+                profile_id = self._profile_queue.get()
                 # Fetch the profile
-                profile = self.__crawler.get_profile_by_id(profile_id)
-                self.__profiles.append(profile)
+                profile = self._crawler.get_profile_by_id(profile_id)
+                self._profiles.append(profile)
                 # Mark task as done
-                self.__profile_queue.task_done()
+                self._profile_queue.task_done()
             except Exception as e:
                 traceback.print_exc()
-                self.__profile_queue.task_done()
+                self._profile_queue.task_done()
 
     def document_worker(self):
         """
@@ -74,17 +74,17 @@ class CrawlController:
         and fetch the associated documents
         :return:
         """
-        while not self.__profile_documents_queue.empty():
+        while not self._profile_documents_queue.empty():
             try:
-                profile_id = self.__profile_documents_queue.get()
+                profile_id = self._profile_documents_queue.get()
                 # Fetch the document
-                documents = self.__crawler.get_documents_by_profile_id(profile_id)
-                self.__profile_documents[profile_id] = documents
+                documents = self._crawler.get_documents_by_profile_id(profile_id)
+                self._profile_documents[profile_id] = documents
                 # Mark task as done
-                self.__profile_documents_queue.task_done()
+                self._profile_documents_queue.task_done()
             except Exception as e:
                 traceback.print_exc()
-                self.__profile_documents_queue.task_done()
+                self._profile_documents_queue.task_done()
 
 
     def crawl_group_members(self):
@@ -92,16 +92,16 @@ class CrawlController:
         Fetches members of the pre-configured research group
         :return:
         """
-        self.__members = self.__crawler.get_group_members(self.__research_group)
+        self._members = self._crawler.get_group_members(self._research_group)
 
     def crawl_profiles(self):
         """
         Given a populated members array this function crawls the profiles linked to the ids as well as the publications
         :return:
         """
-        for member in self.__members:
-            self.__profile_queue.put(member.profile_id)
-            self.__profile_documents_queue.put(member.profile_id)
+        for member in self._members:
+            self._profile_queue.put(member.profile_id)
+            self._profile_documents_queue.put(member.profile_id)
 
         # Create profile crawlers
         for i in range(number_profile_workers):
@@ -116,26 +116,26 @@ class CrawlController:
             t.start()
 
         # Wait for both queues to complete
-        self.__profile_queue.join()
-        self.__profile_documents_queue.join()
+        self._profile_queue.join()
+        self._profile_documents_queue.join()
 
     def crawl_group_documents(self):
         """
         Fetches the publications that are associated with the pre-configured group
         :return:
         """
-        self.__group_documents = self.__crawler.get_documents_by_group_id(self.__research_group)
+        self._group_documents = self._crawler.get_documents_by_group_id(self._research_group)
 
     def reset(self):
         """
         Resets the state of the controller
         :return:
         """
-        self.__members = []
-        self.__profiles = []
-        self.__profile_documents = dict()
-        self.__group_documents = []
-        self.__succeeded = False
+        self._members = []
+        self._profiles = []
+        self._profile_documents = dict()
+        self._group_documents = []
+        self._succeeded = False
 
     def execute(self):
         """
@@ -147,4 +147,4 @@ class CrawlController:
         self.crawl_group_members()
         self.crawl_group_documents()
         self.crawl_profiles()
-        self.__succeeded = True
+        self._succeeded = True
