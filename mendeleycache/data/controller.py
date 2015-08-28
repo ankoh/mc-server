@@ -35,7 +35,7 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
         log.warn("Unknown engine %s" % config.engine)
         raise InvalidConfigurationException("Unknown database engine")
 
-    log.info("Creating engine {engine} with path {path}".format(
+    log.info("Creating engine '{engine}' with path {path}".format(
         engine=config.engine,
         path=path
     ))
@@ -82,6 +82,20 @@ class DataController:
                 return True
         except DBAPIError as e:
             return False
+
+    def is_initialized(self):
+        """
+        Checks whether all the different tables exist
+        """
+        return (
+            self.table_exists('document') and
+            self.table_exists('profile') and
+            self.table_exists('cache_document') and
+            self.table_exists('cache_profile') and
+            self.table_exists('cache_field') and
+            self.table_exists('cache_profile_has_cache_document') and
+            self.table_exists('cache_document_has_cache_field')
+        )
 
     def run_schema(self):
         """

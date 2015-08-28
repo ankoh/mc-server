@@ -45,6 +45,12 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.table_exists('cache_document_has_cache_field'))
         self.assertTrue(ctrl.table_exists('cache_profile_has_cache_document'))
 
+    def test_is_initialized(self):
+        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        ctrl = DataController(sqlite_in_memory)
+        ctrl.run_schema()
+        self.assertTrue(ctrl.is_initialized())
+
     def test_create_engine(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
 

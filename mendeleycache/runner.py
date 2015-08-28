@@ -43,7 +43,7 @@ if len(sys.argv) >= 2:
         config.load()
 
         data_controller = DataController(config.database)
-        if not data_controller.table_exists("cache_document"):
+        if not data_controller.is_initialized():
             log.critical("Database is not initialized")
             exit()
 
