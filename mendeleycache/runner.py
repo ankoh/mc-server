@@ -7,6 +7,7 @@ from mendeleycache.crawler.controller import CrawlController
 from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.pipeline import PipelineController
 from mendeleycache.logging import log
+from mendeleycache.test.test_pipeline import sample_pipeline
 
 import unittest
 from unittest import TestLoader
@@ -57,5 +58,6 @@ if len(sys.argv) >= 2:
         )
         pipeline_controller.execute()
 
-
-
+    # Show file-crawler sample data
+    elif sys.argv[1] == "samples":
+        sample_pipeline()

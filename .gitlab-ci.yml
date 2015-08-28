@@ -5,6 +5,13 @@ unittest:
   tags:
     - python3
 
+samples:
+  script:
+    - pip install --quite -r requirements.txt
+    - ./mc_samples.sh
+  tags:
+    - python3
+
 github:
   script:
     - mkdir -p ~/.ssh/

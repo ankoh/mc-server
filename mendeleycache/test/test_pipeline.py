@@ -8,10 +8,10 @@ from mendeleycache.crawler.file_crawler import FileCrawler
 from mendeleycache.data.controller import DataController
 from mendeleycache.pipeline import PipelineController
 from mendeleycache.config import SQLiteConfiguration
+from mendeleycache.logging import log
 
 
 class TestPipeline(unittest.TestCase):
-
     def test_execute(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
         data_controller = DataController(sqlite_in_memory)
@@ -37,48 +37,66 @@ class TestPipeline(unittest.TestCase):
         # Third run shall not crash either
         pipeline_controller.execute()
 
-        rows = data_controller.engine.execute("SELECT * FROM profile").fetchall()
-        print()
-        print()
-        print("Profiles:")
-        for row in rows:
-            print(row)
 
-        rows = data_controller.engine.execute("SELECT * FROM cache_profile").fetchall()
-        print()
-        print("Cache profiles:")
-        for row in rows:
-            print(row)
+def sample_pipeline():
+    sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+    data_controller = DataController(sqlite_in_memory)
+    data_controller.run_schema()
 
-        rows = data_controller.engine.execute("SELECT * FROM document LIMIT 5").fetchall()
-        print()
-        print("First 5 Documents:")
-        for row in rows:
-            print(row)
+    crawler = FileCrawler()
+    crawl_controller = CrawlController(crawler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
 
+    analysis_controller = AnalysisController()
 
-        rows = data_controller.engine.execute("SELECT * FROM cache_document").fetchall()
-        print()
-        print("Cache documents:")
-        for row in rows:
-            print(row)
+    pipeline_controller = PipelineController(
+        data_controller=data_controller,
+        crawl_controller=crawl_controller,
+        analysis_controller=analysis_controller
+    )
 
-        rows = data_controller.engine.execute("SELECT * FROM cache_field").fetchall()
-        print()
-        print("Cache fields:")
-        for row in rows:
-            print(row)
+    # Clean run shall not crash
+    pipeline_controller.execute()
 
-        rows = data_controller.engine.execute("SELECT * FROM cache_document_has_cache_field").fetchall()
-        print()
-        print("LINK: Cache document -> Cache field:")
-        for row in rows:
-            print(row)
+    rows = data_controller.engine.execute("SELECT * FROM profile").fetchall()
+    print()
+    print("Profiles:")
+    for row in rows:
+        print(row)
 
-        rows = data_controller.engine.execute("SELECT * FROM cache_profile_has_cache_document").fetchall()
-        print()
-        print("LINK: Cache profile -> Cache document:")
-        for row in rows:
-            print(row)
+    rows = data_controller.engine.execute("SELECT * FROM cache_profile").fetchall()
+    print()
+    print("Cache profiles:")
+    for row in rows:
+        print(row)
 
-        print()
+    rows = data_controller.engine.execute("SELECT * FROM document LIMIT 5").fetchall()
+    print()
+    print("First 5 Documents:")
+    for row in rows:
+        print(row)
+
+    rows = data_controller.engine.execute("SELECT * FROM cache_document").fetchall()
+    print()
+    print("Cache documents:")
+    for row in rows:
+        print(row)
+
+    rows = data_controller.engine.execute("SELECT * FROM cache_field").fetchall()
+    print()
+    print("Cache fields:")
+    for row in rows:
+        print(row)
+
+    rows = data_controller.engine.execute("SELECT * FROM cache_document_has_cache_field").fetchall()
+    print()
+    print("LINK: Cache document -> Cache field:")
+    for row in rows:
+        print(row)
+
+    rows = data_controller.engine.execute("SELECT * FROM cache_profile_has_cache_document").fetchall()
+    print()
+    print("LINK: Cache profile -> Cache document:")
+    for row in rows:
+        print(row)
+
+    print()
