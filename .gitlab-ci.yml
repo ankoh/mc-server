@@ -7,7 +7,7 @@ unittest:
 
 samples:
   script:
-    - pip install --quite -r requirements.txt
+    - pip install --quiet -r requirements.txt
     - ./mc_samples.sh
   tags:
     - python3
