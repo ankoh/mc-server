@@ -51,6 +51,22 @@ class TestDataController(unittest.TestCase):
         ctrl.run_schema()
         self.assertTrue(ctrl.is_initialized())
 
+    def test_assert_drop(self):
+        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        ctrl = DataController(sqlite_in_memory)
+        ctrl.assert_schema()
+        self.assertTrue(ctrl.is_initialized())
+        ctrl.drop_all()
+        self.assertFalse(ctrl.is_initialized())
+        ctrl.assert_schema()
+        self.assertTrue(ctrl.is_initialized())
+        with ctrl.engine.begin() as conn:
+            conn.execute("DROP TABLE cache_document")
+        self.assertFalse(ctrl.is_initialized())
+        ctrl.assert_schema()
+        self.assertTrue(ctrl.is_initialized())
+
+
     def test_create_engine(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
 

@@ -32,7 +32,7 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
                 path=config.path
             )
     else:
-        log.warn("Unknown engine %s" % config.engine)
+        log.warn("Unknown engine '%s'" % config.engine)
         raise InvalidConfigurationException("Unknown database engine")
 
     log.info("Creating engine '{engine}' with path {path}".format(
@@ -112,3 +112,22 @@ class DataController:
                 conn.execute(cmd)
 
         log.info("Schema executed successfully")
+
+    def drop_all(self):
+        drops = read_sql_statements('sql', 'schema', 'drop_all.sql')
+
+        with self._engine.begin() as conn:
+            for drop in drops:
+                log.info(drop)
+                conn.execute(drop)
+
+        log.info("Database dropped successfully")
+
+    def assert_schema(self):
+        if self.is_initialized():
+            log.info("Schema is already initialized")
+        else:
+            log.warning("The current schema is incomplete. Starting migration.")
+            # TODO: Backup && Restore as soon as the database has state
+            self.drop_all()
+            self.run_schema()

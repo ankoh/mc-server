@@ -20,14 +20,13 @@ class MendeleyCache(Flask):
         super(MendeleyCache, self).__init__(*args, **kwargs)
 
         # Read configuration
-        # TODO: set the path to the config through environment variables and pass that as parameter
         self.configuration = ServiceConfiguration()
         self.configuration.load()
 
         # Create service controllers
         self.data_controller = DataController(self.configuration.database)
-        # TODO: Only run schema if in debug or schema not existing (index collision)
-        self.data_controller.run_schema()
+        self.data_controller.assert_schema()
+
         # TODO: read crawler type from config as well
         self.crawler = FileCrawler()
         self.crawl_controller = CrawlController(self.crawler, self.configuration.mendeley.research_group)
