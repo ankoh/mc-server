@@ -340,6 +340,7 @@ class CrawlData:
 
         # If there's nothing to insert, abort
         if len(unified_name_unified_title_tuple_strings) == 0:
+            log.warning("No profile -> document links have been found")
             return None
 
         # Get the different statements in the sql file
@@ -351,8 +352,11 @@ class CrawlData:
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
+            log.debug("Deleting previous profile -> document links")
             conn.execute(delete)
+            log.debug("Inserting new profile -> document links")
             conn.execute(insert)
+        log.info("Profile -> document links have been updated")
 
     def link_fields_to_documents(self,
                                  unified_field_title_to_documents: {}):
@@ -374,6 +378,7 @@ class CrawlData:
 
         # If there's nothing to insert, abort
         if len(field_title_doc_title_tuple_strings) == 0:
+            log.warning("No document -> field links have been found")
             return None
 
          # Get the different statements in the sql file
@@ -385,8 +390,11 @@ class CrawlData:
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
+            log.debug("Deleting previous field -> document links")
             conn.execute(delete)
+            log.debug("Inserting new field -> document links")
             conn.execute(insert)
+        log.info("Field -> document links have been updated")
 
     def post_update(self):
         """
@@ -396,6 +404,7 @@ class CrawlData:
         with self._engine.begin() as conn:
             for stmt in self._post_update:
                 conn.execute(stmt)
+        log.info("Cleanup statements have been executed")
 
     def execute(self,
                 profiles,
@@ -421,3 +430,4 @@ class CrawlData:
         )
         self.link_fields_to_documents(unified_field_title_to_documents)
         self.post_update()
+        log.info("Crawl data has been updated")
