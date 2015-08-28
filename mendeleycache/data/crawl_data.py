@@ -419,6 +419,8 @@ class CrawlData:
         Given the required crawl data updates the whole cache
         :return:
         """
+
+        log.info("Crawl data update has been started")
         self.update_cache_profiles(unified_name_to_profiles)
         self.update_cache_documents(unified_document_title_to_documents)
         self.update_profiles(profiles)

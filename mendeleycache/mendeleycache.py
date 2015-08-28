@@ -22,10 +22,12 @@ class MendeleyCache(Flask):
         # Read configuration
         self.configuration = ServiceConfiguration()
         self.configuration.load()
+        log.info("Configuration has been loaded")
 
         # Create service controllers
         self.data_controller = DataController(self.configuration.database)
         self.data_controller.assert_schema()
+        log.info("Schema has been checked")
 
         # TODO: read crawler type from config as well
         self.crawler = FileCrawler()
@@ -36,6 +38,7 @@ class MendeleyCache(Flask):
             crawl_controller=self.crawl_controller,
             analysis_controller=self.analysis_controller
         )
+        log.info("Pipeline has been initialized")
 
         # Create the routing controllers
         self.fields_controller = FieldsController(self, self.data_controller)
@@ -45,8 +48,8 @@ class MendeleyCache(Flask):
 
         # Register the routes
         self.register_routes()
-
-        log.info("MendeleyCache initialized")
+        log.info("Routes have been registered")
+        log.info("MendeleyCache has been initialized")
 
     def register_routes(self):
         self.fields_controller.register()

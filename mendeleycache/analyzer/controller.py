@@ -3,6 +3,7 @@ __author__ = 'kohn'
 from mendeleycache.analyzer.unification import unify_profile_name, unify_field_title, unify_document_title
 from mendeleycache.models import CacheDocument, CacheField, CacheProfile, Profile, Document, CacheUnknownProfile
 from mendeleycache.analyzer.validator import is_field_tag
+from mendeleycache.logging import log
 
 
 class AnalysisController:
@@ -100,6 +101,7 @@ class AnalysisController:
         self._profiles = profiles
         self._profile_docs = profile_docs
         self._group_docs = group_docs
+        log.info("Analysis has been prepared")
 
     def process_profiles(self):
         """
@@ -121,6 +123,7 @@ class AnalysisController:
             # (then we don't need to check the key every time)
             self._unified_name_to_authored_documents[unified] = set()
             self._unified_name_to_participated_documents[unified] = set()
+        log.info("Profiles have been analyzed")
 
     def analyze_author(self, doc_unified: str, author: (str, str)):
         """
@@ -222,6 +225,7 @@ class AnalysisController:
                 # Analyze the tags fields of the doc to find research fields
                 for tag in doc.tags:
                     self.analyze_field_tag(doc_unified, tag)
+        log.info("Profile documents have been analyzed")
 
     def process_group_documents(self):
         """
@@ -261,6 +265,7 @@ class AnalysisController:
             # Analyze the tags fiels of the doc to find research fields
             for tag in doc.tags:
                 self.analyze_field_tag(doc_unified, tag)
+        log.info("Group documents have been analyzed")
 
     def execute(self):
         """
@@ -271,3 +276,4 @@ class AnalysisController:
         self.process_profiles()
         self.process_profile_documents()
         self.process_group_documents()
+        log.info("Analysis has been executed")
