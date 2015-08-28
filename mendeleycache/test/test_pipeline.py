@@ -69,7 +69,7 @@ def sample_pipeline():
     for row in rows:
         print(row)
 
-    rows = data_controller.engine.execute("SELECT * FROM document LIMIT 5").fetchall()
+    rows = data_controller.engine.execute("SELECT * FROM document").fetchall()
     print()
     print("First 5 Documents:")
     for row in rows:
