@@ -3,6 +3,7 @@ __author__ = 'kohn'
 from sqlalchemy.engine import Engine
 
 from mendeleycache.data.reader import read_sql_statements
+from mendeleycache.logging import log
 
 
 import re
@@ -42,6 +43,13 @@ class ApiData:
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
 
+        log.info("Querying documents by profile_ids and field_ids\n"
+                 "\t|profile_ids: {profile_ids}\n"
+                 "\t|field_ids: {field_ids}\n".format(
+            profile_ids=profile_ids_string,
+            field_ids=field_ids_string
+        ))
+
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
@@ -53,6 +61,9 @@ class ApiData:
         :return:
         """
         query = self._query_profiles_slim[0]
+
+        log.info("Querying slim profiles")
+
         return self._engine.execute(query).fetchall()
 
     def get_profiles_by_profile_ids_or_field_ids(self, profile_ids: [int], field_ids: [int]):
@@ -68,6 +79,13 @@ class ApiData:
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
 
+        log.info("Querying profiles by profile_ids and field_ids\n"
+                 "\t|profile_ids: {profile_ids}\n"
+                 "\t|field_ids: {field_ids}\n".format(
+            profile_ids=profile_ids_string,
+            field_ids=field_ids_string
+        ))
+
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
@@ -79,14 +97,8 @@ class ApiData:
         """
         query = self._query_fields[0]
 
+        log.info("Querying fields")
+
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
-
-
-    def get_general_statistics(self):
-        """
-        Queries the access logs to get the statistics of the past seven weeks (grouped by week)
-        :return:
-        """
-        pass

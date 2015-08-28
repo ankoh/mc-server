@@ -111,7 +111,7 @@ class DataController:
             for cmd in schema:
                 conn.execute(cmd)
 
-        log.info("Schema executed successfully")
+        log.info("Schema has been initialized")
 
     def drop_all(self):
         drops = read_sql_statements('sql', 'schema', 'drop_all.sql')
@@ -121,7 +121,7 @@ class DataController:
                 log.info(drop)
                 conn.execute(drop)
 
-        log.info("Database dropped successfully")
+        log.info("Database has been dropped")
 
     def assert_schema(self):
         if self.is_initialized():
