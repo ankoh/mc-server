@@ -14,7 +14,6 @@ sample-pipeline:
   only:
     - master
 
-
 sample-api:
   script:
     - pip install --quiet -r requirements.txt
