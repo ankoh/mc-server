@@ -5,12 +5,24 @@ unittest:
   tags:
     - python3
 
-samples:
+sample-pipeline:
   script:
     - pip install --quiet -r requirements.txt
     - ./mc_sample-pipeline.sh
   tags:
     - python3
+  only:
+    - master
+
+
+sample-api:
+  script:
+    - pip install --quiet -r requirements.txt
+    - ./mc_sample-api.sh
+  tags:
+    - python3
+  only:
+    - master
 
 github:
   script:

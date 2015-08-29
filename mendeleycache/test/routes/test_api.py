@@ -26,12 +26,18 @@ def sample_api():
     calls = [
         '/fields',
         '/profiles?slim=true',
+        '/profiles',
         str('/profiles'
             '?field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'),
         str('/profiles'
             '?profile-ids=Y29uc3RhbnRpbnNjaGV1ZXJtYW5u'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'),
-        '/profiles'
+        '/documents',
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+        )
     ]
 
     for call in calls:
