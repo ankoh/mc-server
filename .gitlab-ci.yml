@@ -23,6 +23,14 @@ sample-api:
   only:
     - master
 
+docker:
+  script:
+    - docker build -t ankoh/mendeleycache-server .
+    - docker-compose -f compose.yml -p mcserver stop
+    - docker-compose -f compose.yml -p mcserver up -d
+  tags:
+    - docker
+
 github:
   script:
     - mkdir -p ~/.ssh/

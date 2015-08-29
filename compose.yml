@@ -2,7 +2,7 @@ cache:
   image: ankoh/mendeleycache-server
   restart: always
   ports:
-    - "8080"
+    - "32760:8080"
   links:
     - "mysql:db"
   environment:
