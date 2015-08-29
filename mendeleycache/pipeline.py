@@ -64,8 +64,8 @@ class PipelineController:
         log.info("Pipeline has been executed\n"
                  "\t| replaced {profiles} profiles\n"
                  "\t| replaced {documents} documents\n"
-                 "\t| replaced {unified_name_to_profiles} unified names\n"
-                 "\t| replaced {unified_document_title_to_documents} unified titles\n"
+                 "\t| replaced {unified_name_to_profiles} unified profile names\n"
+                 "\t| replaced {unified_document_title_to_documents} unified document titles\n"
                  "\t| replaced {unified_field_title_to_field} research fields\n"
                  "\t| replaced {unified_field_title_to_documents} field associations\n".format(
             profiles=len(profiles),

@@ -76,5 +76,5 @@ class TestApiScripts(unittest.TestCase):
 
         # Test fields
         fields = data_controller.api_data.get_fields()
-        self.assertEqual(len(fields), 4)
+        self.assertEqual(len(fields), 14)
 

@@ -2,7 +2,7 @@
 DELETE FROM cache_profile_has_cache_document;
 
 -- noinspection SqlResolve
-INSERT
+REPLACE
 INTO cache_profile_has_cache_document
 (
   cache_profile_id,

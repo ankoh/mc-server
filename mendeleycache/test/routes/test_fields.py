@@ -59,7 +59,7 @@ class TestFields(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         data = response.get_data(as_text=True)
         json_data = json.loads(data)
-        self.assertEqual(len(json_data), 4)
+        self.assertEqual(len(json_data), 14)
 
     def tearDown(self):
         remove(TestApp.config_path) if exists(TestApp.config_path) else None

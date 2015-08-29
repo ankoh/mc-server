@@ -66,7 +66,6 @@ class TestDataController(unittest.TestCase):
         ctrl.assert_schema()
         self.assertTrue(ctrl.is_initialized())
 
-
     def test_create_engine(self):
         sqlite_in_memory = SQLiteConfiguration("sqlite", "")
 

@@ -192,15 +192,25 @@ class AnalysisController:
         :return:
         """
         for profile_unified in self._unified_name_to_profiles:
+            found_docs = []
 
-            # Check if the profile identifier has stored documents
-            if profile_unified not in self._profile_docs:
-                # TODO: Log warning for analysis report
+            profiles = self._unified_name_to_profiles[profile_unified]
+            if len(profiles) == 0:
+                log.warning("There were no profiles for the unified name %s" % profile_unified)
                 continue
 
+            # For each profile linked to that unified name, add the found documents to the list
+            for profile in profiles:
+                x = self._profile_docs[profile.identifier]
+                log.debug("Used {len_x} documents from id {mendeley_id} for unified name {name}".format(
+                    len_x=len(x),
+                    mendeley_id=profile.identifier,
+                    name=unify_profile_name(profile.first_name, profile.last_name)
+                ))
+                found_docs += x
+
             # Process these documents
-            docs = self._profile_docs[profile_unified]
-            for doc in docs:
+            for doc in found_docs:
                 # Add doc to all docs
                 self._documents.append(doc)
 

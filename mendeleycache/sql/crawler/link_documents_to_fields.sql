@@ -2,7 +2,7 @@
 DELETE FROM cache_document_has_cache_field;
 
 -- noinspection SqlResolve
-INSERT
+REPLACE
 INTO cache_document_has_cache_field
 (
   cache_document_id,

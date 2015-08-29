@@ -75,9 +75,10 @@ class TestAnalysisController(unittest.TestCase):
 
     profiles = [profile1, profile2, profile3, profile4]
     profile_documents = {
-        'hansmustermann': [document1, document_same_title_1],
-        'maxmustermann': [document_3],
-        'heinrichmustermann': [document_4]
+        'id1': [document1],
+        'id4': [document_same_title_1],
+        'id2': [document_3],
+        'id3': [document_4]
     }
     group_documents = [ document1, document_same_title_1, document_3, document_4 ]
 
