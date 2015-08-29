@@ -1,7 +1,12 @@
 -- noinspection SqlResolve
 SELECT
-   p.*,
-   agg.cnt
+  cp.id           AS id,
+  p.mendeley_id   AS mendeley_id,
+  p.first_name    AS first_name,
+  p.last_name     AS last_name,
+  p.display_name  AS display_name,
+  p.link          AS link,
+  agg.cnt         AS cnt
 FROM
    cache_profile cp,
    profile p,

@@ -3,6 +3,8 @@ __author__ = 'kohn'
 from flask import Flask, request
 
 from mendeleycache.data.controller import DataController
+from mendeleycache.logging import log
+import json
 
 
 class ProfilesController:
@@ -14,11 +16,37 @@ class ProfilesController:
         self._app.add_url_rule('/profiles/', view_func=self.get_profiles)
 
     def get_profiles(self):
-        pass
+        log.info('The route /profiles/ has been triggered')
 
-    def get_slim_profiles(self):
-        pass
+        # Default parameters
+        profile_ids = ''
+        field_ids = ''
+        slim = False
 
-    def get_full_profiles(self):
-        pass
+        # Set passed query parameters if existing
+        if 'profile-ids' in request.args:
+            profile_ids = request.args['profile-ids'].split(',')
+            log.debug('Query parameter "profile-ids" = %s' % profile_ids)
+        if 'field-ids' in request.args:
+            field_ids = request.args['field-ids'].split(',')
+            log.debug('Query parameter "field_ids" = %s' % field_ids)
+        if 'slim' in request.args:
+            slim = bool(request.args['slim'])
+            log.debug('Query parameter "slim" = %s' % slim)
 
+        # Trigger the respective methods
+        profiles = []
+        if slim:
+            profiles = self._data_controller.api_data.get_profiles_slim()
+        else:
+            profiles = self._data_controller.api_data.get_profiles_by_profile_ids_or_field_ids(
+                profile_ids=profile_ids,
+                field_ids=field_ids
+            )
+
+        # Serialize documents
+        response = []
+        for profile in profiles:
+            profile_dict = dict(profile.items())
+            response.append(profile_dict)
+        return json.dumps(response)

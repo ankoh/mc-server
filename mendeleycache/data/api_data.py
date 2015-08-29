@@ -37,15 +37,15 @@ class ApiData:
         AND are associated with these profiles
         :return:
         """
-        profile_ids_string = '(%s)' % (','.join(map(str, profile_ids)))
-        field_ids_string = '(%s)' % (','.join(map(str, field_ids)))
+        profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
+        field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
         query = self._query_documents_by_profile_ids_and_field_ids[0]
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
 
         log.info("Querying documents by profile_ids and field_ids\n"
-                 "\t|profile_ids: {profile_ids}\n"
-                 "\t|field_ids: {field_ids}\n".format(
+                 "\t| profile_ids: {profile_ids}\n"
+                 "\t| field_ids: {field_ids}\n".format(
             profile_ids=profile_ids_string,
             field_ids=field_ids_string
         ))
@@ -73,15 +73,15 @@ class ApiData:
         :param slim:
         :return:
         """
-        profile_ids_string = '(%s)' % (','.join(map(str, profile_ids)))
-        field_ids_string = '(%s)' % (','.join(map(str, field_ids)))
+        profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
+        field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
         query = self._query_profiles_by_profile_ids_or_field_ids[0]
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
 
         log.info("Querying profiles by profile_ids and field_ids\n"
-                 "\t|profile_ids: {profile_ids}\n"
-                 "\t|field_ids: {field_ids}\n".format(
+                 "\t| profile_ids: {profile_ids}\n"
+                 "\t| field_ids: {field_ids}\n".format(
             profile_ids=profile_ids_string,
             field_ids=field_ids_string
         ))

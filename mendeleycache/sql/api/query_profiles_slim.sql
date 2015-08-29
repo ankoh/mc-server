@@ -1,8 +1,8 @@
 -- noinspection SqlResolve
 SELECT
-   cp.id,
-   cp.name,
-   CASE WHEN agg.cnt IS NULL THEN 0 ELSE agg.cnt END
+   cp.id    AS id,
+   cp.name  AS name,
+   CASE WHEN agg.cnt IS NULL THEN 0 ELSE agg.cnt END AS cnt
 FROM
    cache_profile cp
    LEFT OUTER JOIN

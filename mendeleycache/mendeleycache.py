@@ -4,7 +4,7 @@ from flask import Flask
 # App imports
 from mendeleycache.routes.fields import FieldsController
 from mendeleycache.routes.profiles import ProfilesController
-from mendeleycache.routes.publications import PublicationsController
+from mendeleycache.routes.documents import DocumentsController
 from mendeleycache.routes.system import SystemController
 from mendeleycache.config import ServiceConfiguration
 from mendeleycache.data.controller import DataController
@@ -43,7 +43,7 @@ class MendeleyCache(Flask):
         # Create the routing controllers
         self.fields_controller = FieldsController(self, self.data_controller)
         self.profiles_controller = ProfilesController(self, self.data_controller)
-        self.publications_controller = PublicationsController(self, self.data_controller)
+        self.publications_controller = DocumentsController(self, self.data_controller)
         self.system_controller = SystemController(self, self.data_controller, self.configuration)
 
         # Register the routes

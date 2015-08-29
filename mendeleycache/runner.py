@@ -8,6 +8,7 @@ from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.pipeline import PipelineController
 from mendeleycache.logging import log
 from mendeleycache.test.test_pipeline import sample_pipeline
+from mendeleycache.test.routes.test_api import sample_api
 
 import unittest
 from unittest import TestLoader
@@ -20,8 +21,10 @@ import sys
 if len(sys.argv) >= 2:
     log.info("Welcome to the MendeleyCache runner")
 
+    command = sys.argv[1]
+
     # Test runner
-    if sys.argv[1] == "tests":
+    if command == "tests":
         log.info("Disabling non-critical logs for better unittest output")
 
         # Disable logging for tests
@@ -41,7 +44,7 @@ if len(sys.argv) >= 2:
         runner.run(all)
 
     # Pipeline runner
-    elif sys.argv[1] == "pipeline":
+    elif command == "pipeline":
         config = ServiceConfiguration()
         config.load()
 
@@ -61,5 +64,8 @@ if len(sys.argv) >= 2:
         pipeline_controller.execute()
 
     # Show file-crawler sample data
-    elif sys.argv[1] == "samples":
+    elif command == "sample-pipeline":
         sample_pipeline()
+
+    elif command == "sample-api":
+        sample_api()
