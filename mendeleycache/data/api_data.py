@@ -37,8 +37,18 @@ class ApiData:
         AND are associated with these profiles
         :return:
         """
-        profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
-        field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
+        profile_ids_string = ""
+        field_ids_string = ""
+        if len(profile_ids) > 0:
+            profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
+        else:
+            profile_ids_string = "(NULL)"
+
+        if len(field_ids) > 0:
+            field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
+        else:
+            field_ids_string = "(NULL)"
+
         query = self._query_documents_by_profile_ids_and_field_ids[0]
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
@@ -73,8 +83,18 @@ class ApiData:
         :param slim:
         :return:
         """
-        profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
-        field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
+        profile_ids_string = ""
+        field_ids_string = ""
+        if len(profile_ids) > 0:
+            profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
+        else:
+            profile_ids_string = "(NULL)"
+
+        if len(field_ids) > 0:
+            field_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, field_ids)))
+        else:
+            field_ids_string = "(NULL)"
+
         query = self._query_profiles_by_profile_ids_or_field_ids[0]
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
