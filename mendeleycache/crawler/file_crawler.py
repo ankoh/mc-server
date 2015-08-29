@@ -77,9 +77,6 @@ class FileCrawler(AbstractCrawler):
 
             return Profile(identifier, first_name, last_name, display_name, link)
 
-        # Could not parse json file
-        return None
-
     def get_document_from_json(self, json_doc) -> Document:
         """
         Given a json object return a Document object

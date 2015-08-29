@@ -87,7 +87,6 @@ class CrawlController:
                 traceback.print_exc()
                 self._profile_documents_queue.task_done()
 
-
     def crawl_group_members(self):
         """
         Fetches members of the pre-configured research group
