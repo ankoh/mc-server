@@ -28,7 +28,7 @@ def sample_api():
         '/profiles?slim=true',
         str('/profiles'
             '?profile-ids=Y29uc3RhbnRpbnNjaGV1ZXJtYW5u,aGVsbXV0bmF1Z2h0b24%3D'
-            '&field-ids=c2VyaW91c2dhbWVz,YWRhcHRpdml0eQ%3D%3D')
+            '&field-ids=Z2FtZXNlbmdpbmVlcmluZw%3D%3D,YWRhcHRpdml0eQ%3D%3D')
     ]
 
     for call in calls:

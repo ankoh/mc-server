@@ -14,15 +14,26 @@ FROM
      SELECT id, MAX(cnt) AS cnt
      FROM
      (
-      SELECT cp.id AS id , COUNT(*) AS cnt
+      SELECT
+        cp.id as id,
+        CASE WHEN cnts.cnt IS NULL THEN 0 ELSE cnts.cnt END AS cnt
       FROM
-         cache_profile cp,
-         cache_document cd,
-         cache_profile_has_cache_document cphcd
-      WHERE cp.id = cphcd.cache_profile_id
-      AND cphcd.cache_document_id = cd.id
-      AND cp.id IN :profile_ids
-      GROUP BY cp.id
+        cache_profile cp
+        LEFT OUTER JOIN
+        (
+          SELECT
+            cp.id    AS id,
+            COUNT(*) AS cnt
+          FROM
+            cache_profile cp,
+            cache_document cd,
+            cache_profile_has_cache_document cphcd
+          WHERE cp.id = cphcd.cache_profile_id
+          AND cphcd.cache_document_id = cd.id
+          GROUP BY cp.id
+        ) cnts
+        ON cp.id = cnts.id
+      WHERE cp.id IN :profile_ids
 
       UNION ALL
 
