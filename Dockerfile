@@ -27,4 +27,4 @@ EXPOSE 8080
 COPY docker/entrypoint.sh /srv/mc/entrypoint.sh
 RUN chmod +x /srv/mc/entrypoint.sh
 
-CMD ["/srv/mc/entrypoint.sh", "gunicorn", "-b 0.0.0.0:8080", "-w 1", "mendeleycache.app:app"]
+CMD ["/srv/mc/entrypoint.sh", "gunicorn", "-b 0.0.0.0:8080", "-w 4", "mendeleycache.app:app"]
