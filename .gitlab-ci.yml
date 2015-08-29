@@ -28,6 +28,8 @@ docker-build:
     - docker build -t ankoh/mendeleycache-server .
   tags:
     - docker
+  only:
+    - master
 
 compose-local:
   type: deploy
@@ -36,6 +38,8 @@ compose-local:
     - docker-compose -f compose.yml -p mendeleycache up -d
   tags:
     - compose
+  only:
+    - master
 
 github:
   script:
