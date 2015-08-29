@@ -1,4 +1,4 @@
-cache:
+server:
   image: ankoh/mendeleycache-server
   restart: always
   ports:
@@ -14,12 +14,14 @@ cache:
     - MC_DATABASE_USER=root
     - MC_DATABASE_SECRET=yourrootpassword
 
+mysqlconfig:
+  build: ./docker/mysqlconfig/
 
 mysql:
   image: mysql:latest
   restart: always
-  volumes:
-    - ./docker/my.cnf:/etc/mysql/my.cnf
+  volumes_from:
+    - mysqlconfig
   environment:
     - MYSQL_ROOT_PASSWORD=yourrootpassword
 
