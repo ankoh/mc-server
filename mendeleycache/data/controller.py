@@ -16,6 +16,7 @@ from mendeleycache.logging import log
 
 def create_engine(config: DatabaseConfiguration) -> Engine:
     path = ""
+    log_path = path
     if config.engine == "mysql":
         path = "mysql+mysqlconnector://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
             user=config.user,
@@ -24,20 +25,29 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
             port=config.port,
             db=config.db
         )
+        log_path = "mysql+mysqlconnector://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
+            user=config.user,
+            secret="{hidden}",
+            host=config.hostname,
+            port=config.port,
+            db=config.db
+        )
     elif config.engine == "sqlite":
         if not config.path:
             path = "sqlite://"
+            log_path = path
         else:
             path = "sqlite:///{path}".format(
                 path=config.path
             )
+            log_path = path
     else:
         log.warn("Unknown engine '%s'" % config.engine)
         raise InvalidConfigurationException("Unknown database engine")
 
     log.info("Creating engine '{engine}' with path {path}".format(
         engine=config.engine,
-        path=path
+        path=log_path
     ))
 
     # create engine
