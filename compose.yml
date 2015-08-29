@@ -1,0 +1,9 @@
+cache:
+  image: ankoh/mendeleycache-server
+  restart: always
+  ports:
+    - "8080"
+  environment:
+    - MC_CRAWLER=file
+    - MC_DATABASE_ENGINE=sqlite
+    - MC_DATABASE_PATH=/srv/mc/main.db
