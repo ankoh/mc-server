@@ -14,7 +14,7 @@ from datetime import datetime
 class TestCrawlScripts(unittest.TestCase):
 
     def test_update_documents(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -136,7 +136,7 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(rows[0]["pub_year"], 2015)
 
     def test_update_profiles(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -191,7 +191,7 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(rows[0]['last_name'], "Supermann")
 
     def test_update_cache_documents(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -273,7 +273,7 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(row["title"], "sametitle1")
 
     def test_update_cache_profiles(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -317,7 +317,7 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(row["name"], "Hans Mustermann")
 
     def test_update_cache_fields(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -350,16 +350,16 @@ class TestCrawlScripts(unittest.TestCase):
         self.assertEqual(row['title'], "field 1")
 
     def test_link_profiles_to_documents(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
         # The call shall not crash with empty input
-        r = data_controller.crawl_data.link_profiles_to_documents(dict(), dict())
+        r = data_controller.crawl_data.link_profiles_to_documents(dict(), dict(), dict())
         self.assertIsNone(r)
 
     def test_link_fields_to_documents(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 

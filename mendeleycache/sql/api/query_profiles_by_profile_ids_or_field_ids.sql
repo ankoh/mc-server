@@ -11,7 +11,7 @@ FROM
    cache_profile cp,
    profile p,
    (
-     SELECT id, MAX(cnt) AS cnt
+     SELECT id_cnts.id AS id, MAX(id_cnts.cnt) AS cnt
      FROM
      (
       SELECT
@@ -31,7 +31,7 @@ FROM
           WHERE cp.id = cphcd.cache_profile_id
           AND cphcd.cache_document_id = cd.id
           GROUP BY cp.id
-        ) cnts
+        ) AS cnts
         ON cp.id = cnts.id
       WHERE cp.id IN :profile_ids
 
@@ -50,8 +50,8 @@ FROM
       AND cdhcf.cache_field_id = cf.id
       AND cf.id IN :field_ids
       GROUP BY cp.id
-     )
-     GROUP BY id
-   ) agg
+     ) AS id_cnts
+     GROUP BY id_cnts.id
+   ) AS agg
 WHERE cp.id = agg.id
 AND cp.id = p.cache_profile_id

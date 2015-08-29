@@ -15,7 +15,6 @@ import time
 
 
 def sample_api():
-    TestApp.write_debug_config()
     app = MendeleyCache('mendeleycache')
     app.debug = True
     app.pipeline_controller.execute()
@@ -48,5 +47,3 @@ def sample_api():
         json_data = json.loads(data)
         print('Results for REST call: %s' % call)
         print(json.dumps(json_data, indent=2))
-
-    remove(TestApp.config_path) if exists(TestApp.config_path) else None

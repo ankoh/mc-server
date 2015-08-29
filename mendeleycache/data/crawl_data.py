@@ -5,7 +5,8 @@ from mendeleycache.data.identifiers import generate_id
 from mendeleycache.data.bibtex import generate_bibtex
 from mendeleycache.analyzer.unification import *
 from mendeleycache.models import Document, Profile
-from mendeleycache.utils.sanitize import sanitize_text
+from mendeleycache.utils.sanitize import sanitize_text, sanitize_stmt
+from mendeleycache.utils.converter import datetime_to_sqltime
 from mendeleycache.logging import log
 
 from sqlalchemy.engine import Engine
@@ -75,15 +76,15 @@ class CrawlData:
                 owner_mendeley_id=sanitize_text(doc.core_profile_id),
                 title=sanitize_text(doc.core_title),
                 doc_type=sanitize_text(doc.core_type),
-                created=doc.core_created,
-                last_modified=doc.core_last_modified,
+                created=datetime_to_sqltime(doc.core_created),
+                last_modified=datetime_to_sqltime(doc.core_last_modified),
                 abstract=sanitize_text(doc.core_abstract),
                 source=sanitize_text(doc.core_source),
                 pub_year=doc.core_year,
-                authors=authors_string,
-                keywords=keywords_string,
-                tags=tags_string,
-                derived_bibtex=bibtex
+                authors=sanitize_text(authors_string),
+                keywords=sanitize_text(keywords_string),
+                tags=sanitize_text(tags_string),
+                derived_bibtex=sanitize_text(bibtex)
             )
 
         # If there's nothing to insert, abort
@@ -99,6 +100,7 @@ class CrawlData:
 
         documents_string = ",".join(map(prepare_doc, docs))
         insert = re.sub(':documents', documents_string, insert)
+        insert = sanitize_stmt(insert)
         
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
@@ -160,6 +162,7 @@ class CrawlData:
 
         mendeley_profiles_string = ",".join(map(prepare_profile, profiles))
         insert = re.sub(':profiles', mendeley_profiles_string, insert)
+        insert = sanitize_stmt(insert)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
@@ -221,6 +224,7 @@ class CrawlData:
         cache_documents_string = ','.join(cache_document_strings)
         sql = self._update_cache_documents[0]
         sql = re.sub(':cache_documents', cache_documents_string, sql)
+        sql = sanitize_stmt(sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
@@ -267,6 +271,7 @@ class CrawlData:
         cache_profiles_string = ','.join(cache_profile_strings)
         sql = self._update_cache_profiles[0]
         sql = re.sub(':cache_profiles', cache_profiles_string, sql)
+        sql = sanitize_stmt(sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
@@ -300,6 +305,7 @@ class CrawlData:
         cache_fields_string = ','.join(cache_field_strings)
         sql = self._update_cache_fields[0]
         sql = re.sub(':cache_fields', cache_fields_string, sql)
+        sql = sanitize_stmt(sql)
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
@@ -308,6 +314,7 @@ class CrawlData:
         log.info("Cache fields have been updated")
     
     def link_profiles_to_documents(self,
+                                   unified_name_to_profiles: {},
                                    unified_name_to_authored_documents: {},
                                    unified_name_to_participated_documents: {}):
         """
@@ -317,8 +324,11 @@ class CrawlData:
         :param unified_name_to_participated_documents:
         :return:
         """
-        unified_name_unified_title_tuple_strings=[]
+        unified_name_unified_title_tuple_strings = []
         for unified_name, doc_list in unified_name_to_authored_documents.items():
+            # TODO: if author unknown, ignore for now (Foreign key constraints broken otherwise)
+            if unified_name not in unified_name_to_profiles:
+                continue
             for doc_unified in doc_list:
                 s = "('{cache_profile_id}','{cache_document_id}')"
                 unified_name_unified_title_tuple_strings.append(
@@ -329,6 +339,9 @@ class CrawlData:
                 )
 
         for unified_name, doc_list in unified_name_to_participated_documents.items():
+            # TODO: if author unknown, ignore for now (Foreign key constraints broken otherwise)
+            if unified_name not in unified_name_to_profiles:
+                continue
             for doc_unified in doc_list:
                 s = "('{cache_profile_id}','{cache_document_id}')"
                 unified_name_unified_title_tuple_strings.append(
@@ -349,6 +362,7 @@ class CrawlData:
 
         unified_name_unified_title_tuples_string = '%s' % ','.join(unified_name_unified_title_tuple_strings)
         insert = re.sub(':profiles_to_documents', unified_name_unified_title_tuples_string, insert)
+        insert = sanitize_stmt(insert)
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
@@ -387,6 +401,7 @@ class CrawlData:
 
         field_title_doc_title_tuples_string = '%s' % ','.join(field_title_doc_title_tuple_strings)
         insert = re.sub(':documents_to_fields', field_title_doc_title_tuples_string, insert)
+        insert = sanitize_stmt(insert)
 
         # Fire the sql scripts in a transaction
         with self._engine.begin() as conn:
@@ -427,6 +442,7 @@ class CrawlData:
         self.update_documents(documents)
         self.update_cache_fields(unified_field_title_to_field)
         self.link_profiles_to_documents(
+            unified_name_to_profiles,
             unified_name_to_authored_documents,
             unified_name_to_participated_documents
         )

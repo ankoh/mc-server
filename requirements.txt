@@ -4,7 +4,6 @@ Flask-HTTPAuth==2.5.0
 Flask-SQLAlchemy==2.0
 Jinja2==2.8
 MarkupSafe==0.23
-PyYAML==3.11
 SQLAlchemy==1.0.8
 Werkzeug==0.10.4
 arrow==0.5.0
@@ -18,4 +17,3 @@ python-dateutil==2.4.2
 requests==2.5.1
 requests-oauthlib==0.4.2
 six==1.9.0
-sqlparse==0.1.16

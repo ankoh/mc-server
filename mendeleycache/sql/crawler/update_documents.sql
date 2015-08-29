@@ -32,8 +32,8 @@ CREATE TEMPORARY TABLE IF NOT EXISTS temp_cache_document_ids (
 -- noinspection SqlResolve
 INSERT INTO temp_cache_document_ids (id, document_id)
 SELECT
-  d.cache_document_id as id,
-  d.id as document_id
+  d.cache_document_id   AS id,
+  d.id                  AS document_id
 FROM
   document d,
   (
@@ -52,7 +52,8 @@ UPDATE
 SET
   document_id = (SELECT temp_cache_document_ids.document_id
                  FROM temp_cache_document_ids
-                 WHERE temp_cache_document_ids.id = cache_document.id);
+                 WHERE temp_cache_document_ids.id = cache_document.id
+                 LIMIT 1);
 
 -- noinspection SqlResolve
 DROP TABLE IF EXISTS temp_cache_document_ids;

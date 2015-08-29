@@ -31,7 +31,7 @@ class MendeleyCache(Flask):
 
         # TODO: read crawler type from config as well
         self.crawler = FileCrawler()
-        self.crawl_controller = CrawlController(self.crawler, self.configuration.mendeley.research_group)
+        self.crawl_controller = CrawlController(self.crawler, self.configuration.crawler.research_group)
         self.analysis_controller = AnalysisController()
         self.pipeline_controller = PipelineController(
             data_controller=self.data_controller,

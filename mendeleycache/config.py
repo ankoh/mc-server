@@ -4,17 +4,27 @@ import os
 from os.path import exists
 from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
-import yaml
+
+class CrawlerConfiguration:
+    """
+    Configuration of a base crawler
+    """
+    def __init__(self, research_group: str):
+        self._research_group = research_group
+
+    @property
+    def research_group(self):
+        return self._research_group
 
 
-class MendeleyConfiguration:
+class SDKCrawlerConfiguration(CrawlerConfiguration):
     """
-    Configuration of the Mendeley API app access
+    Configuration of the SDK crawler
     """
-    def __init__(self, app_id: str, app_secret: str, research_group: str):
+    def __init__(self, research_group: str,  app_id: str, app_secret: str,):
         self._app_id = app_id
         self._app_secret = app_secret
-        self._research_group = research_group
+        super(SDKCrawlerConfiguration, self).__init__(research_group)
 
     @property
     def app_id(self):
@@ -24,9 +34,13 @@ class MendeleyConfiguration:
     def app_secret(self):
         return self._app_secret
 
-    @property
-    def research_group(self):
-        return self._research_group
+
+class FileCrawlerConfiguration(CrawlerConfiguration):
+    """
+    Configuration of the file crawler
+    """
+    def __init__(self, research_group: str):
+        super(FileCrawlerConfiguration, self).__init__(research_group)
 
 
 class DatabaseConfiguration:
@@ -42,13 +56,13 @@ class DatabaseConfiguration:
 
 
 class MySQLConfiguration(DatabaseConfiguration):
-    def __init__(self, engine: str, hostname: str, port: str, db: str, user: str, secret: str):
+    def __init__(self, hostname: str, port: str, db: str, user: str, secret: str):
         self._hostname = hostname
         self._port = port
         self._db = db
         self._user = user
         self._secret = secret
-        super(MySQLConfiguration, self).__init__(engine)
+        super(MySQLConfiguration, self).__init__('mysql')
 
     @property
     def hostname(self):
@@ -72,21 +86,13 @@ class MySQLConfiguration(DatabaseConfiguration):
 
 
 class SQLiteConfiguration(DatabaseConfiguration):
-    def __init__(self, engine: str, path: str):
+    def __init__(self, path: str):
         self._path = path
-        super(SQLiteConfiguration, self).__init__(engine)
+        super(SQLiteConfiguration, self).__init__('sqlite')
 
     @property
     def path(self):
         return self._path
-
-
-class GeneralConfiguration:
-    """
-    General configuration of the Mendeley Cache
-    """
-    def __init__(self):
-        pass
 
 
 class ServiceConfiguration:
@@ -94,20 +100,17 @@ class ServiceConfiguration:
     Configuration of the Mendeley Cache
     """
     def __init__(self):
-        self._mendeley = None
+        self._crawler = None
         """:type : MendeleyConfiguration"""
 
         self._database = None
         """:type : DatabaseConfiguration"""
 
-        self._general = None
-        """:type : GeneralConfiguration"""
-
         self._version = "0.1.0"
 
     @property
-    def mendeley(self):
-        return self._mendeley
+    def crawler(self):
+        return self._crawler
 
     @property
     def database(self):
@@ -119,82 +122,71 @@ class ServiceConfiguration:
 
     def load(self):
         """
-        The load function loads the configuration from disk
+        The load function loads the configuration from environment variables
         It returns nothing but raises InvalidConfigurationExceptions if something is missing
         :return:
         """
 
-        # Construct a file path relative to the project root
-        if "MENDELEY_CACHE_CONFIG" in os.environ:
-            path_str = os.environ["MENDELEY_CACHE_CONFIG"]
-            path = os.path.abspath(path_str)
-        else:
-            path = get_relative_path('config.yml')
+        # First read all environment variables with default values
 
-        # Check if path exists
-        if not exists(path):
-            raise InvalidConfigurationException("config.yml not found")
+        # Crawler
+        crawler = os.environ['MC_CRAWLER'] if 'MC_CRAWLER' in os.environ else 'file'
+        app_id = os.environ['MC_APP_ID'] if 'MC_APP_ID' in os.environ else ''
+        app_secret = os.environ['MC_APP_SECRET'] if 'MC_APP_SECRET' in os.environ else ''
+        research_group = os.environ['MC_RESEARCH_GROUP'] if 'MC_RESEARCH_GROUP' in os.environ else 'd0b7f41f-ad37-3b47-ab70-9feac35557cc'
+
+        # Database
+        database_engine = os.environ['MC_DATABASE_ENGINE'] if 'MC_DATABASE_ENGINE' in os.environ else 'sqlite'
+        # Mysql
+        database_path = os.environ['MC_DATABASE_PATH'] if 'MC_DATABASE_PATH' in os.environ else ''
+        # Sqlite
+        database_hostname = os.environ['MC_DATABASE_HOSTNAME'] if 'MC_DATABASE_HOSTNAME' in os.environ else 'localhost'
+        database_port = os.environ['MC_DATABASE_PORT'] if 'MC_DATABASE_PORT' in os.environ else ''
+        database_db = os.environ['MC_DATABASE_DB'] if 'MC_DATABASE_DB' in os.environ else ''
+        database_user = os.environ['MC_DATABASE_USER'] if 'MC_DATABASE_USER' in os.environ else ''
+        database_secret = os.environ['MC_DATABASE_SECRET'] if 'MC_DATABASE_SECRET' in os.environ else ''
 
         def missing_attribute(attribute: str):
-            raise InvalidConfigurationException("config.yml misses attribute: %s" % attribute)
+            raise InvalidConfigurationException("Environment misses variable: %s" % attribute)
 
-        # Parse yaml and get attributes
-        with open(path, 'r') as ymlfile:
-            cfg = yaml.load(ymlfile)
-
-            # First check the yaml top level attributes
-            if 'mendeley' not in cfg:
-                missing_attribute('mendeley')
-            if 'database' not in cfg:
-                missing_attribute('database')
-            # if 'general' not in cfg:
-            #    missing_attribute('general')
-
-            # Then start fetching the mendeley api config
-            mendeley_data = cfg['mendeley']
-            if 'app_id' not in mendeley_data:
-                missing_attribute('mendeley.app_id')
-            if 'app_secret' not in mendeley_data:
-                missing_attribute('mendeley.app_secret')
-            if 'research_group' not in mendeley_data:
-                missing_attribute('mendeley.research_group')
-            self._mendeley = MendeleyConfiguration(
-                mendeley_data['app_id'],
-                mendeley_data['app_secret'],
-                mendeley_data['research_group']
+        # Then validate these settings
+        if crawler == 'file':
+            self._crawler = FileCrawlerConfiguration(research_group)
+        elif crawler == 'mendeley':
+            if not app_id:
+                missing_attribute('MC_APP_ID')
+            if not app_secret:
+                missing_attribute('MC_APP_SECRET')
+            if not research_group:
+                missing_attribute('MC_RESEARCH_GROUP')
+            self._crawler = SDKCrawlerConfiguration(
+                research_group=research_group,
+                app_id=app_id,
+                app_secret=app_secret
             )
+        else:
+            raise InvalidConfigurationException('Unknown crawler type %s' % crawler)
 
-            # Check the database configuration
-            db_data = cfg['database']
-            if 'engine' not in db_data:
-                missing_attribute('database.engine')
-
-            engine = db_data['engine']
-            if engine == 'mysql':
-                if 'hostname' not in db_data:
-                    missing_attribute('database[mysql].hostname')
-                if 'port' not in db_data:
-                    missing_attribute('database[mysql].port')
-                if 'db' not in db_data:
-                    missing_attribute('database[mysql].db')
-                if 'user' not in db_data:
-                    missing_attribute('database[mysql].user')
-                if 'secret' not in db_data:
-                    missing_attribute('database[mysql].secret')
-                self._database = MySQLConfiguration(
-                    engine=db_data['engine'],
-                    hostname=db_data['hostname'],
-                    port=db_data['port'],
-                    db=db_data['db'],
-                    user=db_data['user'],
-                    secret=db_data['secret']
-                )
-            elif engine == 'sqlite':
-                if 'path' not in db_data:
-                    missing_attribute('database[sqlite].path')
-                self._database = SQLiteConfiguration(
-                    engine=db_data['engine'],
-                    path=db_data['path'],
-                )
-            else:
-                raise InvalidConfigurationException("Database engine %s is not supported" % engine)
+        if database_engine == 'sqlite':
+            # If no path has been provided the in memory version is used
+            self._database = SQLiteConfiguration(database_path)
+        elif database_engine == 'mysql':
+            if not database_hostname:
+                missing_attribute('MC_DATABASE_HOSTNAME')
+            if not database_port:
+                missing_attribute('MC_DATABASE_PORT')
+            if not database_db:
+                missing_attribute('MC_DATABASE_DB')
+            if not database_user:
+                missing_attribute('MC_DATABASE_USER')
+            if not database_secret:
+                missing_attribute('MC_DATABASE_SECRET')
+            self._database = MySQLConfiguration(
+                hostname=database_hostname,
+                port=database_port,
+                db=database_db,
+                user=database_user,
+                secret=database_secret
+            )
+        else:
+            raise InvalidConfigurationException('Unknown database engine %s' % database_engine)

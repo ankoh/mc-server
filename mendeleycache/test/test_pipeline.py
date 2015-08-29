@@ -13,7 +13,7 @@ from mendeleycache.logging import log
 
 class TestPipeline(unittest.TestCase):
     def test_execute(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -39,7 +39,7 @@ class TestPipeline(unittest.TestCase):
 
 
 def sample_pipeline():
-    sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+    sqlite_in_memory = SQLiteConfiguration("")
     data_controller = DataController(sqlite_in_memory)
     data_controller.run_schema()
 

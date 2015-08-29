@@ -9,7 +9,7 @@ from sqlalchemy.exc import DBAPIError
 class TestDataController(unittest.TestCase):
 
     def test_errors(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         ctrl = DataController(sqlite_in_memory)
 
         # Try completely dumb sql
@@ -21,7 +21,7 @@ class TestDataController(unittest.TestCase):
             pass
 
     def test_run_schema(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         ctrl = DataController(sqlite_in_memory)
 
         # First check that none of the tables exists
@@ -46,13 +46,13 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.table_exists('cache_profile_has_cache_document'))
 
     def test_is_initialized(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         ctrl = DataController(sqlite_in_memory)
         ctrl.run_schema()
         self.assertTrue(ctrl.is_initialized())
 
     def test_assert_drop(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         ctrl = DataController(sqlite_in_memory)
         ctrl.assert_schema()
         self.assertTrue(ctrl.is_initialized())
@@ -67,7 +67,7 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.is_initialized())
 
     def test_create_engine(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
 
         engine = create_engine(sqlite_in_memory)
         self.assertIsNotNone(engine)

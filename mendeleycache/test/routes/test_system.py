@@ -16,7 +16,7 @@ import json
 class TestSystem(unittest.TestCase):
 
     def test_get_system(self):
-        TestApp.write_debug_config()
+
         app = MendeleyCache('mendeleycache')
         app.debug = True
         sut = app.test_client()
@@ -34,6 +34,3 @@ class TestSystem(unittest.TestCase):
 
         self.assertIn('server-version', response_json)
         self.assertIn('research-group-id', response_json)
-
-    def tearDown(self):
-        remove(TestApp.config_path) if exists(TestApp.config_path) else None
