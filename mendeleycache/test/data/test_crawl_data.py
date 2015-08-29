@@ -355,7 +355,7 @@ class TestCrawlScripts(unittest.TestCase):
         data_controller.run_schema()
 
         # The call shall not crash with empty input
-        r = data_controller.crawl_data.link_profiles_to_documents(dict(), dict())
+        r = data_controller.crawl_data.link_profiles_to_documents(dict(), dict(), dict())
         self.assertIsNone(r)
 
     def test_link_fields_to_documents(self):

@@ -17,7 +17,7 @@ from mendeleycache.logging import log
 def create_engine(config: DatabaseConfiguration) -> Engine:
     path = ""
     if config.engine == "mysql":
-        path = "mysql://{user}:{secret}@{host}:{port}/{db}".format(
+        path = "mysql+mysqlconnector://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
             user=config.user,
             secret=config.secret,
             host=config.hostname,
@@ -41,7 +41,7 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
     ))
 
     # create engine
-    return sqlalchemy.create_engine(path)
+    return sqlalchemy.create_engine(path, encoding="utf-8")
 
 
 class DataController:

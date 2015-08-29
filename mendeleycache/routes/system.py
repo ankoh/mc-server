@@ -4,6 +4,7 @@ from flask import Flask
 from mendeleycache.data.controller import DataController
 
 from mendeleycache.config import ServiceConfiguration
+from mendeleycache.logging import log
 
 import json
 
@@ -18,11 +19,12 @@ class SystemController:
         self._app.add_url_rule('/system/', view_func=self.get_system_report)
 
     def get_system_report(self):
+        log.info('The route /fields/ has been triggered')
+
         json_result = dict()
         json_result["server-version"] = self._config.version
         json_result["research-group-id"] = self._config.crawler.research_group
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
-
         return json.dumps(json_result)
 

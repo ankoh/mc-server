@@ -44,7 +44,8 @@ UPDATE
 SET
   profile_id = (SELECT temp_cache_profile_ids.profile_id
                  FROM temp_cache_profile_ids
-                 WHERE temp_cache_profile_ids.id = cache_profile.id);
+                 WHERE temp_cache_profile_ids.id = cache_profile.id
+                 LIMIT 1);
 
 -- noinspection SqlResolve
 DROP TABLE IF EXISTS temp_cache_profile_ids;

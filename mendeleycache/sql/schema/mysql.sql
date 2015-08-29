@@ -10,11 +10,7 @@ CREATE TABLE IF NOT EXISTS profile (
   first_name VARCHAR(35) NOT NULL,
   last_name VARCHAR(35) NOT NULL,
   display_name VARCHAR(80),
-  link VARCHAR(255),
-  FOREIGN KEY (cache_profile_id)
-    REFERENCES cache_profile (id)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  link VARCHAR(255));
 
 -- Foreign key profile -> cache_profile
 CREATE INDEX profile_cache_profile_id ON profile(cache_profile_id);
@@ -37,11 +33,7 @@ CREATE TABLE IF NOT EXISTS document (
   authors TEXT,
   keywords TEXT,
   tags TEXT,
-  derived_bibtex TEXT,
-  FOREIGN KEY (cache_document_id)
-    REFERENCES cache_document (id)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  derived_bibtex TEXT);
 
 -- Foreign key document -> cache_document
 CREATE INDEX document_cache_document_id ON document(cache_document_id);

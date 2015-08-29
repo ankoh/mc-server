@@ -3,7 +3,24 @@ cache:
   restart: always
   ports:
     - "8080"
+  links:
+    - "mysql:db"
   environment:
     - MC_CRAWLER=file
-    - MC_DATABASE_ENGINE=sqlite
-    - MC_DATABASE_PATH=/srv/mc/main.db
+    - MC_DATABASE_ENGINE=mysql
+    - MC_DATABASE_HOSTNAME=db
+    - MC_DATABASE_PORT=3306
+    - MC_DATABASE_DB=mcdb
+    - MC_DATABASE_USER=root
+    - MC_DATABASE_SECRET=yourrootpassword
+
+
+mysql:
+  image: mysql:latest
+  restart: always
+  volumes:
+    - ./docker/my.cnf:/etc/mysql/my.cnf
+  environment:
+    - MYSQL_ROOT_PASSWORD=yourrootpassword
+
+
