@@ -16,7 +16,7 @@ import time
 
 class TestFields(unittest.TestCase):
     def test_get_empty_fields(self):
-        TestApp.write_debug_config()
+
         app = MendeleyCache('mendeleycache')
         app.debug = True
 
@@ -33,7 +33,7 @@ class TestFields(unittest.TestCase):
         data=response.get_data(as_text=True)
 
     def test_get_pipeline_fields(self):
-        TestApp.write_debug_config()
+
         app = MendeleyCache('mendeleycache')
         app.testing = True
 
@@ -61,5 +61,4 @@ class TestFields(unittest.TestCase):
         json_data = json.loads(data)
         self.assertEqual(len(json_data), 14)
 
-    def tearDown(self):
-        remove(TestApp.config_path) if exists(TestApp.config_path) else None
+

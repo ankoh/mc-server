@@ -14,7 +14,7 @@ from mendeleycache.config import SQLiteConfiguration
 class TestApiScripts(unittest.TestCase):
 
     def test_get_profiles_by_profile_ids_or_field_ids(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -25,7 +25,7 @@ class TestApiScripts(unittest.TestCase):
         data_controller.api_data.get_profiles_by_profile_ids_or_field_ids([42, 43], [44, 45])
 
     def test_get_documents_by_profile_ids_and_field_ids(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -36,7 +36,7 @@ class TestApiScripts(unittest.TestCase):
         data_controller.api_data.get_documents_by_profile_ids_and_field_ids([42, 43], [44, 45])
 
     def test_get_fields(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -44,7 +44,7 @@ class TestApiScripts(unittest.TestCase):
         data_controller.api_data.get_fields()
 
     def test_get_profiles_slim(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 
@@ -52,7 +52,7 @@ class TestApiScripts(unittest.TestCase):
         data_controller.api_data.get_profiles_slim()
 
     def test_all_with_pipeline_data(self):
-        sqlite_in_memory = SQLiteConfiguration("sqlite", "")
+        sqlite_in_memory = SQLiteConfiguration("")
         data_controller = DataController(sqlite_in_memory)
         data_controller.run_schema()
 

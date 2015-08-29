@@ -54,7 +54,7 @@ if len(sys.argv) >= 2:
             exit()
 
         crawler = FileCrawler()
-        crawl_controller = CrawlController(crawler, config.mendeley.research_group)
+        crawl_controller = CrawlController(crawler, config.crawler.research_group)
         analysis_controller = AnalysisController()
         pipeline_controller = PipelineController(
             data_controller=data_controller,

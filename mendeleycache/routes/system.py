@@ -20,7 +20,7 @@ class SystemController:
     def get_system_report(self):
         json_result = dict()
         json_result["server-version"] = self._config.version
-        json_result["research-group-id"] = self._config.mendeley.research_group
+        json_result["research-group-id"] = self._config.crawler.research_group
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
 
