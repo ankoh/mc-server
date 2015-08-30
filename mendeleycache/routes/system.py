@@ -22,8 +22,8 @@ class SystemController:
         log.info('The route /fields/ has been triggered')
 
         json_result = dict()
-        json_result["server-version"] = self._config.version
-        json_result["research-group-id"] = self._config.crawler.research_group
+        json_result["serverVersion"] = self._config.version
+        json_result["researchGroupId"] = self._config.crawler.research_group
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
         return json.dumps(json_result)
