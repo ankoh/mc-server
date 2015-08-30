@@ -28,8 +28,10 @@ class SystemController:
         json_result = dict()
         json_result["serverVersion"] = self._config.version
         json_result["mendeleyStatus"] = "Online" if api_online else "Offline"
+        json_result["lastUpdate"] = "Never"
 
-        # TODO: uptime, last-update, log-size, mendeley-api-status
+        # TODO: Store lastUpdate through database
+
         return json.dumps(json_result)
 
     def get_system_entities(self):
