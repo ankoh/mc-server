@@ -2,23 +2,23 @@
 
 # First check the environment variables
 if [ -z "$MC_DATABASE_HOSTNAME" ]; then
-    echo "You need to provide MC_DATABASE_HOSTNAME"
+    echo "You need to provide MC_DATABASE_HOSTNAME as environment variable"
     exit 1
 fi
 if [ -z "$MC_DATABASE_PORT" ]; then
-    echo "You need to provide MC_DATABASE_PORT"
+    echo "You need to provide MC_DATABASE_PORT as environment variable"
     exit 1
 fi
 if [ -z "$MC_DATABASE_DB" ]; then
-    echo "You need to provide MC_DATABASE_DB"
+    echo "You need to provide MC_DATABASE_DB as environment variable"
     exit 1
 fi
 if [ -z "$MC_DATABASE_USER" ]; then
-    echo "You need to provide MC_DATABASE_USER"
+    echo "You need to provide MC_DATABASE_USER as environment variable"
     exit 1
 fi
 if [ -z "$MC_DATABASE_SECRET" ]; then
-    echo "You need to provide MC_DATABASE_SECRET"
+    echo "You need to provide MC_DATABASE_SECRET as environment variable"
     exit 1
 fi
 
