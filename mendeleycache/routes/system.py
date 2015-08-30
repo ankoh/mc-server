@@ -5,6 +5,7 @@ from mendeleycache.data.controller import DataController
 
 from mendeleycache.config import ServiceConfiguration
 from mendeleycache.logging import log
+from mendeleycache.utils.remotes import remote_is_online
 
 import json
 
@@ -22,8 +23,11 @@ class SystemController:
     def get_system_status(self):
         log.info('The route /system/status has been triggered')
 
+        api_online = remote_is_online("api.mendeley.com", 443)
+
         json_result = dict()
         json_result["serverVersion"] = self._config.version
+        json_result["mendeleyStatus"] = "Online" if api_online else "Offline"
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
         return json.dumps(json_result)
