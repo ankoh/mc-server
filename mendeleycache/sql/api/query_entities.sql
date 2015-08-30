@@ -32,6 +32,13 @@ FROM
     UNION ALL
 
     SELECT
+      'cache_field' AS table_name,
+      COUNT(*) AS cnt
+    FROM cache_field
+
+    UNION ALL
+
+    SELECT
       'cache_profile_has_cache_document' AS table_name,
       COUNT(*) AS cnt
     FROM cache_profile_has_cache_document
