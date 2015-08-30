@@ -32,5 +32,5 @@ class TestSystem(unittest.TestCase):
         data=response.get_data(as_text=True)
         response_json = json.loads(data)
 
-        self.assertIn('server-version', response_json)
-        self.assertIn('research-group-id', response_json)
+        self.assertIn('serverVersion', response_json)
+        self.assertIn('researchGroup', response_json)

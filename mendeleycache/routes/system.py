@@ -23,7 +23,7 @@ class SystemController:
 
         json_result = dict()
         json_result["serverVersion"] = self._config.version
-        json_result["researchGroupId"] = self._config.crawler.research_group
+        json_result["researchGroup"] = self._config.crawler.research_group
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
         return json.dumps(json_result)
