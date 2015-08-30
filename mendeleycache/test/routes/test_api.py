@@ -37,7 +37,8 @@ def sample_api():
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
         ),
-        '/system'
+        '/system/status',
+        '/system/cache'
     ]
 
     for call in calls:
