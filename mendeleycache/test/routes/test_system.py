@@ -22,7 +22,7 @@ class TestSystem(unittest.TestCase):
         sut = app.test_client()
         """:type : FlaskClient"""
 
-        response= sut.get('/system', follow_redirects=True)
+        response= sut.get('/system/status', follow_redirects=True)
         """:type : Response"""
 
         # Check status code
@@ -33,4 +33,3 @@ class TestSystem(unittest.TestCase):
         response_json = json.loads(data)
 
         self.assertIn('serverVersion', response_json)
-        self.assertIn('researchGroup', response_json)

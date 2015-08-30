@@ -16,15 +16,20 @@ class SystemController:
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/system/', view_func=self.get_system_report)
+        self._app.add_url_rule('/system/status', view_func=self.get_system_status)
+        self._app.add_url_rule('/system/cache', view_func=self.get_system_cache_stats)
 
-    def get_system_report(self):
-        log.info('The route /fields/ has been triggered')
+    def get_system_status(self):
+        log.info('The route /system/status has been triggered')
 
         json_result = dict()
         json_result["serverVersion"] = self._config.version
-        json_result["researchGroup"] = self._config.crawler.research_group
 
         # TODO: uptime, last-update, log-size, mendeley-api-status
         return json.dumps(json_result)
 
+    def get_system_cache_stats(self):
+        log.info('The route /system/status has been triggered')
+        json_result = dict()
+
+        return json.dumps(json_result)
