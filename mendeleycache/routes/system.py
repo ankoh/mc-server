@@ -32,4 +32,11 @@ class SystemController:
         log.info('The route /system/entities has been triggered')
         json_result = dict()
 
-        return json.dumps(json_result)
+        entities = self._data_controller.api_data.get_entities()
+
+        # Serialize fields
+        response = []
+        for entity in entities:
+            columns = dict(entity.items())
+            response.append(columns)
+        return json.dumps(response)

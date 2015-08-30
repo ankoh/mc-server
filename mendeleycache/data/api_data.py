@@ -30,6 +30,22 @@ class ApiData:
             read_sql_statements('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
         self._query_profiles_by_profile_ids_or_field_ids =\
             read_sql_statements('sql', 'api', 'query_profiles_by_profile_ids_or_field_ids.sql')
+        self._query_entities =\
+            read_sql_statements('sql', 'api', 'query_entities.sql')
+
+    def get_entities(self):
+        """
+        Returns the number of elements in each table
+        :return:
+        """
+        query = self._query_entities[0]
+
+        log.info("Querying entity numbers")
+
+        # Fire the sql script in a transaction
+        with self._engine.begin() as conn:
+            return conn.execute(query).fetchall()
+
 
     def get_documents_by_profile_ids_and_field_ids(self, profile_ids: [int], field_ids: [int]):
         """
