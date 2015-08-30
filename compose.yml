@@ -16,6 +16,8 @@ server:
 
 mysqlconfig:
   build: ./docker/mysqlconfig/
+  volumes:
+    - "/etc/mysql/"
 
 mysql:
   image: mysql:latest
