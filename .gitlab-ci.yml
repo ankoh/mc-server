@@ -1,14 +1,14 @@
 unittest:
   script:
     - pip install --quiet -r requirements.txt
-    - ./mc_tests.sh
+    - python -m mendeleycache.runner tests
   tags:
     - python3
 
 sample-pipeline:
   script:
     - pip install --quiet -r requirements.txt
-    - ./mc_sample-pipeline.sh
+    - python -m mendeleycache.runner sample-pipeline
   tags:
     - python3
   only:
@@ -17,7 +17,7 @@ sample-pipeline:
 sample-api:
   script:
     - pip install --quiet -r requirements.txt
-    - ./mc_sample-api.sh
+    - python -m mendeleycache.runner sample-api
   tags:
     - python3
   only:

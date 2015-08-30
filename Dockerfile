@@ -20,6 +20,10 @@ COPY mendeleycache /srv/mc/mendeleycache
 # Add application to pythonpath
 ENV PYTHONPATH $PYTHONPATH:/srv/mc/
 
+# Add pipeline script
+COPY docker/pipeline.sh /usr/local/bin/pipeline
+RUN chmod +x /usr/local/bin/pipeline
+
 # Expose 8080 as default gunicorn port
 EXPOSE 8080
 
