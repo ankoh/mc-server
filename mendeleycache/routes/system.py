@@ -17,7 +17,7 @@ class SystemController:
 
     def register(self):
         self._app.add_url_rule('/system/status', view_func=self.get_system_status)
-        self._app.add_url_rule('/system/cache', view_func=self.get_system_cache_stats)
+        self._app.add_url_rule('/system/entities', view_func=self.get_system_entities)
 
     def get_system_status(self):
         log.info('The route /system/status has been triggered')
@@ -28,8 +28,8 @@ class SystemController:
         # TODO: uptime, last-update, log-size, mendeley-api-status
         return json.dumps(json_result)
 
-    def get_system_cache_stats(self):
-        log.info('The route /system/status has been triggered')
+    def get_system_entities(self):
+        log.info('The route /system/entities has been triggered')
         json_result = dict()
 
         return json.dumps(json_result)

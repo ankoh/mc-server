@@ -38,7 +38,7 @@ def sample_api():
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
         ),
         '/system/status',
-        '/system/cache'
+        '/system/entities'
     ]
 
     for call in calls:
