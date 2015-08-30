@@ -34,8 +34,8 @@ docker-build:
 compose-local:
   type: deploy
   script:
-    - docker-compose -f compose.yml -p mendeleycache stop
-    - docker-compose -f compose.yml -p mendeleycache up -d
+    - docker-compose -f compose.yml -p mcserver stop
+    - docker-compose -f compose.yml -p mcserver up -d
   tags:
     - privileged
   only:
