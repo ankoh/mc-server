@@ -51,7 +51,9 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
     ))
 
     # create engine
-    return sqlalchemy.create_engine(path, encoding="utf-8")
+    # Pool recycle:
+    # http://stackoverflow.com/questions/26891971/mysql-connection-not-available-when-use-sqlalchemymysql-and-flask
+    return sqlalchemy.create_engine(path, encoding="utf-8", pool_recycle=3600)
 
 
 class DataController:
