@@ -43,6 +43,24 @@ def sample_api():
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&offset=1'
         ),
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+            '&limit=1&order-attr=year&order-dir=desc'
+        ),
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+            '&limit=1&order-attr=title'
+        ),
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+            '&limit=1&order-attr=source'
+        ),
         '/system/status',
         '/system/entities'
 

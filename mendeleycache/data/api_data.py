@@ -62,7 +62,7 @@ class ApiData:
         query_limit = 20
         query_offset = 0
         query_order_attr = "pub_year"
-        query_order_dir = "DESC"
+        query_order_dir = "ASC"
         if len(profile_ids) > 0:
             profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
         else:
