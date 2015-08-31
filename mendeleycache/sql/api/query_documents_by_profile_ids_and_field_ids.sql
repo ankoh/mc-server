@@ -19,7 +19,7 @@ FROM
   cache_field cf,
   cache_document_has_cache_field cdhcf,
   cache_profile_has_cache_document cphcd
-WHERE d.cache_document_id = cd.id
+WHERE d.id = cd.document_id
 AND cd.id = cdhcf.cache_document_id
 AND cdhcf.cache_field_id = cf.id
 AND cd.id = cphcd.cache_document_id
