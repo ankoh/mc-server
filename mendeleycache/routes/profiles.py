@@ -2,6 +2,7 @@ __author__ = 'kohn'
 
 from flask import Flask, request
 
+from mendeleycache.utils.json_encoder import DefaultEncoder
 from mendeleycache.data.controller import DataController
 from mendeleycache.logging import log
 import json
@@ -49,4 +50,4 @@ class ProfilesController:
         for profile in profiles:
             profile_dict = dict(profile.items())
             response.append(profile_dict)
-        return json.dumps(response)
+        return json.dumps(response, cls=DefaultEncoder)

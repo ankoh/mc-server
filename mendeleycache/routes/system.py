@@ -6,6 +6,7 @@ from mendeleycache.data.controller import DataController
 from mendeleycache.config import ServiceConfiguration
 from mendeleycache.logging import log
 from mendeleycache.utils.remotes import remote_is_online
+from mendeleycache.utils.json_encoder import DefaultEncoder
 
 import json
 
@@ -32,7 +33,7 @@ class SystemController:
 
         # TODO: Store lastUpdate through database
 
-        return json.dumps(json_result)
+        return json.dumps(json_result, cls=DefaultEncoder)
 
     def get_system_entities(self):
         log.info('The route /system/entities has been triggered')
@@ -45,4 +46,4 @@ class SystemController:
         for entity in entities:
             columns = dict(entity.items())
             response.append(columns)
-        return json.dumps(response)
+        return json.dumps(response, cls=DefaultEncoder)

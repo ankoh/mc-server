@@ -2,6 +2,7 @@ __author__ = 'kohn'
 
 from flask import Flask, request
 
+from mendeleycache.utils.json_encoder import DefaultEncoder
 from mendeleycache.data.controller import DataController
 from mendeleycache.logging import log
 
@@ -26,4 +27,4 @@ class FieldsController:
         for field in fields:
             field_dict = dict(field.items())
             response.append(field_dict)
-        return json.dumps(response)
+        return json.dumps(response, cls=DefaultEncoder)
