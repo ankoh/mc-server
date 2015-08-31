@@ -28,6 +28,8 @@ class ApiData:
             read_sql_statements('sql', 'api', 'query_profiles_slim.sql')
         self._query_all_documents =\
             read_sql_statements('sql', 'api', 'query_all_documents.sql')
+        self._query_documents_by_profile_ids =\
+            read_sql_statements('sql', 'api', 'query_documents_by_profile_ids.sql')
         self._query_documents_by_profile_ids_and_field_ids =\
             read_sql_statements('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
         self._query_profiles_by_profile_ids_or_field_ids =\
@@ -104,6 +106,9 @@ class ApiData:
             query = self._query_documents_by_profile_ids_and_field_ids[0]
             query = re.sub(':profile_ids', profile_ids_string, query)
             query = re.sub(':field_ids', field_ids_string, query)
+        elif len(profile_ids) > 0 and len(field_ids) == 0:
+            query = self._query_documents_by_profile_ids[0]
+            query = re.sub(':profile_ids', profile_ids_string, query)
         else:
             query = self._query_all_documents[0]
 
