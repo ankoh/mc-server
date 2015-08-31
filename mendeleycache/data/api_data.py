@@ -26,6 +26,8 @@ class ApiData:
             read_sql_statements('sql', 'api', 'query_fields.sql')
         self._query_profiles_slim =\
             read_sql_statements('sql', 'api', 'query_profiles_slim.sql')
+        self._query_all_documents =\
+            read_sql_statements('sql', 'api', 'query_all_documents.sql')
         self._query_documents_by_profile_ids_and_field_ids =\
             read_sql_statements('sql', 'api', 'query_documents_by_profile_ids_and_field_ids.sql')
         self._query_profiles_by_profile_ids_or_field_ids =\
@@ -95,10 +97,17 @@ class ApiData:
         if offset > 0:
             query_offset = offset
 
-        # Now substitute the different variables in the sql query
-        query = self._query_documents_by_profile_ids_and_field_ids[0]
-        query = re.sub(':profile_ids', profile_ids_string, query)
-        query = re.sub(':field_ids', field_ids_string, query)
+        # If no profile_ids and field_ids have been passed, i need to return everything
+        # && use query without AND xx IN ()
+        query = ""
+        if len(profile_ids) > 0 or len(field_ids) > 0:
+            query = self._query_documents_by_profile_ids_and_field_ids[0]
+            query = re.sub(':profile_ids', profile_ids_string, query)
+            query = re.sub(':field_ids', field_ids_string, query)
+        else:
+            query = self._query_all_documents[0]
+
+        # Substitute order_by and query_limit as well
         query = re.sub(':order_by', '{order_attr} {order_dir}'.format(
             order_attr=query_order_attr,
             order_dir=query_order_dir
@@ -122,6 +131,7 @@ class ApiData:
             offset=query_offset,
             limit=query_limit
         ))
+
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
