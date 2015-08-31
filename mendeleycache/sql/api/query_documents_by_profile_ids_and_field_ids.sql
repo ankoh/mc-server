@@ -26,3 +26,5 @@ AND cd.id = cphcd.cache_document_id
 AND cphcd.cache_profile_id = cp.id
 AND cf.id IN :field_ids
 AND cp.id IN :profile_ids
+ORDER BY :order_by
+LIMIT :query_limit

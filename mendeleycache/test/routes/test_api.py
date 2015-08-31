@@ -37,8 +37,15 @@ def sample_api():
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
         ),
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+            '&limit=1&offset=1'
+        ),
         '/system/status',
         '/system/entities'
+
     ]
 
     for call in calls:

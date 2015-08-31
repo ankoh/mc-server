@@ -46,15 +46,23 @@ class ApiData:
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
 
-
-    def get_documents_by_profile_ids_and_field_ids(self, profile_ids: [int], field_ids: [int]):
+    def get_documents_by_profile_ids_and_field_ids(self,
+                                                   profile_ids: [int], field_ids: [int],
+                                                   order_attr: str="year", order_dir: str="desc",
+                                                   limit: int=0, offset: int=0):
         """
         Given profile ids and field ids, queries all documents that belong to the research field
         AND are associated with these profiles
         :return:
         """
+
+        # Process parameters
         profile_ids_string = ""
         field_ids_string = ""
+        query_limit = 20
+        query_offset = 0
+        query_order_attr = "pub_year"
+        query_order_dir = "DESC"
         if len(profile_ids) > 0:
             profile_ids_string = "(%s)" % (",".join(map(lambda x: "'%s'" % x, profile_ids)))
         else:
@@ -65,15 +73,54 @@ class ApiData:
         else:
             field_ids_string = "(NULL)"
 
+        # Check order attribute parameter
+        if order_attr == "year":
+            query_order_attr = "pub_year"
+        elif order_attr == "title":
+            query_order_attr = "title"
+        elif order_attr == "source":
+            query_order_attr = "source"
+
+        # Check order direction
+        if order_dir == "desc":
+            query_order_dir = "DESC"
+        elif order_dir == "asc":
+            query_order_dir = "ASC"
+
+        # Check limit parameter
+        if limit > 0:
+            query_limit = limit
+
+        # Check offset parameter
+        if offset > 0:
+            query_offset = offset
+
+        # Now substitute the different variables in the sql query
         query = self._query_documents_by_profile_ids_and_field_ids[0]
         query = re.sub(':profile_ids', profile_ids_string, query)
         query = re.sub(':field_ids', field_ids_string, query)
+        query = re.sub(':order_by', '{order_attr} {order_dir}'.format(
+            order_attr=query_order_attr,
+            order_dir=query_order_dir
+        ), query)
+        query = re.sub(':query_limit', '{offset},{limit}'.format(
+            offset=query_offset,
+            limit=query_limit
+        ), query)
 
         log.info("Querying documents by profile_ids and field_ids\n"
                  "\t| profile_ids: {profile_ids}\n"
-                 "\t| field_ids: {field_ids}\n".format(
+                 "\t| field_ids: {field_ids}\n"
+                 "\t| order_attr: {order_attr}\n"
+                 "\t| order_dir: {order_dir}\n"
+                 "\t| offset: {offset}\n"
+                 "\t| limit: {limit}\n".format(
             profile_ids=profile_ids_string,
-            field_ids=field_ids_string
+            field_ids=field_ids_string,
+            order_attr=query_order_attr,
+            order_dir=query_order_dir,
+            offset=query_offset,
+            limit=query_limit
         ))
 
         # Fire the sql script in a transaction
