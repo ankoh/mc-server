@@ -61,6 +61,12 @@ def sample_api():
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=source'
         ),
+        str(
+            '/documents'
+            '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
+            '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
+            '&limit=1&order-attr=source&only-count=true'
+        ),
         '/system/status',
         '/system/entities'
 

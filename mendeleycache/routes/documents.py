@@ -65,7 +65,7 @@ class DocumentsController:
         # Serialize documents
         if only_count:
             response = {
-                "cnt": data
+                "cnt": data[0]
             }
             return json.dumps(response)
         else:
