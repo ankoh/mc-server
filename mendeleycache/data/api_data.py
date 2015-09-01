@@ -62,7 +62,6 @@ class ApiData:
         :return:
         """
 
-        # Process parameters
         profile_ids_string = ""
         field_ids_string = ""
         query_limit = 20
@@ -127,6 +126,25 @@ class ApiData:
             limit=query_limit
         ), query)
 
+        # Substitute query head
+        select = "COUNT(*)"
+        if not only_count:
+            select = str(
+                "DISTINCT "
+                "cd.id             AS id,"
+                "d.mendeley_id     AS mendeley_id,"
+                "d.title           AS title,"
+                "d.doc_type        AS doc_type,"
+                "d.last_modified   AS last_modified,"
+                "d.abstract        AS abstract,"
+                "d.source          AS source,"
+                "d.pub_year        AS pub_year,"
+                "d.authors         AS authors,"
+                "d.keywords        AS keywords,"
+                "d.tags            AS tags,"
+                "d.derived_bibtex  AS derived_bibtex")
+        query = re.sub(':select_attributes', select, query)
+
         log.info("Querying documents by profile_ids and field_ids\n"
                  "\t| profile_ids: {profile_ids}\n"
                  "\t| field_ids: {field_ids}\n"
@@ -148,11 +166,7 @@ class ApiData:
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             if only_count:
-                # TODO:
-                # super ugly support for count queries... COUNT(*) via sql!
-                # Requires some modifications with the query building/loading
-                # Should be much more dynamic anyway... 4 files for 4 cases is terrible
-                return conn.execute(query).count()
+                return conn.execute(query).fetchone()
             else:
                 return conn.execute(query).fetchall()
 
