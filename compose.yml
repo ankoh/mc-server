@@ -6,7 +6,10 @@ server:
   links:
     - "mysql:db"
   environment:
-    - MC_CRAWLER=file
+    - MC_CRAWLER=mendeley
+    - MC_APP_ID=${app_id}
+    - MC_APP_SECRET=${app_secret}
+    - MC_RESEARCH_GROUP="d0b7f41f-ad37-3b47-ab70-9feac35557cc"
     - MC_DATABASE_ENGINE=mysql
     - MC_DATABASE_HOSTNAME=db
     - MC_DATABASE_PORT=3306
