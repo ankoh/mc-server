@@ -61,6 +61,7 @@ if len(sys.argv) >= 2:
             log.info("Pipeline uses FileCrawler")
             crawler = FileCrawler()
         else:
+            from mendeleycache.crawler.sdk_crawler import SDKCrawler
             log.info("Pipeline uses SDKCrawler with app_id: {app_id} and app_secret: {app_secret}".format(
                 app_id=config.crawler.app_id,
                 app_secret=config.crawler.app_secret
