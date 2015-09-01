@@ -13,4 +13,3 @@ def get_relative_path(*path):
     :return: return os path
     """
     return join(BASE, *path)
-
