@@ -39,6 +39,10 @@ CREATE TABLE IF NOT EXISTS document (
 CREATE INDEX document_cache_document_id ON document(cache_document_id);
 CREATE INDEX document_last_modified ON document(last_modified DESC);
 
+-- /documents
+CREATE INDEX document_pub_year_desc ON document(pub_year DESC);
+CREATE INDEX document_title_asc ON document(title DESC);
+
 -- -----------------------------------------------------
 -- Table cache_profile
 -- -----------------------------------------------------
@@ -53,6 +57,8 @@ CREATE TABLE IF NOT EXISTS cache_profile (
 
 -- Foreign key cache_profile -> profile
 CREATE INDEX cache_profile_profile_id ON cache_profile(profile_id);
+-- /profiles?sim=true
+CREATE INDEX cache_profile_name_asc ON cache_profile(name ASC);
 
 -- -----------------------------------------------------
 -- Table cache_document
@@ -76,6 +82,8 @@ CREATE INDEX cache_document_document_id ON cache_document(document_id);
 CREATE TABLE IF NOT EXISTS cache_field (
   id VARCHAR(255) PRIMARY KEY,
   title VARCHAR(255) NOT NULL);
+-- /fields
+CREATE INDEX cache_field_title_ascending ON cache_field(title ASC);
 
 -- -----------------------------------------------------
 -- Table cache_profile_has_cache_document

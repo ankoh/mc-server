@@ -17,3 +17,4 @@ FROM
      GROUP BY cp.id
    ) agg
    ON cp.id = agg.id
+ORDER BY cp.name

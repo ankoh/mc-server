@@ -16,3 +16,4 @@ FROM
       GROUP BY cf.id
    ) agg
 WHERE cf.id = agg.id
+ORDER BY cf.title
