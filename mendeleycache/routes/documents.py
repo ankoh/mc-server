@@ -62,13 +62,19 @@ class DocumentsController:
             only_count=only_count
         )
 
-        # Serialize documents
         if only_count:
-            response = {
-                "cnt": data[0]
-            }
-            return json.dumps(response)
+            # Extract count
+            response = []
+            for document in data:
+                document_dict = dict(document.items())
+                response.append(document_dict)
+
+            if len(response) > 0:
+                return json.dumps(response[0], cls=DefaultEncoder)
+            else:
+                return json.dumps({"cnt": 0}, cls=DefaultEncoder)
         else:
+            # Serialize documents
             response = []
             for document in data:
                 document_dict = dict(document.items())

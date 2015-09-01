@@ -67,6 +67,10 @@ def sample_api():
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=source&only-count=true'
         ),
+        str(
+            '/documents'
+            '?order-attr=year&order-dir=desc&offset=5&limit=5&only-count=true'
+        ),
         '/system/status',
         '/system/entities'
 

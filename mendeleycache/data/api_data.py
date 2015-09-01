@@ -17,6 +17,7 @@ The limitation arises in the DBAPI that SQLALCHEMY uses:
 http://stackoverflow.com/questions/14512228/sqlalchemy-raw-sql-parameter-substitution-with-an-in-clause
 """
 
+query_head = re.compile("SELECT([A-Za-z0-9_., \n]+)FROM")
 
 class ApiData:
     def __init__(self, engine: Engine):
@@ -80,11 +81,11 @@ class ApiData:
 
         # Check order attribute parameter
         if order_attr == "year":
-            query_order_attr = "pub_year"
+            query_order_attr = "d.pub_year"
         elif order_attr == "title":
-            query_order_attr = "title"
+            query_order_attr = "d.title"
         elif order_attr == "source":
-            query_order_attr = "source"
+            query_order_attr = "d.source"
 
         # Check order direction
         if order_dir == "desc":
@@ -116,19 +117,12 @@ class ApiData:
         else:
             query = self._query_all_documents[0]
 
-        # Substitute order_by and query_limit as well
-        query = re.sub(':order_by', '{order_attr} {order_dir}'.format(
-            order_attr=query_order_attr,
-            order_dir=query_order_dir
-        ), query)
-        query = re.sub(':query_limit', '{offset},{limit}'.format(
-            offset=query_offset,
-            limit=query_limit
-        ), query)
-
-        # Substitute query head
-        select = "COUNT(*)"
-        if not only_count:
+        if only_count:
+            select = "SELECT COUNT(*) AS cnt FROM"
+            query = re.sub(query_head, select, query)
+            query = re.sub('ORDER BY :order_by', '', query)
+            query = re.sub('LIMIT :query_limit', '',  query)
+        else:
             select = str(
                 "DISTINCT "
                 "cd.id             AS id,"
@@ -143,7 +137,17 @@ class ApiData:
                 "d.keywords        AS keywords,"
                 "d.tags            AS tags,"
                 "d.derived_bibtex  AS derived_bibtex")
-        query = re.sub(':select_attributes', select, query)
+            query = re.sub(':select_attributes', select, query)
+
+            # Substitute order_by and query_limit as well
+            query = re.sub(':order_by', '{order_attr} {order_dir}'.format(
+                order_attr=query_order_attr,
+                order_dir=query_order_dir
+            ), query)
+            query = re.sub(':query_limit', '{offset},{limit}'.format(
+                offset=query_offset,
+                limit=query_limit
+            ), query)
 
         log.info("Querying documents by profile_ids and field_ids\n"
                  "\t| profile_ids: {profile_ids}\n"
@@ -161,14 +165,11 @@ class ApiData:
             limit=query_limit,
             only_count=only_count
         ))
-
+        log.debug("Query: {query}".format(query=query))
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            if only_count:
-                return conn.execute(query).fetchone()
-            else:
-                return conn.execute(query).fetchall()
+            return conn.execute(query).fetchall()
 
     def get_profiles_slim(self):
         """
