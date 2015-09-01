@@ -48,7 +48,7 @@ class DocumentsController:
             order_attr = request.args['order-attr']
             log.debug('Query parameter "order-attr" = %s' % order_attr)
         if 'only-count' in request.args:
-            only_count = request.args['only-count']
+            only_count = bool(request.args['only-count'])
             log.debug('Query parameter "only-count" = %s' % only_count)
 
         # Trigger the respective methods

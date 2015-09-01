@@ -152,7 +152,7 @@ class ApiData:
                 # super ugly support for count queries... COUNT(*) via sql!
                 # Requires some modifications with the query building/loading
                 # Should be much more dynamic anyway... 4 files for 4 cases is terrible
-                return len(conn.execute(query).fetchall())
+                return conn.execute(query).count()
             else:
                 return conn.execute(query).fetchall()
 
