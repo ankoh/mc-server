@@ -5,10 +5,19 @@ unittest:
   tags:
     - python3
 
-sample-pipeline:
+sample-file-pipeline:
   script:
     - pip install --quiet -r requirements.txt
     - python -m mendeleycache.runner sample-pipeline
+  tags:
+    - python3
+  only:
+    - master
+
+sample-mendeley-pipeline:
+  script:
+    - pip install --quiet -r requirements.txt
+    - python -m mendeleycache.runner sample-pipeline $MC_APP_ID $MC_APP_SECRET
   tags:
     - python3
   only:

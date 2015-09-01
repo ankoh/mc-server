@@ -151,8 +151,10 @@ class CrawlController:
 
         log.info("Crawler has been started")
         self.reset()
+        self._crawler.prepare()
         self.crawl_group_members()
         self.crawl_group_documents()
         self.crawl_profiles()
+        self._crawler.destroy()
         self._succeeded = True
         log.info("Crawler has been executed")
