@@ -52,7 +52,7 @@ class DocumentsController:
             log.debug('Query parameter "only-count" = %s' % only_count)
 
         # Trigger the respective methods
-        documents = self._data_controller.api_data.get_documents_by_profile_ids_and_field_ids(
+        data = self._data_controller.api_data.get_documents_by_profile_ids_and_field_ids(
             profile_ids=profile_ids,
             field_ids=field_ids,
             order_attr=order_attr,
@@ -63,8 +63,14 @@ class DocumentsController:
         )
 
         # Serialize documents
-        response = []
-        for document in documents:
-            document_dict = dict(document.items())
-            response.append(document_dict)
-        return json.dumps(response, cls=DefaultEncoder)
+        if only_count:
+            response = {
+                "cnt": data
+            }
+            return json.dumps(response)
+        else:
+            response = []
+            for document in data:
+                document_dict = dict(document.items())
+                response.append(document_dict)
+            return json.dumps(response, cls=DefaultEncoder)
