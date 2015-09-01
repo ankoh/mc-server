@@ -9,8 +9,8 @@ from threading import Thread
 import traceback
 
 # number of workers that are used to fetch the publications & profiles in parallel
-number_profile_workers = 2
-number_document_workers = 4
+number_profile_workers = 10
+number_document_workers = 10
 
 
 class CrawlController:
@@ -58,15 +58,20 @@ class CrawlController:
         :return:
         """
         while not self._profile_queue.empty():
+            profile_id = self._profile_queue.get()
             try:
-                profile_id = self._profile_queue.get()
                 # Fetch the profile
                 profile = self._crawler.get_profile_by_id(profile_id)
                 self._profiles.append(profile)
+                log.debug("The profile for profile_id {profile_id} has been fetched".format(
+                    profile_id=profile_id
+                ))
                 # Mark task as done
                 self._profile_queue.task_done()
             except Exception as e:
-                traceback.print_exc()
+                log.warn("Failed to fetch the profile for profile_id {profile_id}".format(
+                    profile_id=profile_id
+                ))
                 self._profile_queue.task_done()
 
     def document_worker(self):
@@ -76,15 +81,21 @@ class CrawlController:
         :return:
         """
         while not self._profile_documents_queue.empty():
+            profile_id = self._profile_documents_queue.get()
             try:
-                profile_id = self._profile_documents_queue.get()
                 # Fetch the document
                 documents = self._crawler.get_documents_by_profile_id(profile_id)
                 self._profile_documents[profile_id] = documents
+                log.debug("{num} documents have been fetched for profile_id {profile_id}".format(
+                    num=len(documents),
+                    profile_id=profile_id
+                ))
                 # Mark task as done
                 self._profile_documents_queue.task_done()
             except Exception as e:
-                traceback.print_exc()
+                log.warn("Failed to fetch documents for profile_id {profile_id}".format(
+                    profile_id=profile_id
+                ))
                 self._profile_documents_queue.task_done()
 
     def crawl_group_members(self):
@@ -93,7 +104,11 @@ class CrawlController:
         :return:
         """
         self._members = self._crawler.get_group_members(self._research_group)
-        log.info("Group members have been crawled")
+        log.debug("{num} group members have been fetched for group_id {group_id}".format(
+            num=len(self._members),
+            group_id=self._research_group
+        ))
+        log.info("Group members have been fetched")
 
     def crawl_profiles(self):
         """
@@ -122,7 +137,7 @@ class CrawlController:
         # Wait for both queues to complete
         self._profile_queue.join()
         self._profile_documents_queue.join()
-        log.info("Profiles and associated documents have been crawled")
+        log.info("Profiles and associated documents have been fetched")
 
     def crawl_group_documents(self):
         """
@@ -130,7 +145,11 @@ class CrawlController:
         :return:
         """
         self._group_documents = self._crawler.get_documents_by_group_id(self._research_group)
-        log.info("Group documents have been crawled")
+        log.debug("{num} documents have been fetched for group_id {group_id}".format(
+            num=len(self._group_documents),
+            group_id=self._research_group
+        ))
+        log.info("Group documents have been fetched")
 
     def reset(self):
         """
