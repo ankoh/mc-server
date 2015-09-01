@@ -8,7 +8,7 @@ unittest:
 sample-file-pipeline:
   script:
     - pip install --quiet -r requirements.txt
-    - python -m mendeleycache.runner sample-pipeline
+    - python -m mendeleycache.runner sample-file-pipeline
   tags:
     - python3
   only:

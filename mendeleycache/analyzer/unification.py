@@ -17,8 +17,8 @@ def unify_document_title(title: str) -> (str, str):
     unified_title = title.replace(" ","").lower()
     # Now remove all these unneeded ugly symbols
     unified_title = re.sub('[-_.,:;\|/\{\}\(\)\[\]\'\"\+]','', unified_title)
-
-    return unified_title, title
+    trimmed_unified_title = unified_title[:255]
+    return trimmed_unified_title, title
 
 
 def unify_field_title(title: str):
@@ -39,8 +39,8 @@ def unify_field_title(title: str):
     real_title = prep_title.replace("-", " ").title()
     # The unified title is the removal of the dashes
     unified_title = prep_title.replace("-", "")
-
-    return unified_title, real_title
+    trimmed_unified_title = unified_title[:255]
+    return trimmed_unified_title, real_title
 
 
 def unify_profile_name(first_name: str, last_name: str):
@@ -60,5 +60,5 @@ def unify_profile_name(first_name: str, last_name: str):
     # The unified title is again the lowercase version without spaces
     unified_title = concat_title.replace(" ", "").lower()
     unified_title = re.sub('[-_.,:;\|/\{\}\(\)\[\]\'\"\+]','', unified_title)
-
-    return unified_title, concat_title
+    trimmed_unified_title = unified_title[:255]
+    return trimmed_unified_title, concat_title
