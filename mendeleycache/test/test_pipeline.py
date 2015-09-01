@@ -38,12 +38,19 @@ class TestPipeline(unittest.TestCase):
         pipeline_controller.execute()
 
 
-def sample_pipeline():
+def sample_pipeline(app_id=None, app_secret=None):
+    from mendeleycache.crawler.sdk_crawler import SDKCrawler
+
     sqlite_in_memory = SQLiteConfiguration("")
     data_controller = DataController(sqlite_in_memory)
     data_controller.run_schema()
 
-    crawler = FileCrawler()
+    crawler = None
+    if app_id is None and app_secret is None:
+        crawler = FileCrawler()
+    else:
+        crawler = SDKCrawler(app_id=app_id, app_secret=app_secret)
+
     crawl_controller = CrawlController(crawler, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
 
     analysis_controller = AnalysisController()

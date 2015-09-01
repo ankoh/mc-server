@@ -46,3 +46,19 @@ class AbstractCrawler(metaclass=ABCMeta):
         :return:
         """
         pass
+
+    @abstractmethod
+    def prepare(self):
+        """
+        Prepares the crawler for incoming requests (such as initializing an sdk session)
+        :return:
+        """
+        pass
+
+    @abstractmethod
+    def destroy(self):
+        """
+        Destroys all objects when finished
+        :return:
+        """
+        pass
