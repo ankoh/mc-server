@@ -55,7 +55,7 @@ class ApiData:
     def get_documents_by_profile_ids_and_field_ids(self,
                                                    profile_ids: [int], field_ids: [int],
                                                    order_attr: str="year", order_dir: str="desc",
-                                                   limit: int=0, offset: int=0):
+                                                   limit: int=0, offset: int=0, only_count: bool=False):
         """
         Given profile ids and field ids, queries all documents that belong to the research field
         AND are associated with these profiles
@@ -133,19 +133,28 @@ class ApiData:
                  "\t| order_attr: {order_attr}\n"
                  "\t| order_dir: {order_dir}\n"
                  "\t| offset: {offset}\n"
-                 "\t| limit: {limit}\n".format(
+                 "\t| limit: {limit}\n"
+                 "\t| only_count: {only_count}".format(
             profile_ids=profile_ids_string,
             field_ids=field_ids_string,
             order_attr=query_order_attr,
             order_dir=query_order_dir,
             offset=query_offset,
-            limit=query_limit
+            limit=query_limit,
+            only_count=only_count
         ))
 
 
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
-            return conn.execute(query).fetchall()
+            if only_count:
+                # TODO:
+                # super ugly support for count queries... COUNT(*) via sql!
+                # Requires some modifications with the query building/loading
+                # Should be much more dynamic anyway... 4 files for 4 cases is terrible
+                return len(conn.execute(query).fetchall())
+            else:
+                return conn.execute(query).fetchall()
 
     def get_profiles_slim(self):
         """

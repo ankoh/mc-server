@@ -14,9 +14,9 @@ class DocumentsController:
         self._data_controller = data_controller
 
     def register(self):
-        self._app.add_url_rule('/documents/', view_func=self.get_publications)
+        self._app.add_url_rule('/documents/', view_func=self.get_documents)
 
-    def get_publications(self):
+    def get_documents(self):
         log.info('The route /documents/ has been triggered')
 
         # Default parameters
@@ -26,7 +26,7 @@ class DocumentsController:
         offset = 0
         order_dir = ""
         order_attr = ""
-        slim = False
+        only_count = False
 
         # Set passed query parameters if existing
         if 'profile-ids' in request.args:
@@ -47,6 +47,9 @@ class DocumentsController:
         if 'order-attr' in request.args:
             order_attr = request.args['order-attr']
             log.debug('Query parameter "order-attr" = %s' % order_attr)
+        if 'only-count' in request.args:
+            only_count = request.args['only-count']
+            log.debug('Query parameter "only-count" = %s' % only_count)
 
         # Trigger the respective methods
         documents = self._data_controller.api_data.get_documents_by_profile_ids_and_field_ids(
@@ -55,7 +58,8 @@ class DocumentsController:
             order_attr=order_attr,
             order_dir=order_dir,
             offset=offset,
-            limit=limit
+            limit=limit,
+            only_count=only_count
         )
 
         # Serialize documents
