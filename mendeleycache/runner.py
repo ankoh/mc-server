@@ -57,7 +57,7 @@ if len(sys.argv) >= 2:
             exit()
 
         crawler = None
-        if config.uses_sdk:
+        if not config.uses_mendeley:
             log.info("Pipeline uses FileCrawler")
             crawler = FileCrawler()
         else:

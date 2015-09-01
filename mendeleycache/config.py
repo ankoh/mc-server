@@ -107,15 +107,15 @@ class ServiceConfiguration:
         """:type : DatabaseConfiguration"""
 
         self._version = "0.1.0"
-        self._uses_sdk = False
+        self._uses_mendeley = False
 
     @property
     def crawler(self):
         return self._crawler
 
     @property
-    def uses_sdk(self):
-        return self._uses_sdk
+    def uses_mendeley(self):
+        return self._uses_mendeley
 
     @property
     def database(self):
@@ -156,10 +156,10 @@ class ServiceConfiguration:
 
         # Then validate these settings
         if crawler == 'file':
-            self._uses_sdk = False
+            self._uses_mendeley = False
             self._crawler = FileCrawlerConfiguration(research_group)
         elif crawler == 'mendeley':
-            self._uses_sdk = True
+            self._uses_mendeley = True
             if not app_id:
                 missing_attribute('MC_APP_ID')
             if not app_secret:
