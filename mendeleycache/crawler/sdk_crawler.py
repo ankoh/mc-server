@@ -19,9 +19,14 @@ class SDKCrawler(AbstractCrawler):
         self._app_secret = app_secret
         self._initialized = False
         self._mendeley = Mendeley(app_id, app_secret)
-
         self._session = None
         """:type : MendeleySession """
+
+
+        log.info("Intialized SDKCrawler with app_id: {app_id} and app_secret: {app_secret}".format(
+            app_id=app_id,
+            app_secret=app_secret
+        ))
 
     def prepare(self):
         try:

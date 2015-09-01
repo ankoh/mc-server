@@ -56,7 +56,20 @@ if len(sys.argv) >= 2:
             log.critical("Database is not initialized")
             exit()
 
-        crawler = FileCrawler()
+        crawler = None
+        if config.uses_sdk:
+            log.info("Pipeline uses FileCrawler")
+            crawler = FileCrawler()
+        else:
+            log.info("Pipeline uses SDKCrawler with app_id: {app_id} and app_secret: {app_secret}".format(
+                app_id=config.crawler.app_id,
+                app_secret=config.crawler.app_secret
+            ))
+            crawler = SDKCrawler(
+                app_id=config.crawler.app_id,
+                app_secret=config.crawler.app_secret
+            )
+
         crawl_controller = CrawlController(crawler, config.crawler.research_group)
         analysis_controller = AnalysisController()
         pipeline_controller = PipelineController(
@@ -73,7 +86,7 @@ if len(sys.argv) >= 2:
     # Trigger the pipeline with the mendeley sdk crawler
     elif command == "sample-sdk-pipeline":
         if not len(sys.argv) >= 4:
-            log.critical("Missing arguments: mendeleycache.runner sample-sdk-crawler {app-id} {app-secret}")
+            log.critical("Missing arguments: mendeleycache.runner sample-sdk-pipeline {app-id} {app-secret}")
 
         app_id = sys.argv[2]
         app_secret = sys.argv[3]
