@@ -46,6 +46,18 @@ if len(sys.argv) >= 2:
         # Run suites
         runner.run(all)
 
+    elif command == "prepare":
+        log.info("Preparing environment for gunicorn workers")
+        # Read configuration
+        configuration = ServiceConfiguration()
+        configuration.load()
+        log.info("Configuration has been loaded")
+
+        # Create data controller and assert schema
+        # That will remove the race conditions of the gunicorn worker if it's done on every startup
+        data_controller = DataController(configuration.database)
+        data_controller.assert_schema()
+
     # Pipeline runner
     elif command == "pipeline":
         config = ServiceConfiguration()

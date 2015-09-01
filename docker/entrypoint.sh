@@ -33,5 +33,8 @@ mysql --host="$MC_DATABASE_HOSTNAME" --port="$MC_DATABASE_PORT" \
       --user="$MC_DATABASE_USER" --password="$MC_DATABASE_SECRET" \
       --execute="CREATE DATABASE IF NOT EXISTS $MC_DATABASE_DB;"
 
+# Prepare application
+python -m mendeleycache.runner prepare
+
 # Then fire the rest of the commands
 exec "$@"
