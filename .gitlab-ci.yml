@@ -35,6 +35,7 @@ compose-local:
   type: deploy
   script:
     - sed -e s/"\${app_id}"/"$MC_APP_ID"/ -e s/"\${app_secret}"/"$MC_APP_SECRET"/ compose.yml > compose.yml
+    - cat compose.yml
     - docker-compose -f compose.yml -p mcserver stop
     - docker-compose -f compose.yml -p mcserver up -d
   tags:
