@@ -34,10 +34,11 @@ docker-build:
 compose-local:
   type: deploy
   script:
-    - sed -e s/":app_id"/"$MC_APP_ID"/ -e s/":app_secret"/"$MC_APP_SECRET"/ compose.yml > compose.yml
-    - cat compose.yml
-    - docker-compose -f compose.yml -p mcserver stop
-    - docker-compose -f compose.yml -p mcserver up -d
+    - sed -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ compose.yml
+    - sed -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ compose.yml > derived.yml
+    - cat derived.yml
+    - docker-compose -f derived.yml -p mcserver stop
+    - docker-compose -f derived.yml -p mcserver up -d
   tags:
     - privileged
   only:
