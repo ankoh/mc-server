@@ -5,12 +5,16 @@ from functools import update_wrapper
 # There's no basestring in python 3
 basestring = (str,bytes)
 
+
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
                 automatic_options=True):
     """
     Allow CORS
     http://flask.pocoo.org/snippets/56/
+
+    ATTENTION: NOT USED AT THE MOMENT.
+    Take a look at app.after_request in app.py
     :param origin:
     :param methods:
     :param headers:

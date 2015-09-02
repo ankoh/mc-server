@@ -5,7 +5,6 @@ from flask import Flask, request
 from mendeleycache.utils.json_encoder import DefaultEncoder
 from mendeleycache.data.controller import DataController
 from mendeleycache.logging import log
-from mendeleycache.utils.cors import crossdomain
 import json
 
 
@@ -17,7 +16,6 @@ class DocumentsController:
     def register(self):
         self._app.add_url_rule('/documents/', view_func=self.get_documents)
 
-    @crossdomain(origin="*")
     def get_documents(self):
         log.info('The route /documents/ has been triggered')
 

@@ -7,7 +7,7 @@ from mendeleycache.config import ServiceConfiguration
 from mendeleycache.logging import log
 
 import json
-from mendeleycache.utils.cors import crossdomain
+
 
 class RootController:
     def __init__(self, app: Flask, data_controller: DataController, config: ServiceConfiguration):
@@ -18,7 +18,6 @@ class RootController:
     def register(self):
         self._app.add_url_rule('/', view_func=self.get_root)
 
-    @crossdomain(origin="*")
     def get_root(self):
         log.info('The route / has been triggered')
 
