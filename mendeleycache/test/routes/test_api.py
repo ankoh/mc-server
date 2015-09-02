@@ -71,8 +71,8 @@ def sample_api():
             '/documents'
             '?order-attr=year&order-dir=desc&offset=5&limit=5&only-count=true'
         ),
-        '/system/status',
-        '/system/entities'
+        '/cache/status',
+        '/cache/entities'
 
     ]
 

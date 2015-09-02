@@ -13,7 +13,7 @@ from mendeleycache.mendeleycache import MendeleyCache
 import json
 
 
-class TestSystem(unittest.TestCase):
+class TestCache(unittest.TestCase):
 
     def test_get_system(self):
 
@@ -22,7 +22,7 @@ class TestSystem(unittest.TestCase):
         sut = app.test_client()
         """:type : FlaskClient"""
 
-        response= sut.get('/system/status', follow_redirects=True)
+        response= sut.get('/cache/status', follow_redirects=True)
         """:type : Response"""
 
         # Check status code

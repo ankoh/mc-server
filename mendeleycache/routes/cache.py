@@ -11,18 +11,18 @@ from mendeleycache.utils.json_encoder import DefaultEncoder
 import json
 
 
-class SystemController:
+class CacheController:
     def __init__(self, app: Flask, data_controller: DataController, config: ServiceConfiguration):
         self._app = app
         self._data_controller = data_controller
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/system/status', methods=['GET'], view_func=self.get_system_status)
-        self._app.add_url_rule('/system/entities', methods=['GET'], view_func=self.get_system_entities)
+        self._app.add_url_rule('/cache/status', methods=['GET'], view_func=self.get_system_status)
+        self._app.add_url_rule('/cache/entities', methods=['GET'], view_func=self.get_system_entities)
 
     def get_system_status(self):
-        log.info('The route /system/status has been triggered')
+        log.info('The route /cache/status has been triggered')
 
         api_online = remote_is_online("api.mendeley.com", 443)
 
@@ -36,7 +36,7 @@ class SystemController:
         return json.dumps(json_result, cls=DefaultEncoder)
 
     def get_system_entities(self):
-        log.info('The route /system/entities has been triggered')
+        log.info('The route /cache/entities has been triggered')
         json_result = dict()
 
         entities = self._data_controller.api_data.get_entities()
