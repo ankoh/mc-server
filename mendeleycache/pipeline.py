@@ -10,15 +10,15 @@ class PipelineReport:
     def __init__(self,
                  profiles: int,
                  documents: int,
-                 unified_name_to_profiles: int,
-                 unified_document_title_to_documents: int,
-                 unified_field_title_to_field: int,
+                 unified_profiles: int,
+                 unified_documents: int,
+                 fields: int,
                  field_associations: int):
         self.profiles = profiles
         self.documents = documents
-        self.unified_name_to_profiles = unified_name_to_profiles
-        self.unified_document_title_to_documents = unified_document_title_to_documents
-        self.unified_field_title_to_field = unified_field_title_to_field
+        self.unified_profiles = unified_profiles
+        self.unified_documents = unified_documents
+        self.fields = fields
         self.field_associations = field_associations
 
 
@@ -86,9 +86,9 @@ class PipelineController:
         report = PipelineReport(
             profiles=len(profiles),
             documents=len(documents),
-            unified_name_to_profiles=len(unified_name_to_profiles),
-            unified_document_title_to_documents=len(unified_document_title_to_documents),
-            unified_field_title_to_field=len(unified_field_title_to_field),
+            unified_profiles=len(unified_name_to_profiles),
+            unified_documents=len(unified_document_title_to_documents),
+            fields=len(unified_field_title_to_field),
             field_associations=field_associations
         )
 
@@ -96,15 +96,15 @@ class PipelineController:
         log.info("Pipeline has been executed\n"
                  "\t| replaced {profiles} profiles\n"
                  "\t| replaced {documents} documents\n"
-                 "\t| replaced {unified_name_to_profiles} unified profile names\n"
-                 "\t| replaced {unified_document_title_to_documents} unified document titles\n"
-                 "\t| replaced {unified_field_title_to_field} research fields\n"
+                 "\t| replaced {unified_profiles} unified profile names\n"
+                 "\t| replaced {unified_documents} unified document titles\n"
+                 "\t| replaced {fields} research fields\n"
                  "\t| replaced {field_associations} field associations\n".format(
                 profiles=report.profiles,
                 documents=report.documents,
-                unified_name_to_profiles=report.unified_name_to_profiles,
-                unified_document_title_to_documents=report.unified_document_title_to_documents,
-                unified_field_title_to_field=report.unified_field_title_to_field,
+                unified_profiles=report.unified_profiles,
+                unified_documents=report.unified_documents,
+                fields=report.fields,
                 field_associations=report.field_associations
             )
         )
