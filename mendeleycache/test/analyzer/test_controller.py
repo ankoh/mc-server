@@ -115,7 +115,7 @@ class TestAnalysisController(unittest.TestCase):
 
         # Check if CacheField for tag1 was created
         self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
-        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("T Ag-1", ctrl.unified_field_title_to_field["tag1"].title)
         self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
         # Check if document docid1 has been added to tag1
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
@@ -125,7 +125,7 @@ class TestAnalysisController(unittest.TestCase):
         # Now add the same tag for the same document (written slightly different)
         ctrl.analyze_field_tag("docid1", "t ag - 1")
         self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
-        self.assertEqual("Tag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("T Ag - 1", ctrl.unified_field_title_to_field["tag1"].title)
         self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
         # Check if document docid1 is still the only doc
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
@@ -135,7 +135,7 @@ class TestAnalysisController(unittest.TestCase):
         # Now add a new document for the same tag (but different field name)
         ctrl.analyze_field_tag("docid2", "t -ag - 1")
         self.assertTrue(len(ctrl.unified_field_title_to_field), 1)
-        self.assertEqual("T Ag 1", ctrl.unified_field_title_to_field["tag1"].title)
+        self.assertEqual("T -Ag - 1", ctrl.unified_field_title_to_field["tag1"].title)
         self.assertEqual("tag1", ctrl.unified_field_title_to_field["tag1"].unified_title)
         # Check if document docid2 is now linked with tag 1
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 1)
@@ -146,7 +146,7 @@ class TestAnalysisController(unittest.TestCase):
         # Now add an old document with a new tag
         ctrl.analyze_field_tag("docid2", "t ag - 2")
         self.assertTrue(len(ctrl.unified_field_title_to_field), 2)
-        self.assertEqual("Tag 2", ctrl.unified_field_title_to_field["tag2"].title)
+        self.assertEqual("T Ag - 2", ctrl.unified_field_title_to_field["tag2"].title)
         self.assertEqual("tag2", ctrl.unified_field_title_to_field["tag2"].unified_title)
         # Check if document docid2 is now linked with tag 2
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 2)
@@ -156,7 +156,7 @@ class TestAnalysisController(unittest.TestCase):
         # Now add a new document with a new tag
         ctrl.analyze_field_tag("docid3", "t ag - 3")
         self.assertTrue(len(ctrl.unified_field_title_to_field), 3)
-        self.assertEqual("Tag 3", ctrl.unified_field_title_to_field["tag3"].title)
+        self.assertEqual("T Ag - 3", ctrl.unified_field_title_to_field["tag3"].title)
         self.assertEqual("tag3", ctrl.unified_field_title_to_field["tag3"].unified_title)
         # Check if document docid3 is now linked with tag 3
         self.assertTrue(len(ctrl.unified_field_title_to_documents), 3)

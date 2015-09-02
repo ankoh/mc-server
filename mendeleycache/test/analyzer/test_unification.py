@@ -32,10 +32,10 @@ class TestUnification(unittest.TestCase):
         self.assertEqual(unified, "slpcteachingsoftwareengineeringprojectcoursesinindustrialapplicationlandscapesatutorial")
 
     def test_unify_field_title(self):
-        title = "cyber-physical-systems"
+        title = "cyber-physical systems"
         unified, real = unify_field_title(title)
         self.assertEqual(unified, "cyberphysicalsystems")
-        self.assertEqual(real, "Cyber Physical Systems")
+        self.assertEqual(real, "Cyber-Physical Systems")
 
     def test_unify_profile_name(self):
         first_name = "Claudia"

@@ -36,15 +36,17 @@ def unify_field_title(title: str):
     [1] contains the derived real title
     """
 
-    # Remove all spaces and convert to lowercase
-    prep_title = title.replace(" ", "").lower()
+    # Convert to lowercase
+    prep_title = title.lower()
     # Now remove all these unneeded ugly symbols
     prep_title = re.sub('[.,:;\|/\{\}\(\)\[\]\'\"\+]','', prep_title)
+    # Replace multiple whitespaces with one
+    prep_title = re.sub(' +', ' ', prep_title)
 
     # The real title is now the replacement of dashes with whitespace
-    real_title = prep_title.replace("-", " ").title()
-    # The unified title is the removal of the dashes
-    unified_title = prep_title.replace("-", "")
+    real_title = prep_title.title()
+    # The unified title is the removal of the dashes and whitespace
+    unified_title = re.sub('[ \-]','', prep_title)
     trimmed_unified_title = unified_title[:150]
     return trimmed_unified_title, real_title
 
