@@ -9,7 +9,7 @@ from mendeleycache.utils.remotes import remote_is_online
 from mendeleycache.utils.json_encoder import DefaultEncoder
 
 import json
-
+from mendeleycache.utils.cors import crossdomain
 
 class SystemController:
     def __init__(self, app: Flask, data_controller: DataController, config: ServiceConfiguration):
@@ -21,6 +21,7 @@ class SystemController:
         self._app.add_url_rule('/system/status', view_func=self.get_system_status)
         self._app.add_url_rule('/system/entities', view_func=self.get_system_entities)
 
+    @crossdomain(origin="*")
     def get_system_status(self):
         log.info('The route /system/status has been triggered')
 
@@ -35,6 +36,7 @@ class SystemController:
 
         return json.dumps(json_result, cls=DefaultEncoder)
 
+    @crossdomain(origin="*")
     def get_system_entities(self):
         log.info('The route /system/entities has been triggered')
         json_result = dict()

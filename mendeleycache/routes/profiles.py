@@ -6,7 +6,7 @@ from mendeleycache.utils.json_encoder import DefaultEncoder
 from mendeleycache.data.controller import DataController
 from mendeleycache.logging import log
 import json
-
+from mendeleycache.utils.cors import crossdomain
 
 class ProfilesController:
     def __init__(self, app: Flask, data_controller: DataController):
@@ -16,6 +16,7 @@ class ProfilesController:
     def register(self):
         self._app.add_url_rule('/profiles/', view_func=self.get_profiles)
 
+    @crossdomain(origin="*")
     def get_profiles(self):
         log.info('The route /profiles/ has been triggered')
 

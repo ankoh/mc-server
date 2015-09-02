@@ -7,7 +7,7 @@ from mendeleycache.data.controller import DataController
 from mendeleycache.logging import log
 
 import json
-
+from mendeleycache.utils.cors import crossdomain
 
 class FieldsController:
     def __init__(self, app: Flask, data_controller: DataController):
@@ -17,6 +17,7 @@ class FieldsController:
     def register(self):
         self._app.add_url_rule('/fields/', view_func=self.get_fields)
 
+    @crossdomain(origin="*")
     def get_fields(self):
         log.info('The route /fields/ has been triggered')
 
