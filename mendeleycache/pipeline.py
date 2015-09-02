@@ -14,36 +14,12 @@ class PipelineReport:
                  unified_document_title_to_documents: int,
                  unified_field_title_to_field: int,
                  field_associations: int):
-        self._profiles = profiles
-        self._documents = documents
-        self._unified_name_to_profiles = unified_name_to_profiles
-        self._unified_document_title_to_documents = unified_document_title_to_documents
-        self._unified_field_title_to_field = unified_field_title_to_field
-        self._field_associations = field_associations
-
-    @property
-    def profiles(self):
-        return self._profiles
-
-    @property
-    def documents(self):
-        return self._documents
-
-    @property
-    def unified_name_to_profiles(self):
-        return self._unified_name_to_profiles
-
-    @property
-    def unified_document_title_to_documents(self):
-        return self._unified_document_title_to_documents
-
-    @property
-    def unified_field_title_to_field(self):
-        return self._unified_field_title_to_field
-
-    @property
-    def field_associations(self):
-        return self._field_associations
+        self.profiles = profiles
+        self.documents = documents
+        self.unified_name_to_profiles = unified_name_to_profiles
+        self.unified_document_title_to_documents = unified_document_title_to_documents
+        self.unified_field_title_to_field = unified_field_title_to_field
+        self.field_associations = field_associations
 
 
 class PipelineController:

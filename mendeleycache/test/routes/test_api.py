@@ -77,9 +77,16 @@ def sample_api():
     ]
 
     for call in calls:
-        response= sut.get(call, follow_redirects=True)
+        response = sut.get(call, follow_redirects=True)
         """:type : Response"""
         data = response.get_data(as_text=True)
         json_data = json.loads(data)
-        print('Results for REST call: %s' % call)
+        print('Results for REST call: GET %s' % call)
         print(json.dumps(json_data, indent=2))
+
+    response = sut.post('/cache/update', follow_redirects=True)
+    """:type : Response"""
+    data = response.get_data(as_text=True)
+    json_data = json.loads(data)
+    print('Results for REST call: POST /cache/update')
+    print(json.dumps(json_data, indent=2))

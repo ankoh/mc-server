@@ -25,6 +25,7 @@ class CacheController:
     def register(self):
         self._app.add_url_rule('/cache/status', methods=['GET'], view_func=self.get_system_status)
         self._app.add_url_rule('/cache/entities', methods=['GET'], view_func=self.get_system_entities)
+        self._app.add_url_rule('/cache/update', methods=['POST'], view_func=self.post_update)
 
     def get_system_status(self):
         log.info('The route GET /cache/status has been triggered')
@@ -55,4 +56,7 @@ class CacheController:
 
     def post_update(self):
         log.info('The route POST /cache/update has been triggered')
-        pass
+        report = self._pipeline_controller.execute()
+        report_dict = dict(report.__dict__)
+        json_report = json.dumps(report_dict, cls=DefaultEncoder)
+        return json_report
