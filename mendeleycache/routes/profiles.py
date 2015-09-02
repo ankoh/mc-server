@@ -17,7 +17,7 @@ class ProfilesController:
         self._app.add_url_rule('/profiles/', methods=['GET'], view_func=self.get_profiles)
 
     def get_profiles(self):
-        log.info('The route /profiles/ has been triggered')
+        log.info('The route GET /profiles/ has been triggered')
 
         # Default parameters
         profile_ids = ''

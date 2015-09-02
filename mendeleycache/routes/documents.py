@@ -17,7 +17,7 @@ class DocumentsController:
         self._app.add_url_rule('/documents/', methods=['GET'], view_func=self.get_documents)
 
     def get_documents(self):
-        log.info('The route /documents/ has been triggered')
+        log.info('The route GET /documents/ has been triggered')
 
         # Default parameters
         profile_ids = ''

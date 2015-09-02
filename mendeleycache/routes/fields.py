@@ -18,7 +18,7 @@ class FieldsController:
         self._app.add_url_rule('/fields/', methods=['GET'], view_func=self.get_fields)
 
     def get_fields(self):
-        log.info('The route /fields/ has been triggered')
+        log.info('The route GET /fields/ has been triggered')
 
         fields = self._data_controller.api_data.get_fields()
 

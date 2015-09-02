@@ -19,7 +19,7 @@ class RootController:
         self._app.add_url_rule('/', methods=['GET'], view_func=self.get_root)
 
     def get_root(self):
-        log.info('The route / has been triggered')
+        log.info('The route GET / has been triggered')
 
         return "Welcome to the Mendeley Cache"
 
