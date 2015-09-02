@@ -45,7 +45,10 @@ class MendeleyCache(Flask):
         self.fields_controller = FieldsController(self, self.data_controller)
         self.profiles_controller = ProfilesController(self, self.data_controller)
         self.publications_controller = DocumentsController(self, self.data_controller)
-        self.system_controller = CacheController(self, self.data_controller, self.configuration)
+        self.cache_controller = CacheController(self,
+                                                self.data_controller,
+                                                self.pipeline_controller,
+                                                self.configuration)
         self.root_controller = RootController(self, self.data_controller, self.configuration)
 
         # Register the routes
@@ -57,5 +60,5 @@ class MendeleyCache(Flask):
         self.fields_controller.register()
         self.profiles_controller.register()
         self.publications_controller.register()
-        self.system_controller.register()
+        self.cache_controller.register()
         self.root_controller.register()

@@ -6,6 +6,46 @@ from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.logging import log
 
 
+class PipelineReport:
+    def __init__(self,
+                 profiles: int,
+                 documents: int,
+                 unified_name_to_profiles: int,
+                 unified_document_title_to_documents: int,
+                 unified_field_title_to_field: int,
+                 field_associations: int):
+        self._profiles = profiles
+        self._documents = documents
+        self._unified_name_to_profiles = unified_name_to_profiles
+        self._unified_document_title_to_documents = unified_document_title_to_documents
+        self._unified_field_title_to_field = unified_field_title_to_field
+        self._field_associations = field_associations
+
+    @property
+    def profiles(self):
+        return self._profiles
+
+    @property
+    def documents(self):
+        return self._documents
+
+    @property
+    def unified_name_to_profiles(self):
+        return self._unified_name_to_profiles
+
+    @property
+    def unified_document_title_to_documents(self):
+        return self._unified_document_title_to_documents
+
+    @property
+    def unified_field_title_to_field(self):
+        return self._unified_field_title_to_field
+
+    @property
+    def field_associations(self):
+        return self._field_associations
+
+
 class PipelineController:
     """
     The PipelineController manages the data flow.
@@ -61,17 +101,37 @@ class PipelineController:
             unified_name_to_participated_documents=unified_name_to_participated_documents
         )
 
+        # Count field associations
+        field_associations = 0
+        for title, docs in unified_field_title_to_documents.items():
+            field_associations += len(docs)
+
+        # Generate report
+        report = PipelineReport(
+            profiles=len(profiles),
+            documents=len(documents),
+            unified_name_to_profiles=len(unified_name_to_profiles),
+            unified_document_title_to_documents=len(unified_document_title_to_documents),
+            unified_field_title_to_field=len(unified_field_title_to_field),
+            field_associations=field_associations
+        )
+
+        # Log report
         log.info("Pipeline has been executed\n"
                  "\t| replaced {profiles} profiles\n"
                  "\t| replaced {documents} documents\n"
                  "\t| replaced {unified_name_to_profiles} unified profile names\n"
                  "\t| replaced {unified_document_title_to_documents} unified document titles\n"
                  "\t| replaced {unified_field_title_to_field} research fields\n"
-                 "\t| replaced {unified_field_title_to_documents} field associations\n".format(
-            profiles=len(profiles),
-            documents=len(documents),
-            unified_name_to_profiles=len(unified_name_to_profiles),
-            unified_document_title_to_documents=len(unified_document_title_to_documents),
-            unified_field_title_to_field=len(unified_field_title_to_field),
-            unified_field_title_to_documents=len(unified_field_title_to_documents)
-        ))
+                 "\t| replaced {field_associations} field associations\n".format(
+                profiles=report.profiles,
+                documents=report.documents,
+                unified_name_to_profiles=report.unified_name_to_profiles,
+                unified_document_title_to_documents=report.unified_document_title_to_documents,
+                unified_field_title_to_field=report.unified_field_title_to_field,
+                field_associations=report.field_associations
+            )
+        )
+
+        # Return report
+        return report
