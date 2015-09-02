@@ -14,7 +14,7 @@ class ProfilesController:
         self._data_controller = data_controller
 
     def register(self):
-        self._app.add_url_rule('/profiles/', view_func=self.get_profiles, methods=['GET'])
+        self._app.add_url_rule('/profiles/', methods=['GET'], view_func=self.get_profiles)
 
     def get_profiles(self):
         log.info('The route /profiles/ has been triggered')
