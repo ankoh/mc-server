@@ -18,8 +18,8 @@ class SystemController:
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/system/status', view_func=self.get_system_status)
-        self._app.add_url_rule('/system/entities', view_func=self.get_system_entities)
+        self._app.add_url_rule('/system/status', view_func=self.get_system_status, methods=['GET'])
+        self._app.add_url_rule('/system/entities', view_func=self.get_system_entities, methods=['GET'])
 
     def get_system_status(self):
         log.info('The route /system/status has been triggered')

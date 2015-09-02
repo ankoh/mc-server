@@ -14,7 +14,7 @@ class DocumentsController:
         self._data_controller = data_controller
 
     def register(self):
-        self._app.add_url_rule('/documents/', view_func=self.get_documents)
+        self._app.add_url_rule('/documents/', view_func=self.get_documents, methods=['GET'])
 
     def get_documents(self):
         log.info('The route /documents/ has been triggered')

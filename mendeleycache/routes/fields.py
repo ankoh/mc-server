@@ -15,7 +15,7 @@ class FieldsController:
         self._data_controller = data_controller
 
     def register(self):
-        self._app.add_url_rule('/fields/', view_func=self.get_fields)
+        self._app.add_url_rule('/fields/', view_func=self.get_fields, methods=['GET'])
 
     def get_fields(self):
         log.info('The route /fields/ has been triggered')

@@ -16,7 +16,7 @@ class RootController:
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/', view_func=self.get_root)
+        self._app.add_url_rule('/', view_func=self.get_root, methods=['GET'])
 
     def get_root(self):
         log.info('The route / has been triggered')
