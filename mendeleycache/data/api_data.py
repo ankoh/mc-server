@@ -118,7 +118,7 @@ class ApiData:
             query = self._query_all_documents[0]
 
         if only_count:
-            select = "SELECT COUNT(*) AS cnt FROM"
+            select = "SELECT COUNT(DISTINCT cd.id) AS cnt FROM"
             query = re.sub(query_head, select, query)
             query = re.sub('ORDER BY :order_by', '', query)
             query = re.sub('LIMIT :query_limit', '',  query)
