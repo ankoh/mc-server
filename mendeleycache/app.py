@@ -5,6 +5,9 @@ import flask
 
 app = MendeleyCache(__name__)
 
+@app.before_request
+def before():
+    flask.request.environ['CONTENT_TYPE'] = 'application/json'
 
 @app.after_request
 def add_cors(resp):
