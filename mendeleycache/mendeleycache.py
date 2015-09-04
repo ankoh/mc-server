@@ -12,6 +12,7 @@ from mendeleycache.data.controller import DataController
 from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.crawler.file_crawler import FileCrawler
 from mendeleycache.crawler.controller import CrawlController
+from mendeleycache.crawler.abstract_crawler import AbstractCrawler
 from mendeleycache.pipeline import PipelineController
 from mendeleycache.logging import log
 
@@ -30,8 +31,24 @@ class MendeleyCache(Flask):
         self.data_controller.assert_schema()
         log.info("Schema has been checked")
 
-        # TODO: read crawler type from config as well
-        self.crawler = FileCrawler()
+        # Create crawler based on configuration
+        self.crawler = None
+        """:type : AbstractCrawler"""
+        if not self.configuration.uses_mendeley:
+            log.info("Pipeline uses FileCrawler")
+            self.crawler = FileCrawler()
+        else:
+            from mendeleycache.crawler.sdk_crawler import SDKCrawler
+            log.info("Pipeline uses SDKCrawler".format(
+                app_id=self.configuration.crawler.app_id,
+                app_secret=self.configuration.crawler.app_secret
+            ))
+            self.crawler = SDKCrawler(
+                app_id=self.configuration.crawler.app_id,
+                app_secret=self.configuration.crawler.app_secret
+            )
+
+        # Create the pipeline
         self.crawl_controller = CrawlController(self.crawler, self.configuration.crawler.research_group)
         self.analysis_controller = AnalysisController()
         self.pipeline_controller = PipelineController(
