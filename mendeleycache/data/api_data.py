@@ -39,6 +39,19 @@ class ApiData:
             read_sql_statements('sql', 'api', 'query_profiles_by_profile_ids_or_field_ids.sql')
         self._query_entities =\
             read_sql_statements('sql', 'api', 'query_entities.sql')
+        self._query_last_update=\
+            read_sql_statements('sql', 'api', 'query_last_update.sql')
+
+    def get_last_update(self):
+        """
+        Returns the last entry of the update_log
+        :return:
+        """
+        query = self._query_last_update[0]
+        log.info("Querying last update")
+
+        with self._engine.begin() as conn:
+            return conn.execute(query).fetchall()
 
     def get_entities(self):
         """
@@ -46,7 +59,6 @@ class ApiData:
         :return:
         """
         query = self._query_entities[0]
-
         log.info("Querying entity numbers")
 
         # Fire the sql script in a transaction

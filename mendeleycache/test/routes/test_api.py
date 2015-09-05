@@ -12,12 +12,13 @@ from mendeleycache.mendeleycache import MendeleyCache
 
 import json
 import time
+import sys
 
 
 def sample_api():
     app = MendeleyCache('mendeleycache')
     app.debug = True
-    app.pipeline_controller.execute()
+    report = app.pipeline_controller.execute()
 
     sut = app.test_client()
     """:type : FlaskClient"""

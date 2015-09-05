@@ -37,7 +37,10 @@ class CacheController:
         json_result["mendeleyStatus"] = "Online" if api_online else "Offline"
         json_result["lastUpdate"] = "Never"
 
-        # TODO: Store lastUpdate through database
+        # Fetch last entry in update_log
+        last_update_log = self._data_controller.api_data.get_last_update()
+        if len(last_update_log) > 0:
+            json_result["lastUpdate"] = last_update_log[0]["dt"]
 
         return json.dumps(json_result, cls=DefaultEncoder)
 
@@ -56,11 +59,12 @@ class CacheController:
 
     def post_update(self):
         log.info('The route POST /cache/update has been triggered')
-        report = self._pipeline_controller.execute()
 
-        # Log update
+        # Get remote IP
         remote = get_remote_ip()
-        self._data_controller._crawl_data.log_update(report, remote)
+
+        # Trigger the pipeline
+        report = self._pipeline_controller.execute(remote)
 
         # Dump report
         report_dict = dict(report.__dict__)

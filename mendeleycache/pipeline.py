@@ -37,7 +37,7 @@ class PipelineController:
         self._crawl_controller = crawl_controller
         self._analysis_controller = analysis_controller
 
-    def execute(self):
+    def execute(self, addr: str = "localhost"):
         """
         Execute a single run of the pipeline
         This is later scheduled like once per day
@@ -91,6 +91,11 @@ class PipelineController:
             fields=len(unified_field_title_to_field),
             field_links=field_links
         )
+
+        # Log update in update_log
+        self._data_controller.crawl_data.log_update(
+            report=report,
+            remote_addr=addr)
 
         # Log report
         log.info("Pipeline has been executed\n"
