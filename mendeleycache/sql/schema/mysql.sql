@@ -133,7 +133,7 @@ CREATE INDEX cache_document_has_cache_field_document_id on cache_document_has_ca
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS update_log (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  dt DATETIME NOT NULL DEFAULT NOW(),
+  dt TIMESTAMP NOT NULL DEFAULT NOW(),
   ip VARCHAR(150) NOT NULL,
   profiles INT NOT NULL,
   documents INT NOT NULL,

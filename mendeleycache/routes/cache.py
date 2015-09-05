@@ -34,8 +34,8 @@ class CacheController:
 
         json_result = dict()
         json_result["serverVersion"] = self._config.version
-        json_result["mendeleyStatus"] = "Online" if api_online else "Offline"
-        json_result["lastUpdate"] = "Never"
+        json_result["mendeleyStatus"] = "online" if api_online else "offline"
+        json_result["lastUpdate"] = "never"
 
         # Fetch last entry in update_log
         last_update_log = self._data_controller.api_data.get_last_update()
