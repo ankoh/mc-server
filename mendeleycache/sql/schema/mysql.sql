@@ -126,3 +126,22 @@ CREATE TABLE IF NOT EXISTS cache_document_has_cache_field (
 -- and cache_document_has_cache_field -> cache_document
 CREATE INDEX cache_document_has_cache_field_field_id on cache_document_has_cache_field(cache_field_id);
 CREATE INDEX cache_document_has_cache_field_document_id on cache_document_has_cache_field(cache_document_id);
+
+
+-- -----------------------------------------------------
+-- Table update_log
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS update_log (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  dt DATETIME NOT NULL DEFAULT NOW(),
+  ip VARCHAR(150) NOT NULL,
+  profiles INT NOT NULL,
+  documents INT NOT NULL,
+  unified_profiles INT NOT NULL,
+  unified_documents INT NOT NULL,
+  fields INT NOT NULL,
+  field_associations INT NOT NULL
+);
+
+-- Index on date to find the latest log entry fast
+CREATE INDEX update_log_dt on update_log(dt DESC);

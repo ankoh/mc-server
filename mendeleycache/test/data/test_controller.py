@@ -32,6 +32,7 @@ class TestDataController(unittest.TestCase):
         self.assertFalse(ctrl.table_exists('cache_field'))
         self.assertFalse(ctrl.table_exists('cache_document_has_cache_field'))
         self.assertFalse(ctrl.table_exists('cache_profile_has_cache_document'))
+        self.assertFalse(ctrl.table_exists('update_log'))
 
         # Create schema
         ctrl.run_schema()
@@ -44,6 +45,7 @@ class TestDataController(unittest.TestCase):
         self.assertTrue(ctrl.table_exists('cache_field'))
         self.assertTrue(ctrl.table_exists('cache_document_has_cache_field'))
         self.assertTrue(ctrl.table_exists('cache_profile_has_cache_document'))
+        self.assertTrue(ctrl.table_exists('update_log'))
 
     def test_is_initialized(self):
         sqlite_in_memory = SQLiteConfiguration("")

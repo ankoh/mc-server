@@ -106,7 +106,8 @@ class DataController:
             self.table_exists('cache_profile') and
             self.table_exists('cache_field') and
             self.table_exists('cache_profile_has_cache_document') and
-            self.table_exists('cache_document_has_cache_field')
+            self.table_exists('cache_document_has_cache_field') and
+            self.table_exists('update_log')
         )
 
     def run_schema(self):
