@@ -23,9 +23,9 @@ class CacheController:
         self._config = config
 
     def register(self):
-        self._app.add_url_rule('/cache/status', methods=['GET'], view_func=self.get_system_status)
-        self._app.add_url_rule('/cache/entities', methods=['GET'], view_func=self.get_system_entities)
-        self._app.add_url_rule('/cache/update', methods=['POST'], view_func=self.post_update)
+        self._app.add_url_rule('/cache/status/', methods=['GET'], view_func=self.get_system_status)
+        self._app.add_url_rule('/cache/entities/', methods=['GET'], view_func=self.get_system_entities)
+        self._app.add_url_rule('/cache/update/', methods=['POST'], view_func=self.post_update)
 
     def get_system_status(self):
         log.info('The route GET /cache/status has been triggered')
