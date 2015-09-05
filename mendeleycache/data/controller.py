@@ -129,10 +129,24 @@ class DataController:
     def drop_all(self):
         drops = read_sql_statements('sql', 'schema', 'drop_all.sql')
 
+        foreign_key_off = ""
+        foreign_key_on = ""
+
+        if self._config.engine == "mysql":
+            foreign_key_off = "SET FOREIGN_KEY_CHECKS = 0"
+            foreign_key_on = "SET FOREIGN_KEY_CHECKS = 1"
+        elif self._config.engine == "sqlite":
+            foreign_key_off = "PRAGMA foreign_keys = OFF"
+            foreign_key_on = "PRAGMA foreign_keys = ON"
+
         with self._engine.begin() as conn:
+            log.info(foreign_key_off)
+            conn.execute(foreign_key_off)
             for drop in drops:
                 log.info(drop)
                 conn.execute(drop)
+            log.info(foreign_key_on)
+            conn.execute(foreign_key_on)
 
         log.info("Database has been dropped")
 
