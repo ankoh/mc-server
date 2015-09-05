@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS update_log (
   unified_profiles INT NOT NULL,
   unified_documents INT NOT NULL,
   fields INT NOT NULL,
-  field_associations INT NOT NULL
+  field_links INT NOT NULL
 );
 
 -- Index on date to find the latest log entry fast

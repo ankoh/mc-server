@@ -35,6 +35,35 @@ class CrawlData:
             read_sql_statements('sql', 'crawler', 'link_profiles_to_documents.sql')
         self._post_update = \
             read_sql_statements('sql', 'crawler', 'post_update.sql')
+        self._log_update = \
+            read_sql_statements('sql', 'crawler', 'log_update.sql')
+
+    def log_update(self, report, remote_addr: str):
+        values = "('{ip}'," \
+            "'{profiles}'," \
+            "'{documents}'," \
+            "'{unified_profiles}'," \
+            "'{unified_documents}'," \
+            "'{fields}'," \
+            "'{field_links}')".format(
+            ip=remote_addr,
+            profiles=report.profiles,
+            documents=report.documents,
+            unified_profiles=report.unified_profiles,
+            unified_documents=report.unified_documents,
+            fields=report.fields,
+            field_links=report.field_links
+        )
+        insert = self._log_update[0]
+        insert = re.sub(':log_entry', values, insert)
+        insert = sanitize_stmt(insert)
+
+        with self._engine.begin() as conn:
+            log.info(insert)
+            conn.execute(insert)
+
+        log.info("Update has been logged for address '%s'" % remote_addr)
+        
 
     def update_documents(self, docs: [Document]):
         """

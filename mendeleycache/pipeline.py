@@ -13,13 +13,13 @@ class PipelineReport:
                  unified_profiles: int,
                  unified_documents: int,
                  fields: int,
-                 field_associations: int):
+                 field_links: int):
         self.profiles = profiles
         self.documents = documents
         self.unified_profiles = unified_profiles
         self.unified_documents = unified_documents
         self.fields = fields
-        self.field_associations = field_associations
+        self.field_links = field_links
 
 
 class PipelineController:
@@ -78,9 +78,9 @@ class PipelineController:
         )
 
         # Count field associations
-        field_associations = 0
+        field_links = 0
         for title, docs in unified_field_title_to_documents.items():
-            field_associations += len(docs)
+            field_links += len(docs)
 
         # Generate report
         report = PipelineReport(
@@ -89,23 +89,23 @@ class PipelineController:
             unified_profiles=len(unified_name_to_profiles),
             unified_documents=len(unified_document_title_to_documents),
             fields=len(unified_field_title_to_field),
-            field_associations=field_associations
+            field_links=field_links
         )
 
         # Log report
         log.info("Pipeline has been executed\n"
-                 "\t| replaced {profiles} profiles\n"
-                 "\t| replaced {documents} documents\n"
-                 "\t| replaced {unified_profiles} unified profile names\n"
-                 "\t| replaced {unified_documents} unified document titles\n"
-                 "\t| replaced {fields} research fields\n"
-                 "\t| replaced {field_associations} field associations\n".format(
+                 "\t| found {profiles} profiles\n"
+                 "\t| found {documents} documents\n"
+                 "\t| found {unified_profiles} unified profile names\n"
+                 "\t| found {unified_documents} unified document titles\n"
+                 "\t| found {fields} research fields\n"
+                 "\t| found {field_links} field links\n".format(
                 profiles=report.profiles,
                 documents=report.documents,
                 unified_profiles=report.unified_profiles,
                 unified_documents=report.unified_documents,
                 fields=report.fields,
-                field_associations=report.field_associations
+                field_links=report.field_links
             )
         )
 
