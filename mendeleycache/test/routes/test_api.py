@@ -24,56 +24,56 @@ def sample_api():
     """:type : FlaskClient"""
 
     calls = [
-        '/fields',
-        '/profiles?slim=true',
-        '/profiles',
-        str('/profiles'
+        '/fields/',
+        '/profiles/?slim=true',
+        '/profiles/',
+        str('/profiles/'
             '?field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'),
-        str('/profiles'
+        str('/profiles/'
             '?profile-ids=Y29uc3RhbnRpbnNjaGV1ZXJtYW5u'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'),
-        '/documents',
+        '/documents/',
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&offset=1'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=year&order-dir=desc'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=title'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=source'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?profile-ids=c3RlcGhhbmtydXNjaGU%3D'
             '&field-ids=Y29udGludW91c3NvZnR3YXJlZW5naW5lZXJpbmc%3D'
             '&limit=1&order-attr=source&only-count=true'
         ),
         str(
-            '/documents'
+            '/documents/'
             '?order-attr=year&order-dir=desc&offset=5&limit=5&only-count=true'
         ),
-        '/cache/status',
-        '/cache/entities'
+        '/cache/status/',
+        '/cache/entities/'
 
     ]
 
@@ -85,7 +85,7 @@ def sample_api():
         print('Results for REST call: GET %s' % call)
         print(json.dumps(json_data, indent=2))
 
-    response = sut.post('/cache/update', follow_redirects=True)
+    response = sut.post('/cache/update/', follow_redirects=True)
     """:type : Response"""
     data = response.get_data(as_text=True)
     json_data = json.loads(data)
