@@ -35,10 +35,11 @@ trusted_proxies = {
 
 
 def is_trusted_proxy(addr: str) -> bool:
-    repr_addr = repr(addr)
-    log.debug("Checking if address '%s' is a trusted proxy" % repr_addr)
+    if addr is None:
+        return False
+    log.debug("Checking if address '%s' is a trusted proxy" % addr)
     for trusted_proxy in trusted_proxies:
-        if trusted_proxy.match(repr_addr):
+        if trusted_proxy.match(addr):
             return True
     return False
 
