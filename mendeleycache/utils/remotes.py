@@ -5,6 +5,8 @@ from flask import request
 import re
 import socket
 
+from mendeleycache.logging import log
+
 
 def remote_is_online(hostname: str, port: int) -> bool:
     """
@@ -33,8 +35,10 @@ trusted_proxies = {
 
 
 def is_trusted_proxy(addr: str) -> bool:
+    repr_addr = repr(addr)
+    log.debug("Checking if address '%s' is a trusted proxy" % repr_addr)
     for trusted_proxy in trusted_proxies:
-        if trusted_proxy.match(repr(addr)):
+        if trusted_proxy.match(repr_addr):
             return True
     return False
 
@@ -52,6 +56,8 @@ def get_remote_ip():
     # Otherwise spoofing becomes dangerous
 
     route = request.access_route + [request.remote_addr]
+    log.debug("Route: %s" % route)
     remote_addr = next((addr for addr in reversed(route)
                         if not is_trusted_proxy(addr)), request.remote_addr)
+    log.debug("Choosing: '%s'" % remote_addr)
     return remote_addr
