@@ -129,3 +129,6 @@ if len(sys.argv) >= 2:
 
     elif command == "sample-api":
         sample_api()
+
+    else:
+        log.critical("Unknown command '%s'" % command)
