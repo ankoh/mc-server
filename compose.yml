@@ -5,6 +5,8 @@ server:
     - "32760:8080"
   links:
     - "mysql:db"
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
   environment:
     - MC_CRAWLER=mendeley
     - MC_APP_ID=:app_id
@@ -27,6 +29,8 @@ mysql:
   restart: always
   volumes_from:
     - mysqlconfig
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
   environment:
     - MYSQL_ROOT_PASSWORD=yourrootpassword
 
