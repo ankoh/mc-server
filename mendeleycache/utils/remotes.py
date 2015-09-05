@@ -2,6 +2,7 @@ __author__ = 'kohn'
 
 from flask import request
 
+import re
 import socket
 
 
@@ -22,6 +23,21 @@ def remote_is_online(hostname: str, port: int) -> bool:
     sock.close()
     return online
 
+# Precompile a list of trusted proxies
+# Localhost and the 172.17/16 subnet are trusted by default
+trusted_proxies = {
+    re.compile('127.0.0.1'),
+    re.compile('localhost'),
+    re.compile('172.17.[0-9]+.[0-9]+')
+}
+
+
+def is_trusted_proxy(addr: str) -> bool:
+    for trusted_proxy in trusted_proxies:
+        if trusted_proxy.match(repr(addr)):
+            return True
+    return False
+
 
 def get_remote_ip():
     """
@@ -34,11 +50,8 @@ def get_remote_ip():
     # Be aware of that issue:
     # http://stackoverflow.com/questions/22868900/how-do-i-safely-get-the-users-real-ip-address-in-flask-using-mod-wsgi
     # Otherwise spoofing becomes dangerous
-    trusted_proxies = {
-        '127.0.0.1'
-    }
-    route = request.access_route + [request.remote_addr]
 
+    route = request.access_route + [request.remote_addr]
     remote_addr = next((addr for addr in reversed(route)
-                        if addr not in trusted_proxies), request.remote_addr)
+                        if not is_trusted_proxy(addr)), request.remote_addr)
     return remote_addr

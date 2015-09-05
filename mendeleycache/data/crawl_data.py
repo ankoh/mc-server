@@ -63,7 +63,7 @@ class CrawlData:
             conn.execute(insert)
 
         log.info("Update has been logged for address '%s'" % remote_addr)
-        
+
 
     def update_documents(self, docs: [Document]):
         """
