@@ -11,9 +11,6 @@ sample-file-pipeline:
     - python -m mendeleycache.runner sample-file-pipeline
   tags:
     - python3
-  only:
-    - master
-    - testing
 
 sample-api:
   script:
@@ -21,9 +18,6 @@ sample-api:
     - python -m mendeleycache.runner sample-api
   tags:
     - python3
-  only:
-    - master
-    - testing
 
 docker-build:
   script:
