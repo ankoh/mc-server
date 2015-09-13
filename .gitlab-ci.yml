@@ -52,7 +52,7 @@ compose-local:
   script:
     - sed -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ -e s/:port/32760/ -e s/:db_secret/$LOCAL_DB_SECRET/g compose.yml > derived.yml
     - docker-compose -f derived.yml -p mcserver stop
-    - if $RESET; then docker-compose -f derived.yml -p mcserver rm -vf; fi
+    - if $RESET_LOCAL; then docker-compose -f derived.yml -p mcserver rm -vf; fi
     - docker-compose -f derived.yml -p mcserver up -d
   tags:
     - privileged
@@ -86,4 +86,3 @@ compose-dockerbruegge1:
         docker rmi \$(docker images | grep '<none>' | awk '{print $3}') 2>/dev/null || echo 'No untagged images to delete.'"
   only:
     - master
-    - testing
