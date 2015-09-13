@@ -47,6 +47,28 @@ compose-local:
     - master
     - testing
 
+compose-dockerbruegge1:
+  type: deploy
+  script:
+    - mkdir -p ~/.ssh/
+    - echo "$DOCKERBRUEGGE_DEPLOYMENT_KEY" > ~/.ssh/dockerbruegge1.key
+    - printf "Host dockerbruegge1\n    HostName dockerbruegge1.informatik.tu-muenchen.de\n    User itg\n    IdentityFile ~/.ssh/dockerbruegge1.key\n" >> ~/.ssh/config
+    - ssh-keyscan dockerbruegge1.informatik.tu-muenchen.de >> ~/.ssh/known_hosts
+    - chmod 700 ~/.ssh/
+    - chmod 600 ~/.ssh/config
+    - chmod 600 ~/.ssh/dockerbruegge1.key
+    - chmod 600 ~/.ssh/known_hosts
+    - ssh dockerbruegge1 "mkdir -p ~/projects/mendeley-cache/server;
+        rm -rf ~/projects/mendeley-cache/server;
+        mkdir -p ~/projects/mendeley-cache/server;"
+    - tar -czf server.tar.gz mendeleycache docker compose.yml Dockerfile
+    - scp server.tar.gz dockerbruegge1:~/projects/mendeley-cache/server/
+    - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/server/server.tar.gz -C ~/projects/mendeley-cache/server"
+  only:
+    - master
+    - testing
+
+
 github:
   script:
     - mkdir -p ~/.ssh/
