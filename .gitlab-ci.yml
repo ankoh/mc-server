@@ -50,7 +50,7 @@ github:
 compose-local:
   type: deploy
   script:
-    - sed -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ -e s/:db_secret/supersafepassword/g compose.yml > derived.yml
+    - sed -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ -e s/:port/32760/ -e s/:db_secret/$LOCAL_DB_SECRET/g compose.yml > derived.yml
     - docker-compose -f derived.yml -p mcserver stop
     - if $RESET; then docker-compose -f derived.yml -p mcserver rm -vf; fi
     - docker-compose -f derived.yml -p mcserver up -d
@@ -63,7 +63,7 @@ compose-local:
 compose-dockerbruegge1:
   type: deploy
   script:
-    - sed -i'' -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ compose.yml
+    - sed -i'' -e s/:app_id/$MC_APP_ID/ -e s/:app_secret/$MC_APP_SECRET/ -e s/:port/32760/ -e s/:db_secret/$DOCKERBRUEGGE_DB_SECRET/g compose.yml
     - mkdir -p ~/.ssh/
     - echo "$DOCKERBRUEGGE_DEPLOYMENT_KEY" > ~/.ssh/dockerbruegge1.key
     - printf "Host dockerbruegge1\n    HostName dockerbruegge1.informatik.tu-muenchen.de\n    User itg\n    IdentityFile ~/.ssh/dockerbruegge1.key\n" >> ~/.ssh/config
@@ -79,8 +79,6 @@ compose-dockerbruegge1:
     - scp server.tar.gz dockerbruegge1:~/projects/mendeley-cache/server/
     - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/server/server.tar.gz -C ~/projects/mendeley-cache/server"
     - ssh dockerbruegge1 "cd ~/projects/mendeley-cache/server; 
-        sed -i'' -e s/:port/32760/ compose.yml;
-        sed -i'' -e s/:db_secret/fru5owg8ip8fat6e4ot0vu7ac3ic9auj/g compose.yml;
         docker build -t ankoh/mendeleycache-server .;
         docker-compose -f compose.yml -p mcserver stop;
         docker-compose -f compose.yml -p mcserver up -d;
