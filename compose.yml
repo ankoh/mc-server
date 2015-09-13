@@ -2,7 +2,7 @@ server:
   image: ankoh/mendeleycache-server:latest
   restart: always
   ports:
-    - "32760:8080"
+    - ":port:8080"
   links:
     - "mysql:db"
   volumes:
@@ -17,7 +17,7 @@ server:
     - MC_DATABASE_PORT=3306
     - MC_DATABASE_DB=mcdb
     - MC_DATABASE_USER=root
-    - MC_DATABASE_SECRET=yourrootpassword
+    - MC_DATABASE_SECRET=:db_secret
 
 mysqlconfig:
   build: ./docker/mysqlconfig/
@@ -32,6 +32,6 @@ mysql:
   volumes:
     - "/etc/localtime:/etc/localtime:ro"
   environment:
-    - MYSQL_ROOT_PASSWORD=yourrootpassword
+    - MYSQL_ROOT_PASSWORD=:db_secret
 
 
