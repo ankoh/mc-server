@@ -68,8 +68,8 @@ compose-dockerbruegge1:
     - master
     - testing
 
-
 github:
+  type: deploy
   script:
     - mkdir -p ~/.ssh/
     - echo "$GITHUB_DEPLOYMENT_KEY" > ~/.ssh/github.key
