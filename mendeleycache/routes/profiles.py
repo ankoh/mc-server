@@ -48,9 +48,36 @@ class ProfilesController:
                 field_ids=field_ids
             )
 
+        # Pattern for cms pages
+        page_pattern = self._cache_config.profile_page_pattern
+
         # Serialize documents
         response = []
         for profile in profiles:
-            profile_dict = dict(profile.items())
+            profile_dict = dict(profile)
+
+            # names
+            name = None
+            first_name = None
+            last_name = None
+
+
+            # Get names
+            if 'first_name' in profile_dict and 'last_name' in profile_dict:
+                first_name = profile_dict['first_name']
+                last_name = profile_dict['last_name']
+            elif 'name' in profile_dict:
+                name = profile_dict['name']
+                name_parts = [s.lower() for i, s in enumerate(name.split())]
+                first_name = name_parts[0]
+                last_name = name_parts[1]
+
+            # If the names are available create the page link
+            if first_name is not None and last_name is not None:
+                page = page_pattern
+                page = re.sub(':firstname', first_name, page)
+                page = re.sub(':lastname', last_name, page)
+                profile_dict["page"] = page
+
             response.append(profile_dict)
         return json.dumps(response, cls=DefaultEncoder)
