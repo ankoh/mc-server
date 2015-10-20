@@ -69,7 +69,7 @@ compose-dockerbruegge1:
     - ssh dockerbruegge1 "mkdir -p ~/projects/mendeley-cache/server;
         rm -rf ~/projects/mendeley-cache/server;
         mkdir -p ~/projects/mendeley-cache/server;"
-    - tar -czf server.tar.gz mendeleycache docker compose.yml Dockerfile
+    - tar -czf server.tar.gz mendeleycache docker compose.yml Dockerfile requirements.txt
     - scp server.tar.gz dockerbruegge1:~/projects/mendeley-cache/server/
     - ssh dockerbruegge1 "tar -xzf ~/projects/mendeley-cache/server/server.tar.gz -C ~/projects/mendeley-cache/server"
     - ssh dockerbruegge1 "cd ~/projects/mendeley-cache/server; 
