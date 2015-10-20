@@ -33,13 +33,13 @@ class ProfilesController:
             first_name = request.args['first_name']
             log.debug('Query parameter "first_name" = %s' % first_name)
         else:
-            return {"error": "You need to provide the query parameter first_name"}, 400
+            return json.dumps({"error": "You need to provide the query parameter first_name"}, cls=DefaultEncoder), 400
 
         if 'last_name' in request.args:
             last_name = request.args['last_name']
             log.debug('Query paramter "last_name" = %s' % last_name)
         else:
-            return {"error": "You need to provide the query parameter last_name"}, 400
+            return json.dumps({"error": "You need to provide the query parameter last_name"}, cls=DefaultEncoder), 400
 
         if self._data_controller.api_data.profile_exists(first_name, last_name):
             url = self._cache_config.profile_page_pattern
