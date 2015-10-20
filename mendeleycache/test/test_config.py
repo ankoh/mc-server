@@ -35,6 +35,8 @@ class TestServiceConfiguration(unittest.TestCase):
             del os.environ["MC_DATABASE_SECRET"]
         if "MC_DATABASE_PATH" in os.environ:
             del os.environ["MC_DATABASE_PATH"]
+        if "MC_PROFILE_PAGE_PATTERN" in os.environ:
+            del os.environ["MC_PROFILE_PAGE_PATTERN"]
 
     @staticmethod
     def write_valid_1():
@@ -43,6 +45,7 @@ class TestServiceConfiguration(unittest.TestCase):
         os.environ["MC_APP_ID"] = "231209"
         os.environ["MC_APP_SECRET"] = "AlPhA4NuMeRiC20"
         os.environ["MC_RESEARCH_GROUP"] = "d0b7f41f-ad37-3b47-ab70-9feac35557cc"
+        os.environ["MC_PROFILE_PAGE_PATTERN"] = "www1.in.tum.de/:firstname-:lastname"
 
         os.environ["MC_DATABASE_ENGINE"] = "mysql"
         os.environ["MC_DATABASE_HOSTNAME"] = "localhost"
@@ -126,6 +129,7 @@ class TestServiceConfiguration(unittest.TestCase):
             self.assertEqual(config.database.db, "mendeleycache")
             self.assertEqual(config.database.user, "root")
             self.assertEqual(config.database.secret, "42")
+            self.assertEqual(config.cache.profile_page_pattern, "www1.in.tum.de/:firstname-:lastname")
         except InvalidConfigurationException as e:
             self.fail(e)
 
@@ -139,6 +143,7 @@ class TestServiceConfiguration(unittest.TestCase):
             self.assertEqual(config.crawler.research_group, "d0b7f41f-ad37-3b47-ab70-9feac35557cc")
             self.assertEqual(config.database.engine, "sqlite")
             self.assertEqual(config.database.path, "")
+            self.assertEqual(config.cache.profile_page_pattern, "")
         except InvalidConfigurationException as e:
             self.fail(e)
 

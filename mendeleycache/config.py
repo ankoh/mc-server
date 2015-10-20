@@ -5,6 +5,22 @@ from os.path import exists
 from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
 
+
+class CacheConfiguration:
+    """
+    General configuration of the cache server
+    The profile_page_pattern is used to map user profiles to joomla links
+    The strings :firstname and :lastname are substituted with the respective values
+    Example: www1.in.tum.de/:firstname-:lastname
+    """
+    def __init__(self, profile_page_pattern: str):
+        self._profile_page_pattern = profile_page_pattern
+
+    @property
+    def profile_page_pattern(self):
+        return self._profile_page_pattern
+
+
 class CrawlerConfiguration:
     """
     Configuration of a base crawler
@@ -47,7 +63,7 @@ class DatabaseConfiguration:
     """
     Configuration of the database access
     """
-    def __init__(self, engine: str, ):
+    def __init__(self, engine: str):
         self._engine = engine
 
     @property
@@ -106,12 +122,19 @@ class ServiceConfiguration:
         self._database = None
         """:type : DatabaseConfiguration"""
 
+        self._cache = None
+        """:type : CacheConfiguration"""
+
         self._version = "0.1.0"
         self._uses_mendeley = False
 
     @property
     def crawler(self):
         return self._crawler
+
+    @property
+    def cache(self):
+        return self._cache
 
     @property
     def uses_mendeley(self):
@@ -140,6 +163,9 @@ class ServiceConfiguration:
         app_secret = os.environ['MC_APP_SECRET'] if 'MC_APP_SECRET' in os.environ else ''
         research_group = os.environ['MC_RESEARCH_GROUP'] if 'MC_RESEARCH_GROUP' in os.environ else 'd0b7f41f-ad37-3b47-ab70-9feac35557cc'
 
+        # Cache
+        profile_page_pattern = os.environ['MC_PROFILE_PAGE_PATTERN'] if 'MC_PROFILE_PAGE_PATTERN' in os.environ else ""
+
         # Database
         database_engine = os.environ['MC_DATABASE_ENGINE'] if 'MC_DATABASE_ENGINE' in os.environ else 'sqlite'
         # Mysql
@@ -154,7 +180,10 @@ class ServiceConfiguration:
         def missing_attribute(attribute: str):
             raise InvalidConfigurationException("Environment misses variable: %s" % attribute)
 
-        # Then validate these settings
+        # Store cache settings
+        self._cache = CacheConfiguration(profile_page_pattern)
+
+        # Validate crawler settings
         if crawler == 'file':
             self._uses_mendeley = False
             self._crawler = FileCrawlerConfiguration(research_group)
@@ -174,6 +203,7 @@ class ServiceConfiguration:
         else:
             raise InvalidConfigurationException('Unknown crawler type %s' % crawler)
 
+        # Validate database settings
         if database_engine == 'sqlite':
             # If no path has been provided the in memory version is used
             self._database = SQLiteConfiguration(database_path)
