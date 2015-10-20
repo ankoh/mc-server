@@ -246,23 +246,4 @@ class ApiData:
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
 
-    def profile_exists(self, first_name: str, last_name: str):
-        """
-        Given a firstname and a lastname, return if there is a profile in the database
-        :return:
-        """
-        query = self._query_profile[0]
-        query = re.sub(':firstname',  "'%s'" % first_name, query)
-        query = re.sub(':lastname', "'%s'" % last_name, query)
-
-        log.info("Querying profile by first_name and last_name\n"
-                 "\t| first_name: {first_name}\n"
-                 "\t| last_name: {last_name}\n".format(
-            first_name=first_name,
-            last_name=last_name
-        ))
-
-        with self._engine.begin() as conn:
-            p = conn.execute(query).fetchone()
-            return p is not None
 

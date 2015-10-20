@@ -17,37 +17,7 @@ class ProfilesController:
         self._cache_config = cache_config
 
     def register(self):
-        self._app.add_url_rule('/profile/page/', methods=['GET'], view_func=self.get_profile_page)
         self._app.add_url_rule('/profiles/', methods=['GET'], view_func=self.get_profiles)
-
-    def get_profile_page(self):
-        """
-        Searches a profile page
-        ATTENTION: At the moment only first_name, last_name queries are supported.
-        ID queries could be easily added though
-        :return:
-        """
-        log.info('The route GET /profile/page/ has been triggered')
-
-        if 'first_name' in request.args:
-            first_name = request.args['first_name']
-            log.debug('Query parameter "first_name" = %s' % first_name)
-        else:
-            return json.dumps({"error": "You need to provide the query parameter first_name"}, cls=DefaultEncoder), 400
-
-        if 'last_name' in request.args:
-            last_name = request.args['last_name']
-            log.debug('Query paramter "last_name" = %s' % last_name)
-        else:
-            return json.dumps({"error": "You need to provide the query parameter last_name"}, cls=DefaultEncoder), 400
-
-        if self._data_controller.api_data.profile_exists(first_name, last_name):
-            url = self._cache_config.profile_page_pattern
-            url = re.sub(':firstname', first_name.lower(), url)
-            url = re.sub(':lastname', last_name.lower(), url)
-            return json.dumps({"url": url}, cls=DefaultEncoder), 200
-        else:
-            return json.dumps({"error": "No profile found"}, cls=DefaultEncoder), 404
 
     def get_profiles(self):
         log.info('The route GET /profiles/ has been triggered')
@@ -78,9 +48,36 @@ class ProfilesController:
                 field_ids=field_ids
             )
 
+        # Pattern for cms pages
+        page_pattern = self._cache_config.profile_page_pattern
+
         # Serialize documents
         response = []
         for profile in profiles:
-            profile_dict = dict(profile.items())
+            profile_dict = dict(profile)
+
+            # names
+            name = None
+            first_name = None
+            last_name = None
+
+
+            # Get names
+            if 'first_name' in profile_dict and 'last_name' in profile_dict:
+                first_name = profile_dict['first_name']
+                last_name = profile_dict['last_name']
+            elif 'name' in profile_dict:
+                name = profile_dict['name']
+                name_parts = [s.lower() for i, s in enumerate(name.split())]
+                first_name = name_parts[0]
+                last_name = name_parts[1]
+
+            # If the names are available create the page link
+            if first_name is not None and last_name is not None:
+                page = page_pattern
+                page = re.sub(':firstname', first_name, page)
+                page = re.sub(':lastname', last_name, page)
+                profile_dict["page"] = page
+
             response.append(profile_dict)
         return json.dumps(response, cls=DefaultEncoder)
