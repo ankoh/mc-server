@@ -57,7 +57,7 @@ compose-local:
 compose-dockerbruegge1:
   type: deploy
   script:
-    - sed -i'' -e s%:profile_page_pattern%$PROFILE_PAGE_PATTERN% -e s/:app_id/$DOCKERBRUEGGE_APP_ID/ -e s/:app_secret/$DOCKERBRUEGGE_APP_SECRET/ -e s/:port/32760/ -e s/:db_secret/$DOCKERBRUEGGE_DB_SECRET/g compose.yml
+      - sed -i'' -e s%:profile_page_pattern%$PROFILE_PAGE_PATTERN% -e s/:app_id/$DOCKERBRUEGGE_APP_ID/ -e s/:app_secret/$DOCKERBRUEGGE_APP_SECRET/ -e s/:port/32760/ -e s/:db_secret/$DOCKERBRUEGGE_DB_SECRET/g compose.yml
     - mkdir -p ~/.ssh/
     - echo "$DOCKERBRUEGGE_DEPLOYMENT_KEY" > ~/.ssh/dockerbruegge1.key
     - printf "Host dockerbruegge1\n    HostName dockerbruegge1.informatik.tu-muenchen.de\n    User itg\n    IdentityFile ~/.ssh/dockerbruegge1.key\n" >> ~/.ssh/config
