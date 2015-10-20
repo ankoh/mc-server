@@ -18,6 +18,7 @@ server:
     - MC_DATABASE_DB=mcdb
     - MC_DATABASE_USER=root
     - MC_DATABASE_SECRET=:db_secret
+    - MC_PROFILE_PAGE_PATTERN=:profile_page_pattern
 
 mysqlconfig:
   build: ./docker/mysqlconfig/
