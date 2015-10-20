@@ -61,7 +61,7 @@ class MendeleyCache(Flask):
 
         # Create the routing controllers
         self.fields_controller = FieldsController(self, self.data_controller)
-        self.profiles_controller = ProfilesController(self, self.data_controller, CacheConfiguration(""))
+        self.profiles_controller = ProfilesController(self, self.data_controller, self.configuration.cache)
         self.publications_controller = DocumentsController(self, self.data_controller)
         self.cache_controller = CacheController(self,
                                                 self.data_controller,

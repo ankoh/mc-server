@@ -43,12 +43,11 @@ class ProfilesController:
 
         if self._data_controller.api_data.profile_exists(first_name, last_name):
             url = self._cache_config.profile_page_pattern
-            url = re.sub(':firstname', first_name, url)
-            url = re.sub(':lastname', last_name, url)
+            url = re.sub(':firstname', first_name.lower(), url)
+            url = re.sub(':lastname', last_name.lower(), url)
             return json.dumps({"url": url}, cls=DefaultEncoder), 200
         else:
             return json.dumps({"error": "No profile found"}, cls=DefaultEncoder), 404
-
 
     def get_profiles(self):
         log.info('The route GET /profiles/ has been triggered')

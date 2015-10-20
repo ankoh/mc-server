@@ -4,7 +4,7 @@ import os
 from os.path import exists
 from mendeleycache.utils.files import get_relative_path
 from mendeleycache.utils.exceptions import InvalidConfigurationException
-
+from mendeleycache.logging import log
 
 class CacheConfiguration:
     """
@@ -15,6 +15,7 @@ class CacheConfiguration:
     """
     def __init__(self, profile_page_pattern: str):
         self._profile_page_pattern = profile_page_pattern
+        log.debug("Using profile_page_pattern: %s" % profile_page_pattern)
 
     @property
     def profile_page_pattern(self):
