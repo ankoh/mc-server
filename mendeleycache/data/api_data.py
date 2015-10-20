@@ -1,6 +1,7 @@
 __author__ = 'kohn'
 
 from sqlalchemy.engine import Engine
+from mendeleycache.config import CacheConfiguration
 
 from mendeleycache.data.reader import read_sql_statements
 from mendeleycache.logging import log
@@ -18,6 +19,7 @@ http://stackoverflow.com/questions/14512228/sqlalchemy-raw-sql-parameter-substit
 """
 
 query_head = re.compile("SELECT([A-Za-z0-9_., \n]+)FROM")
+
 
 class ApiData:
     def __init__(self, engine: Engine):
@@ -41,6 +43,8 @@ class ApiData:
             read_sql_statements('sql', 'api', 'query_entities.sql')
         self._query_last_update=\
             read_sql_statements('sql', 'api', 'query_last_update.sql')
+        self._query_profile=\
+            read_sql_statements('sql', 'api', 'query_profile.sql')
 
     def get_last_update(self):
         """
@@ -241,3 +245,24 @@ class ApiData:
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             return conn.execute(query).fetchall()
+
+    def profile_exists(self, first_name: str, last_name: str):
+        """
+        Given a firstname and a lastname, return if there is a profile in the database
+        :return:
+        """
+        query = self._query_profile[0]
+        #query = re.sub(':firstname',  "%s" % first_name, query)
+        #query = re.sub(':lastname', "%s" % last_name, query)
+
+        log.info("Querying profile by first_name and last_name\n"
+                 "\t| first_name: {first_name}\n"
+                 "\t| last_name: {last_name}\n".format(
+            first_name=first_name,
+            last_name=last_name
+        ))
+
+        with self._engine.begin() as conn:
+            p = conn.execute(query, {'firstname': first_name, 'lastname': last_name}).fetchone()
+            return p is not None
+
