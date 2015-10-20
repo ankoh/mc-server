@@ -13,6 +13,7 @@ from mendeleycache.analyzer.controller import AnalysisController
 from mendeleycache.crawler.file_crawler import FileCrawler
 from mendeleycache.crawler.controller import CrawlController
 from mendeleycache.crawler.abstract_crawler import AbstractCrawler
+from mendeleycache.config import CacheConfiguration
 from mendeleycache.pipeline import PipelineController
 from mendeleycache.logging import log
 
@@ -60,7 +61,7 @@ class MendeleyCache(Flask):
 
         # Create the routing controllers
         self.fields_controller = FieldsController(self, self.data_controller)
-        self.profiles_controller = ProfilesController(self, self.data_controller)
+        self.profiles_controller = ProfilesController(self, self.data_controller, self.configuration.cache)
         self.publications_controller = DocumentsController(self, self.data_controller)
         self.cache_controller = CacheController(self,
                                                 self.data_controller,
