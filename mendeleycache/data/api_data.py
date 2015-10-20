@@ -252,8 +252,8 @@ class ApiData:
         :return:
         """
         query = self._query_profile[0]
-        #query = re.sub(':firstname',  "%s" % first_name, query)
-        #query = re.sub(':lastname', "%s" % last_name, query)
+        query = re.sub(':firstname',  "'%s'" % first_name, query)
+        query = re.sub(':lastname', "'%s'" % last_name, query)
 
         log.info("Querying profile by first_name and last_name\n"
                  "\t| first_name: {first_name}\n"
@@ -263,6 +263,6 @@ class ApiData:
         ))
 
         with self._engine.begin() as conn:
-            p = conn.execute(query, {'firstname': first_name, 'lastname': last_name}).fetchone()
+            p = conn.execute(query).fetchone()
             return p is not None
 
