@@ -25,7 +25,7 @@ def sample_api():
 
     calls = [
         '/fields/',
-        '/profile/?first_name=Stephan&last_name=Krusche',
+        '/profile/page/?first_name=Stephan&last_name=Krusche',
         '/profiles/?slim=true',
         '/profiles/',
         str('/profiles/'
