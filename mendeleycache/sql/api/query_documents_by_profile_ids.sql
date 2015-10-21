@@ -11,6 +11,7 @@ SELECT DISTINCT
   d.authors         AS authors,
   d.keywords        AS keywords,
   d.tags            AS tags,
+  d.website         AS website,
   d.derived_bibtex  AS derived_bibtex
 FROM
   document d,

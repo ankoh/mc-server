@@ -18,6 +18,7 @@ INTO document
     authors,
     keywords,
     tags,
+    website,
     derived_bibtex
   )
 VALUES
