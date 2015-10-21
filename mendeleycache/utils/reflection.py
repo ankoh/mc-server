@@ -17,3 +17,10 @@ def get_dict_if_key_exists(dct, key):
         return dct[key]
     else:
         return dict()
+
+
+def get_array_if_key_exists(dct, key):
+    if key in dct and not dct[key] is None:
+        return dct[key]
+    else:
+        return []

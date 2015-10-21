@@ -1,6 +1,6 @@
 __author__ = 'kohn'
 
-from mendeleycache.utils.reflection import get_class_attributes, get_default, get_dict_if_key_exists
+from mendeleycache.utils.reflection import get_class_attributes, get_default, get_dict_if_key_exists, get_array_if_key_exists
 from mendeleycache.models import Document, Profile, Member
 from dateutil.parser import parse
 from datetime import date
@@ -53,16 +53,24 @@ def get_document_from_json(json_doc) -> Document:
     core_keywords = []
     tags = []
 
-    for author in get_dict_if_key_exists(json_doc, 'authors'):
+    # Website
+    website = ""
+
+    for author in get_array_if_key_exists(json_doc, 'authors'):
         first_name = get_default(author, 'first_name', "")
         last_name = get_default(author, 'last_name', "")
         core_authors.append((first_name, last_name))
 
-    for keyword in get_dict_if_key_exists(json_doc, 'keywords'):
+    for keyword in get_array_if_key_exists(json_doc, 'keywords'):
         core_keywords.append(keyword)
 
-    for tag in get_dict_if_key_exists(json_doc, 'tags'):
+    for tag in get_array_if_key_exists(json_doc, 'tags'):
         tags.append(tag)
+
+    if 'websites' in json_doc and json_doc['websites'] is not None:
+        websites = json_doc['websites']
+        if len(websites) > 0:
+            website = websites[0]
 
     # Append new document to result list
     return Document(
@@ -77,5 +85,6 @@ def get_document_from_json(json_doc) -> Document:
         core_year=core_year,
         core_authors=core_authors,
         core_keywords=core_keywords,
+        website=website,
         tags=tags
     )
