@@ -148,7 +148,7 @@ class TestFileCrawler(unittest.TestCase):
         self.assertIsNotNone(document.tags)
         self.assertEqual(len(document.tags), 0)
 
-         # check fourth document (97a6fc9e-70b3-321a-b1c6-477c1946cf3d)
+        # check fourth document (97a6fc9e-70b3-321a-b1c6-477c1946cf3d)
         document = documents[3]
         self.assertEqual(document.core_title, "A framework for the creation of mobile games targeting dyslexic children")
         self.assertEqual(document.core_profile_id, "6fe24a7a-8eb8-3005-8d6a-71cdf48ce92d")
@@ -163,6 +163,24 @@ class TestFileCrawler(unittest.TestCase):
         self.assertEqual(len(document.core_keywords), 0)
         self.assertIsNotNone(document.tags)
         self.assertEqual(len(document.tags), 0)
+
+        # Check website selection
+        # (2f513deb-7b71-3428-9782-9b10f3c6cc9b)
+        documents = crwler.get_documents_by_profile_id('2f513deb-7b71-3428-9782-9b10f3c6cc9b')
+        self.assertIsNotNone(documents)
+        self.assertEqual(10, len(documents))
+
+        document = documents[0]
+        self.assertEqual(document.core_title, "Requirements Engineering for Scientific Computing: A Model-Based Approach")
+        self.assertEqual(document.website, "http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6130741")
+
+        document = documents[1]
+        self.assertEqual(document.core_title, "A domain specific requirements model for scientific computing: NIER track")
+        self.assertEqual(document.website, "http://doi.acm.org.eaccess.ub.tum.de/10.1145/1985793.1985922")
+
+        document = documents[2]
+        self.assertEqual(document.core_title, "Comparing state- and operation-based change tracking on models")
+        self.assertEqual(document.website, "")
 
     def test_get_documents_by_group_id(self):
         crwler = FileCrawler()

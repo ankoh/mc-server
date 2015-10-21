@@ -64,7 +64,6 @@ class CrawlData:
 
         log.info("Update has been logged for address '%s'" % remote_addr)
 
-
     def update_documents(self, docs: [Document]):
         """
         Given a document list, this method replaces the documents in the database with new ones
@@ -86,6 +85,7 @@ class CrawlData:
                 "'{authors}'," \
                 "'{keywords}'," \
                 "'{tags}'," \
+                "'{website}'," \
                 "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
             b64u = generate_id(u)
@@ -113,6 +113,7 @@ class CrawlData:
                 authors=sanitize_text(authors_string),
                 keywords=sanitize_text(keywords_string),
                 tags=sanitize_text(tags_string),
+                website=sanitize_text(doc.website),
                 derived_bibtex=sanitize_text(bibtex)
             )
 

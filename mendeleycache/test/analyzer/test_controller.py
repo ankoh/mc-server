@@ -25,6 +25,7 @@ class TestAnalysisController(unittest.TestCase):
         core_year=2015,
         core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent")],
         core_keywords=[],
+        website="",
         tags=["t ag- 1"]
     )
 
@@ -40,6 +41,7 @@ class TestAnalysisController(unittest.TestCase):
         core_year=2015,
         core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent"), ("Noch", "Einer")],
         core_keywords=[],
+        website="",
         tags=["t ag- 1", "t ag -2"]
     )
 
@@ -55,6 +57,7 @@ class TestAnalysisController(unittest.TestCase):
         core_year=2015,
         core_authors=[("Hans", "Mustermann")],
         core_keywords=[],
+        website="",
         tags=["t ag- 3"]
     )
 
@@ -70,6 +73,7 @@ class TestAnalysisController(unittest.TestCase):
         core_year=2015,
         core_authors=[("Heinrich", "Mustermann")],
         core_keywords=[],
+        website="",
         tags=[]
     )
 

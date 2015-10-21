@@ -34,6 +34,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent")],
             core_keywords=[],
+            website="",
             tags=["t ag- 1"]
         )
         document2 = Document(
@@ -48,6 +49,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
         data_controller.crawl_data.update_documents([document1, document2])
@@ -95,6 +97,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
         document2 = Document(
@@ -109,6 +112,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
 
@@ -211,6 +215,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
         document2 = Document(
@@ -225,6 +230,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
         document3 = Document(
@@ -239,6 +245,7 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
+            website="",
             tags=[]
         )
         unified_document_title_to_documents = dict()

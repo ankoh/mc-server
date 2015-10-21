@@ -46,6 +46,7 @@ class Document:
                  core_year: int,
                  core_authors: [(str, str)],
                  core_keywords: [str],
+                 website: str,
                  tags: [str]):
         self.__core_id = core_id
         self.__core_profile_id = core_profile_id
@@ -58,6 +59,7 @@ class Document:
         self.__core_year = core_year
         self.__core_authors = core_authors
         self.__core_keywords = core_keywords
+        self.__website = website
         self.__tags = tags
 
     @property
@@ -103,6 +105,10 @@ class Document:
     @property
     def core_keywords(self) -> [str]:
         return self.__core_keywords
+
+    @property
+    def website(self) -> [str]:
+        return self.__website
 
     @property
     def tags(self) -> [str]:
