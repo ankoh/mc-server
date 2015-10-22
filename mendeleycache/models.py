@@ -46,20 +46,28 @@ class Document:
                  core_year: int,
                  core_authors: [(str, str)],
                  core_keywords: [str],
-                 website: str,
+                 doc_website: str,
+                 conf_website: str,
+                 conf_city: str,
+                 conf_month: int,
+                 conf_pages: str,
                  tags: [str]):
-        self.__core_id = core_id
-        self.__core_profile_id = core_profile_id
-        self.__core_title = core_title
-        self.__core_type = core_type
+        self.__core_id = str(core_id)
+        self.__core_profile_id = str(core_profile_id)
+        self.__core_title = str(core_title)
+        self.__core_type = str(core_type)
         self.__core_created = core_created
         self.__core_last_modified = core_last_modified
-        self.__core_abstract = core_abstract
-        self.__core_source = core_source
+        self.__core_abstract = str(core_abstract)
+        self.__core_source = str(core_source)
         self.__core_year = core_year
         self.__core_authors = core_authors
         self.__core_keywords = core_keywords
-        self.__website = website
+        self.__doc_website = str(doc_website)
+        self.__conf_website = str(conf_website)
+        self.__conf_city = str(conf_city)
+        self.__conf_month = conf_month
+        self.__conf_pages = str(conf_pages)
         self.__tags = tags
 
     @property
@@ -107,8 +115,24 @@ class Document:
         return self.__core_keywords
 
     @property
-    def website(self) -> [str]:
-        return self.__website
+    def doc_website(self) -> str:
+        return self.__doc_website
+
+    @property
+    def conf_website(self) -> str:
+        return self.__conf_website
+
+    @property
+    def conf_city(self) -> str:
+        return self.__conf_city
+
+    @property
+    def conf_month(self) -> int:
+        return self.__conf_month
+
+    @property
+    def conf_pages(self) -> str:
+        return self.__conf_pages
 
     @property
     def tags(self) -> [str]:

@@ -11,7 +11,11 @@ SELECT DISTINCT
   d.authors         AS authors,
   d.keywords        AS keywords,
   d.tags            AS tags,
-  d.website         AS website,
+  d.doc_website     AS doc_website,
+  d.conf_website    AS conf_website,
+  d.conf_city       AS conf_city,
+  d.conf_month      AS conf_month,
+  d.conf_pages      AS conf_pages,
   d.derived_bibtex  AS derived_bibtex
 FROM
   document d,

@@ -172,15 +172,15 @@ class TestFileCrawler(unittest.TestCase):
 
         document = documents[0]
         self.assertEqual(document.core_title, "Requirements Engineering for Scientific Computing: A Model-Based Approach")
-        self.assertEqual(document.website, "http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6130741")
+        self.assertEqual(document.doc_website, "http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6130741")
 
         document = documents[1]
         self.assertEqual(document.core_title, "A domain specific requirements model for scientific computing: NIER track")
-        self.assertEqual(document.website, "http://doi.acm.org.eaccess.ub.tum.de/10.1145/1985793.1985922")
+        self.assertEqual(document.doc_website, "http://doi.acm.org.eaccess.ub.tum.de/10.1145/1985793.1985922")
 
         document = documents[2]
         self.assertEqual(document.core_title, "Comparing state- and operation-based change tracking on models")
-        self.assertEqual(document.website, "")
+        self.assertEqual(document.doc_website, "")
 
     def test_get_documents_by_group_id(self):
         crwler = FileCrawler()

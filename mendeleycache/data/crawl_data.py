@@ -85,7 +85,11 @@ class CrawlData:
                 "'{authors}'," \
                 "'{keywords}'," \
                 "'{tags}'," \
-                "'{website}'," \
+                "'{doc_website}'," \
+                "'{conf_website}'," \
+                "'{conf_month}'," \
+                "'{conf_pages}'," \
+                "'{conf_city}'," \
                 "'{derived_bibtex}')"
             u, _ = unify_document_title(doc.core_title)
             b64u = generate_id(u)
@@ -113,7 +117,11 @@ class CrawlData:
                 authors=sanitize_text(authors_string),
                 keywords=sanitize_text(keywords_string),
                 tags=sanitize_text(tags_string),
-                website=sanitize_text(doc.website),
+                doc_website=sanitize_text(doc.doc_website),
+                conf_website=sanitize_text(doc.conf_website),
+                conf_month=doc.conf_month,
+                conf_pages=sanitize_text(doc.conf_pages),
+                conf_city=sanitize_text(doc.conf_city),
                 derived_bibtex=sanitize_text(bibtex)
             )
 
