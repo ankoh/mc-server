@@ -62,7 +62,7 @@ def get_document_from_json(json_doc) -> Document:
     conf_month = 0
 
     try:
-        month_digit_string = get_default(json_doc, 'month', "0")
+        month_digit_string = get_default(json_doc, 'month', "-1")
         month_digit = int(month_digit_string)
         if 0 <= month_digit <= 12:
             conf_month = month_digit
