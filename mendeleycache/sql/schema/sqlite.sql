@@ -33,7 +33,11 @@ CREATE TABLE IF NOT EXISTS document (
   authors TEXT,
   keywords TEXT,
   tags TEXT,
-  website VARCHAR(255),
+  doc_website VARCHAR(255),
+  conf_website VARCHAR(255),
+  conf_month VARCHAR(45),
+  conf_pages VARCHAR(255),
+  conf_city VARCHAR(255),
   derived_bibtex TEXT);
 
 -- Foreign key document -> cache_document
