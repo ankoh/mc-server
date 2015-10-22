@@ -27,7 +27,7 @@ class TestAnalysisController(unittest.TestCase):
         core_keywords=[],
         doc_website="",
         conf_website="",
-        conf_month="",
+        conf_month=0,
         conf_city="",
         conf_pages="",
         tags=["t ag- 1"]
@@ -47,7 +47,7 @@ class TestAnalysisController(unittest.TestCase):
         core_keywords=[],
         doc_website="",
         conf_website="",
-        conf_month="",
+        conf_month=0,
         conf_city="",
         conf_pages="",
         tags=["t ag- 1", "t ag -2"]
@@ -67,7 +67,7 @@ class TestAnalysisController(unittest.TestCase):
         core_keywords=[],
         doc_website="",
         conf_website="",
-        conf_month="",
+        conf_month=0,
         conf_city="",
         conf_pages="",
         tags=["t ag- 3"]
@@ -87,7 +87,7 @@ class TestAnalysisController(unittest.TestCase):
         core_keywords=[],
         doc_website="",
         conf_website="",
-        conf_month="",
+        conf_month=0,
         conf_city="",
         conf_pages="",
         tags=[]

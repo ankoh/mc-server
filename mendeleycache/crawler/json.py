@@ -4,6 +4,7 @@ from mendeleycache.utils.reflection import get_class_attributes, get_default, ge
 from mendeleycache.models import Document, Profile, Member
 from dateutil.parser import parse
 from datetime import date
+import calendar
 
 
 def get_members_from_json(json_data) -> [Member]:
@@ -57,8 +58,16 @@ def get_document_from_json(json_doc) -> Document:
     doc_website = ""
     conf_website = ""
     conf_city = get_default(json_doc, 'city', "")
-    conf_month = get_default(json_doc, 'month', "")
     conf_pages = get_default(json_doc, 'pages', "")
+    conf_month = 0
+
+    try:
+        month_digit_string = get_default(json_doc, 'month', "0")
+        month_digit = int(month_digit_string)
+        if 0 <= month_digit <= 12:
+            conf_month = month_digit
+    except ValueError:
+        pass
 
     for author in get_array_if_key_exists(json_doc, 'authors'):
         first_name = get_default(author, 'first_name', "")

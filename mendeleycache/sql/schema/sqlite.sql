@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS document (
   tags TEXT,
   doc_website VARCHAR(255),
   conf_website VARCHAR(255),
-  conf_month VARCHAR(45),
+  conf_month SMALLINT,
   conf_pages VARCHAR(255),
   conf_city VARCHAR(255),
   derived_bibtex TEXT);

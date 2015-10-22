@@ -49,7 +49,7 @@ class Document:
                  doc_website: str,
                  conf_website: str,
                  conf_city: str,
-                 conf_month: str,
+                 conf_month: int,
                  conf_pages: str,
                  tags: [str]):
         self.__core_id = str(core_id)
@@ -66,7 +66,7 @@ class Document:
         self.__doc_website = str(doc_website)
         self.__conf_website = str(conf_website)
         self.__conf_city = str(conf_city)
-        self.__conf_month = str(conf_month)
+        self.__conf_month = conf_month
         self.__conf_pages = str(conf_pages)
         self.__tags = tags
 
@@ -127,7 +127,7 @@ class Document:
         return self.__conf_city
 
     @property
-    def conf_month(self) -> str:
+    def conf_month(self) -> int:
         return self.__conf_month
 
     @property

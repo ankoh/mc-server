@@ -119,7 +119,7 @@ class CrawlData:
                 tags=sanitize_text(tags_string),
                 doc_website=sanitize_text(doc.doc_website),
                 conf_website=sanitize_text(doc.conf_website),
-                conf_month=sanitize_text(doc.conf_month),
+                conf_month=doc.conf_month,
                 conf_pages=sanitize_text(doc.conf_pages),
                 conf_city=sanitize_text(doc.conf_city),
                 derived_bibtex=sanitize_text(bibtex)
