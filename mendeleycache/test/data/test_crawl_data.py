@@ -34,7 +34,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[("Hans", "Mustermann"), ("Nicht", "Existent")],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=["t ag- 1"]
         )
         document2 = Document(
@@ -49,7 +53,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
         data_controller.crawl_data.update_documents([document1, document2])
@@ -97,7 +105,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
         document2 = Document(
@@ -112,7 +124,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
 
@@ -215,7 +231,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
         document2 = Document(
@@ -230,7 +250,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2014,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
         document3 = Document(
@@ -245,7 +269,11 @@ class TestCrawlScripts(unittest.TestCase):
             core_year=2015,
             core_authors=[],
             core_keywords=[],
-            website="",
+            doc_website="",
+            conf_website="",
+            conf_pages="",
+            conf_month=0,
+            conf_city="",
             tags=[]
         )
         unified_document_title_to_documents = dict()
