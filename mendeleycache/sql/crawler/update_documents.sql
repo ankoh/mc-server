@@ -18,7 +18,11 @@ INTO document
     authors,
     keywords,
     tags,
-    website,
+    doc_website,
+    conf_website,
+    conf_month,
+    conf_pages,
+    conf_city,
     derived_bibtex
   )
 VALUES

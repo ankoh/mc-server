@@ -53,8 +53,12 @@ def get_document_from_json(json_doc) -> Document:
     core_keywords = []
     tags = []
 
-    # Website
-    website = ""
+    # Link and Conference
+    doc_website = ""
+    conf_website = ""
+    conf_city = get_default(json_doc, 'city', "")
+    conf_month = get_default(json_doc, 'month', "")
+    conf_pages = get_default(json_doc, 'pages', "")
 
     for author in get_array_if_key_exists(json_doc, 'authors'):
         first_name = get_default(author, 'first_name', "")
@@ -67,10 +71,14 @@ def get_document_from_json(json_doc) -> Document:
     for tag in get_array_if_key_exists(json_doc, 'tags'):
         tags.append(tag)
 
+    # ATTENTION: By convention the first URL shall point to the document
+    # The second URL shall point to the conference
     if 'websites' in json_doc and json_doc['websites'] is not None:
         websites = json_doc['websites']
         if len(websites) > 0:
-            website = websites[0]
+            doc_website = websites[0]
+        if len(websites) > 1:
+            conf_website = websites[1]
 
     # Append new document to result list
     return Document(
@@ -85,6 +93,10 @@ def get_document_from_json(json_doc) -> Document:
         core_year=core_year,
         core_authors=core_authors,
         core_keywords=core_keywords,
-        website=website,
+        doc_website=doc_website,
+        conf_website=conf_website,
+        conf_city=conf_city,
+        conf_month=conf_month,
+        conf_pages=conf_pages,
         tags=tags
     )
