@@ -1,4 +1,4 @@
-[![build status](https://gitlab.kohn.io/ci/projects/52/status.png?ref=master)](https://gitlab.kohn.io/ci/projects/52?ref=master)
+[![build status](https://gitlab.kohn.io/ankoh/mc-server/badges/master/build.svg)](https://gitlab.kohn.io/ankoh/mc-server/commits/master)
 
 ## Mendeley Cache Server
 
