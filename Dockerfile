@@ -1,18 +1,15 @@
-FROM python:3.4
+FROM python:3
 MAINTAINER Andre Kohn <andre@kohn.io>
 
-# Install mysql-client to wait for mysql init
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5 && \
-    echo "deb http://repo.mysql.com/apt/ubuntu/ utopic connector-python-2.0" >> /etc/apt/sources.list && \
-    apt-get update && \
-	apt-get install -y mysql-client mysql-connector-python-py3 && \
+# Install mysqldb
+RUN apt-get update && \
+	apt-get install -y mysql-client python-mysqldb && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
 # Install application requirements
 COPY requirements.txt /srv/mc/requirements.txt
-RUN pip install -r /srv/mc/requirements.txt && \
-    pip install --allow-all-external mysql-connector-python
+RUN pip install -r /srv/mc/requirements.txt
 
 # Add application folder and pip requirements
 COPY mendeleycache /srv/mc/mendeleycache
