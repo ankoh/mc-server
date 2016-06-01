@@ -18,14 +18,14 @@ def create_engine(config: DatabaseConfiguration) -> Engine:
     path = ""
     log_path = path
     if config.engine == "mysql":
-        path = "mysql+mysqldb://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
+        path = "mysql+pymysql://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
             user=config.user,
             secret=config.secret,
             host=config.hostname,
             port=config.port,
             db=config.db
         )
-        log_path = "mysql+mysqldb://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
+        log_path = "mysql+pymysql://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
             user=config.user,
             secret="{hidden}",
             host=config.hostname,

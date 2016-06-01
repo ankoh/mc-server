@@ -3,7 +3,7 @@ MAINTAINER Andre Kohn <andre@kohn.io>
 
 # Install mysqldb
 RUN apt-get update && \
-	apt-get install -y mysql-client python3-dev libmysqlclient-dev && \
+	apt-get install -y mysql-client && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
