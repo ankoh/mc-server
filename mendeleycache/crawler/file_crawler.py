@@ -29,7 +29,7 @@ class FileCrawler(AbstractCrawler):
             return []
 
         # If yes open and parse json
-        with open(path, 'r') as json_file:
+        with open(path, 'r', encoding="utf-8") as json_file:
             json_data = json.load(json_file)
             return get_members_from_json(json_data)
 
@@ -50,7 +50,7 @@ class FileCrawler(AbstractCrawler):
             return None
 
         # If yes open and parse json
-        with open(path, 'r') as json_file:
+        with open(path, 'r', encoding="utf-8") as json_file:
             json_data = json.load(json_file)
             return get_profile_from_json(json_data)
 
@@ -74,7 +74,7 @@ class FileCrawler(AbstractCrawler):
             return []
 
         # If yes open and parse json
-        with open(path, 'r') as json_file:
+        with open(path, 'r', encoding="utf-8") as json_file:
             json_data = json.load(json_file)
 
             for json_doc in json_data:
@@ -103,7 +103,7 @@ class FileCrawler(AbstractCrawler):
             return []
 
         # If yes open and parse json
-        with open(path, 'r') as json_file:
+        with open(path, 'r', encoding="utf-8") as json_file:
             json_data = json.load(json_file)
 
             for json_doc in json_data:
