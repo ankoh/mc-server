@@ -9,7 +9,7 @@ from mendeleycache.utils.sanitize import sanitize_text, sanitize_stmt
 from mendeleycache.utils.converter import datetime_to_sqltime
 from mendeleycache.logging import log
 
-from sqlalchemy.engine import Engine
+from sqlalchemy.engine import Engine, Connection
 
 import re
 import functools
@@ -71,59 +71,42 @@ class CrawlData:
         :return:
         """
 
-        def prepare_doc(doc: Document) -> str:
-            r = "('{mendeley_id}'," \
-                "'{cache_document_id}'," \
-                "'{owner_mendeley_id}'," \
-                "'{title}'," \
-                "'{doc_type}'," \
-                "'{created}'," \
-                "'{last_modified}'," \
-                "'{abstract}'," \
-                "'{source}'," \
-                "'{pub_year}'," \
-                "'{authors}'," \
-                "'{keywords}'," \
-                "'{tags}'," \
-                "'{doc_website}'," \
-                "'{conf_website}'," \
-                "'{conf_month}'," \
-                "'{conf_pages}'," \
-                "'{conf_city}'," \
-                "'{derived_bibtex}')"
-            u, _ = unify_document_title(doc.core_title)
-            b64u = generate_id(u)
+        def insert_doc(conn: Connection, insert: str, doc: Document):
+          u, _ = unify_document_title(doc.core_title)
+          b64u = generate_id(u)
+          author_string = map(
+            lambda x: "{first} {last}".format(first=x[0], last=x[1]),
+            doc.core_authors)
 
-            # Produce plain TEXT from the lists
-            author_string = map(lambda x: "{first} {last}".format(first=x[0], last=x[1]), doc.core_authors)
-            authors_string = ", ".join(author_string)
-            keywords_string = ", ".join(doc.core_keywords)
-            tags_string = ", ".join(doc.tags)
+          # Create strings
+          authors_string = ", ".join(author_string)
+          keywords_string = ", ".join(doc.core_keywords)
+          tags_string = ", ".join(doc.tags)
 
-            # Generate bibtex
-            bibtex = generate_bibtex(doc)
+          # Create bibtex
+          bibtex = generate_bibtex(doc)
 
-            return r.format(
-                mendeley_id=sanitize_text(doc.core_id),
-                cache_document_id=b64u,
-                owner_mendeley_id=sanitize_text(doc.core_profile_id),
-                title=sanitize_text(doc.core_title),
-                doc_type=sanitize_text(doc.core_type),
-                created=datetime_to_sqltime(doc.core_created),
-                last_modified=datetime_to_sqltime(doc.core_last_modified),
-                abstract=sanitize_text(doc.core_abstract),
-                source=sanitize_text(doc.core_source),
-                pub_year=doc.core_year,
-                authors=sanitize_text(authors_string),
-                keywords=sanitize_text(keywords_string),
-                tags=sanitize_text(tags_string),
-                doc_website=sanitize_text(doc.doc_website),
-                conf_website=sanitize_text(doc.conf_website),
-                conf_month=doc.conf_month,
-                conf_pages=sanitize_text(doc.conf_pages),
-                conf_city=sanitize_text(doc.conf_city),
-                derived_bibtex=sanitize_text(bibtex)
-            )
+          # Insert tuple
+          conn.execute(insert, (
+            sanitize_text(doc.core_id),
+            b64u,
+            sanitize_text(doc.core_profile_id),
+            sanitize_text(doc.core_title),
+            sanitize_text(doc.core_type),
+            datetime_to_sqltime(doc.core_created),
+            datetime_to_sqltime(doc.core_last_modified),
+            sanitize_text(doc.core_abstract),
+            sanitize_text(doc.core_source),
+            doc.core_year,
+            sanitize_text(authors_string),
+            sanitize_text(keywords_string),
+            sanitize_text(tags_string),
+            sanitize_text(doc.doc_website),
+            sanitize_text(doc.conf_website),
+            doc.conf_month,
+            sanitize_text(doc.conf_pages),
+            sanitize_text(doc.conf_city),
+            sanitize_text(bibtex)))
 
         # If there's nothing to insert, abort
         if len(docs) == 0:
@@ -136,17 +119,14 @@ class CrawlData:
         update = self._replace_documents[4]
         temp_drop = self._replace_documents[5]
 
-        documents_string = ",".join(map(prepare_doc, docs))
-        insert = re.sub(':documents', documents_string, insert)
-        insert = sanitize_stmt(insert)
-        
         # Fire the sql script in a transaction
         with self._engine.begin() as conn:
             log.debug("Deleting existing documents")
             conn.execute(delete)
 
             log.debug("Inserting new documents")
-            conn.execute(insert)
+            for doc in docs:
+                insert_doc(conn, insert, doc)
 
             log.debug("Creating temporary table")
             conn.execute(temp)
@@ -350,7 +330,7 @@ class CrawlData:
             log.debug("Updating cache fields")
             conn.execute(sql)
         log.info("Cache fields have been updated")
-    
+
     def link_profiles_to_documents(self,
                                    unified_name_to_profiles: {},
                                    unified_name_to_authored_documents: {},

@@ -26,7 +26,7 @@ INTO document
     derived_bibtex
   )
 VALUES
-  :documents;
+  (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);
 
 -- noinspection SqlResolve
 CREATE TEMPORARY TABLE IF NOT EXISTS temp_cache_document_ids (
