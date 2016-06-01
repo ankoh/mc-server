@@ -5,7 +5,7 @@ from mendeleycache.data.api_data import ApiData
 from mendeleycache.data.crawl_data import CrawlData
 from mendeleycache.data.reader import read_sql_statements
 from mendeleycache.utils.exceptions import InvalidConfigurationException
-from mendeleycache.config import DatabaseConfiguration, MySQLConfiguration, SQLiteConfiguration
+from mendeleycache.config import DatabaseConfiguration, SQLiteConfiguration
 from mendeleycache.logging import log
 import sqlalchemy
 from sqlalchemy.engine import Engine
@@ -17,36 +17,18 @@ from mendeleycache.logging import log
 def create_engine(config: DatabaseConfiguration) -> Engine:
     path = ""
     log_path = path
-    if config.engine == "mysql":
-        path = "mysql+pymysql://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
-            user=config.user,
-            secret=config.secret,
-            host=config.hostname,
-            port=config.port,
-            db=config.db
-        )
-        log_path = "mysql+pymysql://{user}:{secret}@{host}:{port}/{db}?charset=utf8".format(
-            user=config.user,
-            secret="{hidden}",
-            host=config.hostname,
-            port=config.port,
-            db=config.db
-        )
-    elif config.engine == "sqlite":
-        if not config.path:
-            path = "sqlite://"
-            log_path = path
-        else:
-            path = "sqlite:///{path}".format(
-                path=config.path
-            )
-            log_path = path
+
+    if not config.path:
+        path = "sqlite://"
+        log_path = path
     else:
-        log.warn("Unknown engine '%s'" % config.engine)
-        raise InvalidConfigurationException("Unknown database engine")
+        path = "sqlite:///{path}".format(
+            path=config.path
+        )
+        log_path = path
 
     log.info("Creating engine '{engine}' with path {path}".format(
-        engine=config.engine,
+        engine="sqlite",
         path=log_path
     ))
 

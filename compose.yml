@@ -1,38 +1,16 @@
 server:
-  image: ankoh/mc-server:latest
+  build: .
   restart: always
   ports:
-    - ":port:8080"
-  links:
-    - "mysql:db"
+    - "32761:8080"
   volumes:
+    - "/opt/mendeley"
     - "/etc/localtime:/etc/localtime:ro"
   environment:
     - MC_CRAWLER=mendeley
-    - MC_APP_ID=:app_id
-    - MC_APP_SECRET=:app_secret
+    - MC_APP_ID=yourid
+    - MC_APP_SECRET=yoursecret
     - MC_RESEARCH_GROUP=d0b7f41f-ad37-3b47-ab70-9feac35557cc
-    - MC_DATABASE_ENGINE=mysql
-    - MC_DATABASE_HOSTNAME=db
-    - MC_DATABASE_PORT=3306
-    - MC_DATABASE_DB=mcdb
-    - MC_DATABASE_USER=root
-    - MC_DATABASE_SECRET=:db_secret
-    - MC_PROFILE_PAGE_PATTERN=:profile_page_pattern
-
-mysqlconfig:
-  build: ./docker/mysqlconfig/
-  volumes:
-    - "/etc/mysql/"
-
-mysql:
-  image: mysql:latest
-  restart: always
-  volumes_from:
-    - mysqlconfig
-  volumes:
-    - "/etc/localtime:/etc/localtime:ro"
-  environment:
-    - MYSQL_ROOT_PASSWORD=:db_secret
-
-
+    - MC_DATABASE_ENGINE=sqlite
+    - MC_DATABASE_PATH=/opt/mendeley/mcdb.db
+    - MC_PROFILE_PAGE_PATTERN=https://www1.informatik.tu-muenchen.de/people/:firstname.:lastname

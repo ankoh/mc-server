@@ -13,7 +13,7 @@ INTO profile
     link
   )
 VALUES
-  :profiles;
+  (?,?,?,?,?,?);
 
 -- noinspection SqlResolve
 CREATE TEMPORARY TABLE IF NOT EXISTS temp_cache_profile_ids (

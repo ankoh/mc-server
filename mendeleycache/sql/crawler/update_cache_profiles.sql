@@ -6,4 +6,5 @@ INTO cache_profile
     name
   )
 VALUES
-  :cache_profiles
+  (?,?);
+

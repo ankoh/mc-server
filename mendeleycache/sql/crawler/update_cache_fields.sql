@@ -6,4 +6,4 @@ INTO cache_field
     title
   )
 VALUES
-  :cache_fields
+  (?,?);

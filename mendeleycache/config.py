@@ -46,7 +46,7 @@ class SDKCrawlerConfiguration(CrawlerConfiguration):
     @property
     def app_id(self):
         return self._app_id
-    
+
     @property
     def app_secret(self):
         return self._app_secret
@@ -70,36 +70,6 @@ class DatabaseConfiguration:
     @property
     def engine(self):
         return self._engine
-
-
-class MySQLConfiguration(DatabaseConfiguration):
-    def __init__(self, hostname: str, port: str, db: str, user: str, secret: str):
-        self._hostname = hostname
-        self._port = port
-        self._db = db
-        self._user = user
-        self._secret = secret
-        super(MySQLConfiguration, self).__init__('mysql')
-
-    @property
-    def hostname(self):
-        return self._hostname
-
-    @property
-    def port(self):
-        return self._port
-
-    @property
-    def db(self):
-        return self._db
-
-    @property
-    def user(self):
-        return self._user
-
-    @property
-    def secret(self):
-        return self._secret
 
 
 class SQLiteConfiguration(DatabaseConfiguration):
@@ -167,16 +137,8 @@ class ServiceConfiguration:
         # Cache
         profile_page_pattern = os.environ['MC_PROFILE_PAGE_PATTERN'] if 'MC_PROFILE_PAGE_PATTERN' in os.environ else ""
 
-        # Database
-        database_engine = os.environ['MC_DATABASE_ENGINE'] if 'MC_DATABASE_ENGINE' in os.environ else 'sqlite'
-        # Mysql
+        # SQLite
         database_path = os.environ['MC_DATABASE_PATH'] if 'MC_DATABASE_PATH' in os.environ else ''
-        # Sqlite
-        database_hostname = os.environ['MC_DATABASE_HOSTNAME'] if 'MC_DATABASE_HOSTNAME' in os.environ else 'localhost'
-        database_port = os.environ['MC_DATABASE_PORT'] if 'MC_DATABASE_PORT' in os.environ else ''
-        database_db = os.environ['MC_DATABASE_DB'] if 'MC_DATABASE_DB' in os.environ else ''
-        database_user = os.environ['MC_DATABASE_USER'] if 'MC_DATABASE_USER' in os.environ else ''
-        database_secret = os.environ['MC_DATABASE_SECRET'] if 'MC_DATABASE_SECRET' in os.environ else ''
 
         def missing_attribute(attribute: str):
             raise InvalidConfigurationException("Environment misses variable: %s" % attribute)
@@ -204,27 +166,5 @@ class ServiceConfiguration:
         else:
             raise InvalidConfigurationException('Unknown crawler type %s' % crawler)
 
-        # Validate database settings
-        if database_engine == 'sqlite':
-            # If no path has been provided the in memory version is used
-            self._database = SQLiteConfiguration(database_path)
-        elif database_engine == 'mysql':
-            if not database_hostname:
-                missing_attribute('MC_DATABASE_HOSTNAME')
-            if not database_port:
-                missing_attribute('MC_DATABASE_PORT')
-            if not database_db:
-                missing_attribute('MC_DATABASE_DB')
-            if not database_user:
-                missing_attribute('MC_DATABASE_USER')
-            if not database_secret:
-                missing_attribute('MC_DATABASE_SECRET')
-            self._database = MySQLConfiguration(
-                hostname=database_hostname,
-                port=database_port,
-                db=database_db,
-                user=database_user,
-                secret=database_secret
-            )
-        else:
-            raise InvalidConfigurationException('Unknown database engine %s' % database_engine)
+        # Configure SQLite
+        self._database = SQLiteConfiguration(database_path)

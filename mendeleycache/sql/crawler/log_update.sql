@@ -11,4 +11,4 @@ INTO update_log
     field_links
   )
 VALUES
-  :log_entry
+  (?,?,?,?,?,?,?);

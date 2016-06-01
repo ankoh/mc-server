@@ -9,4 +9,4 @@ INTO cache_document_has_cache_field
   cache_field_id
 )
 VALUES
-  :documents_to_fields;
+  (?,?);

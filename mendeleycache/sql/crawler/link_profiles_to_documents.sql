@@ -9,4 +9,4 @@ INTO cache_profile_has_cache_document
   cache_document_id
 )
 VALUES
-  :profiles_to_documents;
+  (?,?);

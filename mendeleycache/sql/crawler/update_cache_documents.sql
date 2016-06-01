@@ -6,4 +6,4 @@ INTO cache_document
     title
   )
 VALUES
-  :cache_documents
+  (?,?);
