@@ -39,9 +39,10 @@ class CrawlData:
       read_sql_statements('sql', 'crawler', 'log_update.sql')
 
   def log_update(self, report, remote_addr: str):
+    if remote_addr is None:
+      remote_addr = "localhost"
     insert = self._log_update[0]
     with self._engine.begin() as conn:
-      log.info(insert)
       conn.execute(insert, (
         remote_addr,
         report.profiles,
@@ -305,7 +306,7 @@ class CrawlData:
         if unified_name not in unified_name_to_profiles:
           continue
         for doc_unified in doc_list:
-          conn.execute(insert,(
+          conn.execute(insert, (
             generate_id(unified_name), generate_id(doc_unified)))
 
     log.info("Profile -> document links have been updated")
