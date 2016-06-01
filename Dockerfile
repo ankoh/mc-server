@@ -18,14 +18,14 @@ COPY mendeleycache /srv/mc/mendeleycache
 ENV PYTHONPATH $PYTHONPATH:/srv/mc/
 
 # Add pipeline script
-COPY docker/pipeline.sh /usr/local/bin/pipeline
+COPY docker/server/pipeline.sh /usr/local/bin/pipeline
 RUN chmod +x /usr/local/bin/pipeline
 
 # Expose 8080 as default gunicorn port
 EXPOSE 8080
 
 # Adding entrypoint script
-COPY docker/entrypoint.sh /srv/mc/entrypoint.sh
+COPY docker/server/entrypoint.sh /srv/mc/entrypoint.sh
 RUN chmod +x /srv/mc/entrypoint.sh
 
 ENTRYPOINT ["/srv/mc/entrypoint.sh"]
